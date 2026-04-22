@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>具身智能媒体监测看板</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --border-color: #2a2a3a;
+            --text-primary: #e8e8ed;
+            --text-secondary: #8888a0;
+            --accent-blue: #4a9eff;
+            --accent-purple: #8b5cf6;
+            --accent-green: #22c55e;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .header h1 .icon {
+            font-size: 28px;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #3a8eef;
+        }
+        
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+        }
+        
+        .btn-warning {
+            background: var(--accent-orange);
+            color: white;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .stat-card .label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .stat-card .trend {
+            font-size: 12px;
+            margin-top: 8px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .trend.up { background: rgba(34, 197, 94, 0.2); color: var(--accent-green); }
+        .trend.down { background: rgba(239, 68, 68, 0.2); color: var(--accent-red); }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+            background: var(--bg-secondary);
+            padding: 4px;
+            border-radius: 10px;
+            width: fit-content;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            border: none;
+            background: transparent;
+        }
+        
+        .tab:hover {
+            color: var(--text-primary);
+        }
+        
+        .tab.active {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+        
+        .tab-badge {
+            background: var(--accent-red);
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 6px;
+        }
+        
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-group label {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        
+        select, input {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: var(--text-primary);
+            font-size: 13px;
+        }
+        
+        select {
+            cursor: pointer;
+        }
+        
+        input {
+            width: 200px;
+        }
+        
+        /* Table */
+        .table-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            font-size: 14px;
+        }
+        
+        tr:hover {
+            background: rgba(74, 158, 255, 0.05);
+        }
+        
+        .company-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .company-badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .badge-cn { background: rgba(34, 197, 94, 0.2); color: var(--accent-green); }
+        .badge-us { background: rgba(74, 158, 255, 0.2); color: var(--accent-blue); }
+        .badge-eu { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
+        
+        .type-badge {
+            display: inline-block;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        
+        .type-funding { background: rgba(34, 197, 94, 0.2); color: var(--accent-green); }
+        .type-product { background: rgba(74, 158, 255, 0.2); color: var(--accent-blue); }
+        .type-tech { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
+        .type-project { background: rgba(245, 158, 11, 0.2); color: var(--accent-orange); }
+        .type-event { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
+        .type-interview { background: rgba(156, 163, 175, 0.2); color: #9ca3af; }
+        .type-other { background: rgba(107, 114, 128, 0.2); color: #6b7280; }
+        
+        .title-cell {
+            max-width: 400px;
+        }
+        
+        .title-cell .main-title {
+            margin-bottom: 4px;
+        }
+        
+        .title-cell .en-title {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .source-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        .source-link:hover {
+            text-decoration: underline;
+        }
+        
+        .media-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        
+        .media-tag {
+            font-size: 11px;
+            padding: 2px 6px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+        
+        .media-tag.more {
+            background: var(--accent-orange);
+            color: white;
+        }
+        
+        /* Funding Details */
+        .funding-amount {
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+        
+        .valuation {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .investors {
+            font-size: 13px;
+        }
+        
+        /* Ranking Table */
+        .rank-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+        .rank-2 { background: linear-gradient(135deg, #94a3b8, #64748b); color: #fff; }
+        .rank-3 { background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }
+        .rank-default { background: var(--bg-secondary); color: var(--text-secondary); }
+        
+        .valuation-bar {
+            width: 100px;
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        
+        .valuation-fill {
+            height: 100%;
+            background: var(--accent-blue);
+            border-radius: 4px;
+        }
+        
+        /* New Companies Panel */
+        .new-companies-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--accent-orange);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .new-companies-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .new-companies-header h3 {
+            color: var(--accent-orange);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .company-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .company-info {
+            flex: 1;
+        }
+        
+        .company-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .company-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .company-meta a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        .company-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .btn-add {
+            padding: 6px 12px;
+            background: var(--accent-green);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .btn-reject {
+            padding: 6px 12px;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .category-select {
+            font-size: 12px;
+            padding: 4px 8px;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 16px;
+        }
+        
+        .pagination button {
+            padding: 8px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+        
+        .pagination button:hover:not(:disabled) {
+            background: var(--bg-card);
+        }
+        
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .pagination span {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        /* Last Updated */
+        .last-updated {
+            text-align: right;
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-top: 16px;
+        }
+        
+        /* Hidden */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .modal h3 {
+            margin-bottom: 16px;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>
+                <span class="icon">🤖</span>
+                具身智能媒体监测看板
+            </h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="refreshData()">
+                    🔄 刷新
+                </button>
+                <button class="btn btn-secondary" onclick="exportCSV()">
+                    📥 导出CSV
+                </button>
+                <button class="btn btn-warning" onclick="detectNewCompanies()">
+                    🔍 发现新公司
+                </button>
+            </div>
+        </header>
+        
+        <!-- New Companies Panel -->
+        <div id="newCompaniesPanel" class="new-companies-panel hidden">
+            <div class="new-companies-header">
+                <h3>
+                    <span>🆕</span>
+                    疑似新增企业
+                    <span id="newCompaniesCount" class="tab-badge">0</span>
+                </h3>
+                <button class="btn btn-secondary" onclick="closeNewCompaniesPanel()">关闭</button>
+            </div>
+            <div id="newCompaniesList">
+                <!-- 新公司列表将在这里渲染 -->
+            </div>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="value" id="totalCompanies">39</div>
+                <div class="label">监控公司</div>
+            </div>
+            <div class="stat-card">
+                <div class="value" id="totalEvents">0</div>
+                <div class="label">总事件数</div>
+            </div>
+            <div class="stat-card">
+                <div class="value" id="fundingCount">0</div>
+                <div class="label">融资事件</div>
+                <div class="trend up" id="fundingTrend">+0 本月</div>
+            </div>
+            <div class="stat-card">
+                <div class="value" id="prCount">0</div>
+                <div class="label">PR发布</div>
+            </div>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" data-tab="all">全部事件</button>
+            <button class="tab" data-tab="funding">融资动态</button>
+            <button class="tab" data-tab="pr">PR发布</button>
+            <button class="tab" data-tab="ranking">🏆 估值排行</button>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-group">
+                <label>地区:</label>
+                <select id="regionFilter">
+                    <option value="all">全部</option>
+                    <option value="domestic">🇨🇳 国内</option>
+                    <option value="overseas_us">🇺🇸 美国</option>
+                    <option value="overseas_eu">🇪🇺 欧洲</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>类型:</label>
+                <select id="typeFilter">
+                    <option value="all">全部</option>
+                    <option value="funding">💰 融资</option>
+                    <option value="product">📦 产品发布</option>
+                    <option value="tech_breakthrough">🔬 技术突破</option>
+                    <option value="project">🤝 项目落地</option>
+                    <option value="event">🎪 活动展会</option>
+                    <option value="interview">🎤 采访观点</option>
+                    <option value="other">📌 其他</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>搜索:</label>
+                <input type="text" id="searchInput" placeholder="搜索公司或关键词...">
+            </div>
+        </div>
+        
+        <!-- Main Table -->
+        <div class="table-container">
+            <div class="table-wrapper">
+                <table id="eventsTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px;">日期</th>
+                            <th style="width: 120px;">公司</th>
+                            <th style="width: 100px;">类型</th>
+                            <th>事件标题</th>
+                            <th style="width: 100px;">来源</th>
+                            <th style="width: 150px;">媒体覆盖</th>
+                            <th style="width: 200px;">融资详情</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventsBody">
+                        <!-- 数据将在这里渲染 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Ranking Table (Hidden) -->
+        <div class="table-container hidden" id="rankingTable">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">排名</th>
+                            <th style="width: 180px;">公司</th>
+                            <th>估值</th>
+                            <th style="width: 200px;">最新融资</th>
+                            <th>最新动态</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingBody">
+                        <!-- 数据将在这里渲染 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <button id="prevPage">← 上一页</button>
+            <span id="pageInfo">第 1 页</span>
+            <button id="nextPage">下一页 →</button>
+        </div>
+        
+        <div class="last-updated">
+            最后更新: <span id="lastUpdated">--</span>
+        </div>
+    </div>
+
+    <script>
+        // ==================== 数据 ====================
+        let allEvents = [];
+        let filteredEvents = [];
+        let currentPage = 1;
+        const pageSize = 20;
+        let currentTab = 'all';
+        let pendingCompany = null;
+        
+        // 新公司数据
+        let potentialCompanies = [];
+        
+        // 公司分类信息（用于判断地区）
+        const companyRegions = {
+            'overseas_vla': ['NVIDIA', 'Physical Intelligence', 'Skild AI', 'Figure AI', 'Agility Robotics', 'Apptronik', 'Field AI', 'Sanctuary AI'],
+            'overseas_other': ['1X Technologies', 'Boston Dynamics', 'Mimic Robotics', 'Anybotics', 'Hexagon', 'Skydio'],
+            'domestic_vla': ['千寻智能', '银河通用', '自变量机器人', '智元机器人', '魔法原子', '星海图', '智平方', '它石智航', '跨维智能', '穹彻智能'],
+            'domestic_control': ['星动纪元', '思灵机器人', '逐际动力', '灵初智能', '大晓机器人', '梅卡曼德', '傅利叶智能', '七腾机器人', '珞石机器人', '镜识科技', '优理奇智能', '加速进化', '帕西尼感知', '地瓜机器人', '觅蜂科技']
+        };
+        
+        // 类型名称映射
+        const typeNames = {
+            'funding': '融资',
+            'product': '产品发布',
+            'tech_breakthrough': '技术突破',
+            'project': '项目落地',
+            'event': '活动展会',
+            'interview': '采访观点',
+            'other': '其他'
+        };
+        
+        // ==================== 初始化 ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            initTabs();
+            initFilters();
+            initPagination();
+        });
+        
+        function loadData() {
+            // 加载事件数据
+            fetch('data/events.json')
+                .then(r => r.json())
+                .then(data => {
+                    allEvents = data;
+                    applyFilters();
+                    updateStats();
+                    document.getElementById('lastUpdated').textContent = new Date().toLocaleString('zh-CN');
+                })
+                .catch(e => {
+                    console.error('Failed to load events:', e);
+                });
+            
+            // 加载潜在新公司数据
+            loadPotentialCompanies();
+        }
+        
+        function loadPotentialCompanies() {
+            fetch('data/potential_companies.json')
+                .then(r => r.json())
+                .then(data => {
+                    potentialCompanies = data.filter(p => p.status === 'pending');
+                    if (potentialCompanies.length > 0) {
+                        showNewCompaniesPanel();
+                    }
+                })
+                .catch(e => {
+                    // 文件可能不存在，忽略
+                });
+        }
+        
+        // ==================== 标签页 ====================
+        function initTabs() {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTab = this.dataset.tab;
+                    currentPage = 1;
+                    applyFilters();
+                });
+            });
+        }
+        
+        // ==================== 筛选 ====================
+        function initFilters() {
+            document.getElementById('regionFilter').addEventListener('change', () => {
+                currentPage = 1;
+                applyFilters();
+            });
+            
+            document.getElementById('typeFilter').addEventListener('change', () => {
+                currentPage = 1;
+                applyFilters();
+            });
+            
+            document.getElementById('searchInput').addEventListener('input', debounce(() => {
+                currentPage = 1;
+                applyFilters();
+            }, 300));
+        }
+        
+        function applyFilters() {
+            const region = document.getElementById('regionFilter').value;
+            const type = document.getElementById('typeFilter').value;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            
+            // 获取需要展示的公司列表
+            let displayCompanies = new Set();
+            if (region === 'all') {
+                Object.values(companyRegions).forEach(arr => arr.forEach(c => displayCompanies.add(c)));
+            } else if (region === 'domestic') {
+                ['domestic_vla', 'domestic_control'].forEach(k => companyRegions[k].forEach(c => displayCompanies.add(c)));
+            } else if (region === 'overseas_us') {
+                companyRegions['overseas_vla'].forEach(c => displayCompanies.add(c));
+            } else if (region === 'overseas_eu') {
+                companyRegions['overseas_other'].forEach(c => displayCompanies.add(c));
+            }
+            
+            filteredEvents = allEvents.filter(event => {
+                // 地区筛选
+                if (!displayCompanies.has(event.company)) return false;
+                
+                // 类型筛选
+                if (type !== 'all' && event.type !== type) return false;
+                
+                // 搜索筛选
+                if (search) {
+                    const matchCompany = event.company.toLowerCase().includes(search);
+                    const matchTitle = (event.title + (event.title_en || '')).toLowerCase().includes(search);
+                    const matchSummary = (event.summary || '').toLowerCase().includes(search);
+                    if (!matchCompany && !matchTitle && !matchSummary) return false;
+                }
+                
+                return true;
+            });
+            
+            renderTable();
+            renderRanking();
+        }
+        
+        // ==================== 表格渲染 ====================
+        function renderTable() {
+            const tbody = document.getElementById('eventsBody');
+            const tableContainer = document.querySelector('.table-container');
+            const rankingTable = document.getElementById('rankingTable');
+            
+            // 根据当前Tab显示/隐藏表格
+            if (currentTab === 'ranking') {
+                tableContainer.classList.add('hidden');
+                rankingTable.classList.remove('hidden');
+                return;
+            } else {
+                tableContainer.classList.remove('hidden');
+                rankingTable.classList.add('hidden');
+            }
+            
+            // 计算分页
+            const start = (currentPage - 1) * pageSize;
+            const end = start + pageSize;
+            const pageData = filteredEvents.slice(start, end);
+            
+            if (pageData.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7">
+                            <div class="empty-state">
+                                <div class="icon">📭</div>
+                                <div>暂无数据</div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = pageData.map(event => {
+                const badge = getRegionBadge(event.company);
+                const typeBadge = getTypeBadge(event.type);
+                const mediaTags = renderMediaTags(event.media_sources);
+                const fundingDetails = renderFundingDetails(event);
+                
+                return `
+                    <tr>
+                        <td>${event.date || '--'}</td>
+                        <td>
+                            <div class="company-cell">
+                                ${badge}
+                                <span>${event.company}</span>
+                            </div>
+                        </td>
+                        <td>${typeBadge}</td>
+                        <td class="title-cell">
+                            <div class="main-title">
+                                <a href="${event.source_url || '#'}" target="_blank" class="source-link">${event.title}</a>
+                            </div>
+                            ${event.title_en ? `<div class="en-title">${event.title_en}</div>` : ''}
+                        </td>
+                        <td>${event.source || '--'}</td>
+                        <td>${mediaTags}</td>
+                        <td>${fundingDetails}</td>
+                    </tr>
+                `;
+            }).join('');
+            
+            updatePagination();
+        }
+        
+        // 货币换算（美元兑人民币约7.2）
+        const USD_TO_CNY = 7.2;
+        
+        // 解析估值字符串，返回统一的数值（亿元人民币）
+        function parseValuationCNY(valuationStr) {
+            if (!valuationStr) return 0;
+            const str = valuationStr.toString();
+            let cny = 0;
+            
+            if (str.includes('亿美元')) {
+                const num = parseFloat(str.match(/[\d.]+/)[0]);
+                cny = num * USD_TO_CNY; // 转换为亿人民币
+            } else if (str.includes('亿人民币') || str.includes('亿')) {
+                const num = parseFloat(str.match(/[\d.]+/)[0]);
+                cny = num;
+            }
+            return cny;
+        }
+        
+        function renderRanking() {
+            const tbody = document.getElementById('rankingBody');
+            
+            // 按估值排序的公司（统一换算为亿人民币）
+            const rankingData = [
+                { company: 'Figure AI', valuation: '30亿美元', valuationCNY: 30 * 7.2, currency: '美元', percentage: 100, latest: 'B轮25亿美元', trend: 'VLA+人形' },
+                { company: 'Physical Intelligence', valuation: '20亿美元', valuationCNY: 20 * 7.2, currency: '美元', percentage: 67, latest: '融资', trend: 'π模型' },
+                { company: 'Skild AI', valuation: '15亿美元', valuationCNY: 15 * 7.2, currency: '美元', percentage: 50, latest: 'B轮', trend: 'Skild Brain' },
+                { company: 'Agility Robotics', valuation: '12亿美元', valuationCNY: 12 * 7.2, currency: '美元', percentage: 40, latest: 'B轮', trend: 'Digit物流' },
+                { company: '智元机器人', valuation: '80亿人民币', valuationCNY: 80, currency: '人民币', percentage: 37, latest: 'B轮超10亿', trend: '人形机器人' },
+                { company: '千寻智能', valuation: '25亿人民币', valuationCNY: 25, currency: '人民币', percentage: 12, latest: 'Pre-A', trend: 'QKVLA模型' },
+                { company: '银河通用', valuation: '25亿人民币', valuationCNY: 25, currency: '人民币', percentage: 12, latest: 'A轮5亿', trend: '全尺寸人形' },
+                { company: '魔法原子', valuation: '15亿人民币', valuationCNY: 15, currency: '人民币', percentage: 7, latest: '天使轮3亿', trend: '家庭服务' },
+                { company: '思灵机器人', valuation: '15亿人民币', valuationCNY: 15, currency: '人民币', percentage: 7, latest: 'C+轮', trend: '力控技术' },
+                { company: '穹彻智能', valuation: '10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 5, latest: 'Pre-A', trend: 'Noin大模型' }
+            ];
+            
+            // 按valuationCNY降序排序
+            rankingData.sort((a, b) => b.valuationCNY - a.valuationCNY);
+            
+            tbody.innerHTML = rankingData.map((item, index) => {
+                const rankClass = index < 3 ? `rank-${index + 1}` : 'rank-default';
+                const currencyIcon = item.currency === '美元' ? '💵' : '💴';
+                return `
+                    <tr>
+                        <td>
+                            <span class="rank-badge ${rankClass}">${index + 1}</span>
+                        </td>
+                        <td>
+                            <div class="company-cell">
+                                ${getRegionBadge(item.company)}
+                                <span>${item.company}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="funding-amount">${currencyIcon} ${item.valuation}</span>
+                            <div class="valuation-bar">
+                                <div class="valuation-fill" style="width: ${item.percentage}%"></div>
+                            </div>
+                        </td>
+                        <td class="funding-amount">${item.latest}</td>
+                        <td>${item.trend}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        function getRegionBadge(company) {
+            if (companyRegions['domestic_vla'].includes(company) || companyRegions['domestic_control'].includes(company)) {
+                return '<span class="company-badge badge-cn">🇨🇳</span>';
+            } else if (companyRegions['overseas_vla'].includes(company)) {
+                return '<span class="company-badge badge-us">🇺🇸</span>';
+            } else {
+                return '<span class="company-badge badge-eu">🇪🇺</span>';
+            }
+        }
+        
+        function getTypeBadge(type) {
+            const typeClass = `type-${type}`;
+            const typeName = typeNames[type] || type;
+            return `<span class="type-badge ${typeClass}">${typeName}</span>`;
+        }
+        
+        function renderMediaTags(mediaSources) {
+            if (!mediaSources || mediaSources.length === 0) return '--';
+            
+            const maxShow = 2;
+            const shown = mediaSources.slice(0, maxShow);
+            const remaining = mediaSources.length - maxShow;
+            
+            let html = '<div class="media-tags">';
+            shown.forEach(source => {
+                html += `<span class="media-tag">${source}</span>`;
+            });
+            if (remaining > 0) {
+                html += `<span class="media-tag more">+${remaining}</span>`;
+            }
+            html += '</div>';
+            
+            return html;
+        }
+        
+        function renderFundingDetails(event) {
+            if (event.type !== 'funding') return '--';
+            
+            let html = '';
+            if (event.amount) {
+                html += `<div class="funding-amount">${event.amount}</div>`;
+            }
+            if (event.valuation) {
+                html += `<div class="valuation">估值: ${event.valuation}</div>`;
+            }
+            if (event.investors) {
+                html += `<div class="investors">${event.investors}</div>`;
+            }
+            return html || '--';
+        }
+        
+        // ==================== 分页 ====================
+        function initPagination() {
+            document.getElementById('prevPage').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderTable();
+                }
+            });
+            
+            document.getElementById('nextPage').addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredEvents.length / pageSize);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderTable();
+                }
+            });
+        }
+        
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredEvents.length / pageSize);
+            document.getElementById('pageInfo').textContent = `第 ${currentPage} / ${totalPages} 页`;
+            document.getElementById('prevPage').disabled = currentPage <= 1;
+            document.getElementById('nextPage').disabled = currentPage >= totalPages;
+        }
+        
+        // ==================== 统计 ====================
+        function updateStats() {
+            document.getElementById('totalEvents').textContent = allEvents.length;
+            
+            const fundingCount = allEvents.filter(e => e.type === 'funding').length;
+            document.getElementById('fundingCount').textContent = fundingCount;
+            
+            const prCount = allEvents.length - fundingCount;
+            document.getElementById('prCount').textContent = prCount;
+            
+            // 计算总监控公司数
+            const companies = new Set(allEvents.map(e => e.company));
+            document.getElementById('totalCompanies').textContent = Math.max(39, companies.size);
+        }
+        
+        // ==================== 新公司探测 ====================
+        function showNewCompaniesPanel() {
+            const panel = document.getElementById('newCompaniesPanel');
+            const list = document.getElementById('newCompaniesList');
+            const count = document.getElementById('newCompaniesCount');
+            
+            // 只显示待处理的公司
+            const pendingCompanies = potentialCompanies.filter(p => p.status === 'pending');
+            count.textContent = pendingCompanies.length;
+            panel.classList.remove('hidden');
+            
+            if (pendingCompanies.length === 0) {
+                list.innerHTML = '<div class="empty-state">暂无疑似新公司</div>';
+                return;
+            }
+            
+            list.innerHTML = pendingCompanies.map((company, displayIndex) => `
+                <div class="company-item">
+                    <div class="company-info">
+                        <div class="company-name">${company.name}</div>
+                        <div class="company-meta">
+                            发现于: ${company.discovered_from}
+                            ${company.article_url ? `<br><a href="${company.article_url}" target="_blank">查看来源文章 →</a>` : ''}
+                            ${company.article_title ? `<br>"${company.article_title.substring(0, 60)}..."` : ''}
+                        </div>
+                    </div>
+                    <div class="company-actions">
+                        <button class="btn-add" onclick="addCompanyDirectly('${company.name}')">✓ 添加到监测</button>
+                        <button class="btn-reject" onclick="rejectCompany('${company.name}')">✗ 忽略</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function closeNewCompaniesPanel() {
+            document.getElementById('newCompaniesPanel').classList.add('hidden');
+        }
+        
+        // 直接添加公司到监测列表（使用公司名称查找）
+        function addCompanyDirectly(name) {
+            const company = potentialCompanies.find(p => p.name === name);
+            if (!company) return;
+            
+            company.status = 'approved';
+            
+            // 自动添加到国内VLA列表（默认）
+            if (!companyRegions['domestic_vla']) {
+                companyRegions['domestic_vla'] = [];
+            }
+            companyRegions['domestic_vla'].push(company.name);
+            
+            // 更新UI
+            showNewCompaniesPanel();
+            
+            // 更新统计
+            document.getElementById('totalCompanies').textContent = 
+                parseInt(document.getElementById('totalCompanies').textContent) + 1;
+            
+            alert(`✅ 已添加 "${company.name}" 到监测列表`);
+        }
+        
+        // 忽略公司（使用公司名称查找）
+        function rejectCompany(name) {
+            const company = potentialCompanies.find(p => p.name === name);
+            if (!company) return;
+            
+            company.status = 'rejected';
+            
+            // 更新UI
+            showNewCompaniesPanel();
+        }
+        
+        function detectNewCompanies() {
+            if (confirm('正在搜索疑似新公司，这可能需要一些时间...')) {
+                // 调用爬虫的新公司探测功能
+                // 实际实现中，这里应该调用后端API或运行Python脚本
+                alert('🔍 新公司探测功能需要后台运行爬虫脚本。\n\n请在终端运行:\npython scripts/crawler.py --detect-new\n\n运行完成后刷新页面查看结果。');
+            }
+        }
+        
+        // ==================== 刷新 & 导出 ====================
+        function refreshData() {
+            if (confirm('正在从数据源刷新...')) {
+                // 实际实现中，这里应该调用后端API
+                location.reload();
+            }
+        }
+        
+        function exportCSV() {
+            const headers = ['日期', '公司', '类型', '标题', '英文标题', '来源', '链接', '媒体覆盖', '金额', '估值', '投资方'];
+            const rows = filteredEvents.map(event => [
+                event.date || '',
+                event.company,
+                typeNames[event.type] || event.type,
+                event.title || '',
+                event.title_en || '',
+                event.source || '',
+                event.source_url || '',
+                (event.media_sources || []).join('; '),
+                event.amount || '',
+                event.valuation || '',
+                event.investors || ''
+            ]);
+            
+            const csvContent = [headers, ...rows]
+                .map(row => row.map(cell => `"${(cell || '').replace(/"/g, '""')}"`).join(','))
+                .join('\n');
+            
+            const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `具身智能媒体监测_${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+        }
+        
+        // ==================== 工具函数 ====================
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+    </script>
+</body>
+</html>

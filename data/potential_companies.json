@@ -1,0 +1,26 @@
+[
+  {
+    "name": "星海图",
+    "discovered_from": "36Kr文章",
+    "article_title": "星海图完成数千万元天使轮融资，专注具身智能大脑研发",
+    "article_url": "https://36kr.com/p/234567",
+    "discovered_date": "2026-04-22",
+    "status": "pending"
+  },
+  {
+    "name": "Robotera",
+    "discovered_from": "机器之心",
+    "article_title": "西班牙创业公司Robotera推出家庭陪伴人形机器人",
+    "article_url": "https://jiqizhixin.com/news/robotera",
+    "discovered_date": "2026-04-21",
+    "status": "pending"
+  },
+  {
+    "name": "帕西尼感知",
+    "discovered_from": "投资界",
+    "article_title": "帕西尼感知完成A轮融资，触觉传感器获得突破",
+    "article_url": "https://pe.pedaily.cn/news/789",
+    "discovered_date": "2026-04-20",
+    "status": "pending"
+  }
+]
