@@ -549,10 +549,10 @@
   },
   {
     "id": "interview023",
-    "company": "至简智能",
+    "company": "至简动力",
     "type": "interview",
     "title": "LateTalk 155: 贾鹏创立至简后的首次访谈 - 从英伟达到理想，具身智能的六边形战士",
-    "summary": "贾鹏首次披露至简智能创业方向，具身智能竞争本质是体系竞争",
+    "summary": "贾鹏首次披露至简动力创业方向，具身智能竞争本质是体系竞争",
     "source": "晚点聊LateTalk",
     "source_url": "https://podcast.latepost.com/155",
     "date": "2026-03-23",
@@ -560,6 +560,72 @@
     "media_sources": [
       "晚点LatePost",
       "Podcast"
+    ]
+  },
+  {
+    "id": "simplexity077funding",
+    "company": "至简动力",
+    "type": "funding",
+    "title": "至简动力半年完成5轮融资累计20亿元，跃升具身智能最年轻独角兽",
+    "title_en": "Simplexity Robotics Raises 2B RMB in 5 Rounds, Becomes Youngest Embodied AI Unicorn",
+    "summary": "理想前高管贾鹏创立，半年连续完成5轮融资，累计20亿人民币，估值超10亿美元。核心产品：LaST₀基座模型、ManualVLA超长程任务模型（CVPR 2026）、TwinRL真机强化学习框架",
+    "source": "36Kr",
+    "source_url": "https://www.36kr.com/p/3715038323405320",
+    "date": "2026-03-09",
+    "funding_amount": "20亿人民币",
+    "valuation": "超10亿美元（约72亿人民币）",
+    "investors": ["光源资本", "阿里", "红杉", "国资", "产业资本"],
+    "created_at": "2026-04-23T15:30:00",
+    "media_sources": [
+      "36Kr",
+      "腾讯新闻",
+      "新浪财经",
+      "搜狐"
+    ]
+  },
+  {
+    "id": "simplexity078tech",
+    "company": "至简动力",
+    "type": "tech",
+    "title": "至简动力发布LaST₀基座模型，融合世界模型与VLA快慢思维",
+    "title_en": "Simplexity Robotics Releases LaST₀ Foundation Model with World Model + VLA",
+    "summary": "首次将世界模型对物理世界的理解、预测及VLA的快慢思维融合，显著提升对物理世界动态的高效推理能力",
+    "source": "36Kr",
+    "source_url": "https://www.36kr.com/p/3715038323405320",
+    "date": "2026-03-09",
+    "created_at": "2026-04-23T15:30:00",
+    "media_sources": [
+      "36Kr"
+    ]
+  },
+  {
+    "id": "simplexity079tech",
+    "company": "至简动力",
+    "type": "tech",
+    "title": "至简动力ManualVLA论文入选CVPR 2026，解决长程任务难题",
+    "title_en": "Simplexity Robotics ManualVLA Accepted to CVPR 2026",
+    "summary": "ManualVLA使机器人能够从目标状态出发，自动生成多模态\"操作说明书\"，解决理解复杂长程任务的难题",
+    "source": "CVPR 2026",
+    "source_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/",
+    "date": "2026-06-01",
+    "created_at": "2026-04-23T15:30:00",
+    "media_sources": [
+      "CVPR 2026",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "simplexity080product",
+    "company": "至简动力",
+    "type": "product",
+    "title": "至简动力第一代自研本体小批量下线，开启PoC验证",
+    "summary": "至简动力坚持软硬件全栈自研，第一代自研本体已小批量下线并开启PoC验证",
+    "source": "36Kr",
+    "source_url": "https://www.36kr.com/p/3715038323405320",
+    "date": "2026-03-09",
+    "created_at": "2026-04-23T15:30:00",
+    "media_sources": [
+      "36Kr"
     ]
   },
   {
