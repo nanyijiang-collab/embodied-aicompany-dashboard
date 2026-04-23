@@ -662,17 +662,12 @@
                 <div class="label">融资事件</div>
                 <div class="trend up" id="fundingTrend">+0 本月</div>
             </div>
-            <div class="stat-card">
-                <div class="value" id="prCount">0</div>
-                <div class="label">PR发布</div>
-            </div>
         </div>
         
         <!-- Tabs -->
         <div class="tabs">
             <button class="tab active" data-tab="all">全部事件</button>
             <button class="tab" data-tab="funding">融资动态</button>
-            <button class="tab" data-tab="pr">PR发布</button>
             <button class="tab" data-tab="ranking">🏆 估值排行</button>
         </div>
         
@@ -692,7 +687,6 @@
                 <select id="typeFilter">
                     <option value="all">全部</option>
                     <option value="funding">💰 融资</option>
-                    <option value="pr">📣 PR发布</option>
                     <option value="product">📦 产品发布</option>
                     <option value="tech_breakthrough">🔬 技术突破</option>
                     <option value="project">🤝 项目落地</option>
@@ -817,12 +811,8 @@
             'project': '项目落地',
             'event': '活动展会',
             'interview': '采访观点',
-            'other': '其他',
-            'pr': 'PR发布'
+            'other': '其他'
         };
-        
-        // PR类型列表（用于标签筛选）
-        const prTypes = ['product', 'tech_breakthrough', 'event', 'interview'];
         
         // ==================== 初始化 ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -895,9 +885,6 @@
                     // 点击标签自动设置筛选
                     if (currentTab === 'funding') {
                         document.getElementById('typeFilter').value = 'funding';
-                    } else if (currentTab === 'pr') {
-                        // PR发布 = 产品+技术+活动+采访
-                        document.getElementById('typeFilter').value = 'pr';
                     } else {
                         document.getElementById('typeFilter').value = 'all';
                     }
@@ -946,14 +933,9 @@
                 // 地区筛选
                 if (!displayCompanies.has(event.company)) return false;
                 
-                // 类型筛选（支持PR发布筛选）
-                if (type !== 'all') {
-                    if (type === 'pr') {
-                        // PR发布 = 产品+技术+活动+采访
-                        if (!prTypes.includes(event.type)) return false;
-                    } else if (event.type !== type) {
-                        return false;
-                    }
+                // 类型筛选
+                if (type !== 'all' && event.type !== type) {
+                    return false;
                 }
                 
                 // 搜索筛选
@@ -1266,9 +1248,6 @@
             
             const fundingCount = allEvents.filter(e => e.type === 'funding').length;
             document.getElementById('fundingCount').textContent = fundingCount;
-            
-            const prCount = allEvents.length - fundingCount;
-            document.getElementById('prCount').textContent = prCount;
             
             // 计算总监控公司数
             const companies = new Set(allEvents.map(e => e.company));
