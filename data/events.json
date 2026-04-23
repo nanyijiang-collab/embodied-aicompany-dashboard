@@ -1596,5 +1596,193 @@
     "media_sources": [
       "Figure AI"
     ]
+  },
+  {
+    "id": "ces065chinabatch",
+    "company": "行业活动",
+    "type": "event",
+    "title": "CES 2026：中国人形机器人企业集体亮相（智元、星动纪元、宇树、傅利叶、逐际动力等）",
+    "summary": "CES 2026（1月6-9日）成为中国人形机器人企业的集体秀场，多家企业携最新产品亮相拉斯维加斯",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260111A05WK500",
+    "date": "2026-01-06",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "腾讯新闻",
+      "搜狐",
+      "知乎"
+    ]
+  },
+  {
+    "id": "agibot066ces",
+    "company": "智元机器人",
+    "type": "event",
+    "title": "智元机器人Agibot A2亮相CES 2025",
+    "title_en": "Agibot A2 Debuts at CES 2025",
+    "summary": "英伟达演讲中亮相由14款人形机器人组成的机器人军团，智元Agibot（A2）在列",
+    "source": "AGIBOT官网",
+    "source_url": "https://www.agibot.com.cn/article/188/detail/96.html",
+    "date": "2026-01-05",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "AGIBOT官网",
+      "英伟达"
+    ]
+  },
+  {
+    "id": "galbot067wrc",
+    "company": "银河通用",
+    "type": "event",
+    "title": "银河通用Galbot将亮相2026世界机器人大会",
+    "title_en": "Galbot to Exhibit at World Robot Conference 2026",
+    "summary": "银河通用确认参展WRC 2026，展示Galbot G1等旗舰产品",
+    "source": "世界机器人大会官网",
+    "source_url": "https://www.worldrobotconference.com/expo/company/434.html",
+    "date": "2026-08-01",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "世界机器人大会"
+    ]
+  },
+  {
+    "id": "limx068ces",
+    "company": "逐际动力",
+    "type": "event",
+    "title": "逐际动力LimX携全尺寸人形机器人亮相CES 2026",
+    "title_en": "LimX Dynamics Shows Full-Size Humanoid Robot at CES 2026",
+    "summary": "LimX Dynamics作为湾区AI驱动人形机器人公司，携全尺寸人形机器人亮相CES 2026",
+    "source": "人民日报海外版",
+    "source_url": "https://huacheng.gz-cmc.com/pages/2026/01/09/7de06800997e4b028f8ff3c2fff9b2d1.html",
+    "date": "2026-01-06",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "人民日报海外版",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "fourier069ces",
+    "company": "傅利叶智能",
+    "type": "event",
+    "title": "傅利叶首秀CES 2026，展示Care-bot GR-3人形机器人",
+    "title_en": "Fourier Intelligence Debuts at CES 2026 with Care-bot GR-3",
+    "summary": "傅利叶携新一代全尺寸人形机器人Care-bot GR-3及GR-2首次登陆CES，展示有温度的人机交互",
+    "source": "知乎",
+    "source_url": "https://zhuanlan.zhihu.com/p/1992675483729560837",
+    "date": "2026-01-06",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "知乎",
+      "华尔街见闻",
+      "傅利叶官网"
+    ]
+  },
+  {
+    "id": "fourier070ces_en",
+    "company": "傅利叶智能",
+    "type": "event",
+    "title": "Fourier Intelligence Debuts Care-bot GR-3 Humanoid Robot at CES 2026",
+    "title_en": "Fourier Intelligence Debuts Care-bot GR-3 Humanoid Robot at CES 2026",
+    "summary": "Fourier Intelligence made its CES debut showcasing the GR-3 humanoid care robot for the North American market",
+    "source": "GayaOne",
+    "source_url": "https://gayaone.com/zh-cn/technologies/artificial-intelligence/fourier-unveils-gr-3-humanoid-care-bot-at-ces-2026",
+    "date": "2026-01-07",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "GayaOne",
+      "Fourier Intelligence"
+    ]
+  },
+  {
+    "id": "stardom071ces",
+    "company": "星动纪元",
+    "type": "event",
+    "title": "星动纪元携人形机器人家族亮相CES 2026，海外业务占比达50%",
+    "title_en": "Robot Era Showcases Humanoid Robot Family at CES 2026, 50% Overseas Business",
+    "summary": "星动纪元携星动L7、星动Q5、星动XHAND 1等产品矩阵亮相CES，海外业务占比达50%",
+    "source": "星动纪元官网",
+    "source_url": "https://www.robotera.com/news",
+    "date": "2026-01-06",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "星动纪元官网",
+      "科技日报",
+      "搜狐"
+    ]
+  },
+  {
+    "id": "stardom072wrc",
+    "company": "星动纪元",
+    "type": "event",
+    "title": "星动纪元Robot Era确认参展2026世界机器人大会",
+    "title_en": "Robot Era to Exhibit at World Robot Conference 2026",
+    "summary": "唯一清华大学占股的人形机器人企业，将携最新产品亮相WRC 2026",
+    "source": "世界机器人大会官网",
+    "source_url": "https://www.worldrobotconference.com/expo/company/438.html",
+    "date": "2026-08-01",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "世界机器人大会"
+    ]
+  },
+  {
+    "id": "unitree073aisg",
+    "company": "宇树科技",
+    "type": "event",
+    "title": "宇树科技将携最新产品亮相AI Show 2026",
+    "summary": "宇树科技将携最新产品亮相AI Show 2026（3月18-20日，中国国际展览中心）",
+    "source": "AI Show官网",
+    "source_url": "https://www.aicshow.cn/news/443.html",
+    "date": "2026-03-18",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "AI Show",
+      "搜狐"
+    ]
+  },
+  {
+    "id": "unitree074wrc",
+    "company": "宇树科技",
+    "type": "event",
+    "title": "宇树科技确认参展2026世界机器人大会（展位A109）",
+    "title_en": "Unitree Robotics to Exhibit at World Robot Conference 2026",
+    "summary": "宇树科技作为全球民用机器人领军企业，展位号A109，将展示高性能人形及四足机器人",
+    "source": "世界机器人大会官网",
+    "source_url": "https://www.worldrobotconference.com/expo/company/399.html",
+    "date": "2026-08-01",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "世界机器人大会"
+    ]
+  },
+  {
+    "id": "wrc075announce",
+    "company": "行业活动",
+    "type": "event",
+    "title": "2026世界机器人大会（WRC）筹备启动，多家中国企业确认参展",
+    "summary": "WRC 2026将于8月在北京举办，银河通用、宇树科技、傅利叶、逐际动力、千寻智能、星动纪元等确认参展",
+    "source": "RoboHorizon",
+    "source_url": "https://robohorizon.cn/zh/events/world-robot-conference-wrc-2026-beijing-robot-returns/",
+    "date": "2026-04-01",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "RoboHorizon",
+      "世界机器人大会"
+    ]
+  },
+  {
+    "id": "geia076asia",
+    "company": "行业活动",
+    "type": "event",
+    "title": "GEIA Asia 2026：亚太地区具身智能与人形机器人创新盛会",
+    "title_en": "GEIA Asia 2026: Asia-Pacific Embodied Intelligence & Humanoid Robot Innovation Event",
+    "summary": "GEIA Asia 2026是亚太地区最具影响力和规模最大的具身智能与人形机器人创新盛会",
+    "source": "GEIA Asia",
+    "source_url": "https://geiaasia.com/",
+    "date": "2026-04-14",
+    "created_at": "2026-04-23T15:20:00",
+    "media_sources": [
+      "GEIA Asia"
+    ]
   }
 ]
