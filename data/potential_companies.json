@@ -22,5 +22,53 @@
     "article_url": "https://pe.pedaily.cn/news/789",
     "discovered_date": "2026-04-20",
     "status": "pending"
+  },
+  {
+    "name": "它石智航",
+    "discovered_from": "36Kr融资报道",
+    "article_title": "它石智航完成4.55亿美元Pre-A轮融资，创中国具身智能纪录",
+    "article_url": "https://www.tmtpost.com/7954674.html",
+    "discovered_date": "2026-04-23",
+    "status": "pending"
+  },
+  {
+    "name": "灵御智能",
+    "discovered_from": "知乎文章",
+    "article_title": "2025年53家新成立具身智能公司，灵御智能在列",
+    "article_url": "https://zhuanlan.zhihu.com/p/1986330335596798250",
+    "discovered_date": "2026-04-23",
+    "status": "pending"
+  },
+  {
+    "name": "星源智机器人",
+    "discovered_from": "知乎文章",
+    "article_title": "2025年53家新成立具身智能公司，星源智机器人在列",
+    "article_url": "https://zhuanlan.zhihu.com/p/1986330335596798250",
+    "discovered_date": "2026-04-23",
+    "status": "pending"
+  },
+  {
+    "name": "Manifold AI",
+    "discovered_from": "知乎文章",
+    "article_title": "2025年53家新成立具身智能公司，Manifold AI在列",
+    "article_url": "https://zhuanlan.zhihu.com/p/1986330335596798250",
+    "discovered_date": "2026-04-23",
+    "status": "pending"
+  },
+  {
+    "name": "墨奇智能",
+    "discovered_from": "今日头条",
+    "article_title": "华为天才少年黄青虬创立墨奇智能，入局具身智能",
+    "article_url": "https://www.toutiao.com/article/7589158247614808618/",
+    "discovered_date": "2026-04-23",
+    "status": "pending"
+  },
+  {
+    "name": "鹿明机器人",
+    "discovered_from": "具身智能大讲堂",
+    "article_title": "2025上半年融资复盘，鹿明机器人等脱颖而出",
+    "article_url": "http://www.jushenyanxishe.com/archives/497673",
+    "discovered_date": "2026-04-23",
+    "status": "pending"
   }
 ]

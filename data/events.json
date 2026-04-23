@@ -1,63 +1,92 @@
 [
   {
-    "id": "yinhe002fund",
-    "company": "银河通用",
-    "type": "funding",
-    "title": "银河通用完成超25亿元B轮融资，估值达211亿",
-    "summary": "刷新具身机器人领域单笔最大融资纪录，宁德时代领投",
-    "source": "36Kr",
-    "source_url": "https://m.36kr.com/p/3716564621489796",
-    "date": "2026-03-01",
+    "id": "interview008",
+    "company": "自变量机器人",
+    "type": "interview",
+    "title": "对话自变量CEO王潜：一个月后，机器人就可以接单进家了",
+    "summary": "王潜认为家务劳动占GDP的20%，具身智能将进入家庭场景，自研WUM架构实现零样本泛化",
+    "source": "虎嗅网",
+    "source_url": "https://www.huxiu.com/article/4852722.html",
+    "date": "2026-04-23",
     "created_at": "2026-04-23T10:00:00",
-    "amount": "超25亿人民币",
-    "valuation": "211亿人民币",
-    "investors": "宁德时代、溥泉资本、国开科创、北京机器人产业基金",
-    "media_sources": ["36Kr", "投资界", "机器之心"]
+    "media_sources": [
+      "虎嗅网",
+      "东方财富"
+    ]
   },
   {
-    "id": "xinghaitu003fund",
-    "company": "星海图",
-    "type": "funding",
-    "title": "星海图完成近20亿元B+轮融资，估值突破200亿",
-    "summary": "两个月估值翻倍，成为具身智能头部企业",
-    "source": "腾讯新闻",
-    "source_url": "https://news.qq.com/rain/a/20260409A02XKY00",
-    "date": "2026-04-02",
-    "created_at": "2026-04-23T10:00:00",
-    "amount": "近20亿人民币",
-    "valuation": "超200亿人民币",
-    "investors": "华登科技、蓝思科技等",
-    "media_sources": ["腾讯新闻", "36Kr", "新浪财经"]
+    "id": "interview043",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "押宝人形机器人，车企在弯道超车？",
+    "summary": "虎嗅热聊：汽车企业纷纷布局具身智能，寻找第二增长曲线",
+    "source": "虎嗅",
+    "source_url": "https://aigcdaily.cn/news/list/?artid=a24lqiodb3mrkhi",
+    "date": "2026-04-22",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "虎嗅",
+      "AIGCDaily"
+    ]
   },
   {
-    "id": "lingxinqiaoshou004fund",
-    "company": "灵心巧手",
-    "type": "funding",
-    "title": "灵心巧手完成近15亿元B轮融资，估值达240亿",
-    "summary": "全球灵巧手龙头，市占率超80%，比亚迪、京东投资",
-    "source": "动点科技",
-    "source_url": "https://www.dtm.com.cn/news/202602/193367.html",
-    "date": "2026-02-13",
-    "created_at": "2026-04-23T10:00:00",
-    "amount": "近15亿人民币",
-    "valuation": "240亿人民币",
-    "investors": "比亚迪、京东、道得投资、盛世投资",
-    "media_sources": ["动点科技", "36Kr", "钛媒体"]
+    "id": "interview047",
+    "company": "星灿智能",
+    "type": "interview",
+    "title": "人形机器人是终局，但刚需场景才是具身智能的当下",
+    "summary": "星灿智能完成千万级融资，团队自带智驾基因，探索更接近现实商业化的路径",
+    "source": "AI科技评论",
+    "source_url": "https://news.qq.com/rain/a/20260422A02P8P00",
+    "date": "2026-04-22",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "AI科技评论",
+      "腾讯新闻"
+    ]
   },
   {
-    "id": "tashi005fund",
-    "company": "它石智航",
-    "type": "funding",
-    "title": "它石智航完成4.55亿美元Pre-A轮融资，创行业纪录",
-    "summary": "2026年具身智能最大单笔融资",
-    "source": "网易科技",
-    "source_url": "https://www.163.com/dy/article/KQL8JBQN0556LVOG.html",
-    "date": "2026-04-10",
+    "id": "interview013",
+    "company": "智元机器人",
+    "type": "interview",
+    "title": "对话智元创始人邓泰华：2026年是具身智能部署态元年",
+    "summary": "邓泰华提出XYZ曲线理论：2022-2026是开发尝鲜期，2026-2030是数据飞轮带来智能突破期",
+    "source": "中国日报",
+    "source_url": "https://cn.chinadaily.com.cn/a/202604/21/WS69e73f31a310942cc49a8b5c.html",
+    "date": "2026-04-21",
     "created_at": "2026-04-23T10:00:00",
-    "amount": "4.55亿美元",
-    "valuation": "超30亿美元",
-    "investors": "高瓴创投",
-    "media_sources": ["网易科技", "36Kr", "投资界"]
+    "media_sources": [
+      "中国日报",
+      "腾讯新闻"
+    ]
+  },
+  {
+    "id": "interview028",
+    "company": "泉智博",
+    "type": "interview",
+    "title": "一年融5轮，这家人形机器人供应商开始赚钱了",
+    "summary": "机器人一体化关节模组供应商泉智博获投资人关注，年内完成5轮融资",
+    "source": "投中网",
+    "source_url": "https://news.qq.com/rain/a/20260421A02W0O00",
+    "date": "2026-04-21",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "投中网",
+      "腾讯新闻"
+    ]
+  },
+  {
+    "id": "interview040",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "2026，人形机器人只赢了面子",
+    "summary": "虎嗅分析：宇树科技2025年纯人形机器人交付超5500台，但行业仍面临量产与商业化考验",
+    "source": "虎嗅",
+    "source_url": "https://m.huxiu.com/article/4852535.html",
+    "date": "2026-04-21",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "虎嗅"
+    ]
   },
   {
     "id": "zibbian006fund",
@@ -72,80 +101,270 @@
     "amount": "近20亿人民币",
     "valuation": "超100亿人民币",
     "investors": "小米战投、红杉中国",
-    "media_sources": ["腾讯新闻", "36Kr", "搜狐"]
+    "media_sources": [
+      "腾讯新闻",
+      "36Kr",
+      "搜狐"
+    ]
   },
   {
-    "id": "qianxun007fund",
-    "company": "千寻智能",
-    "type": "funding",
-    "title": "千寻智能完成约30亿元融资，估值超100亿",
-    "summary": "国内VLA新锐，30天内密集完成多轮融资",
-    "source": "搜狐科技",
-    "source_url": "https://www.sohu.com/a/1006957032_115362",
-    "date": "2026-04-05",
+    "id": "interview034",
+    "company": "行业融资",
+    "type": "interview",
+    "title": "硬科技赛道持续领跑，10亿级大额融资频现 - 21投融资周报",
+    "summary": "2026年4月第二周国内一级市场共披露融资事件42起，具身智能持续领跑",
+    "source": "21世纪经济报道",
+    "source_url": "https://www.21jingji.com/article/20260420/herald/6220d153040ecf7f25a6d660a0dc08ef.html",
+    "date": "2026-04-20",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "21世纪经济报道"
+    ]
+  },
+  {
+    "id": "interview049",
+    "company": "智身科技",
+    "type": "interview",
+    "title": "极限工况见真章：智身科技马拉松三大奖加冕，双赛道验证落地硬实力",
+    "summary": "智身科技（GENISOM AI）在2026人形机器人半马中获三大奖项",
+    "source": "甲子光年",
+    "source_url": "https://news.qq.com/rain/a/20260420A05BZ700",
+    "date": "2026-04-20",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "甲子光年",
+      "腾讯新闻"
+    ]
+  },
+  {
+    "id": "interview009",
+    "company": "觅蜂科技",
+    "type": "interview",
+    "title": "人形机器人，如何跑出数据荒漠",
+    "summary": "姚卯青认为具身智能一定会出现涌现时刻，关键在于数据量与数据组成",
+    "source": "第一财经",
+    "source_url": "https://finance.sina.com.cn/roll/2026-04-19/doc-inhuzxax9127982.shtml",
+    "date": "2026-04-19",
     "created_at": "2026-04-23T10:00:00",
-    "amount": "约30亿人民币",
-    "valuation": "超100亿人民币",
-    "media_sources": ["搜狐科技", "机器之心", "量子位"]
+    "media_sources": [
+      "第一财经",
+      "新浪财经"
+    ]
   },
   {
-    "id": "zhuji008fund",
-    "company": "逐际动力",
-    "type": "funding",
-    "title": "逐际动力完成2亿美元B轮融资，创具身机器人单笔融资新高",
-    "summary": "京东、蔚来资本等联合投资",
-    "source": "IT之家",
-    "source_url": "https://www.ithome.com/0/918/367.htm",
-    "date": "2026-01-15",
+    "id": "interview017",
+    "company": "智元机器人",
+    "type": "interview",
+    "title": "智元稚晖君：我们不缺钱，但缺数据",
+    "summary": "彭志辉表示具身智能体将成为AI时代最大的token消费者，机器人是连接大模型与物理世界的核心流量入口",
+    "source": "21世纪经济报道",
+    "source_url": "https://news.qq.com/rain/a/20260418A05SWG00",
+    "date": "2026-04-18",
     "created_at": "2026-04-23T10:00:00",
-    "amount": "2亿美元",
-    "investors": "磊石资本、京东、蔚来资本",
-    "media_sources": ["IT之家", "搜狐", "36Kr"]
+    "media_sources": [
+      "21世纪经济报道",
+      "腾讯新闻"
+    ]
   },
   {
-    "id": "xingdong009fund",
-    "company": "星动纪元",
+    "id": "jiasu014fund",
+    "company": "加速进化",
     "type": "funding",
-    "title": "星动纪元完成10亿元A+轮融资，估值超100亿",
-    "summary": "人形机器人订单超5亿元，与吉利、TCL、海尔等合作",
-    "source": "36Kr",
-    "source_url": "https://www.36kr.com/p/3709666119479682",
-    "date": "2026-01-10",
+    "title": "加速进化完成近10亿元B轮融资",
+    "summary": "清华系人形机器人黑马，Booster K1累计出货超千台",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260417A0565H00",
+    "date": "2026-04-17",
     "created_at": "2026-04-23T10:00:00",
     "amount": "近10亿人民币",
-    "valuation": "超100亿人民币",
-    "investors": "吉利资本、北汽产投、北京市人工智能产业投资基金",
-    "media_sources": ["36Kr", "机器之心", "新浪财经"]
+    "investors": "北京高精尖产业基金、京国盛基金、华控基金",
+    "media_sources": [
+      "腾讯新闻",
+      "36Kr",
+      "新浪财经"
+    ]
   },
   {
-    "id": "zhipingfang010fund",
-    "company": "智平方",
-    "type": "funding",
-    "title": "智平方完成超10亿元B轮融资，估值突破百亿",
-    "summary": "深圳首个百亿具身智能独角兽，获惠科5亿元大单",
-    "source": "界面新闻",
-    "source_url": "https://www.jiemian.com/article/14028711.html",
-    "date": "2026-02-23",
+    "id": "interview014",
+    "company": "智元机器人",
+    "type": "interview",
+    "title": "对话智元创始人邓泰华：具身智能机器人会成为下一代交互终端",
+    "summary": "邓泰华认为机器人会成为PC、手机之后的下一代交互终端，未来有望达到单量汽车价格乘以手机数量",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260417A07CWD00",
+    "date": "2026-04-17",
     "created_at": "2026-04-23T10:00:00",
-    "amount": "超10亿人民币",
-    "valuation": "超100亿人民币",
-    "investors": "百度、中国中车、深创投",
-    "media_sources": ["界面新闻", "36Kr", "腾讯新闻"]
+    "media_sources": [
+      "腾讯新闻",
+      "新浪财经"
+    ]
   },
   {
-    "id": "paxini011fund",
-    "company": "帕西尼感知",
-    "type": "funding",
-    "title": "帕西尼感知完成超10亿元B轮融资，估值破百亿",
-    "summary": "4个月融资10亿元，京东战略领投",
-    "source": "搜狐",
-    "source_url": "https://www.sohu.com/a/994461322_121124378",
-    "date": "2026-01-05",
+    "id": "interview015",
+    "company": "智元机器人",
+    "type": "interview",
+    "title": "对话智元稚晖君：我们不急着拿别人的钱，但缺数据",
+    "summary": "彭志辉表示人形机器人要回答的核心问题是能否在生产线上把账算平，当前不缺钱但缺数据",
+    "source": "蓝鲸新闻",
+    "source_url": "https://finance.eastmoney.com/a/202604173709691828.html",
+    "date": "2026-04-17",
     "created_at": "2026-04-23T10:00:00",
-    "amount": "超10亿人民币",
-    "valuation": "超100亿人民币",
-    "investors": "京东战略领投",
-    "media_sources": ["搜狐", "36Kr", "东方财富"]
+    "media_sources": [
+      "蓝鲸新闻",
+      "东方财富"
+    ]
+  },
+  {
+    "id": "interview016",
+    "company": "智元机器人",
+    "type": "interview",
+    "title": "智元稚晖君：固态电池是解决机器人续航焦虑的重要方向",
+    "summary": "彭志辉认为机器人尺寸有限，需要高能量密度电池解决方案，固态电池是重要方向",
+    "source": "每日经济新闻",
+    "source_url": "https://finance.sina.com.cn/jjxw/2026-04-17/doc-inhuvkwu2139374.shtml",
+    "date": "2026-04-17",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "每日经济新闻",
+      "新浪财经"
+    ]
+  },
+  {
+    "id": "interview033",
+    "company": "加速进化",
+    "type": "interview",
+    "title": "北京最会踢球的人形机器人，融资近10亿",
+    "summary": "加速进化完成近10亿元融资，北京高精尖产业基金等联合领投",
+    "source": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/wm/2026-04-17/doc-inhuuptn1131292.shtml",
+    "date": "2026-04-17",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "新浪财经",
+      "机器人前瞻"
+    ]
+  },
+  {
+    "id": "interview010",
+    "company": "未来不远",
+    "type": "interview",
+    "title": "具身智能泡沫中，他把机器人送进300个家庭",
+    "summary": "张翼认为具身智能商业化需要接地气，不能只做技术展示",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260416A02S5U00",
+    "date": "2026-04-16",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "腾讯新闻"
+    ]
+  },
+  {
+    "id": "interview032",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "智驾骨干集体跳向具身，催熟独角兽只要半年",
+    "summary": "汽车人才逃离汽车业，自动驾驶到人形机器人是一条快速路",
+    "source": "晚点LatePost",
+    "source_url": "https://www.toutiao.com/c/user/token/MS4wLjABAAAA6-kUsEIpjKncJkPVIl4zxOlpQ0v41KNTLXNbQzSbRuY/",
+    "date": "2026-04-15",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "晚点LatePost",
+      "今日头条"
+    ]
+  },
+  {
+    "id": "interview035",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "又一具身智能企业入住港股，全链条机器人企业为何扎堆赴港",
+    "summary": "贝恩预测2035年全球人形机器人年销量有望达600万台，市场规模突破1200亿美元",
+    "source": "36Kr",
+    "source_url": "https://www.36kr.com/p/3767334565987077",
+    "date": "2026-04-15",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "36Kr",
+      "贝恩公司"
+    ]
+  },
+  {
+    "id": "interview046",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "从192亿到万亿：具身智能的十年狂飙",
+    "summary": "腾讯云开发者社区分析：中国具身智能政策支持、产业链协同和场景应用展现强劲追赶态势",
+    "source": "腾讯云",
+    "source_url": "https://cloud.tencent.com.cn/developer/article/2655464",
+    "date": "2026-04-15",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "腾讯云"
+    ]
+  },
+  {
+    "id": "interview027",
+    "company": "行业融资",
+    "type": "interview",
+    "title": "具身智能机器人企业集体冲向百亿估值 - 21世纪经济报道",
+    "summary": "中国机器人赛道百亿估值俱乐部正以前所未有的速度扩容，头部格局加速固化",
+    "source": "21世纪经济报道",
+    "source_url": "https://www.21jingji.com/article/20260414/herald/258a3350df971ce31c4ecd42072ec0a8.html",
+    "date": "2026-04-14",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "21世纪经济报道"
+    ]
+  },
+  {
+    "id": "tashi005fund",
+    "company": "它石智航",
+    "type": "funding",
+    "title": "它石智航完成4.55亿美元Pre-A轮融资，创行业纪录",
+    "summary": "2026年具身智能最大单笔融资",
+    "source": "网易科技",
+    "source_url": "https://www.163.com/dy/article/KQL8JBQN0556LVOG.html",
+    "date": "2026-04-10",
+    "created_at": "2026-04-23T10:00:00",
+    "amount": "4.55亿美元",
+    "valuation": "超30亿美元",
+    "investors": "高瓴创投",
+    "media_sources": [
+      "网易科技",
+      "36Kr",
+      "投资界"
+    ]
+  },
+  {
+    "id": "1x028eqt",
+    "company": "1X Technologies",
+    "type": "project",
+    "title": "1X与EQT达成协议，将在工厂部署数千台EVE人形机器人",
+    "title_en": "1X Technologies to Deploy Thousands of EVE Humanoids in EQT Factories",
+    "summary": "2026-2030年分阶段部署，聚焦物流和制造业自动化",
+    "source": "Origin of Bots",
+    "source_url": "https://www.originofbots.com/news/1x-accelerates-eve-humanoid-rollout-in-eqt-factories-through-2030",
+    "date": "2026-04-10",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "Origin of Bots",
+      "TechCrunch"
+    ]
+  },
+  {
+    "id": "interview037",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "具身智能最脏的活，被三个老炮干成了亿元生意",
+    "summary": "甲子光年独家报道：具身数据处理是关键卡点，数据混沌问题正在被解决",
+    "source": "甲子光年",
+    "source_url": "https://www.sohu.com/a/1010763790_100016644",
+    "date": "2026-04-10",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "甲子光年",
+      "搜狐"
+    ]
   },
   {
     "id": "zhiyuan012fund",
@@ -160,7 +379,188 @@
     "amount": "超10亿人民币",
     "valuation": "150亿人民币",
     "investors": "产业资本",
-    "media_sources": ["36Kr", "机器之心", "投资界"]
+    "media_sources": [
+      "36Kr",
+      "机器之心",
+      "投资界"
+    ]
+  },
+  {
+    "id": "youbot031fund",
+    "company": "优必选",
+    "type": "funding",
+    "title": "优必选2025年营收20亿元，人形机器人订单近14亿元",
+    "summary": "Walker S2批量交付汽车工厂，中标2.64亿元全球最大单笔订单",
+    "source": "搜狐",
+    "source_url": "https://www.sohu.com/a/1007432464_120468014",
+    "date": "2026-04-09",
+    "created_at": "2026-04-23T10:00:00",
+    "amount": "20亿人民币(营收)",
+    "investors": "上市公司",
+    "media_sources": [
+      "搜狐",
+      "36Kr",
+      "东方财富"
+    ]
+  },
+  {
+    "id": "interview022",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "具身季报26Q1：宇树招股书、人形再思考、英伟达世界模型",
+    "summary": "英伟达连续发布世界动作模型成果，宇树冲刺IPO，人形机器人量产加速",
+    "source": "晚点LatePost",
+    "source_url": "https://xueqiu.com/1786904335/383116045",
+    "date": "2026-04-09",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "晚点LatePost",
+      "雪球",
+      "网易"
+    ]
+  },
+  {
+    "id": "interview045",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "2026年人形机器人推荐：五大具身智能独角兽横向对比",
+    "summary": "IT之家分析：智平方等五家企业谁能率先实现商业化落地",
+    "source": "IT之家",
+    "source_url": "https://www.ithome.com/0/937/557.htm",
+    "date": "2026-04-09",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "IT之家"
+    ]
+  },
+  {
+    "id": "figure026production",
+    "company": "Figure AI",
+    "type": "product",
+    "title": "Figure AI实现每90分钟生产一台人形机器人",
+    "title_en": "Figure AI Now Builds a Humanoid Robot Every 90 Minutes",
+    "summary": "产能爬坡迅速，人形机器人商业化加速",
+    "source": "RoboHorizon",
+    "source_url": "https://robohorizon.com/en-us/news/2026/04/figure-ai-now-builds-a-humanoid-robot-every-90-minutes/",
+    "date": "2026-04-07",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "RoboHorizon",
+      "TechCrunch"
+    ]
+  },
+  {
+    "id": "qianxun007fund",
+    "company": "千寻智能",
+    "type": "funding",
+    "title": "千寻智能完成约30亿元融资，估值超100亿",
+    "summary": "国内VLA新锐，30天内密集完成多轮融资",
+    "source": "搜狐科技",
+    "source_url": "https://www.sohu.com/a/1006957032_115362",
+    "date": "2026-04-05",
+    "created_at": "2026-04-23T10:00:00",
+    "amount": "约30亿人民币",
+    "valuation": "超100亿人民币",
+    "media_sources": [
+      "搜狐科技",
+      "机器之心",
+      "量子位"
+    ]
+  },
+  {
+    "id": "interview038",
+    "company": "影身智能",
+    "type": "funding",
+    "title": "影身智能完成多轮融资，用原生3D数据重新定义机器人认知",
+    "summary": "甲子光年独家获悉，影身智能连续完成天使轮、天使+轮及Pre-A轮融资，累计近亿元",
+    "source": "甲子光年",
+    "source_url": "https://www.sohu.com/a/1011893071_100016644",
+    "date": "2026-04-05",
+    "created_at": "2026-04-23T14:00:00",
+    "amount": "近亿元",
+    "investors": "恒生电子、松禾资本、深高投等",
+    "media_sources": [
+      "甲子光年",
+      "搜狐"
+    ]
+  },
+  {
+    "id": "interview012",
+    "company": "银河通用",
+    "type": "interview",
+    "title": "五位企业创始人共话具身智能：机器人都在忙什么",
+    "summary": "王燕等五位创始人共话具身智能发展趋势，从工业场景到家庭场景",
+    "source": "人民日报海外版",
+    "source_url": "http://www.ce.cn/xwzx/gnsz/gdxw/202604/t20260403_2878022.shtml",
+    "date": "2026-04-03",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "人民日报海外版",
+      "中国经济网"
+    ]
+  },
+  {
+    "id": "interview044",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "具身智能行业全景扫描：2026年谁在真正推动机器人从Demo走向产线",
+    "summary": "IT之家深度分析：五家代表性具身智能企业横向对比，关注技术落地与量产能力",
+    "source": "IT之家",
+    "source_url": "https://www.ithome.com/0/935/627.htm",
+    "date": "2026-04-03",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "IT之家"
+    ]
+  },
+  {
+    "id": "xinghaitu003fund",
+    "company": "星海图",
+    "type": "funding",
+    "title": "星海图完成近20亿元B+轮融资，估值突破200亿",
+    "summary": "两个月估值翻倍，成为具身智能头部企业",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260409A02XKY00",
+    "date": "2026-04-02",
+    "created_at": "2026-04-23T10:00:00",
+    "amount": "近20亿人民币",
+    "valuation": "超200亿人民币",
+    "investors": "华登科技、蓝思科技等",
+    "media_sources": [
+      "腾讯新闻",
+      "36Kr",
+      "新浪财经"
+    ]
+  },
+  {
+    "id": "interview007",
+    "company": "睿尔曼智能",
+    "type": "interview",
+    "title": "2026风向标：具身智能告别耍酷，转向实干",
+    "summary": "郑随兵认为具身智能正在从技术展示转向实际应用，2026年是实干元年",
+    "source": "中国经济时报",
+    "source_url": "https://finance.sina.com.cn/wm/2026-03-31/doc-inhsvshk2258673.shtml",
+    "date": "2026-03-31",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "中国经济时报",
+      "新浪财经"
+    ]
+  },
+  {
+    "id": "interview023",
+    "company": "至简智能",
+    "type": "interview",
+    "title": "LateTalk 155: 贾鹏创立至简后的首次访谈 - 从英伟达到理想，具身智能的六边形战士",
+    "summary": "贾鹏首次披露至简智能创业方向，具身智能竞争本质是体系竞争",
+    "source": "晚点聊LateTalk",
+    "source_url": "https://podcast.latepost.com/155",
+    "date": "2026-03-23",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "晚点LatePost",
+      "Podcast"
+    ]
   },
   {
     "id": "yushutech013ipo",
@@ -175,35 +575,217 @@
     "amount": "42.02亿人民币",
     "valuation": "约420亿人民币",
     "investors": "IPO上市",
-    "media_sources": ["新浪财经", "界面新闻", "36Kr"]
+    "media_sources": [
+      "新浪财经",
+      "界面新闻",
+      "36Kr"
+    ]
   },
   {
-    "id": "jiasu014fund",
-    "company": "加速进化",
-    "type": "funding",
-    "title": "加速进化完成近10亿元B轮融资",
-    "summary": "清华系人形机器人黑马，Booster K1累计出货超千台",
-    "source": "腾讯新闻",
-    "source_url": "https://news.qq.com/rain/a/20260417A0565H00",
-    "date": "2026-04-17",
+    "id": "zhiyuan018product",
+    "company": "智元机器人",
+    "type": "product",
+    "title": "智元机器人第10000台通用具身机器人远征A3正式下线",
+    "summary": "具身智能量产里程碑",
+    "source": "36Kr",
+    "source_url": "https://36kr.com/p/3727058093371911",
+    "date": "2026-03-18",
     "created_at": "2026-04-23T10:00:00",
-    "amount": "近10亿人民币",
-    "investors": "北京高精尖产业基金、京国盛基金、华控基金",
-    "media_sources": ["腾讯新闻", "36Kr", "新浪财经"]
+    "media_sources": [
+      "36Kr",
+      "机器之心"
+    ]
   },
   {
-    "id": "fourier015fund",
-    "company": "傅利叶智能",
+    "id": "yinhe017bosch",
+    "company": "银河通用",
+    "type": "project",
+    "title": "银河通用与博世达成战略合作",
+    "summary": "国际巨头合作，具身智能产业化加速落地",
+    "source": "机器之心",
+    "source_url": "https://www.jiqizhixin.com/search?keywords=%E9%93%B6%E6%B2%B3%E9%80%9A%E7%94%B5",
+    "date": "2026-03-15",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "机器之心",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "interview011",
+    "company": "知行机器人",
+    "type": "interview",
+    "title": "知行机器人CEO白国超参加具身智能创业者主题访谈",
+    "summary": "白国超分享具身智能创业心得，认为场景落地是关键",
+    "source": "雪球",
+    "source_url": "https://xueqiu.com/6370150036/378902220",
+    "date": "2026-03-11",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "雪球"
+    ]
+  },
+  {
+    "id": "interview001",
+    "company": "银河通用",
+    "type": "interview",
+    "title": "对话银河通用王燕：具身智能淘汰赛元年，三类玩家将存活",
+    "summary": "王燕认为2026年不是商业化元年而是淘汰赛元年，数据闭环能力、场景理解和成本控制是核心壁垒",
+    "source": "每日经济新闻",
+    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
+    "date": "2026-03-02",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "每日经济新闻",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "interview002",
+    "company": "星海图",
+    "type": "interview",
+    "title": "对话星海图赵行：数据是具身智能的石油，合成数据是必由之路",
+    "summary": "赵行认为端到端模型的核心是数据闭环，合成数据将成为主要数据来源",
+    "source": "每日经济新闻",
+    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
+    "date": "2026-03-02",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "每日经济新闻",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "interview003",
+    "company": "逐际动力",
+    "type": "interview",
+    "title": "对话逐际动力张补：轮足机器人是具身智能落地的最优形态",
+    "summary": "张补认为轮足人形在复杂地形有独特优势，2026年将进入商业化元年",
+    "source": "每日经济新闻",
+    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
+    "date": "2026-03-02",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "每日经济新闻",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "interview004",
+    "company": "星动纪元",
+    "type": "interview",
+    "title": "对话星动纪成：具身智能需要垂直场景深度而非通用泛化",
+    "summary": "成 Reservoir认为垂直场景的数据闭环比通用泛化更重要",
+    "source": "每日经济新闻",
+    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
+    "date": "2026-03-02",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "每日经济新闻",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "interview005",
+    "company": "松延动力",
+    "type": "interview",
+    "title": "对话松延动力王晓龙：人形机器人需要耐得住寂寞",
+    "summary": "王晓龙认为具身智能需要长期投入，短期资本热度不代表产业成熟",
+    "source": "每日经济新闻",
+    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
+    "date": "2026-03-02",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "每日经济新闻",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "interview006",
+    "company": "千寻智能",
+    "type": "interview",
+    "title": "对话千寻智能孟李梦：VLA模型是具身智能的GPT时刻",
+    "summary": "孟李梦认为VLA模型突破将带来具身智能的GPT时刻",
+    "source": "每日经济新闻",
+    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
+    "date": "2026-03-02",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "每日经济新闻",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "yinhe002fund",
+    "company": "银河通用",
     "type": "funding",
-    "title": "傅利叶完成E系列融资近8亿元",
-    "summary": "上海国资联合注资，GR系列机器人已在上汽通用工厂落地",
+    "title": "银河通用完成超25亿元B轮融资，估值达211亿",
+    "summary": "刷新具身机器人领域单笔最大融资纪录，宁德时代领投",
+    "source": "36Kr",
+    "source_url": "https://m.36kr.com/p/3716564621489796",
+    "date": "2026-03-01",
+    "created_at": "2026-04-23T10:00:00",
+    "amount": "超25亿人民币",
+    "valuation": "211亿人民币",
+    "investors": "宁德时代、溥泉资本、国开科创、北京机器人产业基金",
+    "media_sources": [
+      "36Kr",
+      "投资界",
+      "机器之心"
+    ]
+  },
+  {
+    "id": "yushutech021g1",
+    "company": "宇树科技",
+    "type": "tech_breakthrough",
+    "title": "宇树G1人形机器人完成-47.4°C极寒挑战",
+    "summary": "人形机器人极端环境测试里程碑",
+    "source": "机器人大讲堂",
+    "source_url": "https://airoboticinfo.com/ai-robot-news/unitree-robotics-humanoid-progress-2026",
+    "date": "2026-02-27",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "机器人大讲堂",
+      "量子位"
+    ]
+  },
+  {
+    "id": "zhipingfang010fund",
+    "company": "智平方",
+    "type": "funding",
+    "title": "智平方完成超10亿元B轮融资，估值突破百亿",
+    "summary": "深圳首个百亿具身智能独角兽，获惠科5亿元大单",
     "source": "界面新闻",
-    "source_url": "https://www.jiemian.com/article/12214783.html",
-    "date": "2026-01-08",
+    "source_url": "https://www.jiemian.com/article/14028711.html",
+    "date": "2026-02-23",
     "created_at": "2026-04-23T10:00:00",
-    "amount": "近8亿人民币",
-    "investors": "国鑫投资、浦东创投、张江科投",
-    "media_sources": ["界面新闻", "36Kr", "澎湃新闻"]
+    "amount": "超10亿人民币",
+    "valuation": "超100亿人民币",
+    "investors": "百度、中国中车、深创投",
+    "media_sources": [
+      "界面新闻",
+      "36Kr",
+      "腾讯新闻"
+    ]
+  },
+  {
+    "id": "lingxinqiaoshou004fund",
+    "company": "灵心巧手",
+    "type": "funding",
+    "title": "灵心巧手完成近15亿元B轮融资，估值达240亿",
+    "summary": "全球灵巧手龙头，市占率超80%，比亚迪、京东投资",
+    "source": "动点科技",
+    "source_url": "https://www.dtm.com.cn/news/202602/193367.html",
+    "date": "2026-02-13",
+    "created_at": "2026-04-23T10:00:00",
+    "amount": "近15亿人民币",
+    "valuation": "240亿人民币",
+    "investors": "比亚迪、京东、道得投资、盛世投资",
+    "media_sources": [
+      "动点科技",
+      "36Kr",
+      "钛媒体"
+    ]
   },
   {
     "id": "apptronik016fund",
@@ -219,43 +801,25 @@
     "amount": "超9.35亿美元",
     "valuation": "约53亿美元",
     "investors": "Google、梅赛德斯-奔驰、约翰迪尔、卡塔尔投资局",
-    "media_sources": ["TechCrunch", "CNBC", "Apptronik官方"]
+    "media_sources": [
+      "TechCrunch",
+      "CNBC",
+      "Apptronik官方"
+    ]
   },
   {
-    "id": "yinhe017bosch",
-    "company": "银河通用",
-    "type": "project",
-    "title": "银河通用与博世达成战略合作",
-    "summary": "国际巨头合作，具身智能产业化加速落地",
-    "source": "机器之心",
-    "source_url": "https://www.jiqizhixin.com/search?keywords=%E9%93%B6%E6%B2%B3%E9%80%9A%E7%94%B5",
-    "date": "2026-03-15",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["机器之心", "36Kr"]
-  },
-  {
-    "id": "zhiyuan018product",
-    "company": "智元机器人",
-    "type": "product",
-    "title": "智元机器人第10000台通用具身机器人远征A3正式下线",
-    "summary": "具身智能量产里程碑",
-    "source": "36Kr",
-    "source_url": "https://36kr.com/p/3727058093371911",
-    "date": "2026-03-18",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["36Kr", "机器之心"]
-  },
-  {
-    "id": "zhuji019product",
-    "company": "逐际动力",
-    "type": "product",
-    "title": "逐际动力发布全球首款一机多态具身机器人TRON 2",
-    "summary": "可实现轮式、轮足、足式三种运动模态自由切换",
-    "source": "搜狐",
-    "source_url": "https://www.sohu.com/a/968686278_121615303",
-    "date": "2025-12-24",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["搜狐", "机器之心"]
+    "id": "interview031",
+    "company": "行业融资",
+    "type": "interview",
+    "title": "2025年我国具身智能和机器人领域融资总额达735亿元",
+    "summary": "2025年具身智能是最火热的投融资赛道之一，投资事件数达744起",
+    "source": "中国机械工业联合会",
+    "source_url": "https://www.csm.org.cn/col/col6371/art/2026/art_5ef8c4c405add1bfc97f78b62fae14fa.html",
+    "date": "2026-02-10",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "中国机械工业联合会"
+    ]
   },
   {
     "id": "yushutech020spring",
@@ -267,31 +831,251 @@
     "source_url": "https://www.36kr.com/p/3735325033542153",
     "date": "2026-01-28",
     "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["36Kr"]
+    "media_sources": [
+      "36Kr"
+    ]
   },
   {
-    "id": "yushutech021g1",
-    "company": "宇树科技",
+    "id": "zhuji008fund",
+    "company": "逐际动力",
+    "type": "funding",
+    "title": "逐际动力完成2亿美元B轮融资，创具身机器人单笔融资新高",
+    "summary": "京东、蔚来资本等联合投资",
+    "source": "IT之家",
+    "source_url": "https://www.ithome.com/0/918/367.htm",
+    "date": "2026-01-15",
+    "created_at": "2026-04-23T10:00:00",
+    "amount": "2亿美元",
+    "investors": "磊石资本、京东、蔚来资本",
+    "media_sources": [
+      "IT之家",
+      "搜狐",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "pi025model",
+    "company": "Physical Intelligence",
     "type": "tech_breakthrough",
-    "title": "宇树G1人形机器人完成-47.4°C极寒挑战",
-    "summary": "人形机器人极端环境测试里程碑",
-    "source": "机器人大讲堂",
-    "source_url": "https://airoboticinfo.com/ai-robot-news/unitree-robotics-humanoid-progress-2026",
-    "date": "2026-02-27",
+    "title": "Physical Intelligence发布π0.5通用机器人模型",
+    "title_en": "Physical Intelligence Releases π0.5 VLA Model",
+    "summary": "新一代模型在开放世界泛化能力上实现重大突破",
+    "source": "Physical Intelligence Blog",
+    "source_url": "https://www.pi.website/blog/pi05",
+    "date": "2026-01-15",
     "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["机器人大讲堂", "量子位"]
+    "media_sources": [
+      "Physical Intelligence",
+      "机器之心",
+      "量子位"
+    ]
   },
   {
-    "id": "silin022mercedes",
-    "company": "思灵机器人",
-    "type": "project",
-    "title": "思灵机器人与奔驰达成战略合作",
-    "summary": "力控机器人应用于汽车总装线",
-    "source": "东方财富",
-    "source_url": "https://caifuhao.eastmoney.com/news/20250811040430200359770",
-    "date": "2025-08-11",
+    "id": "interview048",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "具身智能2026年：从灵活的肢体转向智能的大脑",
+    "summary": "澎湃新闻分析：2026年是量产元年与智能攻坚年双重关键节点",
+    "source": "澎湃新闻",
+    "source_url": "https://m.thepaper.cn/newsDetail_forward_32376110",
+    "date": "2026-01-14",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "澎湃新闻"
+    ]
+  },
+  {
+    "id": "interview041",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "2026年具身智能前瞻与警言",
+    "summary": "虎嗅分析：2026年具身智能行业将面临资源整合挑战与商业化考验，数据共享与供应链成熟度成为关键",
+    "source": "虎嗅",
+    "source_url": "https://m.huxiu.com/article/4825538.html",
+    "date": "2026-01-12",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "虎嗅"
+    ]
+  },
+  {
+    "id": "xingdong009fund",
+    "company": "星动纪元",
+    "type": "funding",
+    "title": "星动纪元完成10亿元A+轮融资，估值超100亿",
+    "summary": "人形机器人订单超5亿元，与吉利、TCL、海尔等合作",
+    "source": "36Kr",
+    "source_url": "https://www.36kr.com/p/3709666119479682",
+    "date": "2026-01-10",
     "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["东方财富", "汽车之家"]
+    "amount": "近10亿人民币",
+    "valuation": "超100亿人民币",
+    "investors": "吉利资本、北汽产投、北京市人工智能产业投资基金",
+    "media_sources": [
+      "36Kr",
+      "机器之心",
+      "新浪财经"
+    ]
+  },
+  {
+    "id": "interview042",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "具身泡沫收缩，机器人ChatGPT时刻还没到",
+    "summary": "虎嗅CES 2026现场报道：人形机器人行业冷静期，关注技术落地而非概念炒作",
+    "source": "虎嗅",
+    "source_url": "https://news.qq.com/rain/a/20260109A06X9L00",
+    "date": "2026-01-09",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "虎嗅",
+      "腾讯新闻"
+    ]
+  },
+  {
+    "id": "fourier015fund",
+    "company": "傅利叶智能",
+    "type": "funding",
+    "title": "傅利叶完成E系列融资近8亿元",
+    "summary": "上海国资联合注资，GR系列机器人已在上汽通用工厂落地",
+    "source": "界面新闻",
+    "source_url": "https://www.jiemian.com/article/12214783.html",
+    "date": "2026-01-08",
+    "created_at": "2026-04-23T10:00:00",
+    "amount": "近8亿人民币",
+    "investors": "国鑫投资、浦东创投、张江科投",
+    "media_sources": [
+      "界面新闻",
+      "36Kr",
+      "澎湃新闻"
+    ]
+  },
+  {
+    "id": "paxini011fund",
+    "company": "帕西尼感知",
+    "type": "funding",
+    "title": "帕西尼感知完成超10亿元B轮融资，估值破百亿",
+    "summary": "4个月融资10亿元，京东战略领投",
+    "source": "搜狐",
+    "source_url": "https://www.sohu.com/a/994461322_121124378",
+    "date": "2026-01-05",
+    "created_at": "2026-04-23T10:00:00",
+    "amount": "超10亿人民币",
+    "valuation": "超100亿人民币",
+    "investors": "京东战略领投",
+    "media_sources": [
+      "搜狐",
+      "36Kr",
+      "东方财富"
+    ]
+  },
+  {
+    "id": "zhuji019product",
+    "company": "逐际动力",
+    "type": "product",
+    "title": "逐际动力发布全球首款一机多态具身机器人TRON 2",
+    "summary": "可实现轮式、轮足、足式三种运动模态自由切换",
+    "source": "搜狐",
+    "source_url": "https://www.sohu.com/a/968686278_121615303",
+    "date": "2025-12-24",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "搜狐",
+      "机器之心"
+    ]
+  },
+  {
+    "id": "interview029",
+    "company": "行业融资",
+    "type": "interview",
+    "title": "具身智能的2025：前10家公司拿下40%的融资",
+    "summary": "2025年具身智能已经从概念验证走向规模化发展，头部效应明显",
+    "source": "投中网",
+    "source_url": "https://www.chinaventure.com.cn/news/80-20251218-389389.html",
+    "date": "2025-12-18",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "投中网"
+    ]
+  },
+  {
+    "id": "interview039",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "一位务实的科学家和他为机器人推开的那扇门",
+    "summary": "甲子光年深度报道：北京人形作为国家具身智能基建，探索技术上限同时守住产业落地底线",
+    "source": "甲子光年",
+    "source_url": "https://www.163.com/dy/article/KFNPQS3F0512MLBG.html",
+    "date": "2025-12-01",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "甲子光年",
+      "网易"
+    ]
+  },
+  {
+    "id": "interview024",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "具身智能的幻想与现实 - 晚点LatePost深度分析",
+    "summary": "从一个月翻十倍的具身智能概念股到395亿美元估值的Figure，具身智能到底是什么",
+    "source": "晚点LatePost",
+    "source_url": "https://www.bilibili.com/list/478559884?oid=115536096662209",
+    "date": "2025-11-12",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "晚点LatePost",
+      "Bilibili"
+    ]
+  },
+  {
+    "id": "interview026",
+    "company": "光轮智能",
+    "type": "interview",
+    "title": "机器人遭遇数据荒？与谢晨聊仿真与合成数据、Meta时代的具身AI",
+    "summary": "光轮智能CEO谢晨分享在英伟达和Cruise做自动驾驶仿真的经验，以及合成数据在具身智能中的应用",
+    "source": "张小珺商业访谈录",
+    "source_url": "https://podwise.ai/dashboard/episodes/4731139",
+    "date": "2025-11-01",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "张小珺",
+      "Podwise"
+    ]
+  },
+  {
+    "id": "noin024fund",
+    "company": "穹彻智能",
+    "type": "funding",
+    "title": "穹彻智能完成新一轮融资，阿里巴巴集团投资",
+    "summary": "资金用于具身智能大模型研发和生态体系建设",
+    "source": "腾讯新闻",
+    "source_url": "https://view.inews.qq.com/a/20251023A02G8U00",
+    "date": "2025-10-23",
+    "created_at": "2026-04-23T10:00:00",
+    "investors": "阿里巴巴集团",
+    "media_sources": [
+      "腾讯新闻",
+      "机器之心",
+      "36Kr"
+    ]
+  },
+  {
+    "id": "agility030toyota",
+    "company": "Agility Robotics",
+    "type": "project",
+    "title": "Agility Robotics与丰田加拿大达成战略合作",
+    "title_en": "Agility Robotics Partners with Toyota for Manufacturing Deployment",
+    "summary": "Digit机器人将在丰田加拿大工厂部署",
+    "source": "Agility Robotics",
+    "source_url": "https://www.agilityrobotics.com/latest-press",
+    "date": "2025-10-15",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "Agility Robotics",
+      "TechCrunch",
+      "The Verge"
+    ]
   },
   {
     "id": "mecmeta023fund",
@@ -305,46 +1089,147 @@
     "created_at": "2026-04-23T10:00:00",
     "amount": "近5亿人民币",
     "investors": "雄安基金、大洋电机、华创资本",
-    "media_sources": ["腾讯新闻", "机器之心", "东方财富"]
+    "media_sources": [
+      "腾讯新闻",
+      "机器之心",
+      "东方财富"
+    ]
   },
   {
-    "id": "noin024fund",
-    "company": "穹彻智能",
-    "type": "funding",
-    "title": "穹彻智能完成新一轮融资，阿里巴巴集团投资",
-    "summary": "资金用于具身智能大模型研发和生态体系建设",
-    "source": "腾讯新闻",
-    "source_url": "https://view.inews.qq.com/a/20251023A02G8U00",
-    "date": "2025-10-23",
+    "id": "interview018",
+    "company": "宇树科技",
+    "type": "interview",
+    "title": "人民日报专访宇树科技王兴兴：分布式方案破解人形机器人算力难题",
+    "summary": "王兴兴表示算力对人形机器人产业重要性怎么强调都不为过，提出分布式算力解决方案",
+    "source": "人民日报",
+    "source_url": "https://www.peopleapp.com/column/30049957305-500007030229",
+    "date": "2025-08-13",
     "created_at": "2026-04-23T10:00:00",
-    "investors": "阿里巴巴集团",
-    "media_sources": ["腾讯新闻", "机器之心", "36Kr"]
+    "media_sources": [
+      "人民日报",
+      "人民网"
+    ]
   },
   {
-    "id": "pi025model",
-    "company": "Physical Intelligence",
-    "type": "tech_breakthrough",
-    "title": "Physical Intelligence发布π0.5通用机器人模型",
-    "title_en": "Physical Intelligence Releases π0.5 VLA Model",
-    "summary": "新一代模型在开放世界泛化能力上实现重大突破",
-    "source": "Physical Intelligence Blog",
-    "source_url": "https://www.pi.website/blog/pi05",
-    "date": "2026-01-15",
+    "id": "silin022mercedes",
+    "company": "思灵机器人",
+    "type": "project",
+    "title": "思灵机器人与奔驰达成战略合作",
+    "summary": "力控机器人应用于汽车总装线",
+    "source": "东方财富",
+    "source_url": "https://caifuhao.eastmoney.com/news/20250811040430200359770",
+    "date": "2025-08-11",
     "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["Physical Intelligence", "机器之心", "量子位"]
+    "media_sources": [
+      "东方财富",
+      "汽车之家"
+    ]
   },
   {
-    "id": "figure026production",
-    "company": "Figure AI",
-    "type": "product",
-    "title": "Figure AI实现每90分钟生产一台人形机器人",
-    "title_en": "Figure AI Now Builds a Humanoid Robot Every 90 Minutes",
-    "summary": "产能爬坡迅速，人形机器人商业化加速",
-    "source": "RoboHorizon",
-    "source_url": "https://robohorizon.com/en-us/news/2026/04/figure-ai-now-builds-a-humanoid-robot-every-90-minutes/",
-    "date": "2026-04-07",
+    "id": "interview036",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "资本集体押注具身智能，产融共振催化万亿级赛道",
+    "summary": "当资本从看Demo转向看量产看落地，人形机器人正迎来产业化的历史性拐点",
+    "source": "数字中国",
+    "source_url": "https://www.digitalchina.gov.cn/2025/szzg/xyzx/202508/t20250811_5059795.htm",
+    "date": "2025-08-11",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "数字中国"
+    ]
+  },
+  {
+    "id": "interview030",
+    "company": "行业融资",
+    "type": "interview",
+    "title": "超140亿！2025上半年人形机器人融资盘点",
+    "summary": "2025年上半年人形机器人赛道延续高热，融资节奏和资金体量全面提档加速",
+    "source": "新战略产业研究所",
+    "source_url": "https://www.sohu.com/a/784407571_121123769",
+    "date": "2025-07-10",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "新战略产业研究所",
+      "搜狐"
+    ]
+  },
+  {
+    "id": "interview021",
+    "company": "银河通用",
+    "type": "interview",
+    "title": "对话银河通用王燕：我们确实是具身行业估值的撑伞人",
+    "summary": "王燕表示具身智能行业估值由头部企业支撑，竞争关键在于数据闭环能力",
+    "source": "凤凰科技",
+    "source_url": "https://tech.ifeng.com/c/8kQINo40hu8",
+    "date": "2025-06-23",
     "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["RoboHorizon", "TechCrunch"]
+    "media_sources": [
+      "蓝鲸新闻",
+      "凤凰科技"
+    ]
+  },
+  {
+    "id": "interview025",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "和王鹤聊，具身智能的学术边缘史和资本轰炸后的人为乱象",
+    "summary": "王鹤，北大银河出品负责人，聊具身智能学术前沿与资本热潮下的行业思考",
+    "source": "张小珺商业访谈录",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/6857f2174abe6e29cb65d76e",
+    "date": "2025-06-22",
+    "created_at": "2026-04-23T13:00:00",
+    "media_sources": [
+      "张小珺",
+      "小宇宙FM",
+      "Podbean"
+    ]
+  },
+  {
+    "id": "bd029toyota",
+    "company": "Boston Dynamics",
+    "type": "project",
+    "title": "Boston Dynamics与丰田研究院合作展示Atlas人形机器人",
+    "title_en": "Boston Dynamics and TRI Demonstrate Atlas Humanoid Robot",
+    "summary": "使用大规模行为模型实现自主全身操作",
+    "source": "Toyota Press Room",
+    "source_url": "https://pressroom.toyota.com/ai-powered-robot-by-boston-dynamics-and-toyota-research-institute-takes-a-key-step-towards-general-purpose-humanoids/",
+    "date": "2025-06-12",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "Toyota",
+      "Boston Dynamics",
+      "Wired"
+    ]
+  },
+  {
+    "id": "interview019",
+    "company": "宇树科技",
+    "type": "interview",
+    "title": "对话宇树科技王兴兴：人形机器人要顺势而为，希望自控",
+    "summary": "王兴兴认为人形机器人行业应克制不要做成自动化公司，要做AI+机器人结合的产品",
+    "source": "中国信息协会",
+    "source_url": "https://www.ciia.org.cn/site/content/38444.html",
+    "date": "2025-02-18",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "中国信息协会"
+    ]
+  },
+  {
+    "id": "interview020",
+    "company": "宇树科技",
+    "type": "interview",
+    "title": "对话宇树科技王兴兴：人形机器人进化速度超出预期",
+    "summary": "王兴兴表示人形机器人进化速度超出预期，机器人的未来是走进千家万户",
+    "source": "央视",
+    "source_url": "https://www.sina.cn/news/detail/5135472899130553.html",
+    "date": "2025-02-18",
+    "created_at": "2026-04-23T10:00:00",
+    "media_sources": [
+      "央视",
+      "新浪新闻"
+    ]
   },
   {
     "id": "figure027fund",
@@ -360,311 +1245,356 @@
     "amount": "15亿美元",
     "valuation": "395亿美元",
     "investors": "微软、OpenAI、NVIDIA",
-    "media_sources": ["TechCrunch", "机器之心", "The Verge", "Sacra"]
+    "media_sources": [
+      "TechCrunch",
+      "机器之心",
+      "The Verge",
+      "Sacra"
+    ]
   },
   {
-    "id": "1x028eqt",
-    "company": "1X Technologies",
+    "id": "interview050",
+    "company": "行业洞察",
+    "type": "interview",
+    "title": "2025年具身智能产业发展研究报告",
+    "summary": "甲子光年智库深度报告：全球科技巨头布局，具身智能正处于快速发展期",
+    "source": "甲子光年",
+    "source_url": "https://www.thepaper.cn/newsDetail_forward_29954689",
+    "date": "2025-01-20",
+    "created_at": "2026-04-23T14:00:00",
+    "media_sources": [
+      "甲子光年",
+      "澎湃新闻"
+    ]
+  },
+  {
+    "id": "zhipingfang051product",
+    "company": "智平方",
+    "type": "product",
+    "title": "智平方发布全球首个具身智能模型开源社区AlphaBrain Platform",
+    "summary": "全球首个一站式具身智能开源平台，开源NeuroVLA类脑具身模型、世界模型、持续学习算法等核心技",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260422A07L7800",
+    "date": "2026-04-22",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "腾讯新闻",
+      "CSDN",
+      "天极网"
+    ]
+  },
+  {
+    "id": "zhiyuan052project",
+    "company": "智元机器人",
     "type": "project",
-    "title": "1X与EQT达成协议，将在工厂部署数千台EVE人形机器人",
-    "title_en": "1X Technologies to Deploy Thousands of EVE Humanoids in EQT Factories",
-    "summary": "2026-2030年分阶段部署，聚焦物流和制造业自动化",
-    "source": "Origin of Bots",
-    "source_url": "https://www.originofbots.com/news/1x-accelerates-eve-humanoid-rollout-in-eqt-factories-through-2030",
+    "title": "智元机器人开启全球首个具身智能3C精密制造产线规模化落地直播",
+    "summary": "智元精灵G2以产线正式员工身份，在龙旗科技南昌工厂高速流水线上完成精密上下料、人机协同全流程作业",
+    "source": "财联社",
+    "source_url": "https://news.qq.com/rain/a/20260415A05PFN00",
+    "date": "2026-04-14",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "财联社",
+      "科创板日报"
+    ]
+  },
+  {
+    "id": "lingchuzhineng054model",
+    "company": "灵初智能",
+    "type": "tech_breakthrough",
+    "title": "灵初智能发布Psi-R2大模型，登顶国际权威基准MolmoSpaces全球第一",
+    "summary": "Psi-R2使用10万小时量级人类数据预训练，在MolmoSpaces公开评测中超越Physical Intelligence和英伟达GEAR",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260414A00AWR00",
+    "date": "2026-04-12",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "腾讯新闻",
+      "新浪财经",
+      "环球科技"
+    ]
+  },
+  {
+    "id": "lingchuzhineng053model",
+    "company": "灵初智能",
+    "type": "tech_breakthrough",
+    "title": "灵初智能开源全球最大人类手部操作数据集，首批1000小时",
+    "summary": "数据集总储备达10万小时，覆盖全模态人类手部操作，为行业最大规模开源数据集",
+    "source": "搜狐",
+    "source_url": "https://www.sohu.com/a/1007818580_120010551",
     "date": "2026-04-10",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["Origin of Bots", "TechCrunch"]
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "搜狐",
+      "科技日报"
+    ]
   },
   {
-    "id": "bd029toyota",
-    "company": "Boston Dynamics",
-    "type": "project",
-    "title": "Boston Dynamics与丰田研究院合作展示Atlas人形机器人",
-    "title_en": "Boston Dynamics and TRI Demonstrate Atlas Humanoid Robot",
-    "summary": "使用大规模行为模型实现自主全身操作",
-    "source": "Toyota Press Room",
-    "source_url": "https://pressroom.toyota.com/ai-powered-robot-by-boston-dynamics-and-toyota-research-institute-takes-a-key-step-towards-general-purpose-humanoids/",
-    "date": "2025-06-12",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["Toyota", "Boston Dynamics", "Wired"]
+    "id": "lingchuzhineng052product",
+    "company": "灵初智能",
+    "type": "product",
+    "title": "灵初智能发布新一代具身大模型Psi-R2和Psi-W0",
+    "summary": "Psi-R2为World Action Model，Psi-W0为世界模型，标志具身智能从实验室走向产业化",
+    "source": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/stock/t/2026-04-15/doc-inhupvff8477352.shtml",
+    "date": "2026-04-10",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "新浪财经",
+      "搜狐"
+    ]
   },
   {
-    "id": "agility030toyota",
+    "id": "zhiyuan051model",
+    "company": "智元机器人",
+    "type": "tech_breakthrough",
+    "title": "智元发布GO-2大模型：动作思维链与异步双系统架构突破",
+    "summary": "Genie Operator-2引入「动作思维链」和「异步双系统」架构，实现从「边想边做」到「先想后做」的稳定执行",
+    "source": "ITBear",
+    "source_url": "https://www.itbear.com.cn/html/2026-04/1267363.html",
+    "date": "2026-04-09",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "ITBear",
+      "知乎"
+    ]
+  },
+  {
+    "id": "zhiyuan050product",
+    "company": "智元机器人",
+    "type": "product",
+    "title": "智元发布新一代VLA基座大模型Genie Operator-2（GO-2）",
+    "summary": "GO-2旨在弥合具身智能领域长期存在的「语义-运动鸿沟」，标志机器人从黑盒摸索正式迈向知行合一",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260409A04W6I00",
+    "date": "2026-04-09",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "腾讯新闻",
+      "中新社",
+      "东方财富"
+    ]
+  },
+  {
+    "id": "zhiyuan049sim",
+    "company": "智元机器人",
+    "type": "tech_breakthrough",
+    "title": "智元发布Genie Sim 3.0仿真开发平台",
+    "summary": "新一代仿真平台进一步提升具身智能训练效率",
+    "source": "36Kr",
+    "source_url": "https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/industry/rptid/830092502472/index.phtml",
+    "date": "2026-04-08",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "36Kr"
+    ]
+  },
+  {
+    "id": "zhiyuan048dataset",
+    "company": "智元机器人",
+    "type": "tech_breakthrough",
+    "title": "智元开源AGIBOT WORLD 2026数据集",
+    "summary": "首个覆盖具身智能全域研究的开源数据集，基于海量真实场景，围绕五大具身领域",
+    "source": "MSN",
+    "source_url": "https://www.msn.cn/zh-cn/news/other/%E6%99%BA%E5%85%83ai%E5%8F%91%E5%B8%83%E5%91%A8-%E8%A7%A3%E9%94%81%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E6%8A%80%E6%9C%AF%E6%96%B0%E8%BF%9B%E5%B1%95/ar-AA20EGse",
+    "date": "2026-04-07",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "MSN",
+      "机器之心"
+    ]
+  },
+  {
+    "id": "zhiyuan047product",
+    "company": "智元机器人",
+    "type": "product",
+    "title": "智元APC 2026大会：发布4款本体新品、4个AI大模型、7个解决方案",
+    "summary": "2026智元合作伙伴大会在上海举行，来自30多个国家2500余名合作伙伴参会",
+    "source": "IT之家",
+    "source_url": "https://www.ithome.com/0/938/317.htm",
+    "date": "2026-04-17",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "IT之家",
+      "搜狐",
+      "新华网"
+    ]
+  },
+  {
+    "id": "tesla054product",
+    "company": "特斯拉",
+    "type": "product",
+    "title": "特斯拉开源Optimus第三代灵巧手核心硬件专利",
+    "title_en": "Tesla Open-Sources Optimus Gen 3 Dexterous Hand Hardware Patents",
+    "summary": "延续硬件开源逻辑，推动行业形成统一标准，加速产业整体进化",
+    "source": "CSDN",
+    "source_url": "https://www.csdn.net/article/2026-04-22/160411971",
+    "date": "2026-04-22",
+    "created_at": "2026-04-23T14:20:00",
+    "media_sources": [
+      "CSDN",
+      "搜狐"
+    ]
+  },
+  {
+    "id": "humanoid055marathon",
+    "company": "行业活动",
+    "type": "event",
+    "title": "2026北京亦庄人形机器人半程马拉松",
+    "summary": "102支队伍、300余台机器人参赛，荣耀闪电以50分26秒夺冠并打破人类纪录，央视焦点访谈专题报道",
+    "source": "中国日报",
+    "source_url": "https://cn.chinadaily.com.cn/a/202604/19/WS69e43f04a310942cc49a8412.html",
+    "date": "2026-04-19",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "中国日报",
+      "人民网",
+      "央视"
+    ]
+  },
+  {
+    "id": "ceai056conference",
+    "company": "行业活动",
+    "type": "event",
+    "title": "2026中国具身智能大会（CEAI 2026）在合肥开幕",
+    "summary": "中国人工智能学会主办，发布《中国人工智能学会具身智能白皮书（2026）》，10场主旨报告、21场专题论坛",
+    "source": "中新社",
+    "source_url": "https://www.sohu.com/a/1009002477_121124378",
+    "date": "2026-04-11",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "中新社",
+      "中国人工智能学会",
+      "搜狐"
+    ]
+  },
+  {
+    "id": "pi057model",
+    "company": "Physical Intelligence",
+    "type": "tech_breakthrough",
+    "title": "Physical Intelligence发布π0.7，展示组合泛化涌现能力",
+    "title_en": "Physical Intelligence Releases π0.7 with Compositional Generalization",
+    "summary": "VLA模型首次在机器人领域证明组合泛化能力，可执行从未训练过的复杂多步骤任务",
+    "source": "虎嗅",
+    "source_url": "https://www.huxiu.com/article/4851643.html",
+    "date": "2026-04-16",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "虎嗅",
+      "量子位",
+      "Wall Street CN"
+    ]
+  },
+  {
+    "id": "agility058factory",
     "company": "Agility Robotics",
     "type": "project",
-    "title": "Agility Robotics与丰田加拿大达成战略合作",
-    "title_en": "Agility Robotics Partners with Toyota for Manufacturing Deployment",
-    "summary": "Digit机器人将在丰田加拿大工厂部署",
-    "source": "Agility Robotics",
-    "source_url": "https://www.agilityrobotics.com/latest-press",
-    "date": "2025-10-15",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["Agility Robotics", "TechCrunch", "The Verge"]
+    "title": "Agility Robotics与舍弗勒达成合作，Digit开启8小时轮班工作",
+    "title_en": "Agility Robotics Deploys Digit for Full-Shift Operations at Schaeffler",
+    "summary": "Digit机器人正式在舍弗勒南卡罗来纳州工厂执行全班次任务，商业化落地重大突破",
+    "source": "RoboHorizon",
+    "source_url": "https://robohorizon.cn/zh/news/2026/03/digit-humanoid-schaeffler-factory/",
+    "date": "2026-03-15",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "RoboHorizon",
+      "The Robot Report"
+    ]
   },
   {
-    "id": "youbot031fund",
-    "company": "优必选",
-    "type": "funding",
-    "title": "优必选2025年营收20亿元，人形机器人订单近14亿元",
-    "summary": "Walker S2批量交付汽车工厂，中标2.64亿元全球最大单笔订单",
-    "source": "搜狐",
-    "source_url": "https://www.sohu.com/a/1007432464_120468014",
-    "date": "2026-04-09",
-    "created_at": "2026-04-23T10:00:00",
-    "amount": "20亿人民币(营收)",
-    "investors": "上市公司",
-    "media_sources": ["搜狐", "36Kr", "东方财富"]
+    "id": "nvidia059gtc",
+    "company": "NVIDIA",
+    "type": "event",
+    "title": "NVIDIA GTC 2026发布Cosmos世界模型和GR00T N2机器人模型",
+    "title_en": "NVIDIA GTC 2026: Cosmos World Models and GR00T N2 Launch",
+    "summary": "携手ABB、FANUC、KUKA等全球机器人企业，推动物理AI从实验室走向现实世界",
+    "source": "NVIDIA",
+    "source_url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Global-Robotics-Leaders-Take-Physical-AI-to-the-Real-World/",
+    "date": "2026-03-16",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "NVIDIA",
+      "搜狐",
+      "机器人头条"
+    ]
   },
   {
-    "id": "interview001",
-    "company": "银河通用",
-    "type": "interview",
-    "title": "对话银河通用王燕：具身智能淘汰赛元年，三类玩家将存活",
-    "summary": "王燕认为2026年不是商业化元年而是淘汰赛元年，数据闭环能力、场景理解和成本控制是核心壁垒",
-    "source": "每日经济新闻",
-    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
-    "date": "2026-03-02",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["每日经济新闻", "36Kr"]
+    "id": "figure060whitehouse",
+    "company": "Figure AI",
+    "type": "event",
+    "title": "Figure AI受邀访问白宫，Figure 03亮相AI教育峰会",
+    "title_en": "Figure AI Visits White House, Figure 03 Debuts at AI Education Summit",
+    "summary": "全球首个美国制造人形机器人以嘉宾身份进入白宫，Figure 03用11种语言问候嘉宾",
+    "source": "CNBC",
+    "source_url": "https://www.cnbc.com/2026/03/26/figure-ai-the-robotics-company-hosted-by-melania-trump.html",
+    "date": "2026-03-25",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "CNBC",
+      "Fortune",
+      "X头条"
+    ]
   },
   {
-    "id": "interview002",
-    "company": "星海图",
-    "type": "interview",
-    "title": "对话星海图赵行：数据是具身智能的石油，合成数据是必由之路",
-    "summary": "赵行认为端到端模型的核心是数据闭环，合成数据将成为主要数据来源",
-    "source": "每日经济新闻",
-    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
-    "date": "2026-03-02",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["每日经济新闻", "36Kr"]
+    "id": "nvidia061ces",
+    "company": "NVIDIA",
+    "type": "event",
+    "title": "NVIDIA CES 2026：黄仁勋宣布机器人领域进入ChatGPT时刻",
+    "title_en": "NVIDIA CES 2026: Jensen Huang Declares Robotics 'ChatGPT Moment'",
+    "summary": "黄仁勋在CES开幕演讲发布Rubin平台和开源机器人模型，宣告Physical AI时代来临",
+    "source": "NVIDIA",
+    "source_url": "https://blogs.nvidia.cn/blog/2026-ces-special-presentation/",
+    "date": "2026-01-05",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "NVIDIA",
+      "MSN",
+      "知乎"
+    ]
   },
   {
-    "id": "interview003",
-    "company": "逐际动力",
-    "type": "interview",
-    "title": "对话逐际动力张补：轮足机器人是具身智能落地的最优形态",
-    "summary": "张补认为轮足人形在复杂地形有独特优势，2026年将进入商业化元年",
-    "source": "每日经济新闻",
-    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
-    "date": "2026-03-02",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["每日经济新闻", "36Kr"]
+    "id": "ces062robotics",
+    "company": "行业活动",
+    "type": "event",
+    "title": "CES 2026：人形机器人产业进入新发展阶段",
+    "summary": "全球主要人形机器人企业集中亮相，上纬启元发布全球首款全身力控小尺寸人形机器人启元Q1",
+    "source": "IT之家",
+    "source_url": "https://www.ithome.com/0/911/328.htm",
+    "date": "2026-01-07",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "IT之家",
+      "知乎"
+    ]
   },
   {
-    "id": "interview004",
-    "company": "星动纪元",
-    "type": "interview",
-    "title": "对话星动纪成：具身智能需要垂直场景深度而非通用泛化",
-    "summary": "成 Reservoir认为垂直场景的数据闭环比通用泛化更重要",
-    "source": "每日经济新闻",
-    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
-    "date": "2026-03-02",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["每日经济新闻", "36Kr"]
+    "id": "vivatech063event",
+    "company": "Agility Robotics",
+    "type": "event",
+    "title": "Agility Robotics将亮相VivaTech 2026巴黎展会",
+    "title_en": "Agility Robotics to Exhibit at VivaTech 2026 Paris",
+    "summary": "Digit人形机器人将在VivaTech 2026（6月17-20日）进行展示",
+    "source": "VivaTech",
+    "source_url": "https://vivatech.com/speakers/4ebe16e8-733d-f011-a5f1-6045bda07d25",
+    "date": "2026-06-17",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "VivaTech"
+    ]
   },
   {
-    "id": "interview005",
-    "company": "松延动力",
-    "type": "interview",
-    "title": "对话松延动力王晓龙：人形机器人需要耐得住寂寞",
-    "summary": "王晓龙认为具身智能需要长期投入，短期资本热度不代表产业成熟",
-    "source": "每日经济新闻",
-    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
-    "date": "2026-03-02",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["每日经济新闻", "36Kr"]
-  },
-  {
-    "id": "interview006",
-    "company": "千寻智能",
-    "type": "interview",
-    "title": "对话千寻智能孟李梦：VLA模型是具身智能的GPT时刻",
-    "summary": "孟李梦认为VLA模型突破将带来具身智能的GPT时刻",
-    "source": "每日经济新闻",
-    "source_url": "https://www.nbd.com.cn/articles/2026-03-01/4274112.html",
-    "date": "2026-03-02",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["每日经济新闻", "36Kr"]
-  },
-  {
-    "id": "interview007",
-    "company": "睿尔曼智能",
-    "type": "interview",
-    "title": "2026风向标：具身智能告别耍酷，转向实干",
-    "summary": "郑随兵认为具身智能正在从技术展示转向实际应用，2026年是实干元年",
-    "source": "中国经济时报",
-    "source_url": "https://finance.sina.com.cn/wm/2026-03-31/doc-inhsvshk2258673.shtml",
-    "date": "2026-03-31",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["中国经济时报", "新浪财经"]
-  },
-  {
-    "id": "interview008",
-    "company": "自变量机器人",
-    "type": "interview",
-    "title": "对话自变量CEO王潜：一个月后，机器人就可以接单进家了",
-    "summary": "王潜认为家务劳动占GDP的20%，具身智能将进入家庭场景，自研WUM架构实现零样本泛化",
-    "source": "虎嗅网",
-    "source_url": "https://www.huxiu.com/article/4852722.html",
-    "date": "2026-04-23",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["虎嗅网", "东方财富"]
-  },
-  {
-    "id": "interview009",
-    "company": "觅蜂科技",
-    "type": "interview",
-    "title": "人形机器人，如何跑出数据荒漠",
-    "summary": "姚卯青认为具身智能一定会出现涌现时刻，关键在于数据量与数据组成",
-    "source": "第一财经",
-    "source_url": "https://finance.sina.com.cn/roll/2026-04-19/doc-inhuzxax9127982.shtml",
-    "date": "2026-04-19",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["第一财经", "新浪财经"]
-  },
-  {
-    "id": "interview010",
-    "company": "未来不远",
-    "type": "interview",
-    "title": "具身智能泡沫中，他把机器人送进300个家庭",
-    "summary": "张翼认为具身智能商业化需要接地气，不能只做技术展示",
-    "source": "腾讯新闻",
-    "source_url": "https://news.qq.com/rain/a/20260416A02S5U00",
-    "date": "2026-04-16",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["腾讯新闻"]
-  },
-  {
-    "id": "interview011",
-    "company": "知行机器人",
-    "type": "interview",
-    "title": "知行机器人CEO白国超参加具身智能创业者主题访谈",
-    "summary": "白国超分享具身智能创业心得，认为场景落地是关键",
-    "source": "雪球",
-    "source_url": "https://xueqiu.com/6370150036/378902220",
-    "date": "2026-03-11",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["雪球"]
-  },
-  {
-    "id": "interview012",
-    "company": "银河通用",
-    "type": "interview",
-    "title": "五位企业创始人共话具身智能：机器人都在忙什么",
-    "summary": "王燕等五位创始人共话具身智能发展趋势，从工业场景到家庭场景",
-    "source": "人民日报海外版",
-    "source_url": "http://www.ce.cn/xwzx/gnsz/gdxw/202604/t20260403_2878022.shtml",
-    "date": "2026-04-03",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["人民日报海外版", "中国经济网"]
-  },
-  {
-    "id": "interview013",
-    "company": "智元机器人",
-    "type": "interview",
-    "title": "对话智元创始人邓泰华：2026年是具身智能部署态元年",
-    "summary": "邓泰华提出XYZ曲线理论：2022-2026是开发尝鲜期，2026-2030是数据飞轮带来智能突破期",
-    "source": "中国日报",
-    "source_url": "https://cn.chinadaily.com.cn/a/202604/21/WS69e73f31a310942cc49a8b5c.html",
-    "date": "2026-04-21",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["中国日报", "腾讯新闻"]
-  },
-  {
-    "id": "interview014",
-    "company": "智元机器人",
-    "type": "interview",
-    "title": "对话智元创始人邓泰华：具身智能机器人会成为下一代交互终端",
-    "summary": "邓泰华认为机器人会成为PC、手机之后的下一代交互终端，未来有望达到单量汽车价格乘以手机数量",
-    "source": "腾讯新闻",
-    "source_url": "https://news.qq.com/rain/a/20260417A07CWD00",
-    "date": "2026-04-17",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["腾讯新闻", "新浪财经"]
-  },
-  {
-    "id": "interview015",
-    "company": "智元机器人",
-    "type": "interview",
-    "title": "对话智元稚晖君：我们不急着拿别人的钱，但缺数据",
-    "summary": "彭志辉表示人形机器人要回答的核心问题是能否在生产线上把账算平，当前不缺钱但缺数据",
-    "source": "蓝鲸新闻",
-    "source_url": "https://finance.eastmoney.com/a/202604173709691828.html",
-    "date": "2026-04-17",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["蓝鲸新闻", "东方财富"]
-  },
-  {
-    "id": "interview016",
-    "company": "智元机器人",
-    "type": "interview",
-    "title": "智元稚晖君：固态电池是解决机器人续航焦虑的重要方向",
-    "summary": "彭志辉认为机器人尺寸有限，需要高能量密度电池解决方案，固态电池是重要方向",
-    "source": "每日经济新闻",
-    "source_url": "https://finance.sina.com.cn/jjxw/2026-04-17/doc-inhuvkwu2139374.shtml",
-    "date": "2026-04-17",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["每日经济新闻", "新浪财经"]
-  },
-  {
-    "id": "interview017",
-    "company": "智元机器人",
-    "type": "interview",
-    "title": "智元稚晖君：我们不缺钱，但缺数据",
-    "summary": "彭志辉表示具身智能体将成为AI时代最大的token消费者，机器人是连接大模型与物理世界的核心流量入口",
-    "source": "21世纪经济报道",
-    "source_url": "https://news.qq.com/rain/a/20260418A05SWG00",
-    "date": "2026-04-18",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["21世纪经济报道", "腾讯新闻"]
-  },
-  {
-    "id": "interview018",
-    "company": "宇树科技",
-    "type": "interview",
-    "title": "人民日报专访宇树科技王兴兴：分布式方案破解人形机器人算力难题",
-    "summary": "王兴兴表示算力对人形机器人产业重要性怎么强调都不为过，提出分布式算力解决方案",
-    "source": "人民日报",
-    "source_url": "https://www.peopleapp.com/column/30049957305-500007030229",
-    "date": "2025-08-13",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["人民日报", "人民网"]
-  },
-  {
-    "id": "interview019",
-    "company": "宇树科技",
-    "type": "interview",
-    "title": "对话宇树科技王兴兴：人形机器人要顺势而为，希望自控",
-    "summary": "王兴兴认为人形机器人行业应克制不要做成自动化公司，要做AI+机器人结合的产品",
-    "source": "中国信息协会",
-    "source_url": "https://www.ciia.org.cn/site/content/38444.html",
-    "date": "2025-02-18",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["中国信息协会"]
-  },
-  {
-    "id": "interview020",
-    "company": "宇树科技",
-    "type": "interview",
-    "title": "对话宇树科技王兴兴：人形机器人进化速度超出预期",
-    "summary": "王兴兴表示人形机器人进化速度超出预期，机器人的未来是走进千家万户",
-    "source": "央视",
-    "source_url": "https://www.sina.cn/news/detail/5135472899130553.html",
-    "date": "2025-02-18",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["央视", "新浪新闻"]
-  },
-  {
-    "id": "interview021",
-    "company": "银河通用",
-    "type": "interview",
-    "title": "对话银河通用王燕：我们确实是具身行业估值的撑伞人",
-    "summary": "王燕表示具身智能行业估值由头部企业支撑，竞争关键在于数据闭环能力",
-    "source": "凤凰科技",
-    "source_url": "https://tech.ifeng.com/c/8kQINo40hu8",
-    "date": "2025-06-23",
-    "created_at": "2026-04-23T10:00:00",
-    "media_sources": ["蓝鲸新闻", "凤凰科技"]
+    "id": "figure064product",
+    "company": "Figure AI",
+    "type": "product",
+    "title": "Figure AI发布Helix：首个家庭环境通用人形机器人AI",
+    "title_en": "Figure AI Releases Helix: The First General-Purpose Household Robot AI",
+    "summary": "Helix使Figure 03能够在不可预测、不断变化的家庭环境中自主导航",
+    "source": "Figure AI",
+    "source_url": "https://www.figure.ai/news",
+    "date": "2026-03-09",
+    "created_at": "2026-04-23T14:30:00",
+    "media_sources": [
+      "Figure AI"
+    ]
   }
 ]
