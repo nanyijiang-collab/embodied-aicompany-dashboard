@@ -461,9 +461,10 @@ class EmbodiedAICrawler:
         
         return results
     
-    def crawl_sogou_wechat(self, keywords: str) -> List[Dict]:
+    def crawl_sogou_wechat(self, company_name: str) -> List[Dict]:
         """从搜狗微信搜索获取信息（可抓取微信文章标题+链接）"""
         results = []
+        keywords = f"{company_name} 具身智能 OR 人形机器人 OR AI"
         try:
             # 搜狗微信文章搜索
             url = f"https://weixin.sogou.com/weixin?type=2&query={quote(keywords)}&ie=utf8"
@@ -506,7 +507,7 @@ class EmbodiedAICrawler:
                     
                     results.append({
                         'id': self._generate_id(link, title),
-                        'company': keywords,
+                        'company': company_name,
                         'type': event_type,
                         'title': title,
                         'title_en': None,
@@ -647,8 +648,7 @@ class EmbodiedAICrawler:
                 bing_events = self.crawl_bing_news(name)
                 
                 # 2. 搜狗微信搜索（新增）
-                keywords = f"{name} 具身智能 OR 人形机器人 OR AI"
-                wechat_events = self.crawl_sogou_wechat(keywords)
+                wechat_events = self.crawl_sogou_wechat(name)
                 
                 events = bing_events + wechat_events
                 
@@ -671,9 +671,11 @@ class EmbodiedAICrawler:
             'VLA模型 具身智能',
         ]
         for kw in industry_keywords:
+            # 行业动态特殊处理：公司名设为"行业动态"
             wechat_events = self.crawl_sogou_wechat(kw)
             for event in wechat_events[:3]:  # 每关键词最多3条
                 if event['id'] not in seen_ids:
+                    event['company'] = '行业动态'  # 设为特殊公司名
                     all_events.append(event)
                     seen_ids.add(event['id'])
             time.sleep(0.5)
