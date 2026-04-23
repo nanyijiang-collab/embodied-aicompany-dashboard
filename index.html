@@ -338,6 +338,12 @@
             color: var(--accent-green);
         }
         
+        .valuation-date {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+        
         .valuation {
             font-size: 13px;
             color: var(--text-secondary);
@@ -989,30 +995,30 @@
         // 估值排行数据（10亿+人民币）
         const rankingData = [
             // 海外
-            { company: 'Figure AI', valuation: '395亿美元', valuationCNY: 395 * 7.2, currency: '美元', percentage: 100, latest: '15亿美元B轮', trend: '人形机器人' },
-            { company: 'Apptronik', valuation: '53亿美元', valuationCNY: 53 * 7.2, currency: '美元', percentage: 55, latest: '9.35亿美元A轮', trend: 'Apollo人形' },
-            { company: '1X Technologies', valuation: '19亿美元', valuationCNY: 19 * 7.2, currency: '美元', percentage: 20, latest: 'EVE机器人', trend: '人形机器人' },
-            { company: 'Agility Robotics', valuation: '12亿美元', valuationCNY: 12 * 7.2, currency: '美元', percentage: 12, latest: 'B轮', trend: 'Digit物流' },
+            { company: 'Figure AI', valuation: '395亿美元', valuationCNY: 395 * 7.2, currency: '美元', percentage: 100, latest: '15亿美元B轮', trend: '人形机器人', date: '2025.02' },
+            { company: 'Apptronik', valuation: '53亿美元', valuationCNY: 53 * 7.2, currency: '美元', percentage: 55, latest: '9.35亿美元A轮', trend: 'Apollo人形', date: '2026.02' },
+            { company: '1X Technologies', valuation: '19亿美元', valuationCNY: 19 * 7.2, currency: '美元', percentage: 20, latest: 'B轮融资', trend: 'EVE人形', date: '2025.12' },
+            { company: 'Agility Robotics', valuation: '12亿美元', valuationCNY: 12 * 7.2, currency: '美元', percentage: 12, latest: 'B轮', trend: 'Digit物流', date: '2024.09' },
             // 国内
-            { company: '宇树科技', valuation: '420亿人民币', valuationCNY: 420, currency: '人民币', percentage: 80, latest: 'IPO募资42亿', trend: '人形+四足' },
-            { company: '灵心巧手', valuation: '240亿人民币', valuationCNY: 240, currency: '人民币', percentage: 75, latest: 'B轮15亿', trend: '灵巧手龙头' },
-            { company: '银河通用', valuation: '211亿人民币', valuationCNY: 211, currency: '人民币', percentage: 70, latest: 'B轮25亿+', trend: '全尺寸人形' },
-            { company: '星海图', valuation: '200亿人民币', valuationCNY: 200, currency: '人民币', percentage: 68, latest: 'B+轮20亿', trend: 'VLA模型' },
-            { company: '智元机器人', valuation: '150亿人民币', valuationCNY: 150, currency: '人民币', percentage: 60, latest: '产业资本', trend: '人形机器人' },
-            { company: '它石智航', valuation: '216亿人民币', valuationCNY: 216, currency: '人民币', percentage: 65, latest: '4.55亿美元Pre-A', trend: '人形机器人' },
-            { company: '智平方', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮超10亿', trend: '人形机器人' },
-            { company: '千寻智能', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: '约30亿融资', trend: 'VLA模型' },
-            { company: '自变量机器人', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮近20亿', trend: '人形机器人' },
-            { company: '帕西尼感知', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮超10亿', trend: '触觉传感器' },
-            { company: '星动纪元', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'A+轮10亿', trend: '人形机器人' },
-            { company: '逐际动力', valuation: '72亿人民币', valuationCNY: 72, currency: '人民币', percentage: 40, latest: '2亿美元B轮', trend: '轮足人形' },
-            { company: '加速进化', valuation: '50亿+人民币', valuationCNY: 50, currency: '人民币', percentage: 35, latest: 'B轮近10亿', trend: '人形机器人' },
-            { company: '傅利叶智能', valuation: '40亿+人民币', valuationCNY: 40, currency: '人民币', percentage: 30, latest: 'E轮近8亿', trend: '康复机器人' },
-            { company: '优必选', valuation: '上市', valuationCNY: 0, currency: '人民币', percentage: 25, latest: '营收20亿', trend: 'Walker S系列' },
-            { company: '梅卡曼德', valuation: '30亿+人民币', valuationCNY: 30, currency: '人民币', percentage: 25, latest: 'D轮近5亿', trend: '3D视觉' },
-            { company: '思灵机器人', valuation: '25亿+人民币', valuationCNY: 25, currency: '人民币', percentage: 20, latest: 'D轮', trend: '力控机器人' },
-            { company: '穹彻智能', valuation: '15亿+人民币', valuationCNY: 15, currency: '人民币', percentage: 15, latest: '阿里投资', trend: '具身大模型' },
-            { company: '魔法原子', valuation: '10亿+人民币', valuationCNY: 10, currency: '人民币', percentage: 10, latest: '天使轮', trend: '家庭服务' }
+            { company: '宇树科技', valuation: '420亿人民币', valuationCNY: 420, currency: '人民币', percentage: 80, latest: 'IPO募资42亿', trend: '人形+四足', date: '2026.03' },
+            { company: '灵心巧手', valuation: '240亿人民币', valuationCNY: 240, currency: '人民币', percentage: 75, latest: 'B轮15亿', trend: '灵巧手龙头', date: '2026.02' },
+            { company: '银河通用', valuation: '211亿人民币', valuationCNY: 211, currency: '人民币', percentage: 70, latest: 'B轮25亿+', trend: '全尺寸人形', date: '2026.03' },
+            { company: '星海图', valuation: '200亿人民币', valuationCNY: 200, currency: '人民币', percentage: 68, latest: 'B+轮20亿', trend: 'VLA模型', date: '2026.04' },
+            { company: '它石智航', valuation: '216亿人民币', valuationCNY: 216, currency: '人民币', percentage: 65, latest: '4.55亿美元Pre-A', trend: '人形机器人', date: '2026.04' },
+            { company: '智元机器人', valuation: '150亿人民币', valuationCNY: 150, currency: '人民币', percentage: 60, latest: '产业资本', trend: '人形机器人', date: '2026.04' },
+            { company: '智平方', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮超10亿', trend: '人形机器人', date: '2026.02' },
+            { company: '千寻智能', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: '约30亿融资', trend: 'VLA模型', date: '2026.04' },
+            { company: '自变量机器人', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮近20亿', trend: '人形机器人', date: '2026.04' },
+            { company: '帕西尼感知', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮超10亿', trend: '触觉传感器', date: '2026.01' },
+            { company: '星动纪元', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'A+轮10亿', trend: '人形机器人', date: '2026.01' },
+            { company: '魔法原子', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'A轮5亿+天使1.5亿', trend: '人形机器人', date: '2026.04' },
+            { company: '逐际动力', valuation: '72亿人民币', valuationCNY: 72, currency: '人民币', percentage: 40, latest: '2亿美元B轮', trend: '轮足人形', date: '2026.01' },
+            { company: '加速进化', valuation: '50亿+人民币', valuationCNY: 50, currency: '人民币', percentage: 35, latest: 'B轮近10亿', trend: '人形机器人', date: '2026.04' },
+            { company: '傅利叶智能', valuation: '40亿+人民币', valuationCNY: 40, currency: '人民币', percentage: 30, latest: 'E轮近8亿', trend: '康复机器人', date: '2026.01' },
+            { company: '优必选', valuation: '上市', valuationCNY: 0, currency: '人民币', percentage: 25, latest: '营收20亿', trend: 'Walker S系列', date: '2026.04' },
+            { company: '梅卡曼德', valuation: '30亿+人民币', valuationCNY: 30, currency: '人民币', percentage: 25, latest: 'D轮近5亿', trend: '3D视觉', date: '2025.08' },
+            { company: '思灵机器人', valuation: '25亿+人民币', valuationCNY: 25, currency: '人民币', percentage: 20, latest: 'D轮', trend: '力控机器人', date: '2025.07' },
+            { company: '穹彻智能', valuation: '15亿+人民币', valuationCNY: 15, currency: '人民币', percentage: 15, latest: '阿里投资', trend: '具身大模型', date: '2025.10' }
         ];
 
         function renderRanking() {
@@ -1051,7 +1057,10 @@
                                 <div class="valuation-fill" style="width: ${item.percentage}%"></div>
                             </div>
                         </td>
-                        <td class="funding-amount">${item.latest}</td>
+                        <td>
+                            <span class="funding-amount">${item.latest}</span>
+                            <div class="valuation-date">${item.date}</div>
+                        </td>
                         <td>${item.trend}</td>
                     </tr>
                 `;
