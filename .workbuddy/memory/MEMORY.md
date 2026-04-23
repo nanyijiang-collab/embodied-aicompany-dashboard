@@ -97,5 +97,16 @@
 - `data/crawl_state.json` - 爬虫状态（增量更新用）
 
 ## 下一步
-1. 设置每周自动化任务
-2. 接入真实数据源（36Kr/机器之心API）
+1. GitHub + Vercel 部署（已完成Git初始化）
+2. 设置每周自动化任务
+3. 接入真实数据源（36Kr/机器之心API）
+
+## 待完成：GitHub部署
+- GitHub账号：nanyijiang-collab
+- 待创建仓库：embodied-ai-dashboard
+- 待执行推送命令：
+  ```
+  git remote add origin https://github.com/nanyijiang-collab/embodied-ai-dashboard.git
+  git push -u origin main
+  ```
+- 然后在 Vercel 导入仓库部署

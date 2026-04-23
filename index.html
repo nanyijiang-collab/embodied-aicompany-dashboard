@@ -508,6 +508,16 @@
             display: none !important;
         }
         
+        /* Admin-only (hidden by default) */
+        .admin-only {
+            display: none;
+        }
+        
+        /* Show admin elements when isAdmin=true */
+        body.admin-mode .admin-only {
+            display: inline-block;
+        }
+        
         /* Loading */
         .loading {
             text-align: center;
@@ -590,7 +600,7 @@
                 <button class="btn btn-secondary" onclick="exportCSV()">
                     📥 导出CSV
                 </button>
-                <button class="btn btn-warning" onclick="detectNewCompanies()">
+                <button id="btnDetectNewCompanies" class="btn btn-warning admin-only" onclick="detectNewCompanies()">
                     🔍 发现新公司
                 </button>
             </div>
@@ -725,6 +735,9 @@
     </div>
 
     <script>
+        // ==================== 管理员模式 ====================
+        const isAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
+        
         // ==================== 数据 ====================
         let allEvents = [];
         let filteredEvents = [];
@@ -757,6 +770,11 @@
         
         // ==================== 初始化 ====================
         document.addEventListener('DOMContentLoaded', function() {
+            // 设置管理员模式
+            if (isAdmin) {
+                document.body.classList.add('admin-mode');
+            }
+            
             loadData();
             initTabs();
             initFilters();
@@ -782,6 +800,9 @@
         }
         
         function loadPotentialCompanies() {
+            // 只有管理员模式才加载新公司数据
+            if (!isAdmin) return;
+            
             fetch('data/potential_companies.json')
                 .then(r => r.json())
                 .then(data => {
@@ -1162,6 +1183,11 @@
         }
         
         function detectNewCompanies() {
+            if (!isAdmin) {
+                alert('此功能仅管理员可用');
+                return;
+            }
+            
             if (confirm('正在搜索疑似新公司，这可能需要一些时间...')) {
                 // 调用爬虫的新公司探测功能
                 // 实际实现中，这里应该调用后端API或运行Python脚本
