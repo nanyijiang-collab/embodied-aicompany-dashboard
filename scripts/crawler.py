@@ -201,13 +201,13 @@ COMPANIES = {
     ],
     'domestic_vla': [
         {'name': '千寻智能', 'alias': ['千寻智能', 'QIANKUN']},
-        {'name': '银河通用', 'alias': ['银河通用']},
+        {'name': '银河通用', 'alias': ['QbitAI']},
         {'name': '自变量机器人', 'alias': ['自变量机器人', 'Zibii']},
         {'name': '智元机器人', 'alias': ['智元机器人', 'Agibot']},
         {'name': '魔法原子', 'alias': ['魔法原子', 'MagicLab']},
         {'name': '星海图', 'alias': ['星海图', 'SeaStars']},
         {'name': '智平方', 'alias': ['智平方', 'RoboStep']},
-        {'name': '它石智航', 'alias': ['它石智航']},
+        {'name': '它石智航', 'alias': ['ITHOME']},
         {'name': '跨维智能', 'alias': ['跨维智能', 'DexVerse']},
         {'name': '穹彻智能', 'alias': ['穹彻智能', 'Noin Robotics']},
     ],
@@ -602,6 +602,126 @@ class EmbodiedAICrawler:
         
         return datetime.now().strftime('%Y-%m-%d')
     
+
+    def crawl_36kr(self, company_name: str) -> List[Dict]:
+        results = []
+        try:
+            url = f'https://36kr.com/search/articles/{quote(company_name)}'
+            resp = self.session.get(url, timeout=10)
+            soup = BeautifulSoup(resp.text, 'html.parser')
+            for item in soup.select('div.search-result-item')[:8]:
+                title_elem = item.select_one('a.article-item-title') or item.select_one('a')
+                if not title_elem: continue
+                title = title_elem.get_text(strip=True)
+                link = title_elem.get('href', '')
+                if link and not link.startswith('http'):
+                    link = 'https://36kr.com' + link if link.startswith('/') else link
+                results.append({
+                    'id': self._generate_id(link, title),
+                    'company': company_name,
+                    'type': self._classify_event(title),
+                    'title': title,
+                    'title_en': None,
+                    'summary': '',
+                    'source': 'QbitAI',
+                    'source_url': link,
+                    'date': datetime.now().strftime('%Y-%m-%d'),
+                    'created_at': datetime.now().isoformat(),
+                    'media_sources': ['36Kr']
+                })
+        except Exception as e:
+            print(f'[WARN] 36Kr failed for {company_name}: {e}')
+        return results
+
+    def crawl_huxiu(self, company_name: str) -> List[Dict]:
+        results = []
+        try:
+            url = f'https://www.huxiu.com/search.html?query={quote(company_name)}'
+            resp = self.session.get(url, timeout=10)
+            soup = BeautifulSoup(resp.text, 'html.parser')
+            for item in soup.select('div.article-list-mod')[:8]:
+                title_elem = item.select_one('a.tuwen-title')
+                if not title_elem: continue
+                title = title_elem.get_text(strip=True)
+                link = title_elem.get('href', '')
+                if link and not link.startswith('http'):
+                    link = 'https://www.huxiu.com' + link if link.startswith('/') else link
+                results.append({
+                    'id': self._generate_id(link, title),
+                    'company': company_name,
+                    'type': self._classify_event(title),
+                    'title': title,
+                    'title_en': None,
+                    'summary': '',
+                    'source': 'QbitAI',
+                    'source_url': link,
+                    'date': datetime.now().strftime('%Y-%m-%d'),
+                    'created_at': datetime.now().isoformat(),
+                    'media_sources': ['ITHOME']
+                })
+        except Exception as e:
+            print(f'[WARN] 铏庡梾 failed for {company_name}: {e}')
+        return results
+
+    def crawl_qbitai(self, company_name: str) -> List[Dict]:
+        results = []
+        try:
+            url = f'https://www.qbitai.com/search?keyword={quote(company_name)}'
+            resp = self.session.get(url, timeout=10)
+            soup = BeautifulSoup(resp.text, 'html.parser')
+            for item in soup.select('div.search-result')[:8]:
+                title_elem = item.select_one('a.title')
+                if not title_elem: continue
+                title = title_elem.get_text(strip=True)
+                link = title_elem.get('href', '')
+                if link and not link.startswith('http'):
+                    link = 'https://www.qbitai.com' + link if link.startswith('/') else link
+                results.append({
+                    'id': self._generate_id(link, title),
+                    'company': company_name,
+                    'type': self._classify_event(title),
+                    'title': title,
+                    'title_en': None,
+                    'summary': '',
+                    'source': 'QbitAI',
+                    'source_url': link,
+                    'date': datetime.now().strftime('%Y-%m-%d'),
+                    'created_at': datetime.now().isoformat(),
+                    'media_sources': ['QbitAI']
+                })
+        except Exception as e:
+            print(f'[WARN] 閲忓瓙浣?failed for {company_name}: {e}')
+        return results
+
+    def crawl_ithome(self, company_name: str) -> List[Dict]:
+        results = []
+        try:
+            url = f'https://www.ithome.com/search.html?q={quote(company_name)}'
+            resp = self.session.get(url, timeout=10)
+            soup = BeautifulSoup(resp.text, 'html.parser')
+            for item in soup.select('div.item')[:8]:
+                title_elem = item.select_one('a.t')
+                if not title_elem: continue
+                title = title_elem.get_text(strip=True)
+                link = title_elem.get('href', '')
+                if link and not link.startswith('http'):
+                    link = 'https://www.ithome.com' + link if link.startswith('/') else link
+                results.append({
+                    'id': self._generate_id(link, title),
+                    'company': company_name,
+                    'type': self._classify_event(title),
+                    'title': title,
+                    'title_en': None,
+                    'summary': '',
+                    'source': 'QbitAI',
+                    'source_url': link,
+                    'date': datetime.now().strftime('%Y-%m-%d'),
+                    'created_at': datetime.now().isoformat(),
+                    'media_sources': ['IT涔嬪']
+                })
+        except Exception as e:
+            print(f'[WARN] IT涔嬪 failed for {company_name}: {e}')
+        return results
     def crawl_all(self, incremental: bool = True) -> List[Dict]:
         """抓取所有公司数据"""
         all_events = []
@@ -644,13 +764,25 @@ class EmbodiedAICrawler:
             for name in names_to_search[:2]:  # 最多搜索2个别名
                 print(f"  📰 {name}...", end=' ')
                 
-                # 1. Bing新闻搜索
+                # 1. Bing新闻搜索（直链）
                 bing_events = self.crawl_bing_news(name)
                 
-                # 2. 搜狗微信搜索（新增）
+                # 2. 36Kr搜索（直链）
+                kr36_events = self.crawl_36kr(name)
+                
+                # 3. 虎嗅搜索（直链）- 创始人访谈、行业分析
+                huxiu_events = self.crawl_huxiu(name)
+                
+                # 4. 量子位搜索（直链）- AI科技报道
+                qbitai_events = self.crawl_qbitai(name)
+                
+                # 5. IT之家搜索（直链）- 科技产品动态
+                ithome_events = self.crawl_ithome(name)
+                
+                # 6. 搜狗微信搜索（直链）
                 wechat_events = self.crawl_sogou_wechat(name)
                 
-                events = bing_events + wechat_events
+                events = bing_events + kr36_events + huxiu_events + qbitai_events + ithome_events + wechat_events
                 
                 new_count = 0
                 for event in events:
