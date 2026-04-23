@@ -779,13 +779,32 @@
         // 新公司数据
         let potentialCompanies = [];
         
-        // 公司分类信息（用于判断地区）
-        const companyRegions = {
+        // 默认公司分类信息
+        const DEFAULT_COMPANY_REGIONS = {
             'overseas_vla': ['NVIDIA', 'Physical Intelligence', 'Skild AI', 'Figure AI', 'Agility Robotics', 'Apptronik', 'Field AI', 'Sanctuary AI'],
             'overseas_other': ['1X Technologies', 'Boston Dynamics', 'Mimic Robotics', 'Anybotics', 'Hexagon', 'Skydio'],
             'domestic_vla': ['千寻智能', '银河通用', '自变量机器人', '智元机器人', '魔法原子', '星海图', '智平方', '它石智航', '跨维智能', '穹彻智能'],
             'domestic_control': ['星动纪元', '思灵机器人', '逐际动力', '灵初智能', '大晓机器人', '梅卡曼德', '傅利叶智能', '七腾机器人', '珞石机器人', '镜识科技', '优理奇智能', '加速进化', '帕西尼感知', '地瓜机器人', '觅蜂科技']
         };
+        
+        // 公司分类信息（从localStorage加载）
+        let companyRegions = loadCompanyRegionsFromStorage();
+        
+        function loadCompanyRegionsFromStorage() {
+            const saved = localStorage.getItem('monitoredCompanies');
+            if (saved) {
+                try {
+                    return JSON.parse(saved);
+                } catch (e) {
+                    console.error('Failed to parse monitored companies:', e);
+                }
+            }
+            return JSON.parse(JSON.stringify(DEFAULT_COMPANY_REGIONS));
+        }
+        
+        function saveCompanyRegionsToStorage() {
+            localStorage.setItem('monitoredCompanies', JSON.stringify(companyRegions));
+        }
         
         // 类型名称映射
         const typeNames = {
@@ -837,6 +856,17 @@
             // 只有管理员模式才加载新公司数据
             if (!isAdmin) return;
             
+            // 优先从 localStorage 加载（保留用户操作状态）
+            const savedCompanies = loadPotentialCompaniesFromStorage();
+            if (savedCompanies) {
+                potentialCompanies = savedCompanies.filter(p => p.status === 'pending');
+                if (potentialCompanies.length > 0) {
+                    showNewCompaniesPanel();
+                }
+                return;
+            }
+            
+            // 否则从 JSON 文件加载
             fetch('data/potential_companies.json')
                 .then(r => r.json())
                 .then(data => {
@@ -1283,15 +1313,27 @@
         // 直接添加公司到监测列表（使用公司名称查找）
         function addCompanyDirectly(name) {
             const company = potentialCompanies.find(p => p.name === name);
-            if (!company) return;
+            if (!company) {
+                alert('❌ 未找到公司数据');
+                return;
+            }
             
+            // 更新公司状态
             company.status = 'approved';
             
             // 自动添加到国内VLA列表（默认）
             if (!companyRegions['domestic_vla']) {
                 companyRegions['domestic_vla'] = [];
             }
-            companyRegions['domestic_vla'].push(company.name);
+            if (!companyRegions['domestic_vla'].includes(name)) {
+                companyRegions['domestic_vla'].push(name);
+            }
+            
+            // 保存到 localStorage（持久化）
+            saveCompanyRegionsToStorage();
+            
+            // 保存 potentialCompanies 状态
+            savePotentialCompaniesToStorage();
             
             // 更新UI
             showNewCompaniesPanel();
@@ -1300,7 +1342,23 @@
             document.getElementById('totalCompanies').textContent = 
                 parseInt(document.getElementById('totalCompanies').textContent) + 1;
             
-            alert(`✅ 已添加 "${company.name}" 到监测列表`);
+            alert(`✅ 已添加 "${name}" 到监测列表（已保存，重启后仍有效）`);
+        }
+        
+        function savePotentialCompaniesToStorage() {
+            localStorage.setItem('potentialCompanies', JSON.stringify(potentialCompanies));
+        }
+        
+        function loadPotentialCompaniesFromStorage() {
+            const saved = localStorage.getItem('potentialCompanies');
+            if (saved) {
+                try {
+                    return JSON.parse(saved);
+                } catch (e) {
+                    console.error('Failed to parse potential companies:', e);
+                }
+            }
+            return null;
         }
         
         // 忽略公司（使用公司名称查找）
@@ -1309,6 +1367,9 @@
             if (!company) return;
             
             company.status = 'rejected';
+            
+            // 保存到 localStorage
+            savePotentialCompaniesToStorage();
             
             // 更新UI
             showNewCompaniesPanel();
