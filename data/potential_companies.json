@@ -5,7 +5,9 @@
     "article_title": "星海图完成数千万元天使轮融资，专注具身智能大脑研发",
     "article_url": "https://36kr.com/p/234567",
     "discovered_date": "2026-04-22",
-    "status": "pending"
+    "status": "approved",
+    "category": "domestic_vla",
+    "note": "已在监测列表中"
   },
   {
     "name": "Robotera",
@@ -13,7 +15,9 @@
     "article_title": "西班牙创业公司Robotera推出家庭陪伴人形机器人",
     "article_url": "https://jiqizhixin.com/news/robotera",
     "discovered_date": "2026-04-21",
-    "status": "pending"
+    "status": "approved",
+    "category": "overseas_other",
+    "note": "西班牙家庭陪伴人形机器人公司"
   },
   {
     "name": "帕西尼感知",
@@ -21,7 +25,9 @@
     "article_title": "帕西尼感知完成A轮融资，触觉传感器获得突破",
     "article_url": "https://pe.pedaily.cn/news/789",
     "discovered_date": "2026-04-20",
-    "status": "pending"
+    "status": "approved",
+    "category": "domestic_control",
+    "note": "已在监测列表中"
   },
   {
     "name": "它石智航",
@@ -29,7 +35,9 @@
     "article_title": "它石智航完成4.55亿美元Pre-A轮融资，创中国具身智能纪录",
     "article_url": "https://www.tmtpost.com/7954674.html",
     "discovered_date": "2026-04-23",
-    "status": "pending"
+    "status": "approved",
+    "category": "domestic_vla",
+    "note": "已在监测列表中"
   },
   {
     "name": "灵御智能",
@@ -37,7 +45,9 @@
     "article_title": "2025年53家新成立具身智能公司，灵御智能在列",
     "article_url": "https://zhuanlan.zhihu.com/p/1986330335596798250",
     "discovered_date": "2026-04-23",
-    "status": "pending"
+    "status": "approved",
+    "category": "domestic_vla",
+    "note": "清华系，专注具身数据Infra，完成数千万天使轮"
   },
   {
     "name": "星源智机器人",
@@ -45,7 +55,9 @@
     "article_title": "2025年53家新成立具身智能公司，星源智机器人在列",
     "article_url": "https://zhuanlan.zhihu.com/p/1986330335596798250",
     "discovered_date": "2026-04-23",
-    "status": "pending"
+    "status": "approved",
+    "category": "domestic_vla",
+    "note": "智源研究院孵化，专注具身大脑，2亿天使轮"
   },
   {
     "name": "Manifold AI",
@@ -53,7 +65,8 @@
     "article_title": "2025年53家新成立具身智能公司，Manifold AI在列",
     "article_url": "https://zhuanlan.zhihu.com/p/1986330335596798250",
     "discovered_date": "2026-04-23",
-    "status": "pending"
+    "status": "pending",
+    "note": "搜索结果不明确，暂不添加"
   },
   {
     "name": "墨奇智能",
@@ -61,7 +74,9 @@
     "article_title": "华为天才少年黄青虬创立墨奇智能，入局具身智能",
     "article_url": "https://www.toutiao.com/article/7589158247614808618/",
     "discovered_date": "2026-04-23",
-    "status": "pending"
+    "status": "approved",
+    "category": "domestic_vla",
+    "note": "华为天才少年创立，9亿天使轮，同时布局四足/轮式/人形"
   },
   {
     "name": "鹿明机器人",
@@ -69,6 +84,8 @@
     "article_title": "2025上半年融资复盘，鹿明机器人等脱颖而出",
     "article_url": "http://www.jushenyanxishe.com/archives/497673",
     "discovered_date": "2026-04-23",
-    "status": "pending"
+    "status": "approved",
+    "category": "domestic_vla",
+    "note": "追觅前高管创立，具身整机，数亿元Pre-A轮"
   }
 ]
