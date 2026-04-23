@@ -626,6 +626,9 @@
                 <button id="btnDetectNewCompanies" class="btn btn-warning admin-only" onclick="detectNewCompanies()">
                     🔍 发现新公司
                 </button>
+                <button id="btnDownloadPending" class="btn btn-success admin-only" onclick="downloadPendingCompanies()">
+                    📥 下载待添加公司
+                </button>
             </div>
         </header>
         
@@ -1386,6 +1389,33 @@
                 // 实际实现中，这里应该调用后端API或运行Python脚本
                 alert('🔍 新公司探测功能需要后台运行爬虫脚本。\n\n请在终端运行:\npython scripts/crawler.py --detect-new\n\n运行完成后刷新页面查看结果。');
             }
+        }
+        
+        // 下载待添加的公司列表
+        function downloadPendingCompanies() {
+            // 收集所有状态为pending的公司
+            const saved = loadPotentialCompaniesFromStorage() || potentialCompanies;
+            const pending = saved.filter(c => c.status === 'pending');
+            
+            if (pending.length === 0) {
+                alert('暂无待添加的新公司');
+                return;
+            }
+            
+            // 生成文本内容
+            const content = pending.map((c, i) => 
+                `${i + 1}. ${c.name}\n   来源: ${c.discovered_from}\n   文章: ${c.article_title || '无'}\n   链接: ${c.article_url || '无'}\n`
+            ).join('\n');
+            
+            const fullContent = `=== 具身智能媒体监测 - 待添加公司列表 ===\n生成时间: ${new Date().toLocaleString('zh-CN')}\n共 ${pending.length} 家公司\n\n${content}\n\n请复制以上内容发给AI助手进行添加。`;
+            
+            // 创建下载
+            const blob = new Blob([fullContent], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `待添加公司_${new Date().toISOString().split('T')[0]}.txt`;
+            link.click();
+            URL.revokeObjectURL(link.href);
         }
         
         // ==================== 刷新 & 导出 ====================
