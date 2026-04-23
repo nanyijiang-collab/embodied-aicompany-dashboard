@@ -35,6 +35,8 @@ class LinkValidator:
         'sina.com.cn', 'sohu.com', 'qq.com', '163.com',
         'eastmoney.com', 'cls.cn', 'jiemian.com', 'thepaper.cn',
         'github.com', 'arxiv.org',
+        # 微信相关（通过搜狗抓取）
+        'mp.weixin.qq.com', 'weixin.sogou.com',
         # 采访/深度报道来源
         'huxiu.com',      # 虎嗅网 - 创始人深度访谈
         'nbd.com.cn',      # 每日经济新闻 - 对话创始人
@@ -459,6 +461,105 @@ class EmbodiedAICrawler:
         
         return results
     
+    def crawl_sogou_wechat(self, keywords: str) -> List[Dict]:
+        """从搜狗微信搜索获取信息（可抓取微信文章标题+链接）"""
+        results = []
+        try:
+            # 搜狗微信文章搜索
+            url = f"https://weixin.sogou.com/weixin?type=2&query={quote(keywords)}&ie=utf8"
+            
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+            }
+            
+            resp = self.session.get(url, timeout=15, headers=headers)
+            soup = BeautifulSoup(resp.text, 'html.parser')
+            
+            # 解析微信文章列表
+            articles = soup.select('div.news-box li') or soup.select('ul.news-list li')
+            
+            for item in articles[:10]:  # 最多取10篇
+                try:
+                    title_elem = item.select_one('a.tit') or item.select_one('div.txt-box h3 a')
+                    if not title_elem:
+                        continue
+                    
+                    title = title_elem.get_text(strip=True)
+                    link = title_elem.get('href', '')
+                    
+                    # 如果是相对链接，转换为完整链接
+                    if link.startswith('/'):
+                        link = 'https://weixin.sogou.com' + link
+                    
+                    # 提取公众号名称
+                    account_elem = item.select_one('div.account') or item.select_one('span.s2')
+                    account = account_elem.get_text(strip=True) if account_elem else '微信公众号'
+                    
+                    # 提取日期（格式如：1小时前、昨天、03-15）
+                    date_elem = item.select_one('span.s1') or item.select_one('div.time')
+                    date_str = date_elem.get_text(strip=True) if date_elem else ''
+                    
+                    # 判断事件类型
+                    event_type = self._classify_event(title)
+                    
+                    results.append({
+                        'id': self._generate_id(link, title),
+                        'company': keywords,
+                        'type': event_type,
+                        'title': title,
+                        'title_en': None,
+                        'summary': '',
+                        'source': f'微信-{account}',
+                        'source_url': link,
+                        'date': self._parse_wechat_date(date_str),
+                        'created_at': datetime.now().isoformat(),
+                        'media_sources': [account, '微信公众号']
+                    })
+                except Exception as e:
+                    continue
+            
+            if results:
+                print(f"  [微信] {len(results)} articles")
+                
+        except Exception as e:
+            print(f"[WARN] Sogou WeChat search failed for {keywords}: {e}")
+        
+        return results
+    
+    def _parse_wechat_date(self, date_str: str) -> str:
+        """解析搜狗微信的日期格式"""
+        if not date_str:
+            return datetime.now().strftime('%Y-%m-%d')
+        
+        try:
+            # 相对时间：刚刚、1分钟前、1小时前、昨天等
+            if '刚刚' in date_str or 'minute' in date_str.lower():
+                return datetime.now().strftime('%Y-%m-%d')
+            elif '小时前' in date_str or 'hour' in date_str.lower():
+                return datetime.now().strftime('%Y-%m-%d')
+            elif '昨天' in date_str:
+                return (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+            elif '前天' in date_str:
+                return (datetime.now() - timedelta(days=2)).strftime('%Y-%m-%d')
+            
+            # 标准日期格式：03-15 或 2024-03-15
+            for fmt in ['%m-%d', '%Y-%m-%d', '%m/%d']:
+                try:
+                    date = datetime.strptime(date_str.strip(), fmt)
+                    # 如果没有年份，假设是今年
+                    if date.year == 1900:
+                        date = date.replace(year=datetime.now().year)
+                    return date.strftime('%Y-%m-%d')
+                except:
+                    pass
+                    
+        except:
+            pass
+        
+        return datetime.now().strftime('%Y-%m-%d')
+    
     def _classify_event(self, title: str) -> str:
         """分类事件类型"""
         title_lower = title.lower()
@@ -533,20 +634,49 @@ class EmbodiedAICrawler:
                     print(f"⏭️ Skipping crawl (last: {last_crawl}, {days_since} days ago)")
                     return all_events
         
-        # 抓取每个公司的数据
+        # 抓取每个公司的数据（中文名 + 别名）
         for company in all_companies:
-            print(f"  📰 {company['name']}...", end=' ')
-            events = self.crawl_bing_news(company['name'])
+            names_to_search = [company['name']] + company.get('alias', [])
+            names_to_search = list(set(names_to_search))  # 去重
             
-            new_count = 0
-            for event in events:
+            company_total = 0
+            for name in names_to_search[:2]:  # 最多搜索2个别名
+                print(f"  📰 {name}...", end=' ')
+                
+                # 1. Bing新闻搜索
+                bing_events = self.crawl_bing_news(name)
+                
+                # 2. 搜狗微信搜索（新增）
+                keywords = f"{name} 具身智能 OR 人形机器人 OR AI"
+                wechat_events = self.crawl_sogou_wechat(keywords)
+                
+                events = bing_events + wechat_events
+                
+                new_count = 0
+                for event in events:
+                    if event['id'] not in seen_ids:
+                        all_events.append(event)
+                        seen_ids.add(event['id'])
+                        new_count += 1
+                
+                print(f"+{new_count}")
+                time.sleep(0.5)  # 避免请求过快
+                company_total += new_count
+        
+        # 抓取行业关键词（行业动态）
+        print("\n  🔍 抓取行业动态（微信）...")
+        industry_keywords = [
+            '具身智能 融资',
+            '人形机器人 进展',
+            'VLA模型 具身智能',
+        ]
+        for kw in industry_keywords:
+            wechat_events = self.crawl_sogou_wechat(kw)
+            for event in wechat_events[:3]:  # 每关键词最多3条
                 if event['id'] not in seen_ids:
                     all_events.append(event)
                     seen_ids.add(event['id'])
-                    new_count += 1
-            
-            print(f"+{new_count}")
-            time.sleep(0.5)  # 避免请求过快
+            time.sleep(0.5)
         
         # 更新状态
         self._save_state()
