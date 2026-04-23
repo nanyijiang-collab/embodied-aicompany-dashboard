@@ -35,6 +35,14 @@ class LinkValidator:
         'sina.com.cn', 'sohu.com', 'qq.com', '163.com',
         'eastmoney.com', 'cls.cn', 'jiemian.com', 'thepaper.cn',
         'github.com', 'arxiv.org',
+        # 采访/深度报道来源
+        'huxiu.com',      # 虎嗅网 - 创始人深度访谈
+        'nbd.com.cn',      # 每日经济新闻 - 对话创始人
+        'cs.com.cn',       # 中国经济时报
+        'cnstock.com',     # 上海证券报
+        'xueqiu.com',     # 雪球 - 创业者访谈
+        'ce.cn',           # 中国经济网 - 创始人共话
+        'sznews.com',      # 深圳新闻网
     }
 
     # 已知假/无效域名
