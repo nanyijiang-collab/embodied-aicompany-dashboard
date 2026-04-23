@@ -564,17 +564,17 @@ class EmbodiedAICrawler:
         """分类事件类型"""
         title_lower = title.lower()
         
-        if any(kw in title for kw in ['融资', '投资', '轮', '估值', '资金', 'Funding', 'Series']):
+        if any(kw in title for kw in ['融资', '投资', '轮', '估值', '资金', 'Funding', 'Series', '完成', '获得']):
             return 'funding'
-        elif any(kw in title for kw in ['发布', '推出', '推出', 'Launch', 'Release', 'Product']):
+        elif any(kw in title for kw in ['发布', '推出', '推出', 'Launch', 'Release', 'Product', '新品']):
             return 'product'
-        elif any(kw in title for kw in ['开源', 'Open Source', 'Dataset', '数据集']):
+        elif any(kw in title for kw in ['开源', 'Open Source', 'Dataset', '数据集', '论文', 'Paper', 'CVPR', 'ICRA', 'NeurIPS', '顶会']):
             return 'tech_breakthrough'
-        elif any(kw in title for kw in ['合作', '落地', '签约', 'Deploy', 'Partnership']):
+        elif any(kw in title for kw in ['合作', '落地', '签约', 'Deploy', 'Partnership', '联合', '战略', '签约']):
             return 'project'
-        elif any(kw in title for kw in ['展会', '峰会', '大会', '论坛', 'Conference', 'Summit']):
+        elif any(kw in title for kw in ['展会', '峰会', '大会', '论坛', 'Conference', 'Summit', '世界机器人大会', 'WAIC', '工博会', '机器人展', '高交会', '智博会', '分享', '演讲', '报告']):
             return 'event'
-        elif any(kw in title for kw in ['采访', '观点', '访谈', 'CEO说', 'Interview']):
+        elif any(kw in title for kw in ['采访', '访谈', 'Interview', '对话', '专访', '独家', '观点', 'CEO说', '创始人', '创始人说', '投资人', '高管', 'CEO', '高管说', '圆桌', '十人谈', '表示', '称', '透露', '谈', '共话', '畅谈', '揭秘', '解析']):
             return 'interview'
         else:
             return 'other'
