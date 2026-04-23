@@ -102,6 +102,16 @@
 3. 接入真实数据源（36Kr/机器之心API）
 
 ## 待完成：GitHub部署
+
+## 已完成：链接验证模块
+- `scripts/crawler.py` 已集成 LinkValidator 类
+- 验证规则：
+  1. 首页链接检测（如 nvidia.com 而非具体文章）
+  2. 已知假域名过滤（starmotion.ai、fulani.cn等）
+  3. 可信来源自动通过（36kr、TechCrunch等）
+  4. HTTP状态码验证
+- 命令：`python scripts/crawler.py --validate`（仅验证）
+- 爬虫保存时自动验证：`python scripts/crawler.py`
 - GitHub账号：nanyijiang-collab
 - 待创建仓库：embodied-ai-dashboard
 - 待执行推送命令：

@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Embodied AI Media Monitor - 新公司探测器
-功能：自动发现疑似具身智能新公司，让用户确认是否加入监测列表
+Embodied AI Media Monitor - 主爬虫程序
+功能：抓取具身智能公司媒体动态
+包含：
+- 主爬虫类 EmbodiedAICrawler
+- 新公司探测器 NewCompanyDetector  
+- 链接验证器 LinkValidator（自动验证新闻链接质量）
 """
 
 import requests
@@ -9,15 +13,161 @@ from bs4 import BeautifulSoup
 import json
 import re
 from datetime import datetime, timedelta
-from typing import List, Dict, Optional, Set
+from typing import List, Dict, Optional, Set, Tuple
 import time
 import hashlib
 import os
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 import sys
 import io
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+# ============== 链接验证器 ==============
+class LinkValidator:
+    """链接质量验证器 - 防止假链接进入数据"""
+
+    # 可信新闻源（验证通过率高）
+    TRUSTED_SOURCES = {
+        'techcrunch.com', 'theverge.com', 'wired.com', 'arstechnica.com',
+        'engadget.com', 'reuters.com', 'bloomberg.com',
+        '36kr.com', 'jiqizhixin.com', 'qbitai.com', 'ifeng.com',
+        'sina.com.cn', 'sohu.com', 'qq.com', '163.com',
+        'eastmoney.com', 'cls.cn', 'jiemian.com', 'thepaper.cn',
+        'github.com', 'arxiv.org',
+    }
+
+    # 已知假/无效域名
+    KNOWN_BAD_DOMAINS = {
+        'starmotion.ai', 'fulani.cn', 'zibii.com', 'yolo.ai',
+        'mifeng.com', 'qiankun.ai', 'boonzi.com', 'paxini.com',
+    }
+
+    def __init__(self, timeout: int = 8):
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        })
+        self.timeout = timeout
+        self.validation_cache = {}
+
+    def is_homepage_url(self, url: str) -> bool:
+        """检测是否是首页链接"""
+        if not url:
+            return True
+        parsed = urlparse(url)
+        path = parsed.path.strip('/')
+        # 空路径或只有index.html等
+        if not path or path.lower() in ['', 'index', 'index.html', 'home']:
+            return True
+        return False
+
+    def is_trusted_source(self, url: str) -> bool:
+        """检查是否是可信来源"""
+        parsed = urlparse(url)
+        domain = parsed.netloc.lower().replace('www.', '')
+        return domain in self.TRUSTED_SOURCES
+
+    def validate_single(self, url: str, company: str = '') -> Dict:
+        """验证单个链接，返回验证结果"""
+        if not url:
+            return {'valid': False, 'reason': '空链接', 'suggestion': '需要提供新闻链接'}
+
+        # 检查缓存
+        if url in self.validation_cache:
+            return self.validation_cache[url]
+
+        result = {
+            'valid': True,
+            'url': url,
+            'reason': '',
+            'suggestion': '',
+            'is_trusted': self.is_trusted_source(url)
+        }
+
+        parsed = urlparse(url)
+        domain = parsed.netloc.lower()
+
+        # 1. 检查是否是首页
+        if self.is_homepage_url(url):
+            result['valid'] = False
+            result['reason'] = '链接指向首页'
+            result['suggestion'] = f'请搜索{company}的具体新闻文章'
+            self.validation_cache[url] = result
+            return result
+
+        # 2. 检查已知假域名
+        if any(bad in domain for bad in self.KNOWN_BAD_DOMAINS):
+            result['valid'] = False
+            result['reason'] = '域名不存在或为假链接'
+            result['suggestion'] = f'请搜索{company}的真实新闻链接'
+            self.validation_cache[url] = result
+            return result
+
+        # 3. 可信来源跳过HTTP验证
+        if result['is_trusted']:
+            self.validation_cache[url] = result
+            return result
+
+        # 4. HTTP验证
+        try:
+            resp = self.session.head(url, timeout=self.timeout, allow_redirects=True)
+            if resp.status_code >= 400:
+                result['valid'] = False
+                result['reason'] = f'HTTP {resp.status_code}'
+                result['suggestion'] = f'链接失效，请搜索{company}的新闻'
+            time.sleep(0.3)
+        except Exception as e:
+            result['valid'] = False
+            result['reason'] = '连接失败'
+            result['suggestion'] = f'请验证链接或搜索{company}的新闻'
+
+        self.validation_cache[url] = result
+        return result
+
+    def validate_events(self, events: List[Dict]) -> Tuple[List[Dict], Dict]:
+        """验证事件列表中的所有链接"""
+        report = {'total': len(events), 'valid': 0, 'invalid': 0, 'issues': []}
+        validated = []
+        seen_urls = {}
+
+        for event in events:
+            url = event.get('source_url', '')
+            company = event.get('company', '')
+
+            # 跳过空链接
+            if not url:
+                report['invalid'] += 1
+                report['issues'].append({
+                    'company': company,
+                    'title': event.get('title', '')[:40],
+                    'issue': '空链接'
+                })
+                continue
+
+            # 检测重复
+            if url in seen_urls:
+                continue  # 跳过重复
+
+            # 验证
+            validation = self.validate_single(url, company)
+
+            if validation['valid']:
+                report['valid'] += 1
+                validated.append(event)
+            else:
+                report['invalid'] += 1
+                report['issues'].append({
+                    'company': company,
+                    'title': event.get('title', '')[:40],
+                    'url': url,
+                    'issue': validation['reason'],
+                    'fix': validation['suggestion']
+                })
+
+            seen_urls[url] = True
+
+        return validated, report
 
 # ============== 公司库 ==============
 COMPANIES = {
@@ -412,8 +562,24 @@ class EmbodiedAICrawler:
         with open(STATE_FILE, 'w', encoding='utf-8') as f:
             json.dump(state, f, ensure_ascii=False, indent=2)
     
-    def save_data(self, events: List[Dict]):
-        """保存事件数据"""
+    def save_data(self, events: List[Dict], validate: bool = True):
+        """保存事件数据（带链接验证）"""
+        # 验证链接
+        if validate:
+            print("\n🔍 Validating links...")
+            validator = LinkValidator()
+            events, report = validator.validate_events(events)
+
+            print(f"   ✅ Valid: {report['valid']}")
+            print(f"   ❌ Invalid: {report['invalid']}")
+
+            if report['issues']:
+                print("\n⚠️  Link issues found:")
+                for issue in report['issues'][:5]:
+                    print(f"   - [{issue['company']}] {issue['issue']}")
+                    if 'fix' in issue:
+                        print(f"     → {issue['fix']}")
+
         os.makedirs(DATA_DIR, exist_ok=True)
         with open(EVENTS_FILE, 'w', encoding='utf-8') as f:
             json.dump(events, f, ensure_ascii=False, indent=2)
@@ -445,24 +611,46 @@ def main():
     print("=" * 50)
     print("Embodied AI Media Monitor - Low-cost Crawler")
     print("=" * 50)
-    
+
     # 增量模式（默认）
     incremental = '--full' not in sys.argv
     detect_new = '--detect-new' in sys.argv
-    
+    validate_only = '--validate' in sys.argv  # 仅验证模式
+
     crawler = EmbodiedAICrawler()
-    
-    # 抓取事件
+
+    # 单独验证模式
+    if validate_only:
+        print("\n🔍 Validating existing events.json...")
+        if os.path.exists(EVENTS_FILE):
+            with open(EVENTS_FILE, 'r', encoding='utf-8') as f:
+                events = json.load(f)
+            validator = LinkValidator()
+            events, report = validator.validate_events(events)
+            print(f"\n📊 Validation Report:")
+            print(f"   Total: {report['total']}")
+            print(f"   Valid: {report['valid']}")
+            print(f"   Invalid: {report['invalid']}")
+            if report['issues']:
+                print("\n⚠️  Issues:")
+                for issue in report['issues']:
+                    print(f"   - [{issue['company']}] {issue.get('url', 'N/A')}")
+                    print(f"     {issue['issue']}")
+        else:
+            print("❌ events.json not found")
+        return
+
+    # 正常爬取模式
     events = crawler.crawl_all(incremental=incremental)
-    crawler.save_data(events)
-    
+    crawler.save_data(events)  # 保存时自动验证
+
     # 检测新公司
     if detect_new:
         potential = crawler.detect_new_companies()
         print(f"\n📋 Potential new companies: {len(potential)}")
-    
+
     print("\n[OK] Crawl completed!")
-    
+
     # 统计
     funding_count = len([e for e in events if e.get('type') == 'funding'])
     pr_count = len(events) - funding_count
