@@ -472,6 +472,10 @@
             padding: 16px;
         }
         
+        .pagination.hidden {
+            display: none !important;
+        }
+        
         .pagination button {
             padding: 8px 12px;
             background: var(--bg-secondary);
@@ -720,6 +724,12 @@
                     </tbody>
                 </table>
             </div>
+            <!-- 估值排行分页 -->
+            <div class="pagination" id="rankingPagination">
+                <button class="btn-secondary" id="rankingPrevPage" onclick="prevRankingPage()">← 上一页</button>
+                <span id="rankingPageInfo">第 1 / 3 页</span>
+                <button class="btn-secondary" id="rankingNextPage" onclick="nextRankingPage()">下一页 →</button>
+            </div>
         </div>
         
         <!-- Pagination -->
@@ -896,10 +906,14 @@
             if (currentTab === 'ranking') {
                 tableContainer.classList.add('hidden');
                 rankingTable.classList.remove('hidden');
+                document.getElementById('pagination').classList.add('hidden');
+                document.getElementById('rankingPagination').classList.remove('hidden');
                 return;
             } else {
                 tableContainer.classList.remove('hidden');
                 rankingTable.classList.add('hidden');
+                document.getElementById('pagination').classList.remove('hidden');
+                document.getElementById('rankingPagination').classList.add('hidden');
             }
             
             // 计算分页
@@ -972,33 +986,58 @@
             return cny;
         }
         
+        // 估值排行数据（10亿+人民币）
+        const rankingData = [
+            // 海外
+            { company: 'Figure AI', valuation: '395亿美元', valuationCNY: 395 * 7.2, currency: '美元', percentage: 100, latest: '15亿美元B轮', trend: '人形机器人' },
+            { company: 'Apptronik', valuation: '53亿美元', valuationCNY: 53 * 7.2, currency: '美元', percentage: 55, latest: '9.35亿美元A轮', trend: 'Apollo人形' },
+            { company: '1X Technologies', valuation: '19亿美元', valuationCNY: 19 * 7.2, currency: '美元', percentage: 20, latest: 'EVE机器人', trend: '人形机器人' },
+            { company: 'Agility Robotics', valuation: '12亿美元', valuationCNY: 12 * 7.2, currency: '美元', percentage: 12, latest: 'B轮', trend: 'Digit物流' },
+            // 国内
+            { company: '宇树科技', valuation: '420亿人民币', valuationCNY: 420, currency: '人民币', percentage: 80, latest: 'IPO募资42亿', trend: '人形+四足' },
+            { company: '灵心巧手', valuation: '240亿人民币', valuationCNY: 240, currency: '人民币', percentage: 75, latest: 'B轮15亿', trend: '灵巧手龙头' },
+            { company: '银河通用', valuation: '211亿人民币', valuationCNY: 211, currency: '人民币', percentage: 70, latest: 'B轮25亿+', trend: '全尺寸人形' },
+            { company: '星海图', valuation: '200亿人民币', valuationCNY: 200, currency: '人民币', percentage: 68, latest: 'B+轮20亿', trend: 'VLA模型' },
+            { company: '智元机器人', valuation: '150亿人民币', valuationCNY: 150, currency: '人民币', percentage: 60, latest: '产业资本', trend: '人形机器人' },
+            { company: '它石智航', valuation: '216亿人民币', valuationCNY: 216, currency: '人民币', percentage: 65, latest: '4.55亿美元Pre-A', trend: '人形机器人' },
+            { company: '智平方', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮超10亿', trend: '人形机器人' },
+            { company: '千寻智能', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: '约30亿融资', trend: 'VLA模型' },
+            { company: '自变量机器人', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮近20亿', trend: '人形机器人' },
+            { company: '帕西尼感知', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮超10亿', trend: '触觉传感器' },
+            { company: '星动纪元', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'A+轮10亿', trend: '人形机器人' },
+            { company: '逐际动力', valuation: '72亿人民币', valuationCNY: 72, currency: '人民币', percentage: 40, latest: '2亿美元B轮', trend: '轮足人形' },
+            { company: '加速进化', valuation: '50亿+人民币', valuationCNY: 50, currency: '人民币', percentage: 35, latest: 'B轮近10亿', trend: '人形机器人' },
+            { company: '傅利叶智能', valuation: '40亿+人民币', valuationCNY: 40, currency: '人民币', percentage: 30, latest: 'E轮近8亿', trend: '康复机器人' },
+            { company: '优必选', valuation: '上市', valuationCNY: 0, currency: '人民币', percentage: 25, latest: '营收20亿', trend: 'Walker S系列' },
+            { company: '梅卡曼德', valuation: '30亿+人民币', valuationCNY: 30, currency: '人民币', percentage: 25, latest: 'D轮近5亿', trend: '3D视觉' },
+            { company: '思灵机器人', valuation: '25亿+人民币', valuationCNY: 25, currency: '人民币', percentage: 20, latest: 'D轮', trend: '力控机器人' },
+            { company: '穹彻智能', valuation: '15亿+人民币', valuationCNY: 15, currency: '人民币', percentage: 15, latest: '阿里投资', trend: '具身大模型' },
+            { company: '魔法原子', valuation: '10亿+人民币', valuationCNY: 10, currency: '人民币', percentage: 10, latest: '天使轮', trend: '家庭服务' }
+        ];
+
         function renderRanking() {
             const tbody = document.getElementById('rankingBody');
             
-            // 按估值排序的公司（统一换算为亿人民币）
-            const rankingData = [
-                { company: 'Figure AI', valuation: '30亿美元', valuationCNY: 30 * 7.2, currency: '美元', percentage: 100, latest: 'B轮25亿美元', trend: 'VLA+人形' },
-                { company: 'Physical Intelligence', valuation: '20亿美元', valuationCNY: 20 * 7.2, currency: '美元', percentage: 67, latest: '融资', trend: 'π模型' },
-                { company: 'Skild AI', valuation: '15亿美元', valuationCNY: 15 * 7.2, currency: '美元', percentage: 50, latest: 'B轮', trend: 'Skild Brain' },
-                { company: 'Agility Robotics', valuation: '12亿美元', valuationCNY: 12 * 7.2, currency: '美元', percentage: 40, latest: 'B轮', trend: 'Digit物流' },
-                { company: '智元机器人', valuation: '80亿人民币', valuationCNY: 80, currency: '人民币', percentage: 37, latest: 'B轮超10亿', trend: '人形机器人' },
-                { company: '千寻智能', valuation: '25亿人民币', valuationCNY: 25, currency: '人民币', percentage: 12, latest: 'Pre-A', trend: 'QKVLA模型' },
-                { company: '银河通用', valuation: '25亿人民币', valuationCNY: 25, currency: '人民币', percentage: 12, latest: 'A轮5亿', trend: '全尺寸人形' },
-                { company: '魔法原子', valuation: '15亿人民币', valuationCNY: 15, currency: '人民币', percentage: 7, latest: '天使轮3亿', trend: '家庭服务' },
-                { company: '思灵机器人', valuation: '15亿人民币', valuationCNY: 15, currency: '人民币', percentage: 7, latest: 'C+轮', trend: '力控技术' },
-                { company: '穹彻智能', valuation: '10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 5, latest: 'Pre-A', trend: 'Noin大模型' }
-            ];
+            // 按valuationCNY降序排序（海外+国内分开，国内按估值排序）
+            const sortedData = [...rankingData].sort((a, b) => b.valuationCNY - a.valuationCNY);
             
-            // 按valuationCNY降序排序
-            rankingData.sort((a, b) => b.valuationCNY - a.valuationCNY);
+            // 分页
+            const rankingPageSize = 10;
+            const rankingPage = parseInt(sessionStorage.getItem('rankingPage') || '1');
+            const start = (rankingPage - 1) * rankingPageSize;
+            const end = start + rankingPageSize;
+            const pageData = sortedData.slice(start, end);
+            const totalPages = Math.ceil(sortedData.length / rankingPageSize);
             
-            tbody.innerHTML = rankingData.map((item, index) => {
-                const rankClass = index < 3 ? `rank-${index + 1}` : 'rank-default';
+            tbody.innerHTML = pageData.map((item, index) => {
+                const globalIndex = start + index;
+                const rankClass = globalIndex < 3 ? `rank-${globalIndex + 1}` : 'rank-default';
                 const currencyIcon = item.currency === '美元' ? '💵' : '💴';
+                const isOverseas = ['Figure AI', 'Apptronik', '1X Technologies', 'Agility Robotics'].includes(item.company);
                 return `
                     <tr>
                         <td>
-                            <span class="rank-badge ${rankClass}">${index + 1}</span>
+                            <span class="rank-badge ${rankClass}">${globalIndex + 1}</span>
                         </td>
                         <td>
                             <div class="company-cell">
@@ -1017,6 +1056,29 @@
                     </tr>
                 `;
             }).join('');
+            
+            // 更新估值排行分页
+            document.getElementById('rankingPageInfo').textContent = `第 ${rankingPage} / ${totalPages} 页`;
+            document.getElementById('rankingPrevPage').disabled = rankingPage <= 1;
+            document.getElementById('rankingNextPage').disabled = rankingPage >= totalPages;
+        }
+        
+        // 估值排行翻页
+        function prevRankingPage() {
+            const rankingPage = parseInt(sessionStorage.getItem('rankingPage') || '1');
+            if (rankingPage > 1) {
+                sessionStorage.setItem('rankingPage', rankingPage - 1);
+                renderRanking();
+            }
+        }
+        
+        function nextRankingPage() {
+            const rankingPage = parseInt(sessionStorage.getItem('rankingPage') || '1');
+            const totalPages = Math.ceil(rankingData.length / 10);
+            if (rankingPage < totalPages) {
+                sessionStorage.setItem('rankingPage', rankingPage + 1);
+                renderRanking();
+            }
         }
         
         function getRegionBadge(company) {
