@@ -329,6 +329,12 @@ class EmbodiedAICrawler:
         })
         self.new_company_detector = NewCompanyDetector()
 
+    def _normalize_title(self, title: str) -> str:
+        """标题规范化：去除首尾空格、换行，转小写，用于去重比对"""
+        if not title:
+            return ''
+        return title.strip().lower()
+
     def _generate_id(self, url: str, title: str) -> str:
         content = (url + title).encode('utf-8')
         return hashlib.md5(content).hexdigest()[:12]
@@ -690,6 +696,7 @@ class EmbodiedAICrawler:
         """抓取所有公司数据"""
         all_events = []
         seen_ids = set()
+        seen_titles = set()  # 标题去重：规范化标题用于跨来源去重
 
         # 加载已有数据（只保留非微信来源）
         if os.path.exists(EVENTS_FILE):
@@ -701,8 +708,12 @@ class EmbodiedAICrawler:
                 if '微信' not in e.get('source', '') and 'sogou' not in e.get('source_url', '').lower()
             ]
             seen_ids = {e['id'] for e in existing}
+            for e in existing:
+                norm_title = self._normalize_title(e.get('title', ''))
+                if norm_title:
+                    seen_titles.add(norm_title)
             all_events = existing.copy()
-            print('[OK] Loaded ' + str(len(all_events)) + ' existing events (wechat removed)')
+            print('[OK] Loaded ' + str(len(all_events)) + ' existing events (wechat removed, title dedup init: ' + str(len(seen_titles)) + ')')
 
         # 增量检查
         if incremental:
@@ -718,9 +729,11 @@ class EmbodiedAICrawler:
         print('\n[163] Crawling media accounts...')
         media_163_events = self.crawl_163_media_accounts()
         for event in media_163_events:
-            if event['id'] not in seen_ids:
+            norm_title = self._normalize_title(event.get('title', ''))
+            if event['id'] not in seen_ids and norm_title not in seen_titles:
                 all_events.append(event)
                 seen_ids.add(event['id'])
+                seen_titles.add(norm_title)
         print('[163] Added ' + str(len(media_163_events)) + ' articles total')
 
         # ---- 步骤2：按公司名搜索（Bing + 36Kr + 虎嗅 + 量子位 + IT之家）----
@@ -749,9 +762,12 @@ class EmbodiedAICrawler:
 
                 new_count = 0
                 for event in events:
-                    if event['id'] not in seen_ids:
+                    # 双重去重：id去重 + 标题去重
+                    norm_title = self._normalize_title(event.get('title', ''))
+                    if event['id'] not in seen_ids and norm_title not in seen_titles:
                         all_events.append(event)
                         seen_ids.add(event['id'])
+                        seen_titles.add(norm_title)
                         new_count += 1
 
                 print('+' + str(new_count))
