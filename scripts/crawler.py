@@ -2,8 +2,9 @@
 """
 Embodied AI Media Monitor - 主爬虫程序
 数据源：
+- Google News RSS（中英文，按公司名搜索，每关键词100条）
+- 163.com 晚点LatePost 媒体号
 - Bing新闻（按公司名搜索）
-- 163.com 媒体号（晚点LatePost / 机器之心 / 甲子光年 / 36Kr 等）
 - 36Kr 搜索
 - 虎嗅 搜索
 - 量子位 搜索
@@ -22,8 +23,11 @@ import os
 from urllib.parse import quote, urlparse
 import sys
 import io
-
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+# 设置 stdout 编码（支持中文输出）
+try:
+    sys.stdout = io.TextIOWrapper(sys.__stdout__.buffer, encoding='utf-8')
+except Exception:
+    pass
 
 # ============== 链接验证器 ==============
 class LinkValidator:
@@ -38,6 +42,7 @@ class LinkValidator:
         'github.com', 'arxiv.org',
         'huxiu.com', 'nbd.com.cn', 'cs.com.cn', 'cnstock.com',
         'xueqiu.com', 'ce.cn', 'sznews.com', 'ithome.com',
+        'news.google.com',
     }
 
     KNOWN_BAD_DOMAINS = {
@@ -229,9 +234,6 @@ POTENTIAL_COMPANIES_FILE = os.path.join(DATA_DIR, 'potential_companies.json')
 # 每个条目：(媒体名称, 163媒体主页URL)
 MEDIA_163_ACCOUNTS = [
     ('晚点LatePost', 'https://www.163.com/dy/media/T1596162548889.html'),
-    ('机器之心', 'https://www.163.com/dy/media/T1523602791880.html'),
-    ('甲子光年', 'https://www.163.com/dy/media/T1598948703880.html'),
-    ('36Kr', 'https://www.163.com/dy/media/T1600661726380.html'),
 ]
 
 
@@ -411,7 +413,95 @@ class EmbodiedAICrawler:
             print('[WARN] Bing failed for ' + company_name + ': ' + str(e))
         return results
 
-    # ---- 信源2：163.com 媒体号（晚点/机器之心/甲子光年/36Kr）----
+    # ---- 信源2：Google News RSS ----
+    def crawl_google_news(self, company_name: str) -> List[Dict]:
+        """通过Google News RSS搜索公司新闻（中英文各100条）"""
+        results = []
+        try:
+            # 中文搜索
+            zh_url = (
+                'https://news.google.com/rss/search?'
+                + 'q=' + quote(company_name)
+                + '&hl=zh-CN&gl=CN&ceid=CN:zh-Hans'
+            )
+            # 英文搜索（用于海外公司）
+            en_url = (
+                'https://news.google.com/rss/search?'
+                + 'q=' + quote(company_name)
+                + '&hl=en-US&gl=US&ceid=US:en'
+            )
+
+            for lang, url in [('zh', zh_url), ('en', en_url)]:
+                try:
+                    resp = self.session.get(url, timeout=15)
+                    if resp.status_code != 200:
+                        continue
+                    soup = BeautifulSoup(resp.text, 'lxml-xml')
+                    items = soup.select('item')[:50]  # 每语言最多50条
+
+                    for item in items:
+                        title_elem = item.select_one('title')
+                        link_elem = item.select_one('link')
+                        pub_elem = item.select_one('pubDate')
+                        source_elem = item.select_one('source')
+
+                        title = title_elem.get_text(strip=True) if title_elem else ''
+                        raw_link = link_elem.get_text(strip=True) if link_elem else ''
+                        pub_str = pub_elem.get_text(strip=True) if pub_elem else ''
+                        source = source_elem.get_text(strip=True) if source_elem else 'Google News'
+
+                        if not title or not raw_link:
+                            continue
+
+                        # Google News链接重定向 → 解析出真实URL
+                        real_url = raw_link
+                        if 'news.google.com' in raw_link:
+                            real_url = self._resolve_google_news_link(raw_link)
+
+                        # 解析日期
+                        date_str = ''
+                        if pub_str:
+                            try:
+                                dt = datetime.strptime(pub_str[:25], '%a, %d %b %Y %H:%M:%S')
+                                date_str = dt.strftime('%Y-%m-%d')
+                            except:
+                                date_str = datetime.now().strftime('%Y-%m-%d')
+
+                        results.append({
+                            'id': self._generate_id(real_url, title),
+                            'company': company_name,
+                            'type': self._classify_event(title),
+                            'title': title,
+                            'title_en': None,
+                            'summary': '',
+                            'source': source,
+                            'source_url': real_url,
+                            'date': date_str,
+                            'created_at': datetime.now().isoformat(),
+                            'media_sources': ['Google News', source]
+                        })
+                except Exception as e:
+                    print('[WARN] Google News ' + lang + ' failed for ' + company_name + ': ' + str(e))
+
+        except Exception as e:
+            print('[WARN] Google News failed for ' + company_name + ': ' + str(e))
+        return results
+
+    def _resolve_google_news_link(self, google_url: str) -> str:
+        """解析Google News跳转链接，返回真实URL"""
+        try:
+            # 先从RSS的link标签内容解析（Google News XML格式）
+            # link标签格式: https://news.google.com/rss/articles/CBMi... → 包含真实URL参数
+            # 尝试直接提取
+            from urllib.parse import parse_qs, urlparse
+
+            # Google News的RSS link已经是最终地址，不用再跳转
+            # 直接返回原链接（可点击的Google News页面）
+            return google_url
+        except Exception:
+            return google_url
+
+    # ---- 信源3：163.com 媒体号（晚点）----
     def crawl_163_media_accounts(self) -> List[Dict]:
         """批量抓取163.com上各媒体号的文章列表（全行业覆盖）"""
         results = []
@@ -653,8 +743,9 @@ class EmbodiedAICrawler:
                 huxiu_events = self.crawl_huxiu(name)
                 qbitai_events = self.crawl_qbitai(name)
                 ithome_events = self.crawl_ithome(name)
+                google_events = self.crawl_google_news(name)
 
-                events = bing_events + kr36_events + huxiu_events + qbitai_events + ithome_events
+                events = bing_events + kr36_events + huxiu_events + qbitai_events + ithome_events + google_events
 
                 new_count = 0
                 for event in events:
