@@ -1,162 +1,97 @@
 #!/usr/bin/env python3
 """
-批量翻译新闻标题为英文
-使用 Google Translate 免费接口
+Google Translate 并行翻译 - 多线程加速版
 """
 import json
 import time
-import re
 import sys
-import os
+import io
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from deep_translator import GoogleTranslator
 
-# 尝试导入翻译库
-try:
-    from deep_translator import GoogleTranslator
-    USE_DEEP_TRANSLATOR = True
-except ImportError:
-    USE_DEEP_TRANSLATOR = False
-    print("deep_translator not installed, trying googletrans...")
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-try:
-    from googletrans import Translator
-    USE_GOOGLETRANS = True
-except ImportError:
-    USE_GOOGLETRANS = False
+THREADS = 10  # 10个线程并行
+BATCH_SIZE = 500  # 每次处理500条
 
-# 加载事件数据
-def load_events():
+def translate_single(text):
+    """翻译单条"""
+    try:
+        translator = GoogleTranslator(source='zh-CN', target='en')
+        return translator.translate(text[:500]).strip()
+    except:
+        return ''
+
+def main():
     with open('data/events.json', 'r', encoding='utf-8') as f:
-        return json.load(f)
+        data = json.load(f)
 
-# 保存事件数据
-def save_events(events):
-    with open('data/events.json', 'w', encoding='utf-8') as f:
-        json.dump(events, f, ensure_ascii=False, indent=2)
-
-# 使用 deep-translator 翻译
-def translate_deep(text, max_retries=3):
-    if not text or not text.strip():
-        return text
+    print(f"总新闻数: {len(data)}")
     
-    for attempt in range(max_retries):
-        try:
-            result = GoogleTranslator(source='zh-CN', target='en').translate(text)
-            return result
-        except Exception as e:
-            print(f"  翻译失败 (尝试 {attempt+1}/{max_retries}): {e}")
-            time.sleep(2)
-    return None
-
-# 使用 googletrans 翻译
-def translate_googletrans(text, max_retries=3):
-    if not text or not text.strip():
-        return text
+    # 找出需要翻译的
+    needs_translate = []
+    indices = []
+    for i, event in enumerate(data):
+        title_en = event.get('title_en', '')
+        if not title_en or len(title_en.strip()) < 5:
+            needs_translate.append(event.get('title', ''))
+            indices.append(i)
     
-    translator = Translator()
-    for attempt in range(max_retries):
-        try:
-            result = translator.translate(text, src='zh-CN', dest='en')
-            return result.text
-        except Exception as e:
-            print(f"  翻译失败 (尝试 {attempt+1}/{max_retries}): {e}")
-            time.sleep(2)
-    return None
-
-# 主翻译函数
-def translate(text):
-    if not text or not text.strip():
-        return text
+    total_need = len(needs_translate)
+    print(f"需要翻译: {total_need}")
     
-    if USE_DEEP_TRANSLATOR:
-        return translate_deep(text)
-    elif USE_GOOGLETRANS:
-        return translate_googletrans(text)
-    else:
-        print("No translator library available!")
-        return None
-
-# 翻译进度
-def translate_all(progress_callback=None):
-    events = load_events()
-    total = len(events)
+    if not needs_translate:
+        print("全部已完成！")
+        return
+    
+    # 只处理前 BATCH_SIZE 条
+    batch = needs_translate[:BATCH_SIZE]
+    batch_indices = indices[:BATCH_SIZE]
+    
+    print(f"\n并行翻译 {len(batch)} 条 ({THREADS} 线程)...\n")
+    start = time.time()
+    
+    # 多线程并行翻译
+    translations = []
+    with ThreadPoolExecutor(max_workers=THREADS) as executor:
+        futures = {executor.submit(translate_single, t): i for i, t in enumerate(batch)}
+        
+        completed = 0
+        for future in as_completed(futures):
+            result = future.result()
+            translations.append(result)
+            completed += 1
+            if completed % 100 == 0:
+                print(f"  进度: {completed}/{len(batch)}")
+    
+    elapsed = time.time() - start
+    print(f"\n完成! 耗时: {elapsed:.1f}秒 ({len(batch)/elapsed:.1f} 条/秒)")
+    
+    # 更新数据
+    for idx, translation in zip(batch_indices, translations):
+        data[idx]['title_en'] = translation
     
     # 统计
-    needs_translation = 0
-    already_has_en = 0
+    translated = sum(1 for e in data if e.get('title_en') and len(e.get('title_en', '')) > 5)
+    remaining = total_need - len(batch)
     
-    for event in events:
-        if not event.get('title_en'):
-            needs_translation += 1
-        else:
-            already_has_en += 1
+    print(f"\n{'='*50}")
+    print(f"本批完成: {len(batch)}")
+    print(f"剩余待翻: {remaining}")
+    print(f"总计英文标题: {translated}/{len(data)}")
     
-    print(f"总事件数: {total}")
-    print(f"已有英文标题: {already_has_en}")
-    print(f"需要翻译: {needs_translation}")
-    print()
+    # 保存
+    with open('data/events.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
     
-    if needs_translation == 0:
-        print("没有需要翻译的事件！")
-        return
-    
-    # 确认
-    response = input(f"是否开始翻译 {needs_translation} 条标题? (y/n): ")
-    if response.lower() != 'y':
-        print("取消翻译")
-        return
-    
-    # 开始翻译
-    translated = 0
-    failed = 0
-    
-    for i, event in enumerate(events):
-        if event.get('title_en'):
-            continue
-        
-        title = event.get('title', '')
-        if title:
-            # 显示进度
-            print(f"[{i+1}/{total}] 翻译: {title[:50]}...")
-            
-            title_en = translate(title)
-            if title_en:
-                event['title_en'] = title_en
-                translated += 1
-            else:
-                failed += 1
-                print(f"  翻译失败!")
-            
-            # 保存进度（每100条保存一次）
-            if (i + 1) % 100 == 0:
-                save_events(events)
-                print(f"\n>>> 已保存进度 ({i+1}/{total}) <<<\n")
-        
-        # 礼貌延迟，避免请求过快
-        time.sleep(0.3)
-    
-    # 最终保存
-    save_events(events)
-    
-    print()
-    print(f"翻译完成!")
-    print(f"成功翻译: {translated}")
-    print(f"翻译失败: {failed}")
-    print(f"已有英文: {already_has_en}")
+    # 翻译示例
+    print(f"\n{'='*50}")
+    print("翻译示例:")
+    shown = 0
+    for e in data[:20]:
+        if e.get('title_en') and shown < 5:
+            print(f"  {e.get('title')[:40]} → {e.get('title_en')[:50]}")
+            shown += 1
 
-if __name__ == '__main__':
-    print("=" * 50)
-    print("具身智能媒体监测 - 标题翻译工具")
-    print("=" * 50)
-    print()
-    
-    # 检查库
-    if not USE_DEEP_TRANSLATOR and not USE_GOOGLETRANS:
-        print("正在安装翻译库...")
-        os.system(f"{sys.executable} -m pip install deep-translator -q")
-        try:
-            from deep_translator import GoogleTranslator
-            USE_DEEP_TRANSLATOR = True
-        except:
-            pass
-    
-    translate_all()
+if __name__ == "__main__":
+    main()
