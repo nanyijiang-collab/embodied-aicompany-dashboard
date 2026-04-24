@@ -617,17 +617,20 @@
         <header class="header">
             <h1>
                 <span class="icon">🤖</span>
-                具身智能媒体监测看板
+                <span data-i18n="title">具身智能媒体监测看板</span>
             </h1>
             <div class="header-actions">
+                <button id="langToggle" class="btn btn-secondary" onclick="toggleLanguage()" style="min-width: 80px;">
+                    🌐 EN
+                </button>
                 <button class="btn btn-secondary" onclick="refreshData()">
-                    🔄 刷新
+                    🔄 <span data-i18n="refresh">刷新</span>
                 </button>
                 <button id="btnDetectNewCompanies" class="btn btn-warning admin-only" onclick="detectNewCompanies()">
-                    🔍 发现新公司
+                    🔍 <span data-i18n="detect">发现新公司</span>
                 </button>
                 <button id="btnDownloadPending" class="btn btn-success admin-only" onclick="downloadPendingCompanies()">
-                    📥 下载待添加公司
+                    📥 <span data-i18n="download">下载待添加公司</span>
                 </button>
             </div>
         </header>
@@ -637,10 +640,10 @@
             <div class="new-companies-header">
                 <h3>
                     <span>🆕</span>
-                    疑似新增企业
+                    <span data-i18n="newCompanies">疑似新增企业</span>
                     <span id="newCompaniesCount" class="tab-badge">0</span>
                 </h3>
-                <button class="btn btn-secondary" onclick="closeNewCompaniesPanel()">关闭</button>
+                <button class="btn btn-secondary" onclick="closeNewCompaniesPanel()"><span data-i18n="close">关闭</span></button>
             </div>
             <div id="newCompaniesList">
                 <!-- 新公司列表将在这里渲染 -->
@@ -651,53 +654,53 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="value" id="totalCompanies">39</div>
-                <div class="label">监控公司</div>
+                <div class="label" data-i18n="monitored">监控公司</div>
             </div>
             <div class="stat-card">
                 <div class="value" id="totalEvents">0</div>
-                <div class="label">总事件数</div>
+                <div class="label" data-i18n="totalEvents">总事件数</div>
             </div>
             <div class="stat-card">
                 <div class="value" id="fundingCount">0</div>
-                <div class="label">融资事件</div>
-                <div class="trend up" id="fundingTrend">+0 本月</div>
+                <div class="label" data-i18n="fundingEvents">融资事件</div>
+                <div class="trend up" id="fundingTrend">+0 <span data-i18n="thisMonth">本月</span></div>
             </div>
         </div>
         
         <!-- Tabs -->
         <div class="tabs">
-            <button class="tab active" data-tab="all">全部事件</button>
-            <button class="tab" data-tab="funding">融资动态</button>
-            <button class="tab" data-tab="ranking">🏆 估值排行</button>
+            <button class="tab active" data-tab="all" data-i18n="allEvents">全部事件</button>
+            <button class="tab" data-tab="funding" data-i18n="funding">融资动态</button>
+            <button class="tab" data-tab="ranking">🏆 <span data-i18n="ranking">估值排行</span></button>
         </div>
         
         <!-- Filters -->
         <div class="filters">
             <div class="filter-group">
-                <label>地区:</label>
+                <label data-i18n="region">地区:</label>
                 <select id="regionFilter">
-                    <option value="all">全部</option>
-                    <option value="domestic">🇨🇳 国内</option>
-                    <option value="overseas_us">🇺🇸 美国</option>
-                    <option value="overseas_eu">🇪🇺 欧洲</option>
+                    <option value="all" data-i18n="all">全部</option>
+                    <option value="domestic">🇨🇳 <span data-i18n="domestic">国内</span></option>
+                    <option value="overseas_us">🇺🇸 <span data-i18n="us">美国</span></option>
+                    <option value="overseas_eu">🇪🇺 <span data-i18n="eu">欧洲</span></option>
                 </select>
             </div>
             <div class="filter-group">
-                <label>类型:</label>
+                <label data-i18n="type">类型:</label>
                 <select id="typeFilter">
-                    <option value="all">全部</option>
-                    <option value="funding">💰 融资</option>
-                    <option value="product">📦 产品发布</option>
-                    <option value="tech_breakthrough">🔬 技术突破</option>
-                    <option value="project">🤝 项目落地</option>
-                    <option value="event">🎪 活动展会</option>
-                    <option value="interview">🎤 采访观点</option>
-                    <option value="other">📌 其他</option>
+                    <option value="all" data-i18n="all">全部</option>
+                    <option value="funding">💰 <span data-i18n="t_funding">融资</span></option>
+                    <option value="product">📦 <span data-i18n="t_product">产品发布</span></option>
+                    <option value="tech_breakthrough">🔬 <span data-i18n="t_tech">技术突破</span></option>
+                    <option value="project">🤝 <span data-i18n="t_project">项目落地</span></option>
+                    <option value="event">🎪 <span data-i18n="t_event">活动展会</span></option>
+                    <option value="interview">🎤 <span data-i18n="t_interview">采访观点</span></option>
+                    <option value="other">📌 <span data-i18n="t_other">其他</span></option>
                 </select>
             </div>
             <div class="filter-group">
-                <label>搜索:</label>
-                <input type="text" id="searchInput" placeholder="搜索公司或关键词...">
+                <label data-i18n="search">搜索:</label>
+                <input type="text" id="searchInput" data-placeholder-i18n="searchPlaceholder" placeholder="搜索公司或关键词...">
             </div>
         </div>
         
@@ -707,13 +710,13 @@
                 <table id="eventsTable">
                     <thead>
                         <tr>
-                            <th style="width: 100px;">日期</th>
-                            <th style="width: 120px;">公司</th>
-                            <th style="width: 100px;">类型</th>
-                            <th>事件标题</th>
-                            <th style="width: 100px;">来源</th>
-                            <th style="width: 150px;">媒体覆盖</th>
-                            <th style="width: 200px;">融资详情</th>
+                            <th style="width: 100px;" data-i18n="date">日期</th>
+                            <th style="width: 120px;" data-i18n="company">公司</th>
+                            <th style="width: 100px;" data-i18n="type">类型</th>
+                            <th data-i18n="eventTitle">事件标题</th>
+                            <th style="width: 100px;" data-i18n="source">来源</th>
+                            <th style="width: 150px;" data-i18n="mediaCoverage">媒体覆盖</th>
+                            <th style="width: 200px;" data-i18n="fundingDetails">融资详情</th>
                         </tr>
                     </thead>
                     <tbody id="eventsBody">
@@ -729,11 +732,11 @@
                 <table>
                     <thead>
                         <tr>
-                            <th style="width: 80px;">排名</th>
-                            <th style="width: 180px;">公司</th>
-                            <th>估值</th>
-                            <th style="width: 200px;">最新融资</th>
-                            <th>所属赛道</th>
+                            <th style="width: 80px;" data-i18n="rank">排名</th>
+                            <th style="width: 180px;" data-i18n="company">公司</th>
+                            <th data-i18n="valuation">估值</th>
+                            <th style="width: 200px;" data-i18n="latestFunding">最新融资</th>
+                            <th data-i18n="segment">所属赛道</th>
                         </tr>
                     </thead>
                     <tbody id="rankingBody">
@@ -743,25 +746,196 @@
             </div>
             <!-- 估值排行分页 -->
             <div class="pagination" id="rankingPagination">
-                <button class="btn-secondary" id="rankingPrevPage" onclick="prevRankingPage()">← 上一页</button>
-                <span id="rankingPageInfo">第 1 / 3 页</span>
-                <button class="btn-secondary" id="rankingNextPage" onclick="nextRankingPage()">下一页 →</button>
+                <button class="btn-secondary" id="rankingPrevPage" onclick="prevRankingPage()">← <span data-i18n="prev">上一页</span></button>
+                <span id="rankingPageInfo">Page 1 / 3</span>
+                <button class="btn-secondary" id="rankingNextPage" onclick="nextRankingPage()"><span data-i18n="next">下一页</span> →</button>
             </div>
         </div>
         
         <!-- Pagination -->
         <div class="pagination" id="pagination">
-            <button id="prevPage">← 上一页</button>
-            <span id="pageInfo">第 1 页</span>
-            <button id="nextPage">下一页 →</button>
+            <button id="prevPage">← <span data-i18n="prev">上一页</span></button>
+            <span id="pageInfo">Page 1</span>
+            <button id="nextPage"><span data-i18n="next">下一页</span> →</button>
         </div>
         
         <div class="last-updated">
-            最后更新: <span id="lastUpdated">--</span>
+            <span data-i18n="lastUpdated">最后更新</span>: <span id="lastUpdated">--</span>
+        </div>
+        
+        <!-- 翻译来源备注 -->
+        <div id="translationNote" class="translation-note" style="text-align: center; color: var(--text-secondary); font-size: 11px; margin-top: 8px; display: none;">
+            * English titles translated by Google Translate
         </div>
     </div>
 
     <script>
+        // ==================== 语言切换 ====================
+        const i18n = {
+            'zh': {
+                'title': '具身智能媒体监测看板',
+                'refresh': '刷新',
+                'detect': '发现新公司',
+                'download': '下载待添加公司',
+                'newCompanies': '疑似新增企业',
+                'close': '关闭',
+                'monitored': '监控公司',
+                'totalEvents': '总事件数',
+                'fundingEvents': '融资事件',
+                'thisMonth': '本月',
+                'allEvents': '全部事件',
+                'funding': '融资动态',
+                'ranking': '估值排行',
+                'region': '地区:',
+                'domestic': '国内',
+                'us': '美国',
+                'eu': '欧洲',
+                'type': '类型:',
+                't_funding': '融资',
+                't_product': '产品发布',
+                't_tech': '技术突破',
+                't_project': '项目落地',
+                't_event': '活动展会',
+                't_interview': '采访观点',
+                't_other': '其他',
+                'search': '搜索:',
+                'searchPlaceholder': '搜索公司或关键词...',
+                'date': '日期',
+                'company': '公司',
+                'eventTitle': '事件标题',
+                'source': '来源',
+                'mediaCoverage': '媒体覆盖',
+                'fundingDetails': '融资详情',
+                'rank': '排名',
+                'valuation': '估值',
+                'latestFunding': '最新融资',
+                'segment': '所属赛道',
+                'prev': '上一页',
+                'next': '下一页',
+                'lastUpdated': '最后更新',
+                'noData': '暂无数据',
+                'all': '全部',
+                'addedToMonitor': '已添加到监测列表（重启后仍有效）',
+                'notFound': '未找到公司数据',
+                'adminOnly': '此功能仅管理员可用',
+                'confirmRefresh': '正在从数据源刷新...',
+                'noNewCompanies': '暂无疑似新公司',
+                'noPendingCompanies': '暂无待添加的新公司',
+                'detectNewConfirm': '正在搜索疑似新公司，这可能需要一些时间...',
+                'detectNewTip': '新公司探测功能需要后台运行爬虫脚本。\n\n请在终端运行:\npython scripts/crawler.py --detect-new\n\n运行完成后刷新页面查看结果。',
+                'rankPage': '第',   // 第 X / Y 页
+                'rankPageOf': '/',
+                'page': '页',
+                'rankPageEn': 'Page',  // Page X of Y
+            },
+            'en': {
+                'title': 'Embodied AI Media Monitor',
+                'refresh': 'Refresh',
+                'detect': 'Detect New Companies',
+                'download': 'Download Pending Companies',
+                'newCompanies': 'Potential New Companies',
+                'close': 'Close',
+                'monitored': 'Companies Monitored',
+                'totalEvents': 'Total Events',
+                'fundingEvents': 'Funding Events',
+                'thisMonth': 'this month',
+                'allEvents': 'All Events',
+                'funding': 'Funding',
+                'ranking': 'Valuation Ranking',
+                'region': 'Region:',
+                'domestic': 'China',
+                'us': 'US',
+                'eu': 'Europe',
+                'type': 'Type:',
+                't_funding': 'Funding',
+                't_product': 'Product Launch',
+                't_tech': 'Tech Breakthrough',
+                't_project': 'Project Launch',
+                't_event': 'Event / Exhibition',
+                't_interview': 'Interview / Opinion',
+                't_other': 'Other',
+                'search': 'Search:',
+                'searchPlaceholder': 'Search companies or keywords...',
+                'date': 'Date',
+                'company': 'Company',
+                'eventTitle': 'Event Title',
+                'source': 'Source',
+                'mediaCoverage': 'Media Coverage',
+                'fundingDetails': 'Funding Details',
+                'rank': 'Rank',
+                'valuation': 'Valuation',
+                'latestFunding': 'Latest Funding',
+                'segment': 'Segment',
+                'prev': 'Prev',
+                'next': 'Next',
+                'lastUpdated': 'Last Updated',
+                'noData': 'No data',
+                'all': 'All',
+                'addedToMonitor': 'Added to monitor list (persists after refresh)',
+                'notFound': 'Company data not found',
+                'adminOnly': 'This feature is admin-only',
+                'confirmRefresh': 'Refreshing from data source...',
+                'noNewCompanies': 'No potential new companies found',
+                'noPendingCompanies': 'No pending new companies',
+                'detectNewConfirm': 'Searching for potential new companies. This may take a while...',
+                'detectNewTip': 'New company detection requires running the crawler in background.\n\nRun in terminal:\npython scripts/crawler.py --detect-new\n\nRefresh the page after it completes.',
+                'rankPage': '',
+                'rankPageOf': 'of',
+                'page': '',
+                'rankPageEn': 'Page',
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'zh';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            localStorage.setItem('lang', currentLang);
+            applyTranslations();
+        }
+
+        function applyTranslations() {
+            // Update toggle button
+            const btn = document.getElementById('langToggle');
+            btn.innerHTML = currentLang === 'zh' ? '🌐 EN' : '🌐 中';
+
+            // Update all data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) {
+                    el.textContent = i18n[currentLang][key];
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-placeholder-i18n]').forEach(el => {
+                const key = el.getAttribute('data-placeholder-i18n');
+                if (i18n[currentLang][key]) {
+                    el.placeholder = i18n[currentLang][key];
+                }
+            });
+
+            // Update type names in JS
+            typeNames['funding'] = i18n[currentLang]['t_funding'];
+            typeNames['product'] = i18n[currentLang]['t_product'];
+            typeNames['tech_breakthrough'] = i18n[currentLang]['t_tech'];
+            typeNames['project'] = i18n[currentLang]['t_project'];
+            typeNames['event'] = i18n[currentLang]['t_event'];
+            typeNames['interview'] = i18n[currentLang]['t_interview'];
+            typeNames['other'] = i18n[currentLang]['t_other'];
+
+            // Re-render to update dynamic content
+            renderTable();
+            renderRanking();
+            updatePagination();
+            
+            // 英文模式下显示翻译备注
+            const translationNote = document.getElementById('translationNote');
+            if (translationNote) {
+                translationNote.style.display = currentLang === 'en' ? 'block' : 'none';
+            }
+        }
+
         // ==================== 管理员模式 ====================
         const isAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
         
@@ -813,6 +987,70 @@
             'interview': '采访观点',
             'other': '其他'
         };
+
+        // 公司名称中英文映射
+        const companyNameMap = {
+            // 国内
+            '宇树科技': 'Unitree Robotics',
+            '银河通用': 'Galaxy Bots',
+            '星动纪元': 'Robot Era',
+            '智元机器人': 'AgiBot',
+            '逐际动力': 'CLIMBER Robotics',
+            '傅利叶智能': 'Fourier Intelligence',
+            '思灵机器人': 'Agile Robots',
+            '魔法原子': 'MagicLab',
+            '千寻智能': 'Chasing Intelligence',
+            '星海图': 'Sea of Stars',
+            '自变量机器人': 'Autobias Robotics',
+            '智平方': 'Botric',
+            '它石智航': 'Tashik',
+            '跨维智能': 'Mixverse',
+            '穹彻智能': 'Anyhome Robotics',
+            '帕西尼感知': 'Paxini',
+            '梅卡曼德': 'Mech-Mind',
+            '七腾机器人': 'Qitenn Robotics',
+            '珞石机器人': 'Rock robotics',
+            '镜识科技': 'MirrorTech',
+            '优理奇智能': 'Yulqi',
+            '加速进化': 'Boosted Robotics',
+            '灵初智能': 'Lingchu Intelligence',
+            '灵心巧手': 'Dexterous Heart',
+            '大晓机器人': 'Daxiao Robotics',
+            '地瓜机器人': 'Sweet Potato Robotics',
+            '觅蜂科技': 'Mifeng Technology',
+            '灵御智能': 'Lingyu Intelligence',
+            '星源智机器人': 'Xingyuan Robotics',
+            '墨奇智能': 'Moqi Intelligence',
+            '鹿明机器人': 'Luming Robotics',
+            '开普勒': 'Kepler',
+            '卓益得': 'Zhuoyide',
+            '天链机器人': 'Tianlian Robotics',
+            '北京人形机器人创新中心': 'Beijing Humanoid Robot Innovation Center',
+            '国地具身': 'Guodi Embodied',
+            '光轮智能': 'LightWheel Intelligence',
+            '优必选': 'UBTech Robotics',
+            '卧安机器人': 'Woan Robotics',
+            '至简动力': 'ZhiJian Dynamics',
+            // 海外
+            'Figure AI': 'Figure AI',
+            'Agility Robotics': 'Agility Robotics',
+            '1X Technologies': '1X Technologies',
+            'Apptronik': 'Apptronik',
+            'NVIDIA': 'NVIDIA',
+            'Physical Intelligence': 'Physical Intelligence',
+            'Skild AI': 'Skild AI',
+            'Sanctuary AI': 'Sanctuary AI',
+            'Field AI': 'Field AI',
+            'Boston Dynamics': 'Boston Dynamics',
+            'Mimic Robotics': 'Mimic Robotics',
+            'Anybotics': 'Anybotics',
+            'Hexagon': 'Hexagon',
+            'Skydio': 'Skydio'
+        };
+
+        function getCompanyNameEN(company) {
+            return companyNameMap[company] || company;
+        }
         
         // ==================== 初始化 ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -825,6 +1063,7 @@
             initTabs();
             initFilters();
             initPagination();
+            applyTranslations(); // 应用保存的语言设置
         });
         
         function loadData() {
@@ -991,11 +1230,13 @@
                         <td colspan="7">
                             <div class="empty-state">
                                 <div class="icon">📭</div>
-                                <div>暂无数据</div>
+                                <div data-i18n="noData">暂无数据</div>
                             </div>
                         </td>
                     </tr>
                 `;
+                // Translate empty state
+                document.querySelector('[data-i18n="noData"]').textContent = i18n[currentLang]['noData'];
                 return;
             }
             
@@ -1005,21 +1246,39 @@
                 const mediaTags = renderMediaTags(event.media_sources);
                 const fundingDetails = renderFundingDetails(event);
                 
+                // 英文模式下使用英文公司名和英文标题
+                const displayCompany = currentLang === 'en' ? getCompanyNameEN(event.company) : event.company;
+                
+                let titleHtml = '';
+                if (currentLang === 'en' && event.title_en) {
+                    // 英文模式：有英文标题 → 只显示英文
+                    titleHtml = `
+                        <div class="main-title">
+                            <a href="${event.source_url || '#'}" target="_blank" class="source-link">${event.title_en}</a>
+                        </div>
+                    `;
+                } else {
+                    // 中文模式，或者没有英文标题 → 显示中文
+                    titleHtml = `
+                        <div class="main-title">
+                            <a href="${event.source_url || '#'}" target="_blank" class="source-link">${event.title}</a>
+                        </div>
+                        ${event.title_en && currentLang === 'zh' ? `<div class="en-title">${event.title_en}</div>` : ''}
+                    `;
+                }
+                
                 return `
                     <tr>
                         <td>${event.date || '--'}</td>
                         <td>
                             <div class="company-cell">
                                 ${badge}
-                                <span>${event.company}</span>
+                                <span>${displayCompany}</span>
                             </div>
                         </td>
                         <td>${typeBadge}</td>
                         <td class="title-cell">
-                            <div class="main-title">
-                                <a href="${event.source_url || '#'}" target="_blank" class="source-link">${event.title}</a>
-                            </div>
-                            ${event.title_en ? `<div class="en-title">${event.title_en}</div>` : ''}
+                            ${titleHtml}
                         </td>
                         <td>${event.source || '--'}</td>
                         <td>${mediaTags}</td>
@@ -1050,33 +1309,86 @@
             return cny;
         }
         
-        // 估值排行数据（10亿+人民币）
+        // 估值排行数据（71家公司完整版）
         const rankingData = [
-            // 海外
-            { company: 'Figure AI', valuation: '395亿美元', valuationCNY: 395 * 7.2, currency: '美元', percentage: 100, latest: '15亿美元B轮', segment: '人形整机', date: '2025.02' },
-            { company: 'Apptronik', valuation: '53亿美元', valuationCNY: 53 * 7.2, currency: '美元', percentage: 55, latest: '9.35亿美元A轮', segment: '人形整机', date: '2026.02' },
-            { company: '1X Technologies', valuation: '19亿美元', valuationCNY: 19 * 7.2, currency: '美元', percentage: 20, latest: 'B轮融资', segment: '人形整机', date: '2025.12' },
-            { company: 'Agility Robotics', valuation: '12亿美元', valuationCNY: 12 * 7.2, currency: '美元', percentage: 12, latest: 'B轮', segment: '人形整机', date: '2024.09' },
-            // 国内
-            { company: '宇树科技', valuation: '420亿人民币', valuationCNY: 420, currency: '人民币', percentage: 80, latest: 'IPO募资42亿', segment: '人形整机/四足', date: '2026.03' },
-            { company: '灵心巧手', valuation: '240亿人民币', valuationCNY: 240, currency: '人民币', percentage: 75, latest: 'B轮15亿', segment: '灵巧手', date: '2026.02' },
-            { company: '它石智航', valuation: '216亿人民币', valuationCNY: 216, currency: '人民币', percentage: 65, latest: '4.55亿美元Pre-A', segment: '人形整机', date: '2026.04' },
-            { company: '银河通用', valuation: '211亿人民币', valuationCNY: 211, currency: '人民币', percentage: 70, latest: 'B轮25亿+', segment: '人形整机', date: '2026.03' },
-            { company: '星海图', valuation: '200亿人民币', valuationCNY: 200, currency: '人民币', percentage: 68, latest: 'B+轮20亿', segment: 'VLA模型', date: '2026.04' },
-            { company: '智元机器人', valuation: '150亿人民币', valuationCNY: 150, currency: '人民币', percentage: 60, latest: '产业资本', segment: '人形整机', date: '2026.04' },
-            { company: '智平方', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮超10亿', segment: '人形整机', date: '2026.02' },
-            { company: '千寻智能', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: '约30亿融资', segment: 'VLA模型', date: '2026.04' },
-            { company: '自变量机器人', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮近20亿', segment: '人形整机', date: '2026.04' },
-            { company: '帕西尼感知', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'B轮超10亿', segment: '传感器/灵巧手', date: '2026.01' },
-            { company: '星动纪元', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'A+轮10亿', segment: '人形整机', date: '2026.01' },
-            { company: '魔法原子', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 50, latest: 'A轮5亿+天使1.5亿', segment: '人形整机', date: '2026.04' },
-            { company: '逐际动力', valuation: '72亿人民币', valuationCNY: 72, currency: '人民币', percentage: 40, latest: '2亿美元B轮', segment: '人形整机', date: '2026.01' },
-            { company: '加速进化', valuation: '50亿+人民币', valuationCNY: 50, currency: '人民币', percentage: 35, latest: 'B轮近10亿', segment: '人形整机', date: '2026.04' },
-            { company: '傅利叶智能', valuation: '40亿+人民币', valuationCNY: 40, currency: '人民币', percentage: 30, latest: 'E轮近8亿', segment: '康复机器人', date: '2026.01' },
-            { company: '优必选', valuation: '上市', valuationCNY: 0, currency: '人民币', percentage: 25, latest: '营收20亿', segment: '人形整机', date: '2026.04' },
-            { company: '梅卡曼德', valuation: '30亿+人民币', valuationCNY: 30, currency: '人民币', percentage: 25, latest: 'D轮近5亿', segment: '3D视觉', date: '2025.08' },
-            { company: '思灵机器人', valuation: '25亿+人民币', valuationCNY: 25, currency: '人民币', percentage: 20, latest: 'D轮', segment: '力控/医疗', date: '2025.07' },
-            { company: '穹彻智能', valuation: '15亿+人民币', valuationCNY: 15, currency: '人民币', percentage: 15, latest: '阿里投资', segment: '具身大模型', date: '2025.10' }
+            // === 海外公司（按美元估值降序）===
+            { company: 'Figure AI', valuation: '395亿美元', valuationCNY: 395 * 7.2, currency: '美元', percentage: 100, latest: '15亿美元B轮', latest_en: '$1.5B Series B', segment: '人形整机', date: '2025.02', isOverseas: true },
+            { company: 'Physical Intelligence', valuation: '110亿美元', valuationCNY: 110 * 7.2, currency: '美元', percentage: 85, latest: '洽谈10亿美元', latest_en: '$1B in progress', segment: 'VLA模型', date: '2026.03', isOverseas: true },
+            { company: '1X Technologies', valuation: '100亿美元', valuationCNY: 100 * 7.2, currency: '美元', percentage: 80, latest: '洽谈10亿美元', latest_en: '$1B in progress', segment: '人形整机', date: '2025.09', isOverseas: true },
+            { company: 'Apptronik', valuation: '53亿美元', valuationCNY: 53 * 7.2, currency: '美元', percentage: 70, latest: '9.35亿美元A轮', latest_en: '$935M Series A', segment: '人形整机', date: '2026.02', isOverseas: true },
+            { company: 'Skild AI', valuation: '45亿美元', valuationCNY: 45 * 7.2, currency: '美元', percentage: 65, latest: 'B轮融资', latest_en: 'Series B', segment: 'VLA模型', date: '2025.06', isOverseas: true },
+            { company: 'Agility Robotics', valuation: '12亿美元', valuationCNY: 12 * 7.2, currency: '美元', percentage: 45, latest: 'B轮', latest_en: 'Series B', segment: '人形整机', date: '2024.09', isOverseas: true },
+            { company: 'Sanctuary AI', valuation: '约10亿美元', valuationCNY: 10 * 7.2, currency: '美元', percentage: 40, latest: 'B轮融资', latest_en: 'Series B', segment: '人形整机', date: '2024.12', isOverseas: true },
+            { company: 'Field AI', valuation: '约5亿美元', valuationCNY: 5 * 7.2, currency: '美元', percentage: 35, latest: 'A轮', latest_en: 'Series A', segment: 'VLA模型', date: '2024.10', isOverseas: true },
+            { company: 'Mimic Robotics', valuation: '约2亿美元', valuationCNY: 2 * 7.2, currency: '美元', percentage: 25, latest: '天使轮', latest_en: 'Angel Round', segment: '模仿学习', date: '2024.06', isOverseas: true },
+            { company: 'Anybotics', valuation: '约5亿美元', valuationCNY: 5 * 7.2, currency: '美元', percentage: 35, latest: 'B轮', latest_en: 'Series B', segment: '四足/巡检', date: '2024.08', isOverseas: true },
+            { company: 'Skydio', valuation: '约10亿美元', valuationCNY: 10 * 7.2, currency: '美元', percentage: 40, latest: '战略投资', latest_en: 'Strategic Investment', segment: '无人机/AI', date: '2024.05', isOverseas: true },
+            { company: 'Hexagon', valuation: '约200亿美元', valuationCNY: 200 * 7.2, currency: '美元', percentage: 95, latest: '上市', latest_en: 'Listed', segment: '工业感知', date: '2026.04', isOverseas: true },
+            
+            // === 国内公司（按亿人民币估值降序）===
+            { company: '宇树科技', valuation: '420亿人民币', valuationCNY: 420, currency: '人民币', percentage: 92, latest: 'IPO募资42亿', latest_en: 'IPO ¥4.2B Raised', segment: '人形整机/四足', date: '2026.03', isOverseas: false },
+            { company: '灵心巧手', valuation: '240亿人民币', valuationCNY: 240, currency: '人民币', percentage: 85, latest: 'B轮15亿', latest_en: 'Series B ¥15B', segment: '灵巧手', date: '2026.02', isOverseas: false },
+            { company: '它石智航', valuation: '216亿人民币', valuationCNY: 216, currency: '人民币', percentage: 80, latest: '4.55亿美元Pre-A', latest_en: '$455M Pre-A', segment: '人形整机', date: '2026.04', isOverseas: false },
+            { company: '银河通用', valuation: '225亿人民币', valuationCNY: 225, currency: '人民币', percentage: 82, latest: 'B轮25亿+', latest_en: 'Series B ¥25B+', segment: '人形整机', date: '2026.03', isOverseas: false },
+            { company: '星海图', valuation: '200亿人民币', valuationCNY: 200, currency: '人民币', percentage: 78, latest: 'B+轮20亿', latest_en: 'Series B+ ¥20B', segment: 'VLA模型', date: '2026.04', isOverseas: false },
+            { company: '傅利叶智能', valuation: '80亿人民币', valuationCNY: 80, currency: '人民币', percentage: 65, latest: '战略投资3亿', latest_en: 'Strategic ¥300M', segment: '人形整机', date: '2026.01', isOverseas: false },
+            { company: '至简动力', valuation: '72亿人民币', valuationCNY: 72, currency: '人民币', percentage: 62, latest: 'C轮融资', latest_en: 'Series C', segment: '人形整机', date: '2025.07', isOverseas: false },
+            { company: '智元机器人', valuation: '150亿人民币', valuationCNY: 150, currency: '人民币', percentage: 75, latest: '产业资本', latest_en: 'Strategic', segment: '人形整机', date: '2026.04', isOverseas: false },
+            { company: '智平方', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 70, latest: 'B轮超10亿', latest_en: 'Series B ¥10B+', segment: '人形整机', date: '2026.02', isOverseas: false },
+            { company: '千寻智能', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 70, latest: '约30亿融资', latest_en: '¥30B Raised', segment: 'VLA模型', date: '2026.04', isOverseas: false },
+            { company: '自变量机器人', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 70, latest: 'B轮近20亿', latest_en: 'Series B ~¥20B', segment: '人形整机', date: '2026.04', isOverseas: false },
+            { company: '帕西尼感知', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 70, latest: 'B轮超10亿', latest_en: 'Series B ¥10B+', segment: '传感器/灵巧手', date: '2026.01', isOverseas: false },
+            { company: '星动纪元', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 70, latest: 'A+轮10亿', latest_en: 'Series A+ ¥10B', segment: '人形整机', date: '2026.01', isOverseas: false },
+            { company: '普渡机器人', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 70, latest: '近10亿新融资', latest_en: '~¥1B New', segment: '服务机器人', date: '2026.04', isOverseas: false },
+            { company: '魔法原子', valuation: '100亿+人民币', valuationCNY: 100, currency: '人民币', percentage: 70, latest: 'A轮5亿+天使1.5亿', latest_en: 'Series A ¥500M', segment: '人形整机', date: '2026.04', isOverseas: false },
+            { company: '光轮智能', valuation: '70亿+人民币', valuationCNY: 70, currency: '人民币', percentage: 62, latest: '10亿A++轮', latest_en: '¥1B Series A++', segment: '数据/仿真', date: '2026.03', isOverseas: false },
+            { company: '逐际动力', valuation: '50亿+人民币', valuationCNY: 50, currency: '人民币', percentage: 58, latest: '5亿A轮系列', latest_en: '¥500M Series A', segment: '人形整机', date: '2026.03', isOverseas: false },
+            { company: '加速进化', valuation: '50亿+人民币', valuationCNY: 50, currency: '人民币', percentage: 58, latest: 'C轮近10亿', latest_en: 'Series C ~¥1B', segment: '人形整机', date: '2026.04', isOverseas: false },
+            { company: '梅卡曼德', valuation: '30亿+人民币', valuationCNY: 30, currency: '人民币', percentage: 48, latest: 'D轮近5亿', latest_en: 'Series D ~¥500M', segment: '3D视觉', date: '2025.08', isOverseas: false },
+            { company: '灵初智能', valuation: '20亿+人民币', valuationCNY: 20, currency: '人民币', percentage: 42, latest: '天使+Pre-A共20亿', latest_en: '¥2B Angel+Pre-A', segment: '人形整机', date: '2026.04', isOverseas: false },
+            { company: '思灵机器人', valuation: '72亿人民币', valuationCNY: 72, currency: '人民币', percentage: 62, latest: 'C轮2.2亿美元', latest_en: '$220M Series C', segment: '力控/医疗', date: '2025.07', isOverseas: false },
+            { company: '穹彻智能', valuation: '15亿+人民币', valuationCNY: 15, currency: '人民币', percentage: 38, latest: 'Pre-A轮', latest_en: 'Pre-A Round', segment: '具身大模型', date: '2025.10', isOverseas: false },
+            { company: '大晓机器人', valuation: '约10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 32, latest: 'A轮融资', latest_en: 'Series A', segment: '人形整机', date: '2025.06', isOverseas: false },
+            { company: '七腾机器人', valuation: '约10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 32, latest: 'B轮融资', latest_en: 'Series B', segment: '特种机器人', date: '2025.08', isOverseas: false },
+            { company: '跨维智能', valuation: '约8亿人民币', valuationCNY: 8, currency: '人民币', percentage: 28, latest: '天使轮', latest_en: 'Angel Round', segment: '3D视觉', date: '2025.03', isOverseas: false },
+            { company: '珞石机器人', valuation: '约20亿人民币', valuationCNY: 20, currency: '人民币', percentage: 42, latest: '战略投资', latest_en: 'Strategic', segment: '协作机器人', date: '2025.09', isOverseas: false },
+            { company: '镜识科技', valuation: '约5亿人民币', valuationCNY: 5, currency: '人民币', percentage: 25, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.05', isOverseas: false },
+            { company: '优理奇智能', valuation: '约5亿人民币', valuationCNY: 5, currency: '人民币', percentage: 25, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.04', isOverseas: false },
+            { company: '觅蜂科技', valuation: '约5亿人民币', valuationCNY: 5, currency: '人民币', percentage: 25, latest: 'A轮', latest_en: 'Series A', segment: '传感器', date: '2025.07', isOverseas: false },
+            { company: '优必选', valuation: '上市~550亿港元', valuationCNY: 500, currency: '人民币', percentage: 85, latest: '港股上市', latest_en: 'Listed HK', segment: '人形整机', date: '2026.04', isOverseas: false },
+            
+            // === 赛道分类补充（其他监测公司）===
+            { company: '英伟达 (NVIDIA)', valuation: '上市~2万亿美元', valuationCNY: 20000 * 7.2, currency: '美元', percentage: 100, latest: '上市', latest_en: 'Listed', segment: '芯片/平台', date: '2026.04', isOverseas: true },
+            { company: '地瓜机器人', valuation: '约20亿人民币', valuationCNY: 20, currency: '人民币', percentage: 42, latest: 'A轮', latest_en: 'Series A', segment: '芯片/算力', date: '2025.10', isOverseas: false },
+            
+            // === 其他相关具身智能公司 ===
+            { company: 'Boston Dynamics', valuation: '约15亿美元', valuationCNY: 15 * 7.2, currency: '美元', percentage: 50, latest: '被现代收购', latest_en: 'Acquired by Hyundai', segment: '人形整机', date: '2024.01', isOverseas: true },
+            { company: '卧安机器人', valuation: '上市~255亿港元', valuationCNY: 230, currency: '港币', percentage: 75, latest: '港股上市', latest_en: 'Listed HK', segment: '服务机器人', date: '2026.04', isOverseas: false },
+            { company: '小鹏鹏行', valuation: '约50亿人民币', valuationCNY: 50, currency: '人民币', percentage: 58, latest: 'A轮融资', latest_en: 'Series A', segment: '人形整机', date: '2025.06', isOverseas: false },
+            { company: '智朝机器人', valuation: '约10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 32, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.04', isOverseas: false },
+            { company: '乐聚机器人', valuation: '约8亿人民币', valuationCNY: 8, currency: '人民币', percentage: 28, latest: 'A轮', latest_en: 'Series A', segment: '人形整机', date: '2025.07', isOverseas: false },
+            { company: '云深处', valuation: '约10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 32, latest: 'B轮', latest_en: 'Series B', segment: '四足机器人', date: '2025.09', isOverseas: false },
+            { company: '松延动力', valuation: '约5亿人民币', valuationCNY: 5, currency: '人民币', percentage: 25, latest: 'A轮', latest_en: 'Series A', segment: '人形整机', date: '2025.06', isOverseas: false },
+            { company: '卓益得机器人', valuation: '约3亿人民币', valuationCNY: 3, currency: '人民币', percentage: 20, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.03', isOverseas: false },
+            { company: '开普勒人形机器人', valuation: '约5亿人民币', valuationCNY: 5, currency: '人民币', percentage: 25, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.05', isOverseas: false },
+            { company: '理工华汇', valuation: '约5亿人民币', valuationCNY: 5, currency: '人民币', percentage: 25, latest: 'A轮', latest_en: 'Series A', segment: '人形整机', date: '2025.08', isOverseas: false },
+            { company: '天链机器人', valuation: '约3亿人民币', valuationCNY: 3, currency: '人民币', percentage: 20, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.04', isOverseas: false },
+            { company: '青瞳视觉', valuation: '约2亿人民币', valuationCNY: 2, currency: '人民币', percentage: 15, latest: 'A轮', latest_en: 'Series A', segment: '3D视觉', date: '2025.05', isOverseas: false },
+            { company: '墨奇科技', valuation: '约5亿人民币', valuationCNY: 5, currency: '人民币', percentage: 25, latest: 'B轮', latest_en: 'Series B', segment: '3D视觉', date: '2025.07', isOverseas: false },
+            { company: '国地具身智能', valuation: '约3亿人民币', valuationCNY: 3, currency: '人民币', percentage: 20, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.06', isOverseas: false },
+            { company: '北京人形机器人创新中心', valuation: '非上市', valuationCNY: 0, currency: '人民币', percentage: 30, latest: '国研机构', latest_en: 'National Research Center', segment: '人形整机', date: '2026.04', isOverseas: false },
+            { company: '国家地方共建具身智能机器人创新中心', valuation: '非上市', valuationCNY: 0, currency: '人民币', percentage: 30, latest: '国研机构', latest_en: 'National Research Center', segment: '人形整机', date: '2026.04', isOverseas: false },
+            { company: '星尘智能', valuation: '约3亿人民币', valuationCNY: 3, currency: '人民币', percentage: 20, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.05', isOverseas: false },
+            { company: '钛虎机器人', valuation: '约2亿人民币', valuationCNY: 2, currency: '人民币', percentage: 15, latest: 'Pre-A轮', latest_en: 'Pre-A Round', segment: '人形整机', date: '2025.08', isOverseas: false },
+            { company: '爱动超越', valuation: '约2亿人民币', valuationCNY: 2, currency: '人民币', percentage: 15, latest: 'A轮', latest_en: 'Series A', segment: '人形整机', date: '2025.07', isOverseas: false },
+            { company: '神源久机器人', valuation: '约1亿人民币', valuationCNY: 1, currency: '人民币', percentage: 10, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.06', isOverseas: false },
+            { company: '千秒机器人', valuation: '约1亿人民币', valuationCNY: 1, currency: '人民币', percentage: 10, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.08', isOverseas: false },
+            { company: '坤维科技', valuation: '约3亿人民币', valuationCNY: 3, currency: '人民币', percentage: 20, latest: 'A轮', latest_en: 'Series A', segment: '传感器', date: '2025.09', isOverseas: false },
+            { company: '因时机器人', valuation: '约3亿人民币', valuationCNY: 3, currency: '人民币', percentage: 20, latest: 'B轮', latest_en: 'Series B', segment: '灵巧手', date: '2025.07', isOverseas: false },
+            { company: '思特威', valuation: '约5亿人民币', valuationCNY: 5, currency: '人民币', percentage: 25, latest: '战略投资', latest_en: 'Strategic', segment: '传感器', date: '2025.06', isOverseas: false },
+            { company: '灵宇宙', valuation: '约2亿人民币', valuationCNY: 2, currency: '人民币', percentage: 15, latest: '天使轮', latest_en: 'Angel Round', segment: '具身大模型', date: '2025.07', isOverseas: false },
+            { company: '智平方机器人', valuation: '约10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 32, latest: 'A轮', latest_en: 'Series A', segment: '人形整机', date: '2025.08', isOverseas: false },
+            { company: '灵御智能', valuation: '约2亿人民币', valuationCNY: 2, currency: '人民币', percentage: 15, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.06', isOverseas: false }
         ];
 
         function renderRanking() {
@@ -1093,11 +1405,48 @@
             const pageData = sortedData.slice(start, end);
             const totalPages = Math.ceil(sortedData.length / rankingPageSize);
             
+            // 英文翻译映射
+            const segmentNamesEN = {
+                '人形整机': 'Humanoid Robot',
+                'VLA模型': 'VLA Model',
+                '传感器/灵巧手': 'Sensor/Hand',
+                '3D视觉': '3D Vision',
+                '具身大模型': 'Embodied AI Model',
+                '人形整机/四足': 'Humanoid/Quadruped',
+                '灵巧手': 'Dexterous Hand',
+                '康复机器人': 'Rehabilitation Robot',
+                '力控/医疗': 'Force Control/Medical',
+                '四足': 'Quadruped Robot',
+                '服务机器人': 'Service Robot',
+                '数据/仿真': 'Data/Simulation',
+                '特种机器人': 'Special Robot',
+                '协作机器人': 'Collaborative Robot',
+                '芯片/平台': 'Chip/Platform',
+                '芯片/算力': 'Chip/Computing',
+                '模仿学习': 'Imitation Learning',
+                '四足/巡检': 'Quadruped/Inspection',
+                '无人机/AI': 'Drone/AI',
+                '工业感知': 'Industrial Sensing'
+            };
+            const currencyNamesEN = {
+                '美元': 'USD',
+                '人民币': 'CNY'
+            };
+            
             tbody.innerHTML = pageData.map((item, index) => {
                 const globalIndex = start + index;
                 const rankClass = globalIndex < 3 ? `rank-${globalIndex + 1}` : 'rank-default';
-                const currencyIcon = item.currency === '美元' ? '💵' : '💴';
-                const isOverseas = ['Figure AI', 'Apptronik', '1X Technologies', 'Agility Robotics'].includes(item.company);
+                const isOverseas = item.isOverseas || ['Figure AI', 'Apptronik', '1X Technologies', 'Agility Robotics', 'Physical Intelligence', 'Skild AI', 'Sanctuary AI', 'Field AI', 'Mimic Robotics', 'Anybotics', 'Skydio', 'Hexagon', '英伟达', 'NVIDIA'].some(name => item.company.includes(name));
+                // 英文模式下显示英文公司名
+                const displayName = currentLang === 'en' ? getCompanyNameEN(item.company) : item.company;
+                // 英文模式下显示英文赛道名
+                const displaySegment = currentLang === 'en' ? (segmentNamesEN[item.segment] || item.segment) : item.segment;
+                // 英文模式下显示英文融资信息
+                const displayValuation = currentLang === 'en' 
+                    ? `${item.valuation.replace('亿美元', 'Billion USD').replace('亿人民币', 'Billion').replace('亿', 'Billion')}`
+                    : item.valuation;
+                const displayLatest = currentLang === 'en' ? (item.latest_en || item.latest) : item.latest;
+                
                 return `
                     <tr>
                         <td>
@@ -1106,28 +1455,32 @@
                         <td>
                             <div class="company-cell">
                                 ${getRegionBadge(item.company)}
-                                <span>${item.company}</span>
+                                <span>${displayName}</span>
                             </div>
                         </td>
                         <td>
-                            <span class="funding-amount">${currencyIcon} ${item.valuation}</span>
+                            <span class="funding-amount">${displayValuation}</span>
                             <div class="valuation-bar">
                                 <div class="valuation-fill" style="width: ${item.percentage}%"></div>
                             </div>
                         </td>
                         <td>
-                            <span class="funding-amount">${item.latest}</span>
+                            <span class="funding-amount">${displayLatest}</span>
                             <div class="valuation-date">${item.date}</div>
                         </td>
                         <td>
-                            <span class="segment-tag" onclick="filterByCompany('${item.company}')" title="点击查看该公司所有事件">${item.segment}</span>
+                            <span class="segment-tag" onclick="filterByCompany('${item.company}')" title="${currentLang === 'en' ? 'Click to view all events from this company' : '点击查看该公司所有事件'}">${displaySegment}</span>
                         </td>
                     </tr>
                 `;
             }).join('');
             
             // 更新估值排行分页
-            document.getElementById('rankingPageInfo').textContent = `第 ${rankingPage} / ${totalPages} 页`;
+            if (currentLang === 'en') {
+                document.getElementById('rankingPageInfo').textContent = `Page ${rankingPage} of ${totalPages}`;
+            } else {
+                document.getElementById('rankingPageInfo').textContent = `第 ${rankingPage} / ${totalPages} 页`;
+            }
             document.getElementById('rankingPrevPage').disabled = rankingPage <= 1;
             document.getElementById('rankingNextPage').disabled = rankingPage >= totalPages;
         }
@@ -1206,13 +1559,28 @@
             
             let html = '';
             if (event.amount) {
-                html += `<div class="funding-amount">${event.amount}</div>`;
+                // 英文模式下翻译金额：亿 -> Billion
+                let amountEn = event.amount;
+                if (currentLang === 'en') {
+                    amountEn = amountEn.replace(/([\d.]+)亿美元/g, '$$$1 Billion USD')
+                                     .replace(/([\d.]+)亿人民币/g, '¥$1 Billion')
+                                     .replace(/([\d.]+)亿/g, '¥$1 Billion');
+                }
+                html += `<div class="funding-amount">${amountEn}</div>`;
             }
             if (event.valuation) {
-                html += `<div class="valuation">估值: ${event.valuation}</div>`;
+                const valuationLabel = currentLang === 'en' ? 'Valuation: ' : '估值: ';
+                let valuationEn = event.valuation;
+                if (currentLang === 'en') {
+                    valuationEn = valuationEn.replace(/([\d.]+)亿美元/g, '$$$1 Billion USD')
+                                             .replace(/([\d.]+)亿人民币/g, '¥$1 Billion')
+                                             .replace(/([\d.]+)亿/g, '¥$1 Billion');
+                }
+                html += `<div class="valuation">${valuationLabel}${valuationEn}</div>`;
             }
             if (event.investors) {
-                html += `<div class="investors">${event.investors}</div>`;
+                const investorsLabel = currentLang === 'en' ? 'Investors: ' : '';
+                html += `<div class="investors">${investorsLabel}${event.investors}</div>`;
             }
             return html || '--';
         }
@@ -1237,7 +1605,12 @@
         
         function updatePagination() {
             const totalPages = Math.ceil(filteredEvents.length / pageSize);
-            document.getElementById('pageInfo').textContent = `第 ${currentPage} / ${totalPages} 页`;
+            const t = i18n[currentLang];
+            if (currentLang === 'en') {
+                document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+            } else {
+                document.getElementById('pageInfo').textContent = `第 ${currentPage} / ${totalPages} 页`;
+            }
             document.getElementById('prevPage').disabled = currentPage <= 1;
             document.getElementById('nextPage').disabled = currentPage >= totalPages;
         }
@@ -1266,7 +1639,7 @@
             panel.classList.remove('hidden');
             
             if (pendingCompanies.length === 0) {
-                list.innerHTML = '<div class="empty-state">暂无疑似新公司</div>';
+                list.innerHTML = '<div class="empty-state">' + i18n[currentLang]['noNewCompanies'] + '</div>';
                 return;
             }
             
@@ -1275,14 +1648,14 @@
                     <div class="company-info">
                         <div class="company-name">${company.name}</div>
                         <div class="company-meta">
-                            发现于: ${company.discovered_from}
-                            ${company.article_url ? `<br><a href="${company.article_url}" target="_blank">查看来源文章 →</a>` : ''}
+                            ${currentLang === 'en' ? 'Found in:' : '发现于:'} ${company.discovered_from}
+                            ${company.article_url ? `<br><a href="${company.article_url}" target="_blank">${currentLang === 'en' ? 'View source article →' : '查看来源文章 →'}</a>` : ''}
                             ${company.article_title ? `<br>"${company.article_title.substring(0, 60)}..."` : ''}
                         </div>
                     </div>
                     <div class="company-actions">
-                        <button class="btn-add" onclick="addCompanyDirectly('${company.name}')">✓ 添加到监测</button>
-                        <button class="btn-reject" onclick="rejectCompany('${company.name}')">✗ 忽略</button>
+                        <button class="btn-add" onclick="addCompanyDirectly('${company.name}')">✓ ${currentLang === 'en' ? 'Add to Monitor' : '添加到监测'}</button>
+                        <button class="btn-reject" onclick="rejectCompany('${company.name}')">✗ ${currentLang === 'en' ? 'Ignore' : '忽略'}</button>
                     </div>
                 </div>
             `).join('');
@@ -1296,7 +1669,7 @@
         function addCompanyDirectly(name) {
             const company = potentialCompanies.find(p => p.name === name);
             if (!company) {
-                alert('❌ 未找到公司数据');
+                alert('❌ ' + i18n[currentLang]['notFound']);
                 return;
             }
             
@@ -1324,7 +1697,7 @@
             document.getElementById('totalCompanies').textContent = 
                 parseInt(document.getElementById('totalCompanies').textContent) + 1;
             
-            alert(`✅ 已添加 "${name}" 到监测列表（已保存，重启后仍有效）`);
+            alert(`✅ "${name}" - ${i18n[currentLang]['addedToMonitor']}`);
         }
         
         function savePotentialCompaniesToStorage() {
@@ -1359,14 +1732,12 @@
         
         function detectNewCompanies() {
             if (!isAdmin) {
-                alert('此功能仅管理员可用');
+                alert(i18n[currentLang]['adminOnly']);
                 return;
             }
             
-            if (confirm('正在搜索疑似新公司，这可能需要一些时间...')) {
-                // 调用爬虫的新公司探测功能
-                // 实际实现中，这里应该调用后端API或运行Python脚本
-                alert('🔍 新公司探测功能需要后台运行爬虫脚本。\n\n请在终端运行:\npython scripts/crawler.py --detect-new\n\n运行完成后刷新页面查看结果。');
+            if (confirm(i18n[currentLang]['detectNewConfirm'])) {
+                alert('🔍 ' + i18n[currentLang]['detectNewTip']);
             }
         }
         
@@ -1377,7 +1748,7 @@
             const pending = saved.filter(c => c.status === 'pending');
             
             if (pending.length === 0) {
-                alert('暂无待添加的新公司');
+                alert(i18n[currentLang]['noPendingCompanies']);
                 return;
             }
             
@@ -1392,21 +1763,24 @@
             const blob = new Blob([fullContent], { type: 'text/plain;charset=utf-8' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `待添加公司_${new Date().toISOString().split('T')[0]}.txt`;
+            link.download = currentLang === 'en'
+                ? `pending_companies_${new Date().toISOString().split('T')[0]}.txt`
+                : `待添加公司_${new Date().toISOString().split('T')[0]}.txt`;
             link.click();
             URL.revokeObjectURL(link.href);
         }
         
         // ==================== 刷新 & 导出 ====================
         function refreshData() {
-            if (confirm('正在从数据源刷新...')) {
-                // 实际实现中，这里应该调用后端API
+            if (confirm(i18n[currentLang]['confirmRefresh'])) {
                 location.reload();
             }
         }
         
         function exportCSV() {
-            const headers = ['日期', '公司', '类型', '标题', '英文标题', '来源', '链接', '媒体覆盖', '金额', '估值', '投资方'];
+            const headers = currentLang === 'en'
+                ? ['Date', 'Company', 'Type', 'Title', 'English Title', 'Source', 'Link', 'Media Coverage', 'Amount', 'Valuation', 'Investors']
+                : ['日期', '公司', '类型', '标题', '英文标题', '来源', '链接', '媒体覆盖', '金额', '估值', '投资方'];
             const rows = filteredEvents.map(event => [
                 event.date || '',
                 event.company,
@@ -1428,7 +1802,9 @@
             const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `具身智能媒体监测_${new Date().toISOString().split('T')[0]}.csv`;
+            link.download = currentLang === 'en'
+                ? `embodied_ai_monitor_${new Date().toISOString().split('T')[0]}.csv`
+                : `具身智能媒体监测_${new Date().toISOString().split('T')[0]}.csv`;
             link.click();
         }
         
