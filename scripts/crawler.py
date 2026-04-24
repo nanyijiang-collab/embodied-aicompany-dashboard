@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Embodied AI Media Monitor - 主爬虫程序
-功能：抓取具身智能公司媒体动态
-包含：
-- 主爬虫类 EmbodiedAICrawler
-- 新公司探测器 NewCompanyDetector  
-- 链接验证器 LinkValidator（自动验证新闻链接质量）
+数据源：
+- Bing新闻（按公司名搜索）
+- 163.com 媒体号（晚点LatePost / 机器之心 / 甲子光年 / 36Kr 等）
+- 36Kr 搜索
+- 虎嗅 搜索
+- 量子位 搜索
+- IT之家 搜索
 """
 
 import requests
@@ -25,9 +27,8 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # ============== 链接验证器 ==============
 class LinkValidator:
-    """链接质量验证器 - 防止假链接进入数据"""
+    """链接质量验证器"""
 
-    # 可信新闻源（验证通过率高）
     TRUSTED_SOURCES = {
         'techcrunch.com', 'theverge.com', 'wired.com', 'arstechnica.com',
         'engadget.com', 'reuters.com', 'bloomberg.com',
@@ -35,19 +36,10 @@ class LinkValidator:
         'sina.com.cn', 'sohu.com', 'qq.com', '163.com',
         'eastmoney.com', 'cls.cn', 'jiemian.com', 'thepaper.cn',
         'github.com', 'arxiv.org',
-        # 微信相关（通过搜狗抓取）
-        'mp.weixin.qq.com', 'weixin.sogou.com',
-        # 采访/深度报道来源
-        'huxiu.com',      # 虎嗅网 - 创始人深度访谈
-        'nbd.com.cn',      # 每日经济新闻 - 对话创始人
-        'cs.com.cn',       # 中国经济时报
-        'cnstock.com',     # 上海证券报
-        'xueqiu.com',     # 雪球 - 创业者访谈
-        'ce.cn',           # 中国经济网 - 创始人共话
-        'sznews.com',      # 深圳新闻网
+        'huxiu.com', 'nbd.com.cn', 'cs.com.cn', 'cnstock.com',
+        'xueqiu.com', 'ce.cn', 'sznews.com', 'ithome.com',
     }
 
-    # 已知假/无效域名
     KNOWN_BAD_DOMAINS = {
         'starmotion.ai', 'fulani.cn', 'zibii.com', 'yolo.ai',
         'mifeng.com', 'qiankun.ai', 'boonzi.com', 'paxini.com',
@@ -62,81 +54,66 @@ class LinkValidator:
         self.validation_cache = {}
 
     def is_homepage_url(self, url: str) -> bool:
-        """检测是否是首页链接"""
         if not url:
             return True
         parsed = urlparse(url)
         path = parsed.path.strip('/')
-        # 空路径或只有index.html等
         if not path or path.lower() in ['', 'index', 'index.html', 'home']:
             return True
         return False
 
     def is_trusted_source(self, url: str) -> bool:
-        """检查是否是可信来源"""
         parsed = urlparse(url)
         domain = parsed.netloc.lower().replace('www.', '')
         return domain in self.TRUSTED_SOURCES
 
     def validate_single(self, url: str, company: str = '') -> Dict:
-        """验证单个链接，返回验证结果"""
         if not url:
             return {'valid': False, 'reason': '空链接', 'suggestion': '需要提供新闻链接'}
-
-        # 检查缓存
         if url in self.validation_cache:
             return self.validation_cache[url]
 
         result = {
-            'valid': True,
-            'url': url,
-            'reason': '',
-            'suggestion': '',
+            'valid': True, 'url': url, 'reason': '', 'suggestion': '',
             'is_trusted': self.is_trusted_source(url)
         }
-
         parsed = urlparse(url)
         domain = parsed.netloc.lower()
 
-        # 1. 检查是否是首页
         if self.is_homepage_url(url):
             result['valid'] = False
             result['reason'] = '链接指向首页'
-            result['suggestion'] = f'请搜索{company}的具体新闻文章'
+            result['suggestion'] = '请搜索' + company + '的具体新闻文章'
             self.validation_cache[url] = result
             return result
 
-        # 2. 检查已知假域名
         if any(bad in domain for bad in self.KNOWN_BAD_DOMAINS):
             result['valid'] = False
             result['reason'] = '域名不存在或为假链接'
-            result['suggestion'] = f'请搜索{company}的真实新闻链接'
+            result['suggestion'] = '请搜索' + company + '的真实新闻链接'
             self.validation_cache[url] = result
             return result
 
-        # 3. 可信来源跳过HTTP验证
         if result['is_trusted']:
             self.validation_cache[url] = result
             return result
 
-        # 4. HTTP验证
         try:
             resp = self.session.head(url, timeout=self.timeout, allow_redirects=True)
             if resp.status_code >= 400:
                 result['valid'] = False
-                result['reason'] = f'HTTP {resp.status_code}'
-                result['suggestion'] = f'链接失效，请搜索{company}的新闻'
+                result['reason'] = 'HTTP ' + str(resp.status_code)
+                result['suggestion'] = '链接失效，请搜索' + company + '的新闻'
             time.sleep(0.3)
         except Exception as e:
             result['valid'] = False
             result['reason'] = '连接失败'
-            result['suggestion'] = f'请验证链接或搜索{company}的新闻'
+            result['suggestion'] = '请验证链接或搜索' + company + '的新闻'
 
         self.validation_cache[url] = result
         return result
 
     def validate_events(self, events: List[Dict]) -> Tuple[List[Dict], Dict]:
-        """验证事件列表中的所有链接"""
         report = {'total': len(events), 'valid': 0, 'invalid': 0, 'issues': []}
         validated = []
         seen_urls = {}
@@ -145,7 +122,6 @@ class LinkValidator:
             url = event.get('source_url', '')
             company = event.get('company', '')
 
-            # 跳过空链接
             if not url:
                 report['invalid'] += 1
                 report['issues'].append({
@@ -155,11 +131,9 @@ class LinkValidator:
                 })
                 continue
 
-            # 检测重复
             if url in seen_urls:
-                continue  # 跳过重复
+                continue
 
-            # 验证
             validation = self.validate_single(url, company)
 
             if validation['valid']:
@@ -179,58 +153,59 @@ class LinkValidator:
 
         return validated, report
 
+
 # ============== 公司库 ==============
 COMPANIES = {
     'overseas_vla': [
         {'name': 'NVIDIA', 'alias': ['英伟达', 'NVIDIA', 'GR00T'], 'website': 'https://nvidia.com'},
-        {'name': 'Physical Intelligence', 'alias': ['PI', 'Physical Intelligence', 'π'], 'website': 'https://physicalintelligence.ai'},
+        {'name': 'Physical Intelligence', 'alias': ['PI', 'Physical Intelligence'], 'website': 'https://physicalintelligence.ai'},
         {'name': 'Skild AI', 'alias': ['Skild AI', 'Skild Brain'], 'website': 'https://skildai.com'},
         {'name': 'Figure AI', 'alias': ['Figure AI', 'Figure'], 'website': 'https://figure.ai'},
-        {'name': 'Agility Robotics', 'alias': ['Agility', 'Digit'], 'website': 'https://agilityrobotics.com'},
+        {'name': 'Agility Robotics', 'alias': ['Agility Robotics', 'Digit'], 'website': 'https://agilityrobotics.com'},
         {'name': 'Apptronik', 'alias': ['Apptronik', 'Apollo'], 'website': 'https://apptronik.com'},
         {'name': 'Field AI', 'alias': ['Field AI'], 'website': 'https://fieldai.com'},
         {'name': 'Sanctuary AI', 'alias': ['Sanctuary AI', 'Phoenix'], 'website': 'https://sanctuary.ai'},
     ],
     'overseas_other': [
-        {'name': '1X Technologies', 'alias': ['1X', 'EVE'], 'website': 'https://1x.tech'},
+        {'name': '1X Technologies', 'alias': ['1X Technologies', 'EVE'], 'website': 'https://1x.tech'},
         {'name': 'Boston Dynamics', 'alias': ['Boston Dynamics', 'Atlas'], 'website': 'https://bostondynamics.com'},
-        {'name': 'Mimic Robotics', 'alias': ['Mimic Robotics', 'Mimic'], 'website': 'https://mimicrobotics.com'},
+        {'name': 'Mimic Robotics', 'alias': ['Mimic Robotics'], 'website': 'https://mimicrobotics.com'},
         {'name': 'Anybotics', 'alias': ['Anybotics'], 'website': 'https://anybotics.com'},
         {'name': 'Hexagon', 'alias': ['Hexagon'], 'website': 'https://hexagon.com'},
         {'name': 'Skydio', 'alias': ['Skydio'], 'website': 'https://skydio.com'},
     ],
     'domestic_vla': [
-        {'name': '千寻智能', 'alias': ['千寻智能', 'QIANKUN']},
-        {'name': '银河通用', 'alias': ['QbitAI']},
-        {'name': '自变量机器人', 'alias': ['自变量机器人', 'Zibii']},
+        {'name': '千寻智能', 'alias': ['千寻智能']},
+        {'name': '银河通用', 'alias': ['银河通用', 'Galbot']},
+        {'name': '自变量机器人', 'alias': ['自变量机器人']},
         {'name': '智元机器人', 'alias': ['智元机器人', 'Agibot']},
-        {'name': '魔法原子', 'alias': ['魔法原子', 'MagicLab']},
-        {'name': '星海图', 'alias': ['星海图', 'SeaStars']},
-        {'name': '智平方', 'alias': ['智平方', 'RoboStep']},
-        {'name': '它石智航', 'alias': ['ITHOME']},
-        {'name': '跨维智能', 'alias': ['跨维智能', 'DexVerse']},
-        {'name': '穹彻智能', 'alias': ['穹彻智能', 'Noin Robotics']},
+        {'name': '魔法原子', 'alias': ['魔法原子']},
+        {'name': '星海图', 'alias': ['星海图']},
+        {'name': '智平方', 'alias': ['智平方']},
+        {'name': '它石智航', 'alias': ['它石智航']},
+        {'name': '跨维智能', 'alias': ['跨维智能']},
+        {'name': '穹彻智能', 'alias': ['穹彻智能']},
     ],
     'domestic_control': [
-        {'name': '星动纪元', 'alias': ['星动纪元', 'StarMotion']},
+        {'name': '星动纪元', 'alias': ['星动纪元']},
         {'name': '思灵机器人', 'alias': ['思灵机器人', 'Agile Robots']},
-        {'name': '逐际动力', 'alias': ['逐际动力', 'Zongqi']},
-        {'name': '灵初智能', 'alias': ['灵初智能', 'Lingchu']},
-        {'name': '大晓机器人', 'alias': ['大晓机器人', 'Daxiao']},
+        {'name': '逐际动力', 'alias': ['逐际动力']},
+        {'name': '灵初智能', 'alias': ['灵初智能']},
+        {'name': '大晓机器人', 'alias': ['大晓机器人']},
         {'name': '梅卡曼德', 'alias': ['梅卡曼德', 'Mech-Mind']},
         {'name': '傅利叶智能', 'alias': ['傅利叶智能', 'Fourier']},
-        {'name': '七腾机器人', 'alias': ['七腾机器人', 'Qiteng']},
+        {'name': '七腾机器人', 'alias': ['七腾机器人']},
         {'name': '珞石机器人', 'alias': ['珞石机器人', 'ROKAE']},
-        {'name': '镜识科技', 'alias': ['镜识科技', 'MirrorTech']},
-        {'name': '优理奇智能', 'alias': ['优理奇智能', 'Yuliqi']},
-        {'name': '加速进化', 'alias': ['加速进化', 'Boonz']},
-        {'name': '帕西尼感知', 'alias': ['帕西尼感知', 'Paxini']},
-        {'name': '地瓜机器人', 'alias': ['地瓜机器人', 'Yolo']},
-        {'name': '觅蜂科技', 'alias': ['觅蜂科技', 'Mifeng']},
+        {'name': '镜识科技', 'alias': ['镜识科技']},
+        {'name': '优理奇智能', 'alias': ['优理奇智能']},
+        {'name': '加速进化', 'alias': ['加速进化']},
+        {'name': '帕西尼感知', 'alias': ['帕西尼感知']},
+        {'name': '地瓜机器人', 'alias': ['地瓜机器人']},
+        {'name': '觅蜂科技', 'alias': ['觅蜂科技']},
     ]
 }
 
-# 展平所有公司名和别名用于匹配
+# 展平所有公司名和别名
 ALL_COMPANY_NAMES = set()
 for category, companies in COMPANIES.items():
     for company in companies:
@@ -238,7 +213,6 @@ for category, companies in COMPANIES.items():
         for alias in company.get('alias', []):
             ALL_COMPANY_NAMES.add(alias)
 
-# 具身智能关键词（用于识别新公司）
 EMBODIED_AI_KEYWORDS = [
     '具身智能', '人形机器人', '仿生机器人', '工业机器人', '协作机器人',
     'Embodied AI', 'Humanoid Robot', 'Embodied Intelligence', 'Physical AI',
@@ -246,84 +220,60 @@ EMBODIED_AI_KEYWORDS = [
     'Manipulator', 'Dexterous Manipulation', 'Robot Arm', 'Mobile Manipulation'
 ]
 
-# ============== 数据目录 ==============
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 EVENTS_FILE = os.path.join(DATA_DIR, 'events.json')
 STATE_FILE = os.path.join(DATA_DIR, 'crawl_state.json')
 POTENTIAL_COMPANIES_FILE = os.path.join(DATA_DIR, 'potential_companies.json')
 
+# ============== 163.com 媒体号配置 ==============
+# 每个条目：(媒体名称, 163媒体主页URL)
+MEDIA_163_ACCOUNTS = [
+    ('晚点LatePost', 'https://www.163.com/dy/media/T1596162548889.html'),
+    ('机器之心', 'https://www.163.com/dy/media/T1523602791880.html'),
+    ('甲子光年', 'https://www.163.com/dy/media/T1598948703880.html'),
+    ('36Kr', 'https://www.163.com/dy/media/T1600661726380.html'),
+]
+
 
 class NewCompanyDetector:
-    """新公司探测器 - 自动发现疑似具身智能新公司"""
-    
+    """新公司探测器"""
+
     def __init__(self):
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         })
-    
+
     def is_known_company(self, name: str) -> bool:
-        """检查是否是已知的公司"""
         name_lower = name.lower()
         for known_name in ALL_COMPANY_NAMES:
             if known_name.lower() in name_lower or name_lower in known_name.lower():
                 return True
         return False
-    
-    def extract_company_from_text(self, text: str) -> List[Dict]:
-        """从文本中提取可能的公司名"""
-        found_companies = []
-        
-        # 具身智能相关关键词匹配
-        for keyword in EMBODIED_AI_KEYWORDS:
-            if keyword.lower() in text.lower():
-                # 尝试提取公司名（通常在关键词附近）
-                # 这里简化处理，实际可以用NLP
-                pass
-        
-        return found_companies
-    
+
     def search_for_new_companies(self) -> List[Dict]:
-        """搜索新公司"""
         potential = []
-        
-        # 搜索来源
         search_sources = [
-            {
-                'name': '36Kr具身智能',
-                'url': 'https://36kr.com/information/AI/20031',
-                'selector': 'a.article-item-title',
-            },
-            {
-                'name': '机器之心具身智能',
-                'url': 'https://jiqizhixin.com/tags/embodied-ai',
-                'selector': 'a.title',
-            }
+            {'name': '36Kr具身智能', 'url': 'https://36kr.com/information/AI/20031', 'selector': 'a.article-item-title'},
+            {'name': '机器之心具身智能', 'url': 'https://jiqizhixin.com/tags/embodied-ai', 'selector': 'a.title'},
         ]
-        
         for source in search_sources:
             try:
                 resp = self.session.get(source['url'], timeout=10)
                 soup = BeautifulSoup(resp.text, 'html.parser')
-                
-                # 查找所有文章标题
                 for elem in soup.select(source['selector'])[:30]:
                     title = elem.get_text(strip=True)
                     url = elem.get('href', '')
                     if not url.startswith('http'):
                         url = 'https://36kr.com' + url if url.startswith('/') else url
-                    
-                    # 提取公司名（简单模式：找 "XX公司"、"XX机器人" 等）
                     company_patterns = [
                         r'([\u4e00-\u9fa5]{2,8}(?:公司|机器人|智能|科技))',
                         r'([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?(?:\s+AI|\s+Robotics|\s+Tech)?)',
                     ]
-                    
                     for pattern in company_patterns:
                         matches = re.findall(pattern, title)
                         for match in matches:
                             if not self.is_known_company(match) and len(match) >= 3:
-                                # 检查是否是具身智能相关
                                 if any(kw in title for kw in ['机器人', '具身', '人形', 'Robot', 'Embodied', 'Humanoid']):
                                     potential.append({
                                         'name': match,
@@ -334,13 +284,10 @@ class NewCompanyDetector:
                                         'status': 'pending'
                                     })
                                     break
-                
                 time.sleep(1)
-                
             except Exception as e:
-                print(f"[WARN] Failed to search {source['name']}: {e}")
-        
-        # 去重
+                print('[WARN] Failed to search ' + source['name'] + ': ' + str(e))
+
         seen = set()
         unique_potential = []
         for p in potential:
@@ -348,250 +295,79 @@ class NewCompanyDetector:
             if key not in seen:
                 seen.add(key)
                 unique_potential.append(p)
-        
         return unique_potential
-    
+
     def load_existing(self) -> List[Dict]:
-        """加载已发现的潜在公司"""
         if os.path.exists(POTENTIAL_COMPANIES_FILE):
             with open(POTENTIAL_COMPANIES_FILE, 'r', encoding='utf-8') as f:
                 return json.load(f)
         return []
-    
+
     def save(self, potential_companies: List[Dict]):
-        """保存潜在公司列表"""
         os.makedirs(DATA_DIR, exist_ok=True)
         with open(POTENTIAL_COMPANIES_FILE, 'w', encoding='utf-8') as f:
             json.dump(potential_companies, f, ensure_ascii=False, indent=2)
-    
+
     def add_new_company(self, name: str, category: str):
-        """将新公司添加到监测列表"""
         new_company = {'name': name, 'alias': [name]}
-        
-        # 根据分类确定添加到哪里
-        if category == 'domestic_vla':
-            COMPANIES['domestic_vla'].append(new_company)
-        elif category == 'domestic_control':
-            COMPANIES['domestic_control'].append(new_company)
-        elif category == 'overseas_vla':
-            COMPANIES['overseas_vla'].append(new_company)
-        elif category == 'overseas_other':
-            COMPANIES['overseas_other'].append(new_company)
-        
-        # 更新全局公司名列表
+        if category in COMPANIES:
+            COMPANIES[category].append(new_company)
         ALL_COMPANY_NAMES.add(name)
-        print(f"[OK] Added '{name}' to {category}")
+        print('[OK] Added ' + name + ' to ' + category)
 
 
 class EmbodiedAICrawler:
     """具身智能媒体监测爬虫"""
-    
+
     def __init__(self):
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept-Language': 'zh-CN,zh;q=0.9',
         })
         self.new_company_detector = NewCompanyDetector()
-    
+
     def _generate_id(self, url: str, title: str) -> str:
-        """生成唯一ID用于去重"""
-        content = f"{url}{title}".encode('utf-8')
+        content = (url + title).encode('utf-8')
         return hashlib.md5(content).hexdigest()[:12]
-    
+
     def _is_recent(self, date_str: str, days: int = 30) -> bool:
-        """检查日期是否在最近N天内"""
         try:
-            # 尝试解析日期
             for fmt in ['%Y-%m-%d', '%Y/%m/%d', '%m-%d', '%m/%d']:
                 try:
                     date = datetime.strptime(date_str, fmt)
-                    # 假设是今年
                     date = date.replace(year=datetime.now().year)
                     delta = datetime.now() - date
                     return delta.days <= days
                 except:
                     pass
-            return True  # 无法解析时默认保留
+            return True
         except:
             return True
-    
-    def crawl_bing_news(self, company_name: str) -> List[Dict]:
-        """从Bing新闻搜索结果中获取信息"""
-        results = []
-        try:
-            url = f"https://www.bing.com/news/search?q={quote(company_name)}+具身智能+OR+机器人+OR+AI"
-            resp = self.session.get(url, timeout=10)
-            soup = BeautifulSoup(resp.text, 'html.parser')
-            
-            for item in soup.select('div.news-card')[:5]:
-                title_elem = item.select_one('a.title')
-                if not title_elem:
-                    continue
-                
-                title = title_elem.get_text(strip=True)
-                link = title_elem.get('href', '')
-                
-                # 提取日期
-                date_elem = item.select_one('span.news-date')
-                date_str = date_elem.get_text(strip=True) if date_elem else ''
-                
-                # 提取来源
-                source_elem = item.select_one('span.source')
-                source = source_elem.get_text(strip=True) if source_elem else 'Bing News'
-                
-                # 判断事件类型
-                event_type = self._classify_event(title)
-                
-                results.append({
-                    'id': self._generate_id(link, title),
-                    'company': company_name,
-                    'type': event_type,
-                    'title': title,
-                    'title_en': None,  # 需要翻译
-                    'summary': '',
-                    'source': source,
-                    'source_url': link,
-                    'date': self._parse_date(date_str),
-                    'created_at': datetime.now().isoformat(),
-                    'media_sources': [source]
-                })
-                
-        except Exception as e:
-            print(f"[WARN] Bing search failed for {company_name}: {e}")
-        
-        return results
-    
-    def crawl_sogou_wechat(self, company_name: str) -> List[Dict]:
-        """从搜狗微信搜索获取信息（可抓取微信文章标题+链接）"""
-        results = []
-        keywords = f"{company_name} 具身智能 OR 人形机器人 OR AI"
-        try:
-            # 搜狗微信文章搜索
-            url = f"https://weixin.sogou.com/weixin?type=2&query={quote(keywords)}&ie=utf8"
-            
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-            }
-            
-            resp = self.session.get(url, timeout=15, headers=headers)
-            soup = BeautifulSoup(resp.text, 'html.parser')
-            
-            # 解析微信文章列表
-            articles = soup.select('div.news-box li') or soup.select('ul.news-list li')
-            
-            for item in articles[:10]:  # 最多取10篇
-                try:
-                    title_elem = item.select_one('a.tit') or item.select_one('div.txt-box h3 a')
-                    if not title_elem:
-                        continue
-                    
-                    title = title_elem.get_text(strip=True)
-                    link = title_elem.get('href', '')
-                    
-                    # 如果是相对链接，转换为完整链接
-                    if link.startswith('/'):
-                        link = 'https://weixin.sogou.com' + link
-                    
-                    # 提取公众号名称
-                    account_elem = item.select_one('div.account') or item.select_one('span.s2')
-                    account = account_elem.get_text(strip=True) if account_elem else '微信公众号'
-                    
-                    # 提取日期（格式如：1小时前、昨天、03-15）
-                    date_elem = item.select_one('span.s1') or item.select_one('div.time')
-                    date_str = date_elem.get_text(strip=True) if date_elem else ''
-                    
-                    # 判断事件类型
-                    event_type = self._classify_event(title)
-                    
-                    results.append({
-                        'id': self._generate_id(link, title),
-                        'company': company_name,
-                        'type': event_type,
-                        'title': title,
-                        'title_en': None,
-                        'summary': '',
-                        'source': f'微信-{account}',
-                        'source_url': link,
-                        'date': self._parse_wechat_date(date_str),
-                        'created_at': datetime.now().isoformat(),
-                        'media_sources': [account, '微信公众号']
-                    })
-                except Exception as e:
-                    continue
-            
-            if results:
-                print(f"  [微信] {len(results)} articles")
-                
-        except Exception as e:
-            print(f"[WARN] Sogou WeChat search failed for {keywords}: {e}")
-        
-        return results
-    
-    def _parse_wechat_date(self, date_str: str) -> str:
-        """解析搜狗微信的日期格式"""
-        if not date_str:
-            return datetime.now().strftime('%Y-%m-%d')
-        
-        try:
-            # 相对时间：刚刚、1分钟前、1小时前、昨天等
-            if '刚刚' in date_str or 'minute' in date_str.lower():
-                return datetime.now().strftime('%Y-%m-%d')
-            elif '小时前' in date_str or 'hour' in date_str.lower():
-                return datetime.now().strftime('%Y-%m-%d')
-            elif '昨天' in date_str:
-                return (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-            elif '前天' in date_str:
-                return (datetime.now() - timedelta(days=2)).strftime('%Y-%m-%d')
-            
-            # 标准日期格式：03-15 或 2024-03-15
-            for fmt in ['%m-%d', '%Y-%m-%d', '%m/%d']:
-                try:
-                    date = datetime.strptime(date_str.strip(), fmt)
-                    # 如果没有年份，假设是今年
-                    if date.year == 1900:
-                        date = date.replace(year=datetime.now().year)
-                    return date.strftime('%Y-%m-%d')
-                except:
-                    pass
-                    
-        except:
-            pass
-        
-        return datetime.now().strftime('%Y-%m-%d')
-    
+
     def _classify_event(self, title: str) -> str:
-        """分类事件类型"""
-        title_lower = title.lower()
-        
-        if any(kw in title for kw in ['融资', '投资', '轮', '估值', '资金', 'Funding', 'Series', '完成', '获得']):
+        if any(kw in title for kw in ['融资', '投资', '估值', '资金', 'Funding', 'Series', '完成', '获得', '轮']):
             return 'funding'
-        elif any(kw in title for kw in ['发布', '推出', '推出', 'Launch', 'Release', 'Product', '新品']):
+        elif any(kw in title for kw in ['发布', '推出', 'Launch', 'Release', 'Product', '新品']):
             return 'product'
         elif any(kw in title for kw in ['开源', 'Open Source', 'Dataset', '数据集', '论文', 'Paper', 'CVPR', 'ICRA', 'NeurIPS', '顶会']):
             return 'tech_breakthrough'
-        elif any(kw in title for kw in ['合作', '落地', '签约', 'Deploy', 'Partnership', '联合', '战略', '签约']):
+        elif any(kw in title for kw in ['合作', '落地', '签约', 'Deploy', 'Partnership', '联合', '战略']):
             return 'project'
-        elif any(kw in title for kw in ['展会', '峰会', '大会', '论坛', 'Conference', 'Summit', '世界机器人大会', 'WAIC', '工博会', '机器人展', '高交会', '智博会', '分享', '演讲', '报告']):
+        elif any(kw in title for kw in ['展会', '峰会', '大会', '论坛', 'Conference', 'Summit', 'WAIC', '工博会']):
             return 'event'
-        elif any(kw in title for kw in ['采访', '访谈', 'Interview', '对话', '专访', '独家', '观点', 'CEO说', '创始人', '创始人说', '投资人', '高管', 'CEO', '高管说', '圆桌', '十人谈', '表示', '称', '透露', '谈', '共话', '畅谈', '揭秘', '解析']):
+        elif any(kw in title for kw in ['采访', '访谈', 'Interview', '对话', '专访', '独家', '观点', '创始人', 'CEO', '揭秘', '共话']):
             return 'interview'
         else:
             return 'other'
-    
+
     def _parse_date(self, date_str: str) -> str:
-        """解析日期字符串"""
         if not date_str:
             return datetime.now().strftime('%Y-%m-%d')
-        
-        # 处理相对日期
         if '今天' in date_str or 'Today' in date_str:
             return datetime.now().strftime('%Y-%m-%d')
         elif '昨天' in date_str or 'Yesterday' in date_str:
             return (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-        
-        # 尝试标准格式
         for fmt in ['%Y年%m月%d日', '%Y-%m-%d', '%m-%d', '%m/%d']:
             try:
                 date = datetime.strptime(date_str, fmt)
@@ -599,23 +375,25 @@ class EmbodiedAICrawler:
                 return date.strftime('%Y-%m-%d')
             except:
                 pass
-        
         return datetime.now().strftime('%Y-%m-%d')
-    
 
-    def crawl_36kr(self, company_name: str) -> List[Dict]:
+    # ---- 信源1：Bing新闻 ----
+    def crawl_bing_news(self, company_name: str) -> List[Dict]:
         results = []
         try:
-            url = f'https://36kr.com/search/articles/{quote(company_name)}'
+            url = 'https://www.bing.com/news/search?q=' + quote(company_name + ' 具身智能 OR 机器人 OR AI')
             resp = self.session.get(url, timeout=10)
             soup = BeautifulSoup(resp.text, 'html.parser')
-            for item in soup.select('div.search-result-item')[:8]:
-                title_elem = item.select_one('a.article-item-title') or item.select_one('a')
-                if not title_elem: continue
+            for item in soup.select('div.news-card')[:5]:
+                title_elem = item.select_one('a.title')
+                if not title_elem:
+                    continue
                 title = title_elem.get_text(strip=True)
                 link = title_elem.get('href', '')
-                if link and not link.startswith('http'):
-                    link = 'https://36kr.com' + link if link.startswith('/') else link
+                date_elem = item.select_one('span.news-date')
+                date_str = date_elem.get_text(strip=True) if date_elem else ''
+                source_elem = item.select_one('span.source')
+                source = source_elem.get_text(strip=True) if source_elem else 'Bing News'
                 results.append({
                     'id': self._generate_id(link, title),
                     'company': company_name,
@@ -623,29 +401,120 @@ class EmbodiedAICrawler:
                     'title': title,
                     'title_en': None,
                     'summary': '',
-                    'source': 'QbitAI',
+                    'source': source,
+                    'source_url': link,
+                    'date': self._parse_date(date_str),
+                    'created_at': datetime.now().isoformat(),
+                    'media_sources': [source]
+                })
+        except Exception as e:
+            print('[WARN] Bing failed for ' + company_name + ': ' + str(e))
+        return results
+
+    # ---- 信源2：163.com 媒体号（晚点/机器之心/甲子光年/36Kr）----
+    def crawl_163_media_accounts(self) -> List[Dict]:
+        """批量抓取163.com上各媒体号的文章列表（全行业覆盖）"""
+        results = []
+        for media_name, media_url in MEDIA_163_ACCOUNTS:
+            try:
+                resp = self.session.get(media_url, timeout=15)
+                if resp.status_code != 200:
+                    print('[163/' + media_name + '] HTTP ' + str(resp.status_code))
+                    continue
+
+                soup = BeautifulSoup(resp.text, 'html.parser')
+                links = soup.find_all('a', href=True)
+                count = 0
+
+                seen_hrefs = set()
+                for a in links:
+                    href = a.get('href', '')
+                    text = a.get_text(strip=True)
+
+                    # 只取163直链文章
+                    if 'www.163.com/dy/article/' not in href:
+                        continue
+                    if '.html' not in href:
+                        continue
+                    if len(text) < 8:
+                        continue
+                    if href in seen_hrefs:
+                        continue
+                    seen_hrefs.add(href)
+
+                    # 从文章ID推测日期（163文章ID不含日期，用当前日期）
+                    event_type = self._classify_event(text)
+
+                    results.append({
+                        'id': self._generate_id(href, text),
+                        'company': '行业动态',
+                        'type': event_type,
+                        'title': text,
+                        'title_en': None,
+                        'summary': '',
+                        'source': media_name,
+                        'source_url': href,
+                        'date': datetime.now().strftime('%Y-%m-%d'),
+                        'created_at': datetime.now().isoformat(),
+                        'media_sources': ['163.com', media_name]
+                    })
+                    count += 1
+
+                print('[163/' + media_name + '] ' + str(count) + ' articles')
+                time.sleep(0.5)
+
+            except Exception as e:
+                print('[163/' + media_name + '] Error: ' + str(e))
+
+        return results
+
+    # ---- 信源3：36Kr 搜索 ----
+    def crawl_36kr(self, company_name: str) -> List[Dict]:
+        results = []
+        try:
+            url = 'https://36kr.com/search/articles/' + quote(company_name)
+            resp = self.session.get(url, timeout=10)
+            soup = BeautifulSoup(resp.text, 'html.parser')
+            for item in soup.select('div.search-result-item')[:8]:
+                title_elem = item.select_one('a.article-item-title') or item.select_one('a')
+                if not title_elem:
+                    continue
+                title = title_elem.get_text(strip=True)
+                link = title_elem.get('href', '')
+                if link and not link.startswith('http'):
+                    link = 'https://36kr.com' + link
+                results.append({
+                    'id': self._generate_id(link, title),
+                    'company': company_name,
+                    'type': self._classify_event(title),
+                    'title': title,
+                    'title_en': None,
+                    'summary': '',
+                    'source': '36Kr',
                     'source_url': link,
                     'date': datetime.now().strftime('%Y-%m-%d'),
                     'created_at': datetime.now().isoformat(),
                     'media_sources': ['36Kr']
                 })
         except Exception as e:
-            print(f'[WARN] 36Kr failed for {company_name}: {e}')
+            print('[WARN] 36Kr failed for ' + company_name + ': ' + str(e))
         return results
 
+    # ---- 信源4：虎嗅 搜索 ----
     def crawl_huxiu(self, company_name: str) -> List[Dict]:
         results = []
         try:
-            url = f'https://www.huxiu.com/search.html?query={quote(company_name)}'
+            url = 'https://www.huxiu.com/search.html?query=' + quote(company_name)
             resp = self.session.get(url, timeout=10)
             soup = BeautifulSoup(resp.text, 'html.parser')
             for item in soup.select('div.article-list-mod')[:8]:
                 title_elem = item.select_one('a.tuwen-title')
-                if not title_elem: continue
+                if not title_elem:
+                    continue
                 title = title_elem.get_text(strip=True)
                 link = title_elem.get('href', '')
                 if link and not link.startswith('http'):
-                    link = 'https://www.huxiu.com' + link if link.startswith('/') else link
+                    link = 'https://www.huxiu.com' + link
                 results.append({
                     'id': self._generate_id(link, title),
                     'company': company_name,
@@ -653,29 +522,31 @@ class EmbodiedAICrawler:
                     'title': title,
                     'title_en': None,
                     'summary': '',
-                    'source': 'QbitAI',
+                    'source': '虎嗅',
                     'source_url': link,
                     'date': datetime.now().strftime('%Y-%m-%d'),
                     'created_at': datetime.now().isoformat(),
-                    'media_sources': ['ITHOME']
+                    'media_sources': ['虎嗅']
                 })
         except Exception as e:
-            print(f'[WARN] 铏庡梾 failed for {company_name}: {e}')
+            print('[WARN] 虎嗅 failed for ' + company_name + ': ' + str(e))
         return results
 
+    # ---- 信源5：量子位 搜索 ----
     def crawl_qbitai(self, company_name: str) -> List[Dict]:
         results = []
         try:
-            url = f'https://www.qbitai.com/search?keyword={quote(company_name)}'
+            url = 'https://www.qbitai.com/search?keyword=' + quote(company_name)
             resp = self.session.get(url, timeout=10)
             soup = BeautifulSoup(resp.text, 'html.parser')
             for item in soup.select('div.search-result')[:8]:
                 title_elem = item.select_one('a.title')
-                if not title_elem: continue
+                if not title_elem:
+                    continue
                 title = title_elem.get_text(strip=True)
                 link = title_elem.get('href', '')
                 if link and not link.startswith('http'):
-                    link = 'https://www.qbitai.com' + link if link.startswith('/') else link
+                    link = 'https://www.qbitai.com' + link
                 results.append({
                     'id': self._generate_id(link, title),
                     'company': company_name,
@@ -683,29 +554,31 @@ class EmbodiedAICrawler:
                     'title': title,
                     'title_en': None,
                     'summary': '',
-                    'source': 'QbitAI',
+                    'source': '量子位',
                     'source_url': link,
                     'date': datetime.now().strftime('%Y-%m-%d'),
                     'created_at': datetime.now().isoformat(),
-                    'media_sources': ['QbitAI']
+                    'media_sources': ['量子位']
                 })
         except Exception as e:
-            print(f'[WARN] 閲忓瓙浣?failed for {company_name}: {e}')
+            print('[WARN] 量子位 failed for ' + company_name + ': ' + str(e))
         return results
 
+    # ---- 信源6：IT之家 搜索 ----
     def crawl_ithome(self, company_name: str) -> List[Dict]:
         results = []
         try:
-            url = f'https://www.ithome.com/search.html?q={quote(company_name)}'
+            url = 'https://www.ithome.com/search.html?q=' + quote(company_name)
             resp = self.session.get(url, timeout=10)
             soup = BeautifulSoup(resp.text, 'html.parser')
             for item in soup.select('div.item')[:8]:
                 title_elem = item.select_one('a.t')
-                if not title_elem: continue
+                if not title_elem:
+                    continue
                 title = title_elem.get_text(strip=True)
                 link = title_elem.get('href', '')
                 if link and not link.startswith('http'):
-                    link = 'https://www.ithome.com' + link if link.startswith('/') else link
+                    link = 'https://www.ithome.com' + link
                 results.append({
                     'id': self._generate_id(link, title),
                     'company': company_name,
@@ -713,222 +586,174 @@ class EmbodiedAICrawler:
                     'title': title,
                     'title_en': None,
                     'summary': '',
-                    'source': 'QbitAI',
+                    'source': 'IT之家',
                     'source_url': link,
                     'date': datetime.now().strftime('%Y-%m-%d'),
                     'created_at': datetime.now().isoformat(),
-                    'media_sources': ['IT涔嬪']
+                    'media_sources': ['IT之家']
                 })
         except Exception as e:
-            print(f'[WARN] IT涔嬪 failed for {company_name}: {e}')
+            print('[WARN] IT之家 failed for ' + company_name + ': ' + str(e))
         return results
+
     def crawl_all(self, incremental: bool = True) -> List[Dict]:
         """抓取所有公司数据"""
         all_events = []
         seen_ids = set()
-        
-        # 加载已有数据
+
+        # 加载已有数据（只保留非微信来源）
         if os.path.exists(EVENTS_FILE):
             with open(EVENTS_FILE, 'r', encoding='utf-8') as f:
                 existing = json.load(f)
-                seen_ids = {e['id'] for e in existing}
-                all_events = existing.copy()
-        
-        # 获取所有公司
-        all_companies = []
-        for category, companies in COMPANIES.items():
-            for company in companies:
-                all_companies.append({
-                    'name': company['name'],
-                    'category': category
-                })
-        
-        print(f"🔍 Monitoring {len(all_companies)} companies...")
-        
-        # 增量模式下只取最近更新的公司
+            # 过滤掉搜狗/微信来源
+            existing = [
+                e for e in existing
+                if '微信' not in e.get('source', '') and 'sogou' not in e.get('source_url', '').lower()
+            ]
+            seen_ids = {e['id'] for e in existing}
+            all_events = existing.copy()
+            print('[OK] Loaded ' + str(len(all_events)) + ' existing events (wechat removed)')
+
+        # 增量检查
         if incremental:
             state = self._load_state()
             last_crawl = state.get('last_crawl', None)
             if last_crawl:
                 days_since = (datetime.now() - datetime.fromisoformat(last_crawl)).days
                 if days_since < 7:
-                    print(f"⏭️ Skipping crawl (last: {last_crawl}, {days_since} days ago)")
+                    print('Skipping crawl (last: ' + last_crawl + ', ' + str(days_since) + ' days ago)')
                     return all_events
-        
-        # 抓取每个公司的数据（中文名 + 别名）
+
+        # ---- 步骤1：抓取163媒体号全量文章（一次性，覆盖行业动态）----
+        print('\n[163] Crawling media accounts...')
+        media_163_events = self.crawl_163_media_accounts()
+        for event in media_163_events:
+            if event['id'] not in seen_ids:
+                all_events.append(event)
+                seen_ids.add(event['id'])
+        print('[163] Added ' + str(len(media_163_events)) + ' articles total')
+
+        # ---- 步骤2：按公司名搜索（Bing + 36Kr + 虎嗅 + 量子位 + IT之家）----
+        all_companies = []
+        for category, companies in COMPANIES.items():
+            for company in companies:
+                all_companies.append({'name': company['name'], 'alias': company.get('alias', [])})
+
+        print('\n[Company] Monitoring ' + str(len(all_companies)) + ' companies...')
+
         for company in all_companies:
-            names_to_search = [company['name']] + company.get('alias', [])
-            names_to_search = list(set(names_to_search))  # 去重
-            
+            names_to_search = list(set([company['name']] + company.get('alias', [])))
+
             company_total = 0
-            for name in names_to_search[:2]:  # 最多搜索2个别名
-                print(f"  📰 {name}...", end=' ')
-                
-                # 1. Bing新闻搜索（直链）
+            for name in names_to_search[:2]:
+                print('  ' + name + '...', end=' ')
+
                 bing_events = self.crawl_bing_news(name)
-                
-                # 2. 36Kr搜索（直链）
                 kr36_events = self.crawl_36kr(name)
-                
-                # 3. 虎嗅搜索（直链）- 创始人访谈、行业分析
                 huxiu_events = self.crawl_huxiu(name)
-                
-                # 4. 量子位搜索（直链）- AI科技报道
                 qbitai_events = self.crawl_qbitai(name)
-                
-                # 5. IT之家搜索（直链）- 科技产品动态
                 ithome_events = self.crawl_ithome(name)
-                
-                # 6. 搜狗微信搜索（直链）
-                wechat_events = self.crawl_sogou_wechat(name)
-                
-                events = bing_events + kr36_events + huxiu_events + qbitai_events + ithome_events + wechat_events
-                
+
+                events = bing_events + kr36_events + huxiu_events + qbitai_events + ithome_events
+
                 new_count = 0
                 for event in events:
                     if event['id'] not in seen_ids:
                         all_events.append(event)
                         seen_ids.add(event['id'])
                         new_count += 1
-                
-                print(f"+{new_count}")
-                time.sleep(0.5)  # 避免请求过快
+
+                print('+' + str(new_count))
+                time.sleep(0.5)
                 company_total += new_count
-        
-        # 抓取行业关键词（行业动态）
-        print("\n  🔍 抓取行业动态（微信）...")
-        industry_keywords = [
-            '具身智能 融资',
-            '人形机器人 进展',
-            'VLA模型 具身智能',
-        ]
-        for kw in industry_keywords:
-            # 行业动态特殊处理：公司名设为"行业动态"
-            wechat_events = self.crawl_sogou_wechat(kw)
-            for event in wechat_events[:3]:  # 每关键词最多3条
-                if event['id'] not in seen_ids:
-                    event['company'] = '行业动态'  # 设为特殊公司名
-                    all_events.append(event)
-                    seen_ids.add(event['id'])
-            time.sleep(0.5)
-        
+
         # 更新状态
         self._save_state()
-        
+
         # 按日期排序
         all_events.sort(key=lambda x: x.get('date', ''), reverse=True)
-        
+
         return all_events
-    
+
     def _load_state(self) -> Dict:
-        """加载爬虫状态"""
         if os.path.exists(STATE_FILE):
             with open(STATE_FILE, 'r', encoding='utf-8') as f:
                 return json.load(f)
         return {}
-    
+
     def _save_state(self):
-        """保存爬虫状态"""
         os.makedirs(DATA_DIR, exist_ok=True)
         state = {'last_crawl': datetime.now().isoformat()}
         with open(STATE_FILE, 'w', encoding='utf-8') as f:
             json.dump(state, f, ensure_ascii=False, indent=2)
-    
+
     def save_data(self, events: List[Dict], validate: bool = True):
-        """保存事件数据（带链接验证）"""
-        # 验证链接
         if validate:
-            print("\n🔍 Validating links...")
+            print('\n[Validate] Checking links...')
             validator = LinkValidator()
             events, report = validator.validate_events(events)
-
-            print(f"   ✅ Valid: {report['valid']}")
-            print(f"   ❌ Invalid: {report['invalid']}")
-
+            print('  Valid: ' + str(report['valid']))
+            print('  Invalid: ' + str(report['invalid']))
             if report['issues']:
-                print("\n⚠️  Link issues found:")
                 for issue in report['issues'][:5]:
-                    print(f"   - [{issue['company']}] {issue['issue']}")
-                    if 'fix' in issue:
-                        print(f"     → {issue['fix']}")
+                    print('  - [' + issue['company'] + '] ' + issue['issue'])
 
         os.makedirs(DATA_DIR, exist_ok=True)
         with open(EVENTS_FILE, 'w', encoding='utf-8') as f:
             json.dump(events, f, ensure_ascii=False, indent=2)
-    
+
     def detect_new_companies(self) -> List[Dict]:
-        """运行新公司探测器"""
-        print("\n🔬 Running new company detector...")
+        print('\n[Detect] Running new company detector...')
         new_found = self.new_company_detector.search_for_new_companies()
-        
-        # 加载已有的
         existing = self.new_company_detector.load_existing()
-        
-        # 合并去重
         seen = {p['name'] for p in existing}
         for p in new_found:
             if p['name'] not in seen:
                 existing.append(p)
                 seen.add(p['name'])
-        
-        # 保存
         self.new_company_detector.save(existing)
-        
-        print(f"📊 Found {len(new_found)} new potential companies")
+        print('[Detect] Found ' + str(len(new_found)) + ' new potential companies')
         return existing
 
 
 def main():
-    """主函数"""
-    print("=" * 50)
-    print("Embodied AI Media Monitor - Low-cost Crawler")
-    print("=" * 50)
+    print('=' * 50)
+    print('Embodied AI Media Monitor - Crawler')
+    print('=' * 50)
 
-    # 增量模式（默认）
     incremental = '--full' not in sys.argv
     detect_new = '--detect-new' in sys.argv
-    validate_only = '--validate' in sys.argv  # 仅验证模式
+    validate_only = '--validate' in sys.argv
 
     crawler = EmbodiedAICrawler()
 
-    # 单独验证模式
     if validate_only:
-        print("\n🔍 Validating existing events.json...")
+        print('\n[Validate] Validating existing events.json...')
         if os.path.exists(EVENTS_FILE):
             with open(EVENTS_FILE, 'r', encoding='utf-8') as f:
                 events = json.load(f)
             validator = LinkValidator()
             events, report = validator.validate_events(events)
-            print(f"\n📊 Validation Report:")
-            print(f"   Total: {report['total']}")
-            print(f"   Valid: {report['valid']}")
-            print(f"   Invalid: {report['invalid']}")
-            if report['issues']:
-                print("\n⚠️  Issues:")
-                for issue in report['issues']:
-                    print(f"   - [{issue['company']}] {issue.get('url', 'N/A')}")
-                    print(f"     {issue['issue']}")
+            print('Total: ' + str(report['total']))
+            print('Valid: ' + str(report['valid']))
+            print('Invalid: ' + str(report['invalid']))
         else:
-            print("❌ events.json not found")
+            print('events.json not found')
         return
 
-    # 正常爬取模式
     events = crawler.crawl_all(incremental=incremental)
-    crawler.save_data(events)  # 保存时自动验证
+    crawler.save_data(events)
 
-    # 检测新公司
     if detect_new:
         potential = crawler.detect_new_companies()
-        print(f"\n📋 Potential new companies: {len(potential)}")
+        print('Potential new companies: ' + str(len(potential)))
 
-    print("\n[OK] Crawl completed!")
-
-    # 统计
+    print('\n[OK] Crawl completed!')
     funding_count = len([e for e in events if e.get('type') == 'funding'])
     pr_count = len(events) - funding_count
-    print(f"   Funding events: {funding_count}")
-    print(f"   PR updates: {pr_count}")
-    print(f"   Total events: {len(events)}")
+    print('  Funding events: ' + str(funding_count))
+    print('  PR updates: ' + str(pr_count))
+    print('  Total events: ' + str(len(events)))
 
 
 if __name__ == '__main__':
