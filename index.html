@@ -288,6 +288,7 @@
         .type-project { background: rgba(245, 158, 11, 0.2); color: var(--accent-orange); }
         .type-event { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
         .type-interview { background: rgba(156, 163, 175, 0.2); color: #9ca3af; }
+        .type-personnel { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
         .type-other { background: rgba(107, 114, 128, 0.2); color: #6b7280; }
         
         .title-cell {
@@ -697,6 +698,7 @@
                     <option value="project">🤝 Project Launch</option>
                     <option value="event">🎪 Event / Exhibition</option>
                     <option value="interview">🎤 Interview / Opinion</option>
+                    <option value="personnel">👤 Personnel</option>
                     <option value="other">📌 Other</option>
                 </select>
             </div>
@@ -799,6 +801,7 @@
                 't_project': '项目落地',
                 't_event': '活动展会',
                 't_interview': '采访观点',
+                't_personnel': '人事动态',
                 't_other': '其他',
                 'search': '搜索:',
                 'searchPlaceholder': '搜索公司或关键词...',
@@ -855,6 +858,7 @@
                 't_project': 'Project Launch',
                 't_event': 'Event / Exhibition',
                 't_interview': 'Interview / Opinion',
+                't_personnel': 'Personnel',
                 't_other': 'Other',
                 'search': 'Search:',
                 'searchPlaceholder': 'Search companies or keywords...',
@@ -938,8 +942,8 @@
             if (typeFilter) {
                 const savedType = typeFilter.value;
                 const typeOpts = currentLang === 'zh'
-                    ? ['全部', '💰 融资', '📦 产品发布', '🔬 技术突破', '🤝 项目落地', '🎪 活动展会', '🎤 采访观点', '📌 其他']
-                    : ['All', '💰 Funding', '📦 Product Launch', '🔬 Tech Breakthrough', '🤝 Project Launch', '🎪 Event / Exhibition', '🎤 Interview / Opinion', '📌 Other'];
+                    ? ['全部', '💰 融资', '📦 产品发布', '🔬 技术突破', '🤝 项目落地', '🎪 活动展会', '🎤 采访观点', '👤 人事动态', '📌 其他']
+                    : ['All', '💰 Funding', '📦 Product Launch', '🔬 Tech Breakthrough', '🤝 Project Launch', '🎪 Event / Exhibition', '🎤 Interview / Opinion', '👤 Personnel', '📌 Other'];
                 Array.from(typeFilter.options).forEach((opt, i) => { opt.text = typeOpts[i]; });
                 typeFilter.value = savedType;
             }
@@ -951,6 +955,7 @@
             typeNames['project'] = i18n[currentLang]['t_project'];
             typeNames['event'] = i18n[currentLang]['t_event'];
             typeNames['interview'] = i18n[currentLang]['t_interview'];
+            typeNames['personnel'] = i18n[currentLang]['t_personnel'];
             typeNames['other'] = i18n[currentLang]['t_other'];
 
             // Re-render to update dynamic content
@@ -1016,6 +1021,7 @@
             'project': '项目落地',
             'event': '活动展会',
             'interview': '采访观点',
+            'personnel': '人事动态',
             'other': '其他'
         };
 
