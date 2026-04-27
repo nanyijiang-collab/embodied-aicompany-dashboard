@@ -1356,7 +1356,7 @@
                         <td>
                             <div class="company-cell">
                                 ${badge}
-                                <span>${displayCompany}</span>
+                                <a href="company.html?name=${encodeURIComponent(event.company)}" class="company-link" title="${currentLang === 'en' ? 'View company details' : '查看公司详情'}">${displayCompany}</a>
                             </div>
                         </td>
                         <td>${typeBadge}</td>
