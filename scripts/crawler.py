@@ -178,6 +178,7 @@ COMPANIES = {
         {'name': 'Anybotics', 'alias': ['Anybotics'], 'website': 'https://anybotics.com'},
         {'name': 'Hexagon', 'alias': ['Hexagon'], 'website': 'https://hexagon.com'},
         {'name': 'Skydio', 'alias': ['Skydio'], 'website': 'https://skydio.com'},
+        {'name': 'Sunday Robotics', 'alias': ['Sunday Robotics', 'Memo']},
     ],
     'domestic_vla': [
         {'name': '千寻智能', 'alias': ['千寻智能']},
@@ -208,6 +209,7 @@ COMPANIES = {
         {'name': '地瓜机器人', 'alias': ['地瓜机器人']},
         {'name': '觅蜂科技', 'alias': ['觅蜂科技']},
         {'name': '简智机器人', 'alias': ['简智机器人', 'GenRobot', '简智新创']},
+        {'name': '破壳机器人', 'alias': ['破壳机器人', 'Poke Robotics']},
     ]
 }
 

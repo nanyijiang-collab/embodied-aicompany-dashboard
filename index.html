@@ -653,7 +653,7 @@
         <!-- Stats Cards -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="value" id="totalCompanies">40</div>
+                <div class="value" id="totalCompanies">42</div>
                 <div class="label" data-i18n="monitored">监控公司</div>
                 <div class="trend up" id="companiesTrend" style="display:none">+0</div>
             </div>
@@ -983,9 +983,9 @@
         
         // 默认公司分类信息
         const DEFAULT_COMPANY_REGIONS = {
-            'overseas_vla': ['NVIDIA', 'Physical Intelligence', 'Skild AI', 'Figure AI', 'Agility Robotics', 'Apptronik', 'Field AI', 'Sanctuary AI'],
+            'overseas_vla': ['NVIDIA', 'Physical Intelligence', 'Skild AI', 'Figure AI', 'Agility Robotics', 'Apptronik', 'Field AI', 'Sanctuary AI', 'Sunday Robotics'],
             'overseas_other': ['1X Technologies', 'Boston Dynamics', 'Mimic Robotics', 'Anybotics', 'Hexagon', 'Skydio', 'Robotera'],
-            'domestic_vla': ['千寻智能', '银河通用', '自变量机器人', '智元机器人', '魔法原子', '星海图', '智平方', '它石智航', '跨维智能', '穹彻智能', '灵御智能', '星源智机器人', '墨奇智能', '鹿明机器人'],
+            'domestic_vla': ['千寻智能', '银河通用', '自变量机器人', '智元机器人', '魔法原子', '星海图', '智平方', '它石智航', '跨维智能', '穹彻智能', '灵御智能', '星源智机器人', '墨奇智能', '鹿明机器人', '破壳机器人'],
             'domestic_control': ['星动纪元', '思灵机器人', '逐际动力', '灵初智能', '大晓机器人', '梅卡曼德', '傅利叶智能', '七腾机器人', '珞石机器人', '镜识科技', '优理奇智能', '加速进化', '帕西尼感知', '地瓜机器人', '觅蜂科技', '简智机器人'],
         };
         
@@ -1076,6 +1076,9 @@
             '觅蜂科技': 'Mifeng Technology',
             '地瓜机器人': 'Rover Robotics',
             '简智机器人': 'GenRobot.ai',
+            'Sunday Robotics': 'Sunday Robotics',
+            '破壳机器人': 'Poke Robotics',
+            '破壳智能': 'Poke Robotics',
             '卓益得机器人': 'Zhuoyide Robotics',
             '开普勒人形机器人': 'Kepler Humanoid',
             '国家地方共建具身智能机器人创新中心': 'National Embodied AI Robot Innovation Center',
@@ -1379,6 +1382,7 @@
             { company: 'Skild AI', valuation: '45亿美元', valuationCNY: 45 * 7.2, currency: '美元', percentage: 65, latest: 'B轮融资', latest_en: 'Series B', segment: 'VLA模型', date: '2025.06', isOverseas: true },
             { company: 'Agility Robotics', valuation: '12亿美元', valuationCNY: 12 * 7.2, currency: '美元', percentage: 45, latest: 'B轮', latest_en: 'Series B', segment: '人形整机', date: '2024.09', isOverseas: true },
             { company: 'Sanctuary AI', valuation: '约10亿美元', valuationCNY: 10 * 7.2, currency: '美元', percentage: 40, latest: 'B轮融资', latest_en: 'Series B', segment: '人形整机', date: '2024.12', isOverseas: true },
+            { company: 'Sunday Robotics', valuation: '11.5亿美元', valuationCNY: 82.8, currency: '美元', percentage: 4, latest: '1.65亿美元B轮', latest_en: '$165M Series B', segment: '人形整机', date: '2026.03', isOverseas: true },
             { company: 'Field AI', valuation: '约5亿美元', valuationCNY: 5 * 7.2, currency: '美元', percentage: 35, latest: 'A轮', latest_en: 'Series A', segment: 'VLA模型', date: '2024.10', isOverseas: true },
             { company: 'Mimic Robotics', valuation: '约2亿美元', valuationCNY: 2 * 7.2, currency: '美元', percentage: 25, latest: '天使轮', latest_en: 'Angel Round', segment: '模仿学习', date: '2024.06', isOverseas: true },
             { company: 'Anybotics', valuation: '约5亿美元', valuationCNY: 5 * 7.2, currency: '美元', percentage: 35, latest: 'B轮', latest_en: 'Series B', segment: '四足/巡检', date: '2024.08', isOverseas: true },
@@ -1410,6 +1414,7 @@
             { company: '灵初智能', valuation: '20亿+人民币', valuationCNY: 20, currency: '人民币', percentage: 42, latest: '天使+Pre-A共20亿', latest_en: '¥2B Angel+Pre-A', segment: '人形整机', date: '2026.04', isOverseas: false },
             { company: '思灵机器人', valuation: '72亿人民币', valuationCNY: 72, currency: '人民币', percentage: 62, latest: 'C轮2.2亿美元', latest_en: '$220M Series C', segment: '力控/医疗', date: '2025.07', isOverseas: false },
             { company: '穹彻智能', valuation: '15亿+人民币', valuationCNY: 15, currency: '人民币', percentage: 38, latest: 'Pre-A轮', latest_en: 'Pre-A Round', segment: '具身大模型', date: '2025.10', isOverseas: false },
+            { company: '破壳机器人', valuation: '约4亿美元', valuationCNY: 28.8, currency: '美元', percentage: 1, latest: '数千万美元天使轮', latest_en: '$10M+ Angel', segment: '人形整机', date: '2026.04', isOverseas: false },
             { company: '大晓机器人', valuation: '约10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 32, latest: 'A轮融资', latest_en: 'Series A', segment: '人形整机', date: '2025.06', isOverseas: false },
             { company: '七腾机器人', valuation: '约10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 32, latest: 'B轮融资', latest_en: 'Series B', segment: '特种机器人', date: '2025.08', isOverseas: false },
             { company: '跨维智能', valuation: '约8亿人民币', valuationCNY: 8, currency: '人民币', percentage: 28, latest: '天使轮', latest_en: 'Angel Round', segment: '3D视觉', date: '2025.03', isOverseas: false },
@@ -1700,7 +1705,7 @@
             
             // 计算总监控公司数
             const companies = new Set(allEvents.map(e => e.company));
-            document.getElementById('totalCompanies').textContent = Math.max(40, companies.size);
+            document.getElementById('totalCompanies').textContent = Math.max(42, companies.size);
             
             // 本月新增计算
             const now = new Date();
