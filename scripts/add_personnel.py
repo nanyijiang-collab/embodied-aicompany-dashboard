@@ -688,6 +688,32 @@ personnel_events = [
         "date": "2025-01-01"
     },
     {
+        "company": "Tesla Optimus",
+        "person_name": "Milan Kovac",
+        "action": "离职",
+        "old_role": "Optimus项目负责人/VP",
+        "new_role": "-",
+        "title": "特斯拉Optimus项目负责人Milan Kovac离职",
+        "title_en": "Tesla Optimus Project Lead Milan Kovac Departs",
+        "summary": "Milan Kovac自2016年加入特斯拉，2022年起负责Optimus项目硬件与软件平台搭建，2024年底晋升为副总裁。2025年6月7日宣布离职，称需要更多时间陪伴家人。特斯拉AI软件副总裁Ashok Elluswamy接任项目负责人。",
+        "source": "新浪财经",
+        "source_url": "https://finance.sina.com.cn/stock/hkstock/hkstocknews/2025-06-07/doc-inezfuhy1500594.shtml",
+        "date": "2025-06-07"
+    },
+    {
+        "company": "Tesla Optimus",
+        "person_name": "Ashish Kumar",
+        "action": "离职加入Meta",
+        "old_role": "AI团队负责人",
+        "new_role": "Meta研究科学家",
+        "title": "特斯拉Optimus AI团队负责人Ashish Kumar离职加入Meta",
+        "title_en": "Tesla Optimus AI Lead Ashish Kumar Leaves for Meta",
+        "summary": "Ashish Kumar于2023年7月加入特斯拉担任Optimus AI团队负责人，2025年9月离职加入Meta担任研究科学家。",
+        "source": "Reportify",
+        "source_url": "https://reportify.cn/news/1166374005352042496",
+        "date": "2025-09-19"
+    },
+    {
         "company": "Agility Robotics",
         "person_name": "Damion Shelton",
         "action": "卸任",
