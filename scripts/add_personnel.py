@@ -842,6 +842,45 @@ personnel_events = [
         "source": "腾讯新闻",
         "source_url": "https://news.qq.com/rain/a/20250807A05DTE00",
         "date": "2025-08-07"
+    },
+    {
+        "company": "苏度科技",
+        "person_name": "-",
+        "action": "产品发布",
+        "old_role": "-",
+        "new_role": "-",
+        "title": "苏度科技发布#Sudo R1具身通用模型，实现Zero-shot成功率近100%",
+        "title_en": "Sudo Robotics Releases #Sudo R1 Embodied Foundation Model",
+        "summary": "苏度科技发布全栈自研机器人系统#Sudo R1，在不依赖任何真机数据的前提下，对未知环境与未见物体具备稳定的泛化能力，实现关键任务近100%的Zero-shot成功率。",
+        "source": "国寿股权",
+        "source_url": "https://finance.sina.com.cn/wm/2026-04-20/doc-inhvcrmy3762191.shtml",
+        "date": "2026-04-20"
+    },
+    {
+        "company": "苏度科技",
+        "person_name": "-",
+        "action": "融资",
+        "old_role": "-",
+        "new_role": "-",
+        "title": "苏度科技完成5亿美元Pre-A轮融资，估值突破20亿美元",
+        "title_en": "Sudo Robotics Raises $500M Pre-A Round at $2B Valuation",
+        "summary": "苏度科技完成5亿美元Pre-A轮融资（约34亿人民币），估值突破20亿美元（约140亿人民币）。投资方包括宁德时代、阿里巴巴、腾讯、高瓴、IDG等一线产业资本及财务投资机构。",
+        "source": "腾讯新闻",
+        "source_url": "https://news.qq.com/rain/a/20260422A079NG00",
+        "date": "2026-04-20"
+    },
+    {
+        "company": "超维动力",
+        "person_name": "-",
+        "action": "产品发布",
+        "old_role": "-",
+        "new_role": "-",
+        "title": "超维动力发布KAI人形机器人，全球最高自由度",
+        "title_en": "Kinetix AI Launches KAI Humanoid Robot with World's Highest DOF",
+        "summary": "超维动力Kinetix AI（KAI）发布首款全尺寸人形机器人KAI，采用\"隐空间世界模型+全身\"驱动系统，定位为最极致拟人的人形机器人。核心团队来自机器人、自动驾驶和人工智能领域。",
+        "source": "极客公园",
+        "source_url": "https://www.geekpark.net/news/363333",
+        "date": "2026-04-26"
     }
 ]
 
