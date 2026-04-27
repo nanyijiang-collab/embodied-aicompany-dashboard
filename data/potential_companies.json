@@ -47,7 +47,17 @@
     "discovered_date": "2026-04-23",
     "status": "approved",
     "category": "domestic_vla",
-    "note": "清华系，专注具身数据Infra，完成数千万天使轮"
+    "note": "清华系，专注具身数据Infra，完成数千万天使轮；已添加到company.html"
+  },
+  {
+    "name": "Generalist",
+    "discovered_from": "机器之心",
+    "article_title": "DeepMind科学家Pete Florence创立Generalist AI",
+    "article_url": "https://www.sohu.com/a/939945034_121124378",
+    "discovered_date": "2026-04-27",
+    "status": "approved",
+    "category": "overseas_physical_ai",
+    "note": "DeepMind科学家创立，获NVIDIA投资，发布GEN-1具身模型；已添加到company.html"
   },
   {
     "name": "星源智机器人",
