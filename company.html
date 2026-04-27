@@ -63,18 +63,6 @@
             gap: 16px;
         }
         
-        .company-logo {
-            width: 72px;
-            height: 72px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
         .company-name {
             font-size: 32px;
             font-weight: 600;
@@ -96,6 +84,42 @@
             font-size: 14px;
         }
         .company-website:hover { text-decoration: underline; }
+        
+        /* 数据路径标签 */
+        .data-path-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        
+        .data-path-teleop { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
+        .data-path-video { background: rgba(139, 92, 246, 0.2); color: #a78bfa; }
+        .data-path-sim { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .data-path-real { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .data-path-hybrid { background: rgba(74, 158, 255, 0.2); color: #4a9eff; }
+        
+        /* 技术路径说明 */
+        .tech-path-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .tech-path-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
         
         .valuation-badge {
             text-align: right;
@@ -400,7 +424,7 @@
                     website: 'https://unitree.com',
                     founded: '2016年',
                     headquarters: '杭州',
-                    segment: '人形整机/四足机器人',
+                    segment: '人形整机 / 物理世界',
                     isOverseas: false,
                     valuation: '420亿人民币',
                     valuationCNY: 420,
@@ -430,7 +454,7 @@
                     website: 'https://www.lingyuai.com',
                     founded: '2025年2月',
                     headquarters: '北京',
-                    segment: '具身智能基础设施/遥操作',
+                    segment: '具身大脑 / 遥操作',
                     isOverseas: false,
                     valuation: '数千万人民币',
                     valuationCNY: 1,
@@ -458,7 +482,7 @@
                     website: 'https://generalist.ai',
                     founded: '2023年',
                     headquarters: '美国加州',
-                    segment: '具身AI/Physical AI',
+                    segment: '具身大脑 / 混合',
                     isOverseas: true,
                     valuation: '未披露',
                     valuationCNY: 0,
@@ -485,7 +509,7 @@
                     website: 'https://beingbeyond.com',
                     founded: '2025年1月',
                     headquarters: '北京',
-                    segment: 'VLA模型/具身大模型',
+                    segment: 'VLA模型 / 视频学习',
                     isOverseas: false,
                     valuation: '约5亿人民币',
                     valuationCNY: 5,
@@ -517,7 +541,7 @@ n                'Tesla Optimus': {
                     website: 'https://www.tesla.com/optimus',
                     founded: '2022年',
                     headquarters: '美国弗里蒙特',
-                    segment: 'General-Purpose Humanoid',
+                    segment: '人形整机 / 混合',
                     isOverseas: true,
                     valuation: 'Tesla上市主体市值$800B+',
                     valuationCNY: 0,
@@ -557,22 +581,63 @@ n                'Tesla Optimus': {
             return null;
         }
         
+        // 数据路径说明
+        function getDataPathDescription(path) {
+            const descriptions = {
+                '遥操作': '通过人类操作员使用VR手柄、外骨骼或示教器远程控制机器人，采集人类演示数据。数据质量高但规模受限，适合精细操作任务（如灵巧手操作）。',
+                '视频学习': '从YouTube、纪录片、教学视频等互联网视频中学习人类动作模式。数据规模大但需解决Sim2Real泛化问题，适合通用技能学习。',
+                '仿真': '在Isaac Gym、Mujoco、UniSim等仿真平台中合成训练数据。可大规模生成但存在Sim2Real gap，需Domain Randomization等技巧。',
+                '仿真+遥操作': '结合仿真合成和遥操作采集的数据，兼顾规模和质量。仿真数据用于预训练，遥操作数据用于微调。',
+                '物理世界': '直接在实际机器人或物理环境中采集数据。真实性最高但成本高、风险大，适合落地验证。',
+                '混合': '综合使用多种数据获取方式，兼顾数据规模、质量和泛化能力。'
+            };
+            return descriptions[path] || descriptions['混合'];
+        }
+        
         function renderCompanyPage(company, events) {
-            const initials = company.name.slice(0, 2);
             const currencySymbol = company.currency === '美元' ? '💵' : '💴';
+            
+            // 解析数据路径
+            const segmentParts = (company.segment || '').split(' / ');
+            const mainSegment = segmentParts[0] || '';
+            const dataPath = segmentParts[1] || '混合';
+            
+            // 数据路径样式映射
+            const pathClassMap = {
+                '遥操作': 'data-path-teleop',
+                '视频学习': 'data-path-video',
+                '仿真': 'data-path-sim',
+                '仿真+遥操作': 'data-path-sim',
+                '物理世界': 'data-path-real',
+                '混合': 'data-path-hybrid'
+            };
+            const pathClass = pathClassMap[dataPath] || 'data-path-hybrid';
+            
+            // 数据路径图标
+            const pathIconMap = {
+                '遥操作': '🎮',
+                '视频学习': '🎬',
+                '仿真': '🔬',
+                '仿真+遥操作': '🔬',
+                '物理世界': '🌍',
+                '混合': '🔀'
+            };
+            const pathIcon = pathIconMap[dataPath] || '🔀';
             
             document.title = `${company.name} - 公司详情`;
             
             document.getElementById('content').innerHTML = `
                 <div class="company-header">
                     <div class="company-title">
-                        <div class="company-logo">${initials}</div>
                         <div>
                             <div class="company-name">${company.name}</div>
                             <div class="company-name-en">${company.name_en}</div>
                             <a href="${company.website}" target="_blank" class="company-website">
                                 🌐 ${company.website.replace('https://', '')}
                             </a>
+                            <div class="tech-path-section">
+                                <span class="data-path-tag ${pathClass}">${pathIcon} ${dataPath}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="valuation-badge">
@@ -583,6 +648,10 @@ n                'Tesla Optimus': {
                 
                 <div class="stats-grid">
                     <div class="stat-card">
+                        <div class="stat-label">公司定位</div>
+                        <div class="stat-value">${mainSegment}</div>
+                    </div>
+                    <div class="stat-card">
                         <div class="stat-label">成立时间</div>
                         <div class="stat-value">${company.founded}</div>
                     </div>
@@ -591,12 +660,19 @@ n                'Tesla Optimus': {
                         <div class="stat-value">${company.headquarters}</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-label">赛道</div>
-                        <div class="stat-value">${company.segment}</div>
-                    </div>
-                    <div class="stat-card">
                         <div class="stat-label">最新融资</div>
                         <div class="stat-value">${company.latest}</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">🔍 技术路径说明</div>
+                    <div style="color: var(--text-secondary); line-height: 1.8;">
+                        <p><strong>公司定位：</strong>${mainSegment}</p>
+                        <p><strong>数据获取方式：</strong>${dataPath}</p>
+                        <p style="margin-top: 12px; font-size: 13px;">
+                            ${getDataPathDescription(dataPath)}
+                        </p>
                     </div>
                 </div>
                 
