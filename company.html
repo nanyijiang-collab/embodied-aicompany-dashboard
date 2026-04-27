@@ -815,14 +815,15 @@
                     segment: rankingInfo.segment,
                     isOverseas: rankingInfo.isOverseas,
                     valuation: rankingInfo.valuation,
-                    valuationCNY: 0,
-                    currency: '人民币',
-                    latest: '-',
-                    date: '待补充',
+                    valuationCNY: rankingInfo.valuationCNY || 0,
+                    currency: rankingInfo.currency || '人民币',
+                    latest: rankingInfo.latest || '-',
+                    latest_en: rankingInfo.latest_en || '',
+                    date: rankingInfo.date || '',
                     founders: [],
                     investors: [],
                     milestones: [
-                        {date: '待补充', event: '暂无详细信息，请返回主页查看基础数据'}
+                        {date: rankingInfo.date || '-', event: `最新融资: ${rankingInfo.latest || '待补充'} (${rankingInfo.valuation || '估值待定'})`}
                     ]
                 };
             }
