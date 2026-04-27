@@ -653,7 +653,7 @@
         <!-- Stats Cards -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="value" id="totalCompanies">39</div>
+                <div class="value" id="totalCompanies">40</div>
                 <div class="label" data-i18n="monitored">监控公司</div>
                 <div class="trend up" id="companiesTrend" style="display:none">+0</div>
             </div>
@@ -1075,7 +1075,7 @@
             '优理奇智能': 'Yuliqi Intelligence',
             '觅蜂科技': 'Mifeng Technology',
             '地瓜机器人': 'Rover Robotics',
-            '简智机器人': 'Jianzhi Robotics',
+            '简智机器人': 'GenRobot.ai',
             '卓益得机器人': 'Zhuoyide Robotics',
             '开普勒人形机器人': 'Kepler Humanoid',
             '国家地方共建具身智能机器人创新中心': 'National Embodied AI Robot Innovation Center',
@@ -1450,6 +1450,7 @@
             { company: '思特威', valuation: '约5亿人民币', valuationCNY: 5, currency: '人民币', percentage: 25, latest: '战略投资', latest_en: 'Strategic', segment: '传感器', date: '2025.06', isOverseas: false },
             { company: '灵宇宙', valuation: '约2亿人民币', valuationCNY: 2, currency: '人民币', percentage: 15, latest: '天使轮', latest_en: 'Angel Round', segment: '具身大模型', date: '2025.07', isOverseas: false },
             { company: '智平方机器人', valuation: '约10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 32, latest: 'A轮', latest_en: 'Series A', segment: '人形整机', date: '2025.08', isOverseas: false },
+            { company: '简智机器人', valuation: '约10亿人民币', valuationCNY: 10, currency: '人民币', percentage: 32, latest: '累计近10亿', latest_en: '~¥1B Raised', segment: '数据/仿真', date: '2026.03', isOverseas: false },
             { company: '灵御智能', valuation: '约2亿人民币', valuationCNY: 2, currency: '人民币', percentage: 15, latest: '天使轮', latest_en: 'Angel Round', segment: '人形整机', date: '2025.06', isOverseas: false }
         ];
 
@@ -1699,7 +1700,7 @@
             
             // 计算总监控公司数
             const companies = new Set(allEvents.map(e => e.company));
-            document.getElementById('totalCompanies').textContent = Math.max(39, companies.size);
+            document.getElementById('totalCompanies').textContent = Math.max(40, companies.size);
             
             // 本月新增计算
             const now = new Date();
