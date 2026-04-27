@@ -881,6 +881,19 @@ personnel_events = [
         "source": "极客公园",
         "source_url": "https://www.geekpark.net/news/363333",
         "date": "2026-04-26"
+    },
+    {
+        "company": "自然意志",
+        "person_name": "丁宁",
+        "action": "创业",
+        "old_role": "清华大学助理教授",
+        "new_role": "创始人",
+        "title": "清华大学丁宁助理教授创立自然意志，聚焦具身大脑方向",
+        "title_en": "Tsinghua Prof. Ding Ning Founds Natural Will for Embodied AI",
+        "summary": "AI科技评论独家获悉，清华大学助理教授、博士生导师丁宁成立公司「自然意志」，聚焦具身大脑方向，已获得IDG资本、峰瑞资本、真格基金等机构天使轮投资，估值高达40亿人民币。",
+        "source": "AI科技评论",
+        "source_url": "https://www.m.aitntnews.com/newDetail.html?newId=24473",
+        "date": "2026-01-08"
     }
 ]
 
