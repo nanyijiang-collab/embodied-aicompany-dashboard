@@ -798,6 +798,10 @@ class EmbodiedAICrawler:
             json.dump(state, f, ensure_ascii=False, indent=2)
 
     def save_data(self, events: List[Dict], validate: bool = True):
+        # ===== 去重处理 =====
+        print('\n[Dedup] Running deduplication...')
+        events = self._deduplicate_events(events)
+        
         if validate:
             print('\n[Validate] Checking links...')
             validator = LinkValidator()
@@ -811,6 +815,74 @@ class EmbodiedAICrawler:
         os.makedirs(DATA_DIR, exist_ok=True)
         with open(EVENTS_FILE, 'w', encoding='utf-8') as f:
             json.dump(events, f, ensure_ascii=False, indent=2)
+    
+    def _deduplicate_events(self, events: List[Dict]) -> List[Dict]:
+        """
+        三层去重：
+        1. 指纹去重：同公司+同日期+同标题
+        2. 相似度去重：同公司+同日期+标题相似度>0.8
+        3. ID去重：已有ID不重复添加
+        """
+        import re
+        from difflib import SequenceMatcher
+        
+        def normalize_text(text):
+            if not text:
+                return ''
+            text = re.sub(r'[^\w\s]', '', text)
+            return text.lower().strip()
+        
+        def similarity(a, b):
+            if not a or not b:
+                return 0.0
+            return SequenceMatcher(None, a, b).ratio()
+        
+        # 已有事件去重
+        seen_ids = set()
+        seen_keys = {}  # key: (company, date, normalized_title)
+        
+        unique_events = []
+        removed_count = 0
+        
+        for e in events:
+            event_id = e.get('id', '')
+            company = e.get('company', '')
+            date = e.get('date', '')[:10]
+            title = normalize_text(e.get('title', ''))
+            
+            # 第一层：ID去重
+            if event_id in seen_ids:
+                removed_count += 1
+                continue
+            
+            # 第二层：指纹去重（同公司+同日期+同标题）
+            key = f"{company}|{date}|{title}"
+            if key in seen_keys:
+                removed_count += 1
+                continue
+            
+            # 第三层：相似度去重
+            is_duplicate = False
+            for existing_key in seen_keys:
+                existing_parts = existing_key.split('|')
+                if len(existing_parts) >= 2:
+                    existing_company, existing_date = existing_parts[0], existing_parts[1]
+                    if company == existing_company and date == existing_date:
+                        existing_title = '|'.join(existing_parts[2:])
+                        if similarity(title, existing_title) >= 0.8:
+                            is_duplicate = True
+                            removed_count += 1
+                            break
+            
+            if is_duplicate:
+                continue
+            
+            seen_ids.add(event_id)
+            seen_keys[key] = e
+            unique_events.append(e)
+        
+        print(f'  Removed {removed_count} duplicates, {len(unique_events)} unique events')
+        return unique_events
 
     def detect_new_companies(self) -> List[Dict]:
         print('\n[Detect] Running new company detector...')

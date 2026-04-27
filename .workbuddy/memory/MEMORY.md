@@ -1,166 +1,55 @@
-# 具身智能媒体监测系统
+# 具身智能媒体监测系统 - 核心规范
 
-## 项目目标
-为具身智能创业公司CMO搭建自动化媒体监测看板，跟踪：
-1. 投融资动态
-2. PR发布（官方渠道 + 媒体报道）
-3. 产品/技术进展
+## 数据规范
 
-## 公司库
+### 去重机制（重要！）
+**每次数据更新必须经过去重，不允许直接追加！**
 
-### 海外 - 通用具身大模型（VLA/世界模型）
-| 公司 | 核心产品 | 官网 |
-|------|----------|------|
-| NVIDIA | GR00T + Isaac平台 | nvidia.com |
-| Physical Intelligence (PI) | π模型 | physicalintelligence.ai |
-| Skild AI | Skild Brain | skildai.com |
-| Figure AI | Figure 03 | figure.ai |
-| Agility Robotics | Digit | agilityrobotics.com |
-| Apptronik | Apollo | apptronik.com |
-| Field AI | 风险感知大模型 | fieldai.com |
-| Sanctuary AI | Phoenix | sanctuary.ai |
+去重规则（三层）：
+1. **ID去重**：已有ID不重复添加
+2. **指纹去重**：同公司+同日期+同标题 → 重复
+3. **相似度去重**：同公司+同日期+标题相似度≥0.8 → 重复
 
-### 海外 - 其他
-| 公司 | 核心产品 | 官网 |
-|------|----------|------|
-| 1X Technologies (挪威) | EVE模型 | 1x.tech |
-| Boston Dynamics (美国) | Atlas工业版 | bostondynamics.com |
-| Mimic Robotics (瑞士) | 模仿学习算法 | mimicrobotics.com |
-| Anybotics (瑞士) | 四足工业巡检 | anybotics.com |
-| Hexagon (瑞典) | 工业感知+控制 | hexagon.com |
-| Skydio (美国) | 自主导航AI | skydio.com |
+已集成去重的脚本：
+- `scripts/crawler.py` - 主爬虫（save_data方法已集成去重）
+- `scripts/add_personnel.py` - 人事动态添加（已集成去重）
+- `scripts/fast_dedup.py` - 独立去重脚本（可单独运行）
+- `scripts/dedup_personnel.py` - 人事动态去重脚本
 
-### 国内 - 通用具身大模型（VLA/世界模型）
-千寻智能、银河通用、自变量机器人、智元机器人、魔法原子、星海图、智平方、它石智航、跨维智能、穹彻智能
+独立去重命令：
+```bash
+python scripts/fast_dedup.py
+```
 
-### 国内 - 控制大脑
-星动纪元、思灵机器人、逐际动力、灵初智能、大晓机器人、梅卡曼德、傅利叶智能、七腾机器人、珞石机器人、镜识科技、优理奇智能、加速进化、帕西尼感知、地瓜机器人、觅蜂科技
+## 数据统计（2026-04-27）
+- 总事件数：5079条
+- 融资：697条
+- 产品：377条
+- 项目：209条
+- 采访：144条
+- 技术突破：70条
+- 活动展会：66条
+- 人事动态：28条
+- 其他：3488条
 
-## 数据源
-- 微信公众号（官方PR）
-- 公司官网（中英文）
-- 英文主流科技媒体
-- 国内科技媒体
+## 已添加人事动态的公司（约20家）
+- Boston Dynamics：Aaron Saunders离职、Milan Kovac加入、Robert Playter卸任CEO
+- Agility Robotics：Melonee Wise离职
+- Figure AI：团队重组
+- 1X Technologies：从特斯拉挖人
+- Physical Intelligence：Karol Hausman创立
+- 智元机器人：彭志辉创业+晋升总裁兼CTO
+- 魔法原子：创始人吴长征离职、CTO陈春玉接棒
+- 星动纪元：陈建宇创业
+- 银河通用：王鹤创业
+- 千寻智能：韩峰涛创业
+- 众擎机器人：李力耘加入CTO
+- 昆仑行/至简动力/无界动力/小雨智造/阿米奥机器人/灵足时代/破壳机器人
 
-## 展示形态
-网页看板
-
-## 需求确认
-
-### 数据抓取方案
-- 微信PR：公众号名称搜索
-- 官网PR：网页抓取
-- 英文媒体：TechCrunch、Wired、The Verge等
-- 融资数据：详细信息（金额、投资方、估值）
-
-### PR分类
-- 产品发布
-- 技术突破/开源
-- 项目落地/合作
-- 活动/展会
-- 采访/观点
-- 其他
-
-### 更新频率
-- 每周一自动更新
-- 手动刷新按钮（随时可点）
-
-## 数据处理（2026年4月24日）
-
-### 数据量变化
-- 原始爬取：3938 条
-- 去重后：3469 条（同一公司+同一日期+同一核心事件）
-- 关键词过滤：-19 条（RTX 4090、Pi币等明显不相关）
-- **当前总数：3450 条**
-
-### 过滤脚本
-- `scripts/simple_filter.py` - 简单关键词过滤（已部署）
-- `scripts/filter_relevance.py` - 大模型过滤（待API Key）
-
-### 大模型过滤计划
-- 使用智谱 GLM-4 Flash（免费额度：每月100万Tokens）
-- API申请：https://open.bigmodel.cn/
-- 命令：`python scripts/filter_relevance.py <API-Key>`
-
-## 状态
-✅ 看板原型已完成
-✅ 低成本爬虫方案（零Token消耗）
-✅ 英文标题翻译显示
-✅ 英文页面中文标题隐藏
-✅ 新公司探测器功能
-✅ 估值排行货币换算
-✅ 真实新闻链接
-✅ 数据去重（468条）
-✅ 简单关键词过滤（19条）
-⏳ 大模型过滤（待API Key）
-
-## 新功能
-
-### 英文标题翻译
-- 事件标题如果是英文的，会用小字斜体显示原文
-- 字段：`title_en`
-
-### 新公司探测器
-- 自动发现疑似具身智能新公司
-- 展示面板：`data/potential_companies.json`
-- 一键添加：点击"添加到监测"即可，无需分类
-
-### 估值排行
-- 自动将美元换算为人民币（汇率7.2）
-- 统一按亿人民币排序
-- 显示货币符号区分：💵美元 / 💴人民币
-- 估值数据附带融资日期（YYYY.MM格式）
-- "所属赛道"可点击，点击筛选该公司所有事件
-- 赛道分类：人形整机/VLA模型/传感器/灵巧手/3D视觉/具身大模型等
-
-### 事件列表排序与筛选
-- 按日期倒序排列（最新事件在上）
-- 点击"融资动态"标签 → 自动筛选融资事件
-- 点击"PR发布"标签 → 自动筛选PR事件（产品+技术+活动+采访）
-
-## 文件结构
-- `index.html` - 网页看板主页面（含新公司探测器UI）
-- `scripts/crawler.py` - 爬虫脚本（含新公司探测器类）
-- `data/events.json` - 事件数据
-- `data/potential_companies.json` - 潜在新公司数据
-- `data/crawl_state.json` - 爬虫状态（增量更新用）
-
-## 下一步
-1. GitHub + Vercel 部署（已完成Git初始化）
-2. 设置每周自动化任务
-3. 接入真实数据源（36Kr/机器之心API）
-
-## 数据偏好
-- 排除拼盘类新闻（综合盘点、融资汇总）
-- 以单一公司针对性报道为主
-- 日期必须是事件实际发生时间
-
-## 估值排行（2026年4月）
-| 排名 | 公司 | 估值 |
-|:---:|:---:|:---:|
-| 1 | 星海图 | 200亿 |
-| 2 | 银河通用 | 211亿 |
-| 3 | 灵心巧手 | 240亿 |
-| 4 | 宇树科技 | ~420亿 |
-| 5 | 智元机器人 | 150亿 |
-| 6-10 | 智平方/千寻/自变量/帕西尼/星动纪元 | 超100亿 |
-
-## GitHub部署
-
-## 已完成：链接验证模块
-- `scripts/crawler.py` 已集成 LinkValidator 类
-- 验证规则：
-  1. 首页链接检测（如 nvidia.com 而非具体文章）
-  2. 已知假域名过滤（starmotion.ai、fulani.cn等）
-  3. 可信来源自动通过（36kr、TechCrunch等）
-  4. HTTP状态码验证
-- 命令：`python scripts/crawler.py --validate`（仅验证）
-- 爬虫保存时自动验证：`python scripts/crawler.py`
-- GitHub账号：nanyijiang-collab
-- 待创建仓库：embodied-ai-dashboard
-- 待执行推送命令：
-  ```
-  git remote add origin https://github.com/nanyijiang-collab/embodied-ai-dashboard.git
-  git push -u origin main
-  ```
-- 然后在 Vercel 导入仓库部署
+## 项目结构
+- `index.html` - 主看板页面
+- `company.html` - 公司详情页面（URL参数：?name=公司名）
+- `scripts/crawler.py` - 主爬虫脚本
+- `data/events.json` - 事件数据库
+- `data/potential_companies.json` - 潜在新公司
+- `data/crawl_state.json` - 爬虫状态

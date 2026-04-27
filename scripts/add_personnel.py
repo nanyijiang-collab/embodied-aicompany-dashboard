@@ -6,7 +6,9 @@
 
 import json
 import os
+import re
 from datetime import datetime
+from difflib import SequenceMatcher
 
 def load_events():
     with open('data/events.json', 'r', encoding='utf-8') as f:
@@ -21,6 +23,54 @@ def generate_id(company, date, idx=0):
     prefix = company[:2]
     date_part = date.replace('-', '')[:6]
     return f"{prefix}{date_part}{idx:02d}"
+
+def normalize_text(text):
+    """标准化文本"""
+    if not text:
+        return ''
+    text = re.sub(r'[^\w\s]', '', text)
+    return text.lower().strip()
+
+def similarity(a, b):
+    """计算相似度"""
+    if not a or not b:
+        return 0.0
+    return SequenceMatcher(None, a, b).ratio()
+
+def deduplicate_events(events):
+    """三层去重"""
+    seen = {}  # key: (company, date, title) -> event
+    unique = []
+    removed = 0
+    
+    for e in events:
+        company = e.get('company', '')
+        date = e.get('date', '')[:10]
+        title = normalize_text(e.get('title', ''))
+        event_id = e.get('id', '')
+        
+        key = (company, date, title)
+        
+        if key in seen:
+            removed += 1
+            continue
+        
+        # 相似度检查
+        is_dup = False
+        for existing_key in list(seen.keys()):
+            ec, ed, et = existing_key
+            if ec == company and ed == date and similarity(title, et) >= 0.8:
+                is_dup = True
+                removed += 1
+                break
+        
+        if not is_dup:
+            seen[key] = e
+            unique.append(e)
+    
+    if removed > 0:
+        print(f"  [Dedup] Removed {removed} duplicates")
+    return unique
 
 # 人事动态数据（搜索到的真实新闻）
 personnel_events = [
@@ -426,6 +476,10 @@ def main():
         events.append(event)
         new_count += 1
         print(f"+ {pe['company']} - {pe['person_name']} {pe['action']} ({pe['date']})")
+    
+    # 去重
+    print("\n[Dedup] Running deduplication...")
+    events = deduplicate_events(events)
     
     # 保存
     save_events(events)
