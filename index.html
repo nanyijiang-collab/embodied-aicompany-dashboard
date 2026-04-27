@@ -655,10 +655,12 @@
             <div class="stat-card">
                 <div class="value" id="totalCompanies">39</div>
                 <div class="label" data-i18n="monitored">监控公司</div>
+                <div class="trend up" id="companiesTrend" style="display:none">+0</div>
             </div>
             <div class="stat-card">
                 <div class="value" id="totalEvents">0</div>
                 <div class="label" data-i18n="totalEvents">总事件数</div>
+                <div class="trend up" id="eventsTrend" style="display:none">+0</div>
             </div>
             <div class="stat-card">
                 <div class="value" id="fundingCount">0</div>
@@ -679,23 +681,23 @@
             <div class="filter-group">
                 <label data-i18n="region">地区:</label>
                 <select id="regionFilter">
-                    <option value="all" data-i18n="all">全部</option>
-                    <option value="domestic">🇨🇳 <span data-i18n="domestic">国内</span></option>
-                    <option value="overseas_us">🇺🇸 <span data-i18n="us">美国</span></option>
-                    <option value="overseas_eu">🇪🇺 <span data-i18n="eu">欧洲</span></option>
+                    <option value="all">All</option>
+                    <option value="domestic">🇨🇳 China</option>
+                    <option value="overseas_us">🇺🇸 US</option>
+                    <option value="overseas_eu">🇪🇺 Europe</option>
                 </select>
             </div>
             <div class="filter-group">
                 <label data-i18n="type">类型:</label>
                 <select id="typeFilter">
-                    <option value="all" data-i18n="all">全部</option>
-                    <option value="funding">💰 <span data-i18n="t_funding">融资</span></option>
-                    <option value="product">📦 <span data-i18n="t_product">产品发布</span></option>
-                    <option value="tech_breakthrough">🔬 <span data-i18n="t_tech">技术突破</span></option>
-                    <option value="project">🤝 <span data-i18n="t_project">项目落地</span></option>
-                    <option value="event">🎪 <span data-i18n="t_event">活动展会</span></option>
-                    <option value="interview">🎤 <span data-i18n="t_interview">采访观点</span></option>
-                    <option value="other">📌 <span data-i18n="t_other">其他</span></option>
+                    <option value="all">All</option>
+                    <option value="funding">💰 Funding</option>
+                    <option value="product">📦 Product Launch</option>
+                    <option value="tech_breakthrough">🔬 Tech Breakthrough</option>
+                    <option value="project">🤝 Project Launch</option>
+                    <option value="event">🎪 Event / Exhibition</option>
+                    <option value="interview">🎤 Interview / Opinion</option>
+                    <option value="other">📌 Other</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -915,6 +917,33 @@
                 }
             });
 
+            // Update select options (can't use data-i18n inside <option>)
+            const regionFilter = document.getElementById('regionFilter');
+            if (regionFilter) {
+                const savedRegion = regionFilter.value;
+                if (currentLang === 'zh') {
+                    regionFilter.options[0].text = '全部';
+                    regionFilter.options[1].text = '🇨🇳 国内';
+                    regionFilter.options[2].text = '🇺🇸 美国';
+                    regionFilter.options[3].text = '🇪🇺 欧洲';
+                } else {
+                    regionFilter.options[0].text = 'All';
+                    regionFilter.options[1].text = '🇨🇳 China';
+                    regionFilter.options[2].text = '🇺🇸 US';
+                    regionFilter.options[3].text = '🇪🇺 Europe';
+                }
+                regionFilter.value = savedRegion;
+            }
+            const typeFilter = document.getElementById('typeFilter');
+            if (typeFilter) {
+                const savedType = typeFilter.value;
+                const typeOpts = currentLang === 'zh'
+                    ? ['全部', '💰 融资', '📦 产品发布', '🔬 技术突破', '🤝 项目落地', '🎪 活动展会', '🎤 采访观点', '📌 其他']
+                    : ['All', '💰 Funding', '📦 Product Launch', '🔬 Tech Breakthrough', '🤝 Project Launch', '🎪 Event / Exhibition', '🎤 Interview / Opinion', '📌 Other'];
+                Array.from(typeFilter.options).forEach((opt, i) => { opt.text = typeOpts[i]; });
+                typeFilter.value = savedType;
+            }
+
             // Update type names in JS
             typeNames['funding'] = i18n[currentLang]['t_funding'];
             typeNames['product'] = i18n[currentLang]['t_product'];
@@ -928,6 +957,8 @@
             renderTable();
             renderRanking();
             updatePagination();
+            // 更新统计标签
+            if (allEvents.length > 0) updateStats();
             
             // 英文模式下显示翻译备注
             const translationNote = document.getElementById('translationNote');
@@ -1074,7 +1105,9 @@
                     allEvents = data;
                     applyFilters();
                     updateStats();
-                    document.getElementById('lastUpdated').textContent = new Date().toLocaleString('zh-CN');
+                    document.getElementById('lastUpdated').textContent = currentLang === 'en'
+                        ? new Date().toLocaleString('en-US')
+                        : new Date().toLocaleString('zh-CN');
                 })
                 .catch(e => {
                     console.error('Failed to load events:', e);
@@ -1443,7 +1476,16 @@
                 const displaySegment = currentLang === 'en' ? (segmentNamesEN[item.segment] || item.segment) : item.segment;
                 // 英文模式下显示英文融资信息
                 const displayValuation = currentLang === 'en' 
-                    ? `${item.valuation.replace('亿美元', 'Billion USD').replace('亿人民币', 'Billion').replace('亿', 'Billion')}`
+                    ? item.valuation
+                        .replace(/约/g, '~')
+                        .replace(/亿美元/g, 'B USD')
+                        .replace(/亿港元/g, 'B HKD')
+                        .replace(/亿人民币/g, 'B CNY')
+                        .replace(/亿/g, 'B')
+                        .replace(/上市~/g, 'Listed ~')
+                        .replace(/上市/g, 'Listed')
+                        .replace(/非上市/g, 'Unlisted')
+                        .replace(/万亿/g, 'T')
                     : item.valuation;
                 const displayLatest = currentLang === 'en' ? (item.latest_en || item.latest) : item.latest;
                 
@@ -1562,9 +1604,11 @@
                 // 英文模式下翻译金额：亿 -> Billion
                 let amountEn = event.amount;
                 if (currentLang === 'en') {
-                    amountEn = amountEn.replace(/([\d.]+)亿美元/g, '$$$1 Billion USD')
-                                     .replace(/([\d.]+)亿人民币/g, '¥$1 Billion')
-                                     .replace(/([\d.]+)亿/g, '¥$1 Billion');
+                    amountEn = amountEn
+                        .replace(/约/g, '~')
+                        .replace(/([\d.]+)亿美元/g, '$$$1B USD')
+                        .replace(/([\d.]+)亿人民币/g, '¥$1B')
+                        .replace(/([\d.]+)亿/g, '¥$1B');
                 }
                 html += `<div class="funding-amount">${amountEn}</div>`;
             }
@@ -1572,9 +1616,11 @@
                 const valuationLabel = currentLang === 'en' ? 'Valuation: ' : '估值: ';
                 let valuationEn = event.valuation;
                 if (currentLang === 'en') {
-                    valuationEn = valuationEn.replace(/([\d.]+)亿美元/g, '$$$1 Billion USD')
-                                             .replace(/([\d.]+)亿人民币/g, '¥$1 Billion')
-                                             .replace(/([\d.]+)亿/g, '¥$1 Billion');
+                    valuationEn = valuationEn
+                        .replace(/约/g, '~')
+                        .replace(/([\d.]+)亿美元/g, '$$$1B USD')
+                        .replace(/([\d.]+)亿人民币/g, '¥$1B')
+                        .replace(/([\d.]+)亿/g, '¥$1B');
                 }
                 html += `<div class="valuation">${valuationLabel}${valuationEn}</div>`;
             }
@@ -1625,6 +1671,39 @@
             // 计算总监控公司数
             const companies = new Set(allEvents.map(e => e.company));
             document.getElementById('totalCompanies').textContent = Math.max(39, companies.size);
+            
+            // 本月新增计算
+            const now = new Date();
+            const thisMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+            
+            const thisMonthEvents = allEvents.filter(e => e.date && e.date.startsWith(thisMonth));
+            const thisMonthFunding = thisMonthEvents.filter(e => e.type === 'funding').length;
+            const thisMonthTotal = thisMonthEvents.length;
+            
+            // 本月新增公司
+            const allTimeCompanies = new Set(allEvents.map(e => e.company));
+            const thisMonthNewCompanies = new Set(thisMonthEvents.map(e => e.company));
+            // 只统计本月有新事件的公司（不区分是否之前有事件，直观展示活跃公司数）
+            const thisMonthActiveCompanies = thisMonthNewCompanies.size;
+            
+            // 更新融资本月新增
+            const tMonth = currentLang === 'en' ? 'this month' : '本月';
+            document.getElementById('fundingTrend').innerHTML = `+${thisMonthFunding} <span data-i18n="thisMonth">${tMonth}</span>`;
+            
+            // 更新总事件本月新增
+            const eventsTrend = document.getElementById('eventsTrend');
+            if (thisMonthTotal > 0) {
+                eventsTrend.style.display = 'inline-block';
+                eventsTrend.textContent = `+${thisMonthTotal} ${tMonth}`;
+            }
+            
+            // 更新监控公司本月活跃
+            const companiesTrend = document.getElementById('companiesTrend');
+            if (thisMonthActiveCompanies > 0) {
+                companiesTrend.style.display = 'inline-block';
+                const activeLabel = currentLang === 'en' ? 'active this month' : '本月活跃';
+                companiesTrend.textContent = `${thisMonthActiveCompanies} ${activeLabel}`;
+            }
         }
         
         // ==================== 新公司探测 ====================
