@@ -81729,5 +81729,214 @@
     "action": "创业",
     "old_role": "DeepMind高级研究科学家",
     "new_role": "Generalist AI创始人兼CEO"
+  },
+  {
+    "id": "Ag20240300",
+    "company": "Agility Robotics",
+    "type": "personnel",
+    "title": "Agility Robotics创始人Damion Shelton卸任CEO",
+    "title_en": "Agility Robotics Co-Founder Damion Shelton Steps Down as CEO",
+    "summary": "Agility Robotics创始人Damion Shelton于2024年3月4日卸任CEO，由微软前高管Peggy Johnson接任。Shelton曾是卡内基梅隆大学研究员，2015年创立Agility Robotics，领导Digit机器人开发。",
+    "source": "机电工程师网",
+    "source_url": "https://www.jdgcs.org/news/agility-robotics-boston-dynamics-see-leadership-changes-17729/",
+    "date": "2024-03-04",
+    "created_at": "2026-04-27T16:15:05.851985",
+    "media_sources": [
+      "机电工程师网"
+    ],
+    "person_name": "Damion Shelton",
+    "action": "卸任",
+    "old_role": "CEO",
+    "new_role": "-"
+  },
+  {
+    "id": "大晓20251200",
+    "company": "大晓机器人",
+    "type": "personnel",
+    "title": "商汤科技联合创始人王晓刚出任大晓机器人董事长",
+    "title_en": "SenseTime Co-Founder Wang Xiaogang Joins Daxiao Robotics as Chairman",
+    "summary": "2025年12月，商汤科技联合创始人王晓刚出任大晓机器人董事长。王晓刚是商汤科技创始人之一，在计算机视觉和AI领域有深厚积累，此次加入大晓机器人标志着具身智能领域的强强联合。",
+    "source": "公开信息",
+    "source_url": "https://www.qcc.com/firm/34337a9c25db2d3dc97d62b242dcefb5.html",
+    "date": "2025-12-01",
+    "created_at": "2026-04-27T16:15:05.851992",
+    "media_sources": [
+      "公开信息"
+    ],
+    "person_name": "王晓刚",
+    "action": "加入",
+    "old_role": "-",
+    "new_role": "董事长"
+  },
+  {
+    "id": "逐际20260400",
+    "company": "逐际动力",
+    "type": "personnel",
+    "title": "逐际动力联合创始人兼COO张力离职",
+    "title_en": "Limx Dynamics Co-Founder and COO Zhang Li Departs",
+    "summary": "2026年4月8日确认，逐际动力联合创始人兼COO张力已于年初正式离职，未来将筹备新的创业项目，聚焦具身模型方向。张力是南方科技大学长聘教授，与创始人张巍共同创办逐际动力。",
+    "source": "搜狐",
+    "source_url": "https://www.sohu.com/a/1008714416_121777994",
+    "date": "2026-04-08",
+    "created_at": "2026-04-27T16:15:05.851996",
+    "media_sources": [
+      "搜狐"
+    ],
+    "person_name": "张力",
+    "action": "离职",
+    "old_role": "COO（首席运营官）",
+    "new_role": "-"
+  },
+  {
+    "id": "He20250700",
+    "company": "Hexagon",
+    "type": "personnel",
+    "title": "Anders Svensson接任Hexagon总裁兼CEO",
+    "title_en": "Anders Svensson Appointed President and CEO of Hexagon",
+    "summary": "2025年7月21日，Hexagon宣布Anders Svensson正式出任总裁兼首席执行官，接替临时CEO Norbert Hanke。Hexagon是全球测量技术领军企业，在工业软件和传感器领域有重要地位。",
+    "source": "Hexagon官网",
+    "source_url": "https://hexagon.com/company/newsroom/press-releases/2025/anders-svensson-appointed-as-new-president-and-ceo-of-hexagon",
+    "date": "2025-07-21",
+    "created_at": "2026-04-27T16:15:05.852001",
+    "media_sources": [
+      "Hexagon官网"
+    ],
+    "person_name": "Anders Svensson",
+    "action": "接任",
+    "old_role": "-",
+    "new_role": "总裁兼CEO"
+  },
+  {
+    "id": "Fi20240600",
+    "company": "Figure AI",
+    "type": "personnel",
+    "title": "Figure AI首席技术官Jerry Pratt离职创业",
+    "title_en": "Figure AI CTO Jerry Pratt Departs to Start New Venture",
+    "summary": "Figure AI首席技术官Jerry Pratt于2024年离职，与另一位机器人专家Nic Radford共同创立人形机器人公司Persona AI。Jerry Pratt在Figure AI期间领导了多项核心技术研发。",
+    "source": "腾讯新闻",
+    "source_url": "https://new.qq.com/rain/a/20240709A08S9K00",
+    "date": "2024-06-01",
+    "created_at": "2026-04-27T16:18:45.963703",
+    "media_sources": [
+      "腾讯新闻"
+    ],
+    "person_name": "Jerry Pratt",
+    "action": "离职",
+    "old_role": "CTO（首席技术官）",
+    "new_role": "-"
+  },
+  {
+    "id": "Fi20241200",
+    "company": "Figure AI",
+    "type": "personnel",
+    "title": "Meta前AR眼镜项目负责人Caitlin Kalinowski加入Figure AI",
+    "title_en": "Former Meta AR Glasses Lead Caitlin Kalinowski Joins Figure AI",
+    "summary": "2024年底，Meta前AR眼镜项目负责人Caitlin Kalinowski加入Figure AI，领导机器人程序团队重组。Figure AI于2025年2月宣布终止与OpenAI的合作，转而自主研发AI模型。",
+    "source": "搜狐",
+    "source_url": "https://www.sohu.com/a/856711833_121902920",
+    "date": "2024-12-01",
+    "created_at": "2026-04-27T16:18:45.963717",
+    "media_sources": [
+      "搜狐"
+    ],
+    "person_name": "Caitlin Kalinowski",
+    "action": "加入",
+    "old_role": "-",
+    "new_role": "机器人程序团队负责人"
+  },
+  {
+    "id": "Fi20250200",
+    "company": "Figure AI",
+    "type": "personnel",
+    "title": "Figure AI与OpenAI终止合作，进行团队重组",
+    "title_en": "Figure AI Ends OpenAI Partnership, Undergoes Team Restructuring",
+    "summary": "2025年2月4日，Figure AI宣布终止与OpenAI的合作关系，转而自主研发AI模型。公司进行团队重组，由Caitlin Kalinowski领导新的机器人程序团队，旨在推动人形机器人技术的自主发展。",
+    "source": "搜狐",
+    "source_url": "https://www.sohu.com/a/856711833_121902920",
+    "date": "2025-02-04",
+    "created_at": "2026-04-27T16:18:45.963735",
+    "media_sources": [
+      "搜狐"
+    ],
+    "person_name": "-",
+    "action": "团队重组",
+    "old_role": "-",
+    "new_role": "-"
+  },
+  {
+    "id": "智元20250300",
+    "company": "智元机器人",
+    "type": "personnel",
+    "title": "华为前副总裁邓泰华加入智元机器人任董事长兼CEO",
+    "title_en": "Former Huawei VP Deng Taihua Joins AgiBot as Chairman and CEO",
+    "summary": "2025年3月，华为前副总裁、计算产品线总裁邓泰华加入智元机器人，担任创始人、董事长兼CEO。邓泰华此前在华为任职超过20年，负责计算产品线。智元机器人由此进入新的发展阶段。",
+    "source": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/jjxw/2025-03-24/doc-inequiik6571403.shtml",
+    "date": "2025-03-24",
+    "created_at": "2026-04-27T16:18:45.963752",
+    "media_sources": [
+      "新浪财经"
+    ],
+    "person_name": "邓泰华",
+    "action": "加入",
+    "old_role": "-",
+    "new_role": "创始人、董事长兼CEO"
+  },
+  {
+    "id": "智元20250801",
+    "company": "智元机器人",
+    "type": "personnel",
+    "title": "智元机器人灵犀事业部总裁魏强离职",
+    "title_en": "AgiBot Lingxi Business Unit President Wei Qiang Departs",
+    "summary": "2025年8月，智元机器人灵犀事业部总裁魏强离职。魏强此前负责智元机器人灵犀事业部，后由创始人彭志辉轮值接任该事业部总裁。",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20250807A05DTE00",
+    "date": "2025-08-07",
+    "created_at": "2026-04-27T16:19:37.488877",
+    "media_sources": [
+      "腾讯新闻"
+    ],
+    "person_name": "魏强",
+    "action": "离职",
+    "old_role": "灵犀事业部总裁",
+    "new_role": "-"
+  },
+  {
+    "id": "智元20250801",
+    "company": "智元机器人",
+    "type": "personnel",
+    "title": "智元机器人联合创始人闫维新离职",
+    "title_en": "AgiBot Co-Founder Yan Weixin Departs",
+    "summary": "2025年8月，智元机器人联合创始人闫维新离职。闫维新来自上海交通大学，是智元机器人早期核心团队成员之一。离职后由彭志辉轮值接任灵犀事业部总裁。",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20250807A05DTE00",
+    "date": "2025-08-07",
+    "created_at": "2026-04-27T16:19:37.488882",
+    "media_sources": [
+      "腾讯新闻"
+    ],
+    "person_name": "闫维新",
+    "action": "离职",
+    "old_role": "联合创始人",
+    "new_role": "-"
+  },
+  {
+    "id": "智在20250100",
+    "company": "智在无界",
+    "type": "personnel",
+    "title": "前智源团队卢宗青创立智在无界",
+    "title_en": "Ex-BAAI Researcher Lu Zongqing Founds BeingBeyond",
+    "summary": "卢宗青是北京大学计算机学院长聘副教授，前智源研究院多模态交互研究中心负责人，曾负责首个国家自然科学基金委原创探索计划通用智能体项目。2025年1月创立智在无界(BeingBeyond)，获联想之星领投数千万元天使轮融资。",
+    "source": "36氪",
+    "source_url": "https://36kr.com/p/3324923112614405",
+    "date": "2025-01-01",
+    "created_at": "2026-04-27T16:36:17.010635",
+    "media_sources": [
+      "36氪"
+    ],
+    "person_name": "卢宗青",
+    "action": "创业",
+    "old_role": "北京大学计算机学院长聘副教授/智源研究院多模态交互研究中心负责人",
+    "new_role": "智在无界创始人兼CEO"
   }
 ]
