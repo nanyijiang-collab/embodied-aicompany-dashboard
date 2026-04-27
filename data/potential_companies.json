@@ -97,5 +97,35 @@
     "status": "approved",
     "category": "domestic_vla",
     "note": "追觅前高管创立，具身整机，数亿元Pre-A轮"
+  },
+  {
+    "name": "艾欧",
+    "discovered_from": "用户提供",
+    "article_title": "全链路具身数据服务专家",
+    "article_url": "https://io-ai.tech/zh/about/",
+    "discovered_date": "2026-04-27",
+    "status": "approved",
+    "category": "data_platform",
+    "note": "艾欧智能/IO-AI，具身智能数据服务商；创始人陈相羽；产品：通用遥操作系统、数据采集系统、数据管理平台；已添加到rankingData"
+  },
+  {
+    "name": "戴盟",
+    "discovered_from": "用户提供",
+    "article_title": "全球最大具身触觉数据集Daimon-Infinity",
+    "article_url": "https://fund.eastmoney.com/a/202604163707533398.html",
+    "discovered_date": "2026-04-27",
+    "status": "approved",
+    "category": "data_platform",
+    "note": "戴盟机器人/Daimon，专注触觉传感器；孵化于港科大；联合Google DeepMind、清华、北大等发布全球最大触觉数据集；已添加到rankingData"
+  },
+  {
+    "name": "宇叠",
+    "discovered_from": "用户提供",
+    "article_title": "机器人遥操作与数据采集解决方案",
+    "article_url": "https://www.udexreal.cn/col.jsp?id=110",
+    "discovered_date": "2026-04-27",
+    "status": "approved",
+    "category": "data_platform",
+    "note": "宇叠智能/宇叠科技，柔性传感材料为核心；超感数据手套遥操作；2025年10月智微智能入股；已添加到rankingData"
   }
 ]
