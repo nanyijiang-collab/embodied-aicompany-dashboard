@@ -906,6 +906,7 @@
         };
 
         let currentLang = localStorage.getItem('lang') || 'zh';
+        let currentTab = 'events'; // events | ranking
 
         function toggleLanguage() {
             currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -1202,6 +1203,40 @@
         
         // ==================== 标签页 ====================
         function initTabs() {
+            // 恢复保存的 tab 状态
+            const savedState = sessionStorage.getItem('indexViewState');
+            let savedScrollY = 0;
+            if (savedState) {
+                try {
+                    const state = JSON.parse(savedState);
+                    if (state.currentTab) {
+                        currentTab = state.currentTab;
+                    }
+                    // 恢复滚动位置
+                    if (state.scrollY) {
+                        savedScrollY = state.scrollY;
+                    }
+                } catch (e) {}
+            }
+            
+            // 设置初始激活状态
+            document.querySelectorAll('.tab').forEach(tab => {
+                if (tab.dataset.tab === currentTab) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // 显示/隐藏对应内容
+            if (currentTab === 'ranking') {
+                document.getElementById('rankingTable').classList.remove('hidden');
+                document.getElementById('pagination').classList.add('hidden');
+            } else {
+                document.getElementById('rankingTable').classList.add('hidden');
+                document.getElementById('pagination').classList.remove('hidden');
+            }
+            
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.addEventListener('click', function() {
                     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -1217,26 +1252,65 @@
                     }
                     
                     applyFilters();
+                    saveViewState();
                 });
             });
+            
+            // 恢复滚动位置（在数据加载后）
+            if (savedScrollY > 0) {
+                requestAnimationFrame(() => {
+                    window.scrollTo(0, savedScrollY);
+                });
+            }
         }
         
         // ==================== 筛选 ====================
         function initFilters() {
+            // 恢复保存的筛选状态
+            const savedState = sessionStorage.getItem('indexViewState');
+            if (savedState) {
+                try {
+                    const state = JSON.parse(savedState);
+                    if (state.region) document.getElementById('regionFilter').value = state.region;
+                    if (state.type) document.getElementById('typeFilter').value = state.type;
+                    if (state.search) document.getElementById('searchInput').value = state.search;
+                    if (state.currentPage) currentPage = state.currentPage;
+                } catch (e) {}
+            }
+            
             document.getElementById('regionFilter').addEventListener('change', () => {
                 currentPage = 1;
                 applyFilters();
+                saveViewState();
             });
             
             document.getElementById('typeFilter').addEventListener('change', () => {
                 currentPage = 1;
                 applyFilters();
+                saveViewState();
             });
             
             document.getElementById('searchInput').addEventListener('input', debounce(() => {
                 currentPage = 1;
                 applyFilters();
+                saveViewState();
             }, 300));
+        }
+        
+        // 保存视图状态到 sessionStorage
+        function saveViewState() {
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
+            const state = {
+                currentTab: currentTab,
+                region: document.getElementById('regionFilter').value,
+                type: document.getElementById('typeFilter').value,
+                search: document.getElementById('searchInput').value,
+                currentPage: currentPage,
+                scrollY: scrollY,
+                rankingPage: parseInt(sessionStorage.getItem('rankingPage') || '1'),
+                rankingScrollY: currentTab === 'ranking' ? scrollY : 0
+            };
+            sessionStorage.setItem('indexViewState', JSON.stringify(state));
         }
         
         function applyFilters() {
@@ -1361,7 +1435,7 @@
                         <td>
                             <div class="company-cell">
                                 ${badge}
-                                <a href="company.html?name=${encodeURIComponent(event.company)}" class="company-link" title="${currentLang === 'en' ? 'View company details' : '查看公司详情'}">${displayCompany}</a>
+                                <a href="company.html?name=${encodeURIComponent(event.company)}" class="company-link" title="${currentLang === 'en' ? 'View company details' : '查看公司详情'}" onclick="saveViewState();">${displayCompany}</a>
                             </div>
                         </td>
                         <td>${typeBadge}</td>
@@ -1566,7 +1640,7 @@
                         <td>
                             <div class="company-cell">
                                 ${getRegionBadge(item.company)}
-                                <a href="company.html?name=${encodeURIComponent(item.company)}" class="company-link" title="${currentLang === 'en' ? 'View company details' : '查看公司详情'}">${displayName}</a>
+                                <a href="company.html?name=${encodeURIComponent(item.company)}" class="company-link" title="${currentLang === 'en' ? 'View company details' : '查看公司详情'}" onclick="saveViewState();">${displayName}</a>
                             </div>
                         </td>
                         <td>
@@ -1618,6 +1692,7 @@
             if (rankingPage > 1) {
                 sessionStorage.setItem('rankingPage', rankingPage - 1);
                 renderRanking();
+                saveViewState();
             }
         }
         
@@ -1627,6 +1702,7 @@
             if (rankingPage < totalPages) {
                 sessionStorage.setItem('rankingPage', rankingPage + 1);
                 renderRanking();
+                saveViewState();
             }
         }
         
@@ -1706,6 +1782,7 @@
                 if (currentPage > 1) {
                     currentPage--;
                     renderTable();
+                    saveViewState();
                 }
             });
             
@@ -1714,6 +1791,7 @@
                 if (currentPage < totalPages) {
                     currentPage++;
                     renderTable();
+                    saveViewState();
                 }
             });
         }
