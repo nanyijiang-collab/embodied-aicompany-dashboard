@@ -374,7 +374,7 @@
         // 公司扩展数据（从rankingData加载）
         let companyData = null;
         
-        // rankingData - 所有公司基础数据（与index.html同步）
+                // rankingData - 所有公司基础数据（与index.html同步）
         const rankingData = [
             // === 海外公司 ===
             { company: 'Figure AI', valuation: '390亿美元', segment: 'n.a.', isOverseas: true, founded: '2022年', headquarters: '美国加州' },
@@ -385,47 +385,47 @@
             { company: 'Agility Robotics', valuation: '17.5亿美元', segment: 'n.a.', isOverseas: true, founded: '2015年', headquarters: '美国俄勒冈' },
             { company: 'Sanctuary AI', valuation: '约10亿美元', segment: 'n.a.', isOverseas: true, founded: '2018年', headquarters: '加拿大温哥华' },
             { company: 'Sunday Robotics', valuation: '11.5亿美元', segment: 'n.a.', isOverseas: true, founded: '2024年', headquarters: '美国山景城' },
-            { company: 'Field AI', valuation: '约5亿美元', segment: 'n.a.', isOverseas: true, founded: '待补充', headquarters: '海外' },
-            { company: 'Mimic Robotics', valuation: '约2亿美元', segment: 'n.a.', isOverseas: true, founded: '待补充', headquarters: '海外' },
-            { company: 'Anybotics', valuation: '约5亿美元', segment: 'n.a.', isOverseas: true, founded: '待补充', headquarters: '海外' },
-            { company: 'Skydio', valuation: '约10亿美元', segment: 'n.a.', isOverseas: true, founded: '待补充', headquarters: '海外' },
-            { company: 'Hexagon', valuation: '约200亿美元', segment: 'n.a.', isOverseas: true, founded: '待补充', headquarters: '海外' },
+            { company: 'Field AI', valuation: '约5亿美元', segment: 'n.a.', isOverseas: true, founded: '约2023年', headquarters: '海外' },
+            { company: 'Mimic Robotics', valuation: '约2亿美元', segment: 'n.a.', isOverseas: true, founded: '约2022年', headquarters: '德国' },
+            { company: 'Anybotics', valuation: '约5亿美元', segment: 'n.a.', isOverseas: true, founded: '2014年', headquarters: '瑞士苏黎世' },
+            { company: 'Skydio', valuation: '约10亿美元', segment: 'n.a.', isOverseas: true, founded: '2014年', headquarters: '美国加州' },
+            { company: 'Hexagon', valuation: '约200亿美元', segment: 'n.a.', isOverseas: true, founded: '1993年', headquarters: '瑞典斯德哥尔摩' },
             { company: '英伟达 (NVIDIA)', valuation: '上市~2万亿美元', segment: 'n.a.', isOverseas: true, founded: '1993年', headquarters: '美国加州' },
             // === 国内公司 ===
             { company: '宇树科技', valuation: '420亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年', headquarters: '杭州' },
-            { company: '灵心巧手', valuation: '240亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '银河通用', valuation: '210亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '北京' },
-            { company: '它石智航', valuation: '216亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '星海图', valuation: '200亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '星动纪元', valuation: '130亿+人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '智元机器人', valuation: '150亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '傅利叶智能', valuation: '80亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '至简动力', valuation: '72亿+人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '光轮智能', valuation: '70亿+人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '逐际动力', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '智平方', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '千寻智能', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2024年1月', headquarters: '待补充' },
-            { company: '自变量机器人', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '灵心巧手', valuation: '240亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年7月', headquarters: '北京' },
+            { company: '银河通用', valuation: '210亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年5月', headquarters: '北京' },
+            { company: '它石智航', valuation: '216亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '北京' },
+            { company: '星海图', valuation: '200亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年9月', headquarters: '北京' },
+            { company: '星动纪元', valuation: '130亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年8月', headquarters: '北京' },
+            { company: '智元机器人', valuation: '150亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年2月', headquarters: '上海' },
+            { company: '傅利叶智能', valuation: '80亿人民币', segment: 'n.a.', isOverseas: false, founded: '2015年7月', headquarters: '上海' },
+            { company: '至简动力', valuation: '72亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2025年7月', headquarters: '杭州' },
+            { company: '光轮智能', valuation: '70亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年1月', headquarters: '北京' },
+            { company: '逐际动力', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2022年1月', headquarters: '深圳' },
+            { company: '智平方', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年4月', headquarters: '深圳' },
+            { company: '千寻智能', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2024年1月', headquarters: '深圳' },
+            { company: '自变量机器人', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年9月', headquarters: '深圳' },
             { company: '帕西尼感知', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2021年6月', headquarters: '深圳' },
             { company: '普渡机器人', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2016年1月', headquarters: '深圳' },
-            { company: '魔法原子', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '魔法原子', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2024年1月', headquarters: '无锡' },
             { company: '乐聚机器人', valuation: '90亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年', headquarters: '深圳' },
             { company: '加速进化', valuation: '70亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年6月', headquarters: '北京' },
-            { company: '梅卡曼德', valuation: '30亿+人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '北京' },
+            { company: '梅卡曼德', valuation: '30亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2016年9月', headquarters: '北京' },
             { company: '灵初智能', valuation: '20亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2024年9月', headquarters: '上海' },
-            { company: '思灵机器人', valuation: '70亿+人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '思灵机器人', valuation: '70亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2018年7月', headquarters: '北京/慕尼黑' },
             { company: '穹彻智能', valuation: '15亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年11月', headquarters: '上海' },
             { company: '破壳机器人', valuation: '约4亿美元', segment: 'n.a.', isOverseas: false, founded: '2026年3月', headquarters: '北京' },
-            { company: '大晓机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '七腾机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '觅蜂科技', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '大晓机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年7月', headquarters: '上海' },
+            { company: '七腾机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2018年', headquarters: '重庆' },
+            { company: '觅蜂科技', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
             { company: '艾欧', valuation: '约8亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年5月', headquarters: '深圳' },
-            { company: '戴盟', valuation: '约8亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '深圳' },
-            { company: '宇叠', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '南京' },
+            { company: '戴盟', valuation: '约8亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '深圳' },
+            { company: '宇叠', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2022年', headquarters: '南京' },
             { company: '诺亦腾', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年(母公司2012年)', headquarters: '北京' },
             { company: '跨维智能', valuation: '约8亿人民币', segment: 'n.a.', isOverseas: false, founded: '2021年6月', headquarters: '深圳' },
-            { company: '珞石机器人', valuation: '约20亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '镜识科技', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '珞石机器人', valuation: '约20亿人民币', segment: 'n.a.', isOverseas: false, founded: '2015年', headquarters: '北京' },
+            { company: '镜识科技', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
             { company: '优理奇智能', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2024年4月', headquarters: '苏州' },
             { company: '优必选', valuation: '上市~550亿港元', segment: 'n.a.', isOverseas: false, founded: '2012年', headquarters: '深圳' },
             { company: 'Boston Dynamics', valuation: '约15亿美元', segment: 'n.a.', isOverseas: true, founded: '1992年', headquarters: '美国波士顿' },
@@ -437,32 +437,32 @@
             { company: '开普勒人形机器人', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年8月', headquarters: '上海' },
             { company: '理工华汇', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2015年9月', headquarters: '北京' },
             { company: '天链机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2012年7月', headquarters: '绵阳' },
-            { company: '青瞳视觉', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '青瞳视觉', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2018年', headquarters: '上海' },
             { company: '墨奇科技', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年/2017年', headquarters: '北京' },
-            { company: '国地具身智能', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '北京人形机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '北京' },
-            { company: '国家地方共建具身智能机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '国地具身智能', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '上海' },
+            { company: '北京人形机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '北京' },
+            { company: '国家地方共建具身智能机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '待确认' },
             { company: '星尘智能', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2022年12月', headquarters: '深圳' },
             { company: '钛虎机器人', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '2020年8月', headquarters: '上海' },
             { company: '爱动超越', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '2017年6月', headquarters: '北京' },
-            { company: '神源久机器人', valuation: '约1亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '千秒机器人', valuation: '约1亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '神源久机器人', valuation: '约1亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
+            { company: '千秒机器人', valuation: '约1亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '待确认' },
             { company: '坤维科技', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2018年5月', headquarters: '北京' },
             { company: '因时机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年', headquarters: '北京' },
-            { company: '思特威', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '灵宇宙', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '思特威', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2017年', headquarters: '上海' },
+            { company: '灵宇宙', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
             { company: '简智机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年5月', headquarters: '北京' },
-            { company: '智平方机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
+            { company: '智平方机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年4月', headquarters: '深圳' },
             { company: '智在无界', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年1月', headquarters: '北京' },
             { company: 'Tesla Optimus', valuation: 'Tesla上市主体市值', segment: 'n.a.', isOverseas: true, founded: '2022年', headquarters: '美国弗里蒙特' },
             { company: '苏度科技', valuation: '约140亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年5月', headquarters: '上海' },
             { company: '超维动力', valuation: '新发布，估值待定', segment: 'n.a.', isOverseas: false, founded: '2025年', headquarters: '深圳' },
             { company: '自然意志', valuation: '约40亿人民币', segment: 'n.a.', isOverseas: false, founded: '2026年1月', headquarters: '北京' },
-            { company: '地瓜机器人', valuation: '约20亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' },
-            { company: '星源智机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '待补充', headquarters: '待补充' }
+            { company: '地瓜机器人', valuation: '约20亿人民币', segment: 'n.a.', isOverseas: false, founded: '2024年1月', headquarters: '深圳' },
+            { company: '星源智机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' }
         ];
-        
-        // 公司名英文映射
+
+// 公司名英文映射
         const companyNameMapEN = {
             'Figure AI': 'Figure AI',
             'Physical Intelligence': 'Physical Intelligence',
@@ -524,6 +524,83 @@
             '星尘智能': 'Stardust Intelligence'
         };
         
+                // 公司标签映射（从companies.html同步）
+        const companyTagsMap = {
+            'NVIDIA (英伟达)': { brain: '[Platform-Infra] 平台与基建', training: '[Synthetic-Data] 合成数据驱动', scene: '[Agnostic] 通用领域' },
+            'Tesla Optimus (特斯拉)': { brain: '[E2E-VLA] 端到端视言行', training: '[Real-World-Transfer] 真实视觉迁移', scene: '[I-Heavy] 重工业' },
+            'Figure AI': { brain: '[E2E-VLA] 端到端视言行', training: '[VLM-Micro-tuning] 多模态微调', scene: '[I-Heavy] [C-Home]' },
+            '1X Technologies': { brain: '[World Model] 世界模型', training: '[Video-Pretrain] 视频预训练', scene: '[S-Comm] [C-Home]' },
+            'Hexagon (海克斯康)': { brain: '[Hierarchical] 分层架构', training: '[Digital-Twin] 数字孪生驱动', scene: '[I-Heavy] 重工业' },
+            'Skild AI': { brain: '[Cross-Embodiment] 跨本体', training: '[Heterogeneous-Data] 异构数据缩放', scene: '[I-Precision] [L-Log]' },
+            'Physical Intelligence': { brain: '[E2E-VLA] 端到端视言行', training: '[Foundation-Scale] 基础大模型规模', scene: '[Agnostic] 通用领域' },
+            '智元机器人 (Agibot)': { brain: '[Hierarchical] 分层架构', training: '[Proprietary-IL] 自研模仿学习', scene: '[I-Light] [S-Comm]' },
+            '宇树科技 (Unitree)': { brain: '[Sim2Real-RL] 仿真强化学习', training: '[Massive-RL] 暴力强化学习', scene: '[C-Edu] [L-Log]' },
+            '星尘智能 (Stardust)': { brain: '[IL-Teleop] 模仿学习-遥操作', training: '[High-Precision-IL] 高精模仿', scene: '[I-Precision] [S-Comm]' },
+            '银河通用 (Galbot)': { brain: '[Sim2Real-RL] 仿真强化学习', training: '[Synthetic-Generalist] 合成通用化', scene: '[L-Logistics] [I-Heavy]' },
+            '苏度科技 (Sudo)': { brain: '[World Model] 世界模型', training: '[Zero-Shot-Sim] 零样本仿真训练', scene: '[I-Precision] 精密制造' },
+            '星海图 (Galaxea)': { brain: '[E2E-VLA] 端到端视言行', training: '[Hierarchical-VLA] 分层端到端', scene: '[L-Logistics] 仓储物流' },
+            '至简动力 (Simple)': { brain: '[Integrated-OEM] 软硬一体', training: '[Deep-Coupling] 深度耦合训练', scene: '[I-Heavy] [I-Light]' },
+            '逐际动力 (LimX)': { brain: '[Sim2Real-RL] 仿真强化学习', training: '[Locomotion-Expert] 运动控制专家', scene: '[L-Log] [Outdoor]' },
+            '普渡机器人 (Pudu)': { brain: '[Hierarchical] 分层架构', training: '[Scenario-Data] 垂直场景数据', scene: '[S-Commercial] 商业服务' },
+            '灵心巧手 (Linkhou)': { brain: '[Component] 核心零部件', training: '[Tactile-Focus] 触觉感知驱动', scene: '[I-Precision] 精密制造' },
+            '卧安机器人 (Woan)': { brain: '[Hierarchical] 分层架构', training: '[Consumer-Data] 消费者场景数据', scene: '[C-Home] 家庭消费' },
+            '光轮智能 (Lucid)': { brain: '[Platform-Infra] 平台与基建', training: '[Gen-Data] 生成式仿真数据', scene: '[Agnostic] 通用领域' },
+            'Anybotics': { brain: '[Hierarchical] 分层架构', training: '[Field-RL] 实地强化学习', scene: '[H-Special] 特种巡检' },
+            'Mimic Robotics': { brain: '[IL-Teleop] 模仿学习-遥操作', training: '[Human-to-Robot-IL] 匠人技能克隆', scene: '[I-Precision] [I-Heavy]' },
+            '加速进化 (RobotEra)': { brain: '[Sim2Real-RL] 仿真强化学习', training: '[Algorithm-Bench] 算法基准训练', scene: '[Research] [L-Log]' },
+            '帕西尼感知 (PaXini)': { brain: '[Component] 核心零部件', training: '[Tactile-Brain] 触觉大脑驱动', scene: '[I-Precision] 精密制造' },
+            '穹彻智能 (Omni)': { brain: '[Hierarchical] 分层架构', training: '[Force-Control-IL] 力控模仿学习', scene: '[I-Precision] 精密制造' },
+            '北京人形机器人创新中心': { brain: '[Platform-Hub] 平台与中心', training: '[Ecosystem-Data] 生态公共数据', scene: '[Agnostic] 通用领域' },
+            '优必选 (UBTECH)': { brain: '[Hierarchical] 分层架构', training: '[Real-World-Data] 真实场景数据驱动', scene: '[I-Heavy] [S-Comm]' },
+            '它石智航 (T-Robot)': { brain: '[Hierarchical] 分层架构', training: '[Industry-SOP] 工业标准流程训练', scene: '[L-Logistics] 仓储物流' },
+            '智平方 (SmartSquare)': { brain: '[E2E-VLA] 端到端视言行', training: '[VLA-Scaling] 模型规模化扩展', scene: '[Agnostic] 通用领域' },
+            '千寻智能 (Seeker)': { brain: '[E2E-VLA] 端到端视言行', training: '[Data-Scaling] 异构数据缩放训练', scene: '[I-Light] [S-Comm]' },
+            '自变量机器人': { brain: '[E2E-VLA] 端到端视言行', training: '[Self-Supervised] 自监督物理学习', scene: '[Agnostic] 通用领域' },
+            '魔法原子 (Magic Atom)': { brain: '[World Model] 世界模型', training: '[Physical-Sim] 物理推理仿真', scene: '[Research] 科研' },
+            '乐聚机器人 (Leju)': { brain: '[Hierarchical] 分层架构', training: '[Open-Harmony] 鸿蒙生态数据协同', scene: '[C-Edu] [I-Heavy]' },
+            'Sunday Robotics': { brain: '[E2E-VLA] 端到端视言行', training: '[High-Freq-Loop] 高频控制闭环', scene: '[I-Light] 轻工业' },
+            '傅利叶智能 (Fourier)': { brain: '[Hierarchical] 分层架构', training: '[Locomotion-Data] 运动控制数据积累', scene: '[Medical] [I-Heavy]' },
+            'Agility Robotics': { brain: '[Hierarchical] 分层架构', training: '[Digit-V3] 数字化流程训练', scene: '[L-Logistics] 仓储物流' },
+            'Boston Dynamics': { brain: '[Hierarchical/RL] 分层/强化学习', training: '[Real-World-RL] 真实物理环境强化学习', scene: '[I-Heavy] [H-Special]' },
+            '思灵机器人 (Flexiv)': { brain: '[Hierarchical] 分层架构', training: '[Force-Centric] 力觉驱动范式', scene: '[I-Precision] 精密制造' },
+            '小鹏鹏行 (Xpeng)': { brain: '[Hierarchical] 分层架构', training: '[Car-AI-Transfer] 自动驾驶技术平移', scene: '[C-Home] 家庭陪伴' },
+            '自然意志 (NatureWill)': { brain: '[World Model] 世界模型', training: '[Bionic-Logic] 仿生逻辑训练', scene: '[I-Precision] 精密制造' },
+            'Field AI': { brain: '[Brain-Vision] 视觉大脑', training: '[Rugged-Environ] 恶劣环境实测数据', scene: '[H-Special] 野外特种' },
+            '梅卡曼德 (Mech-Mind)': { brain: '[Brain-Vision] 视觉大脑', training: '[3D-Vision-AI] 3D视觉深度学习', scene: '[L-Log] [I-Heavy]' },
+            '破壳机器人 (Poke)': { brain: '[Component] 核心零部件', training: '[Actuator-Innov] 执行器创新设计', scene: '[Component] 零部件' },
+            '灵初智能 (PsiBot)': { brain: '[E2E-VLA] 端到端视言行', training: '[Data-Engine] 双系统数据引擎', scene: '[I-Precision] 精密制造' },
+            '珞石机器人 (Ruoshi)': { brain: '[Hierarchical] 分层架构', training: '[Industry-Control] 工业级运控算法', scene: '[I-Heavy] 汽车' },
+            '地瓜机器人 (Horizon)': { brain: '[Platform-Infra] 平台与基建', training: '[Chip-Level-Opt] 芯片级算法优化', scene: '[Agnostic] 通用' },
+            '觅蜂科技 (Meef)': { brain: '[Hierarchical] 分层架构', training: '[Logistics-SOP] 物流标准场景', scene: '[L-Logistics] 仓储' },
+            '大晓机器人 (Daxiao)': { brain: '[Hierarchical] 分层架构', training: '[Research-Data] 科研/教学数据', scene: '[Research] [C-Edu]' },
+            '七腾机器人 (Qiteng)': { brain: '[Hierarchical] 分层架构', training: '[Inspection-RL] 巡检强化学习', scene: '[H-Special] 油气电力' },
+            '云深处 (DeepRobotics)': { brain: '[Hierarchical/RL] 分层/强化学习', training: '[Sim2Real-RL] 复杂地形强化', scene: '[H-Special] [I-Heavy]' },
+            '简智机器人': { brain: '[Hierarchical] 分层架构', training: '[Small-Model] 轻量化模型', scene: '[I-Light] [S-Comm]' },
+            '艾欧 (Io)': { brain: '[Hierarchical] 分层架构', training: '[Proprietary-IL] 垂直场景模仿', scene: '[I-Light] [I-Precision]' },
+            '戴盟 (Daimeng)': { brain: '[Component] 核心零部件', training: '[Haptic-Focus] 触觉反馈', scene: '[I-Precision] [Component]' },
+            '跨维智能 (Kuavi)': { brain: '[Platform-Infra] 平台基建', training: '[Sim2Real-3D] 3D视觉合成', scene: '[I-Precision] [I-Light]' },
+            '镜识科技 (In-Sight)': { brain: '[Platform-Infra] 平台基建', training: '[System-Opt] 系统级优化', scene: '[Agnostic] [I-Heavy]' },
+            '优理奇智能': { brain: '[Component] 核心零部件', training: '[Spec-Actuator] 特种执行器', scene: '[Component] 零部件' },
+            '松延动力': { brain: '[Component] 核心零部件', training: '[High-Dynamic] 高动态', scene: '[Component] 零部件' },
+            '开普勒人形机器人': { brain: '[Hierarchical] 分层架构', training: '[Industrial-RL] 工业强化学习', scene: '[I-Heavy] [L-Log]' },
+            '理工华汇': { brain: '[Hierarchical] 分层架构', training: '[Special-Task] 特种任务', scene: '[H-Special] [Research]' },
+            '墨奇科技 (Magic Data)': { brain: '[Platform-Infra] 平台基建', training: '[Unstructured] 非结构化数据', scene: '[Agnostic] [Research]' },
+            '思特威 (Smartsens)': { brain: '[Component] 核心零部件', training: '[Sensor-Param] 图像传感器', scene: '[Component] 零部件' },
+            '智在无界': { brain: '[E2E-VLA] 端到端视言行', training: '[General-Data] 通用常识', scene: '[Agnostic] [S-Comm]' },
+            '卓益得机器人': { brain: '[Hierarchical] 分层架构', training: '[Walking-RL] 步行强化学习', scene: '[Research] [C-Edu]' },
+            '天链机器人': { brain: '[Hierarchical] 分层架构', training: '[Aerospace-Data] 航天数据', scene: '[H-Special] [I-Heavy]' },
+            '国地具身智能': { brain: '[Platform-Hub] 平台中心', training: '[Ecosystem-Data] 生态数据', scene: '[Agnostic] 通用' },
+            '青瞳视觉': { brain: '[Component] 核心零部件', training: '[MoCap-Data] 动作捕捉', scene: '[Component] [Research]' },
+            '钛虎机器人 (Tiger)': { brain: '[Component] 核心零部件', training: '[Integrated-Design] 集成设计', scene: '[Component] 零部件' },
+            '爱动超越': { brain: '[Component] 核心零部件', training: '[High-Speed-Sens] 高速传感', scene: '[Component] 零部件' },
+            '灵宇宙': { brain: '[Platform-Infra] 平台基建', training: '[Virtual-Data] 虚拟数据', scene: '[Agnostic] [C-Home]' },
+            '灵御智能': { brain: '[Hierarchical] 分层架构', training: '[Guard-Data] 安防数据', scene: '[H-Special] [S-Comm]' },
+            '神源久机器人': { brain: '[Component] 核心零部件', training: '[Precision-Trans] 精密传动', scene: '[Component] 零部件' },
+            '千秒机器人': { brain: '[Component] 核心零部件', training: '[Fast-Response] 快速响应', scene: '[Component] [I-Light]' },
+            '超维动力': { brain: '[Component] 核心零部件', training: '[Power-Density] 功率密度', scene: '[Component] 零部件' },
+            '共建中心 (创新中心)': { brain: '[Platform-Hub] 平台中心', training: '[Policy-Standard] 行业标准', scene: '[Agnostic] 通用' }
+        };
+
         async function loadData() {
             try {
                 // 加载事件数据
@@ -581,6 +658,9 @@
                     currency: '人民币',
                     latest: 'IPO募资42亿',
                     date: '2026.03',
+                    brain: '[Sim2Real-RL] 仿真强化学习',
+                    training: '[Massive-RL] 暴力强化学习',
+                    scene: '[C-Edu] [L-Log] 教育/物流',
                     founders: [
                         {name: '王兴兴', title: '创始人/CEO/CTO', bio: '1990年生，浙江宁波余姚人；浙江理工大学本科，上海大学机械工程硕士；2016年创立宇树科技'},
                         {name: '陈立', title: '联合创始人', bio: '2025年10月代表宇树在清华有为青年公开课演讲'}
@@ -611,6 +691,9 @@
                     currency: '人民币',
                     latest: '天使轮',
                     date: '2026.03',
+                    brain: '[Hierarchical] 分层架构',
+                    training: '[Guard-Data] 安防数据',
+                    scene: '[H-Special] [S-Comm] 安防/商业',
                     founders: [
                         {name: '金戈', title: '联合创始人/CEO', bio: '清华大学自动化系学士，清华经管学院MBA；前远镜创投管理合伙人，奥量光子副总；2025年2月创立灵御智能'}
                     ],
@@ -639,6 +722,9 @@
                     currency: '美元',
                     latest: 'GEN-1发布',
                     date: '2026.04',
+                    brain: '[E2E-VLA] 端到端视言行',
+                    training: '[Foundation-Scale] 基础大模型',
+                    scene: '[Agnostic] 通用领域',
                     founders: [
                         {name: 'Pete Florence', title: 'CEO/创始人', bio: '前DeepMind高级研究科学家，参与PaLM-E、RT-2两大里程碑项目；2025年3月创立Generalist AI'},
                         {name: '待补充', title: 'CTO', bio: '核心团队来自OpenAI、Google DeepMind、Waymo、波士顿动力等公司'}
@@ -666,6 +752,9 @@
                     currency: '人民币',
                     latest: '数千万元天使轮',
                     date: '2025.06',
+                    brain: '[E2E-VLA] 端到端视言行',
+                    training: '[General-Data] 通用常识数据',
+                    scene: '[Agnostic] [S-Comm] 通用/商业',
                     founders: [
                         {name: '卢宗青', title: '创始人/CEO', bio: '北京大学计算机学院长聘副教授，前智源研究院多模态交互研究中心负责人，负责过首个国家自然科学基金委原创探索计划通用智能体项目'}
                     ],
@@ -698,6 +787,9 @@
                     currency: '美元',
                     latest: 'Self-funded (Tesla)',
                     date: '2026.04',
+                    brain: '[E2E-VLA] 端到端视言行',
+                    training: '[Real-World-Transfer] 真实视觉迁移',
+                    scene: '[I-Heavy] 重工业',
                     keyPeople: [
                         {name: 'Elon Musk', title: 'CEO'},
                         {name: 'Ashok Elluswamy', title: 'Optimus项目负责人/AI软件VP', note: '接任Milan Kovac'}
@@ -724,6 +816,9 @@
                     currency: '人民币',
                     latest: '5亿美元Pre-A轮',
                     date: '2026.04',
+                    brain: '[World Model] 世界模型',
+                    training: '[Zero-Shot-Sim] 零样本仿真',
+                    scene: '[I-Precision] 精密制造',
                     founders: [
                         {name: '待补充', title: '创始人/CEO', bio: '核心团队来自清华大学，在具身智能、世界模型、机器人控制等领域拥有深厚积累'}
                     ],
@@ -754,6 +849,9 @@
                     currency: '人民币',
                     latest: '新品发布',
                     date: '2026.04',
+                    brain: '[Component] 核心零部件',
+                    training: '[Power-Density] 功率密度',
+                    scene: '[Component] 零部件',
                     founders: [
                         {name: '待补充', title: '联合创始人', bio: '核心团队来自机器人、自动驾驶和人工智能领域'}
                     ],
@@ -778,6 +876,9 @@
                     currency: '人民币',
                     latest: '天使轮',
                     date: '2026.01',
+                    brain: '[World Model] 世界模型',
+                    training: '[Bionic-Logic] 仿生逻辑',
+                    scene: '[I-Precision] 精密制造',
                     founders: [
                         {name: '丁宁', title: '创始人', bio: '清华大学助理教授、博士生导师'}
                     ],
@@ -811,6 +912,8 @@
             
             // 从rankingData后备数据中查找（所有公司都能找到）
             const rankingInfo = rankingData.find(item => item.company === name || item.company.includes(name));
+            // 尝试从tagsMap获取标签
+            const tagInfo = companyTagsMap[name] || companyTagsMap[rankingInfo?.company];
             if (rankingInfo) {
                 return {
                     name: rankingInfo.company,
@@ -828,6 +931,9 @@
                     date: rankingInfo.date || '',
                     founders: [],
                     investors: [],
+                    brain: tagInfo?.brain || '',
+                    training: tagInfo?.training || '',
+                    scene: tagInfo?.scene || '',
                     milestones: [
                         {date: rankingInfo.date || '-', event: `最新融资: ${rankingInfo.latest || '待补充'} (${rankingInfo.valuation || '估值待定'})`}
                     ]
@@ -904,10 +1010,6 @@
                 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-label">公司定位</div>
-                        <div class="stat-value">${mainSegment}</div>
-                    </div>
-                    <div class="stat-card">
                         <div class="stat-label">成立时间</div>
                         <div class="stat-value">${company.founded}</div>
                     </div>
@@ -919,7 +1021,46 @@
                         <div class="stat-label">最新融资</div>
                         <div class="stat-value">${company.latest}</div>
                     </div>
+                    <div class="stat-card">
+                        <div class="stat-label">最新事件</div>
+                        <div class="stat-value" style="font-size:14px;">${company.date || '-'}</div>
+                    </div>
                 </div>
+                
+                <!-- 标签模块 -->
+                ${company.brain || company.training || company.scene ? `
+                <div class="section">
+                    <div class="section-title">🏷️ 技术标签</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                        ${company.brain ? `
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">🧠 大脑架构</div>
+                            <span class="tag tag-segment">${company.brain}</span>
+                        </div>
+                        ` : ''}
+                        ${company.training ? `
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">📊 训练范式</div>
+                            <span class="tag tag-funding">${company.training}</span>
+                        </div>
+                        ` : ''}
+                        ${company.scene ? `
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">🎯 商业场景</div>
+                            <span class="tag" style="background: rgba(34, 197, 94, 0.2); color: #22c55e;">${company.scene}</span>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+                ` : ''}
+                
+                <!-- 定位说明 -->
+                ${company.positioning ? `
+                <div class="section">
+                    <div class="section-title">📍 定位说明</div>
+                    <div style="color: var(--text-secondary); line-height: 1.8; font-size: 14px;">${company.positioning}</div>
+                </div>
+                ` : ''}
                 
                 <div class="section">
                     <div class="section-title">🔍 技术路径说明</div>

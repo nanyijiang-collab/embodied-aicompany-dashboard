@@ -77,3 +77,46 @@ python scripts/fast_dedup.py
 - `data/potential_companies.json` - 潜在新公司
 - `data/crawl_state.json` - 爬虫状态
 - `docs/ADD_COMPANY_GUIDE.md` - 添加新公司标准工作流程
+- `docs/标签体系SOP.md` - 标签打标标准作业程序
+
+## 例行工作：新增公司必须打标签
+
+**每次新增公司时，必须在 `companies.html` 的 `allCompanies` 数组中添加完整的标签信息：**
+
+```javascript
+{ 
+  name:"公司名 (英文名)", 
+  overseas:true/false, 
+  brain:"[标签] 标签名", 
+  training:"[标签] 标签名", 
+  scene:"[标签] 场景名", 
+  positioning:"定位描述" 
+}
+```
+
+**标签参考文档**：`docs/标签体系SOP.md`
+
+### Brain 架构标签（5类）
+- `[E2E-VLA]` 端到端视言行
+- `[World Model]` 物理世界模型
+- `[Hierarchical]` 分层架构
+- `[Cross-Embodiment]` 跨本体通用
+- `[IL-Teleop]` 模仿学习
+- `[Component]` 核心零部件
+
+### Training 数据范式标签（3类）
+- `[IL-Teleop]` 模仿学习（遥操作）
+- `[Sim2Real-RL]` 仿真强化学习
+- `[Synthetic-Data]` 合成数据
+
+### Scene 场景标签（8类）
+- `[I-Heavy]` 工业-重工
+- `[I-Precision]` 工业-精密
+- `[I-Light]` 轻工业
+- `[L-Logistics]` 仓储物流
+- `[S-Commercial]` 商业服务
+- `[C-Home]` 家庭场景
+- `[C-Edu]` 教育场景
+- `[H-Special]` 特种巡检
+- `[Agnostic]` 通用领域
+- `[Research]` 科研
