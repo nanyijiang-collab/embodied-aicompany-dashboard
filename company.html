@@ -85,6 +85,28 @@
         }
         .company-website:hover { text-decoration: underline; }
         
+        .home-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .home-logo:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: scale(1.05);
+        }
+        .logo-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+        
         /* 数据路径标签 */
         .data-path-tag {
             display: inline-flex;
@@ -1512,6 +1534,9 @@
             document.getElementById('content').innerHTML = `
                 <div class="company-header">
                     <div class="company-title">
+                        <a href="index.html" class="home-logo" title="返回首页">
+                            <span class="logo-icon">🤖</span>
+                        </a>
                         <div>
                             <div class="company-name">${displayName}</div>
                             <div class="company-name-en">${displayNameEn}</div>

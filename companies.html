@@ -42,6 +42,19 @@
         .header-title { font-size: 18px; font-weight: 600; color: #c8d8f0; }
         .header-sub  { font-size: 13px; color: #5a7090; margin-left: 4px; }
         .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+        
+        /* Logo */
+        .header-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .header-logo:hover { transform: scale(1.05); }
+        .header-logo span {
+            font-size: 28px;
+            line-height: 1;
+        }
 
         /* Search */
         .search-wrap {
@@ -218,6 +231,9 @@
 
 <!-- Header -->
 <div class="header">
+    <a href="index.html" class="header-logo" title="返回首页看板">
+        <span>🤖</span>
+    </a>
     <a href="index.html" class="back-btn" id="backBtn">← 返回看板</a>
     <div>
         <span class="header-title" id="pageTitle">监测公司列表</span>
