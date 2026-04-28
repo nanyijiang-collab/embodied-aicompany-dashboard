@@ -347,111 +347,19 @@ const tagData = [
   {"name":"共建中心 (创新中心)","brain":"[Platform-Hub] 平台中心","training":"[Policy-Standard] 行业标准与公共测试","scene":"[Agnostic] 通用领域","positioning":"[Common-Hardware] 通用硬件测试平台，国家队：解决具身智能落地中的"中试"问题。"}
 ];
 
-// 标签数据按名称建索引（支持模糊匹配）
-const tagIndex = {};
-tagData.forEach(t => { tagIndex[t.name] = t; });
+// 海外公司名单（tagData 里名称的首词全英文则判定为海外）
+const OVERSEAS_SET = new Set([
+    'NVIDIA (英伟达)', 'Tesla Optimus (特斯拉)', 'Figure AI', '1X Technologies',
+    'Hexagon (海克斯康)', 'Skild AI', 'Physical Intelligence', 'Anybotics',
+    'Mimic Robotics', 'Field AI', 'Agility Robotics', 'Sunday Robotics',
+    'Boston Dynamics', 'Skydio', 'Sanctuary AI', 'Apptronik', 'Generalist'
+]);
 
-function getTag(companyName) {
-    // 精确匹配
-    if (tagIndex[companyName]) return tagIndex[companyName];
-    // 模糊匹配：找到包含公司名或公司名包含key
-    for (const key of Object.keys(tagIndex)) {
-        const kShort = key.replace(/\s*\(.*?\)/g, '').trim();
-        const cShort = companyName.replace(/\s*\(.*?\)/g, '').trim();
-        if (kShort && cShort && (kShort.includes(cShort) || cShort.includes(kShort))) {
-            return tagIndex[key];
-        }
-    }
-    return null;
-}
-
-// 所有监测公司（按 rankingData 顺序）
-const allCompanies = [
-    // 海外
-    { name:'Figure AI', overseas:true },
-    { name:'Physical Intelligence', overseas:true },
-    { name:'1X Technologies', overseas:true },
-    { name:'Skild AI', overseas:true },
-    { name:'Apptronik', overseas:true },
-    { name:'Agility Robotics', overseas:true },
-    { name:'Sanctuary AI', overseas:true },
-    { name:'Sunday Robotics', overseas:true },
-    { name:'Field AI', overseas:true },
-    { name:'Mimic Robotics', overseas:true },
-    { name:'Anybotics', overseas:true },
-    { name:'Skydio', overseas:true },
-    { name:'Hexagon', overseas:true },
-    { name:'英伟达 (NVIDIA)', overseas:true },
-    { name:'Boston Dynamics', overseas:true },
-    { name:'Tesla Optimus', overseas:true },
-    // 国内
-    { name:'宇树科技', overseas:false },
-    { name:'灵心巧手', overseas:false },
-    { name:'银河通用', overseas:false },
-    { name:'它石智航', overseas:false },
-    { name:'星海图', overseas:false },
-    { name:'星动纪元', overseas:false },
-    { name:'智元机器人', overseas:false },
-    { name:'傅利叶智能', overseas:false },
-    { name:'至简动力', overseas:false },
-    { name:'光轮智能', overseas:false },
-    { name:'逐际动力', overseas:false },
-    { name:'智平方', overseas:false },
-    { name:'千寻智能', overseas:false },
-    { name:'自变量机器人', overseas:false },
-    { name:'帕西尼感知', overseas:false },
-    { name:'普渡机器人', overseas:false },
-    { name:'魔法原子', overseas:false },
-    { name:'乐聚机器人', overseas:false },
-    { name:'加速进化', overseas:false },
-    { name:'梅卡曼德', overseas:false },
-    { name:'灵初智能', overseas:false },
-    { name:'思灵机器人', overseas:false },
-    { name:'穹彻智能', overseas:false },
-    { name:'破壳机器人', overseas:false },
-    { name:'大晓机器人', overseas:false },
-    { name:'七腾机器人', overseas:false },
-    { name:'觅蜂科技', overseas:false },
-    { name:'艾欧', overseas:false },
-    { name:'戴盟', overseas:false },
-    { name:'宇叠', overseas:false },
-    { name:'跨维智能', overseas:false },
-    { name:'珞石机器人', overseas:false },
-    { name:'镜识科技', overseas:false },
-    { name:'优理奇智能', overseas:false },
-    { name:'优必选', overseas:false },
-    { name:'地瓜机器人', overseas:false },
-    { name:'卧安机器人', overseas:false },
-    { name:'小鹏鹏行', overseas:false },
-    { name:'智朝机器人', overseas:false },
-    { name:'云深处', overseas:false },
-    { name:'松延动力', overseas:false },
-    { name:'卓益得机器人', overseas:false },
-    { name:'开普勒人形机器人', overseas:false },
-    { name:'理工华汇', overseas:false },
-    { name:'天链机器人', overseas:false },
-    { name:'青瞳视觉', overseas:false },
-    { name:'墨奇科技', overseas:false },
-    { name:'国地具身智能', overseas:false },
-    { name:'北京人形机器人创新中心', overseas:false },
-    { name:'国家地方共建具身智能机器人创新中心', overseas:false },
-    { name:'星尘智能', overseas:false },
-    { name:'钛虎机器人', overseas:false },
-    { name:'爱动超越', overseas:false },
-    { name:'神源久机器人', overseas:false },
-    { name:'千秒机器人', overseas:false },
-    { name:'坤维科技', overseas:false },
-    { name:'因时机器人', overseas:false },
-    { name:'思特威', overseas:false },
-    { name:'灵宇宙', overseas:false },
-    { name:'智平方机器人', overseas:false },
-    { name:'简智机器人', overseas:false },
-    { name:'灵御智能', overseas:false },
-    { name:'智在无界', overseas:false },
-    { name:'苏度科技', overseas:false },
-    { name:'超维动力', overseas:false },
-    { name:'自然意志', overseas:false },
-];
+// 直接用 tagData 作为数据源，附加 overseas 标记
+const allCompanies = tagData.map(t => ({
+    ...t,
+    overseas: OVERSEAS_SET.has(t.name)
+}));
 
 // 脑架构 → CSS class
 function brainClass(brain) {
@@ -495,26 +403,25 @@ function renderTable() {
 
     let visCount = 0;
     const rows = allCompanies.map((c, i) => {
-        const tag = getTag(c.name);
+        const brain    = c.brain    || '-';
+        const training = c.training || '-';
+        const scene    = c.scene    || '-';
+        const pos      = c.positioning || '-';
 
         // Filter logic
         const matchesSearch = !search || c.name.toLowerCase().includes(search)
-            || (tag && (tag.brain.toLowerCase().includes(search) || tag.scene.toLowerCase().includes(search)));
+            || brain.toLowerCase().includes(search)
+            || scene.toLowerCase().includes(search)
+            || training.toLowerCase().includes(search);
         let matchesFilter = true;
         if (activeFilter === 'overseas') matchesFilter = c.overseas;
         else if (activeFilter === 'domestic') matchesFilter = !c.overseas;
         else if (activeFilter !== 'all') {
-            const brainStr = (tag ? tag.brain : '').toLowerCase();
-            matchesFilter = brainStr.includes(activeFilter.toLowerCase());
+            matchesFilter = brain.toLowerCase().includes(activeFilter.toLowerCase());
         }
 
         const visible = matchesSearch && matchesFilter;
         if (visible) visCount++;
-
-        const brain    = tag ? tag.brain    : '-';
-        const training = tag ? tag.training : '-';
-        const scene    = tag ? tag.scene    : '-';
-        const pos      = tag ? tag.positioning : '-';
 
         return `<tr class="${visible ? '' : 'hidden'}" data-overseas="${c.overseas}" data-brain="${brain}">
             <td style="color:#334060;font-size:11px;white-space:nowrap;">${i + 1}</td>
