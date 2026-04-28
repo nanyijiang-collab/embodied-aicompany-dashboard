@@ -811,6 +811,10 @@ class EmbodiedAICrawler:
             json.dump(state, f, ensure_ascii=False, indent=2)
 
     def save_data(self, events: List[Dict], validate: bool = True):
+        # ===== 拼盘新闻过滤 =====
+        print('\n[Filter] Filtering out roundup/news digest articles...')
+        events = self._filter_roundup_articles(events)
+        
         # ===== 去重处理 =====
         print('\n[Dedup] Running deduplication...')
         events = self._deduplicate_events(events)
@@ -828,6 +832,37 @@ class EmbodiedAICrawler:
         os.makedirs(DATA_DIR, exist_ok=True)
         with open(EVENTS_FILE, 'w', encoding='utf-8') as f:
             json.dump(events, f, ensure_ascii=False, indent=2)
+    
+    def _filter_roundup_articles(self, events: List[Dict]) -> List[Dict]:
+        """
+        过滤掉拼盘式新闻（汇总多家公司的综合性文章）
+        特征：标题含"汇总"、"周报"、"晚报"、"晨报"、"盘点"、"回顾"、"一览"等
+        """
+        ROUNDUP_KEYWORDS = [
+            '周报', '晚报', '晨报', '日报', '周刊',
+            '汇总', '盘点', '回顾', '一览', '总结',
+            '周记', '一周', '本月', '年度',
+            'Top10', 'top10', 'TOP10',
+            '今日要闻', '今日新闻', '今日资讯',
+            '产业周报', '行业周报', '科技周报',
+        ]
+        
+        filtered = []
+        removed_count = 0
+        
+        for e in events:
+            title = e.get('title', '')
+            # 检查标题是否包含拼盘关键词
+            is_roundup = any(kw in title for kw in ROUNDUP_KEYWORDS)
+            if is_roundup:
+                removed_count += 1
+                continue
+            filtered.append(e)
+        
+        if removed_count > 0:
+            print(f'  Removed {removed_count} roundup/digest articles')
+        
+        return filtered
     
     def _deduplicate_events(self, events: List[Dict]) -> List[Dict]:
         """
