@@ -664,6 +664,13 @@
             // 名称标准化：去掉 emoji 和英文括号后缀
             const stripEmoji = (s) => s.replace(/[\u{10000}-\u{10FFFF}]/gu, '');
             const normName = (s) => stripEmoji(s).replace(/\s*\([^)]*\)\s*$/, '').trim();
+            // 提取纯英文部分
+            const getEnglish = (s) => {
+                const match = s.match(/[a-zA-Z\s]+/);
+                return match ? match[0].trim().toLowerCase() : '';
+            };
+            const nn = normName(name);
+            const ne = getEnglish(name);
             // 公司完整信息库（可扩展）
             const companies = {
                 '宇树科技': {
@@ -811,6 +818,8 @@
                     brain: '[E2E-VLA] 端到端视言行',
                     training: '[Real-World-Transfer] 真实视觉迁移',
                     scene: '[I-Heavy] 重工业',
+                    founders: [],
+                    investors: [],
                     keyPeople: [
                         {name: 'Elon Musk', title: 'CEO'},
                         {name: 'Ashok Elluswamy', title: 'Optimus项目负责人/AI软件VP', note: '接任Milan Kovac'}
@@ -936,12 +945,17 @@
             // 从rankingData后备数据中查找（所有公司都能找到）
             const rankingInfo = rankingData.find(item => {
                 const rn = normName(item.company);
-                const nn = normName(name);
-                return rn === nn || nn.includes(rn) || rn.includes(nn);
+                const re = getEnglish(item.company);
+                return rn === nn || nn.includes(rn) || rn.includes(nn) ||
+                       (ne && (rn.toLowerCase().includes(ne) || re.includes(nn.toLowerCase())));
             });
             // 尝试从tagsMap获取标签
-            const normN = normName(name);
-            const tagEntry = Object.entries(companyTagsMap).find(([k]) => normName(k) === normN)?.[1];
+            const tagEntry = Object.entries(companyTagsMap).find(([k]) => {
+                const kn = normName(k);
+                const ke = getEnglish(k);
+                return kn === nn || nn.includes(kn) || kn.includes(nn) ||
+                       (ne && (kn.toLowerCase().includes(ne) || ke.includes(nn.toLowerCase())));
+            })?.[1];
             if (rankingInfo) {
                 return {
                     name: rankingInfo.company,
