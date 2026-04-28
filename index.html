@@ -56,6 +56,21 @@
             gap: 12px;
         }
         
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .header-brand .logo {
+            height: 40px;
+            width: auto;
+        }
+        
+        .header-brand h1 {
+            margin: 0;
+        }
+        
         .header h1 .icon {
             font-size: 28px;
         }
@@ -628,10 +643,12 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1>
-                <span class="icon">🤖</span>
-                <span data-i18n="title">具身智能媒体监测看板</span>
-            </h1>
+            <div class="header-brand">
+                <img src="assets/logo-fmc3.png" alt="FMC³ Robotics" class="logo">
+                <h1>
+                    <span data-i18n="title">FMC³ Robotics 具身智能媒体监测看板</span>
+                </h1>
+            </div>
             <div class="header-actions">
                 <button id="langToggle" class="btn btn-secondary" onclick="toggleLanguage()" style="min-width: 80px;">
                     🌐 EN
@@ -790,7 +807,7 @@
         // ==================== 语言切换 ====================
         const i18n = {
             'zh': {
-                'title': '具身智能媒体监测看板',
+                'title': 'FMC³ Robotics 具身智能媒体监测看板',
                 'refresh': '刷新',
                 'detect': '发现新公司',
                 'download': '下载待添加公司',
@@ -847,7 +864,7 @@
                 'rankPageEn': 'Page',  // Page X of Y
             },
             'en': {
-                'title': 'Embodied AI Media Monitor',
+                'title': 'FMC³ Robotics Embodied AI Media Monitor',
                 'refresh': 'Refresh',
                 'detect': 'Detect New Companies',
                 'download': 'Download Pending Companies',
