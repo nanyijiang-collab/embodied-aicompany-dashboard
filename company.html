@@ -704,6 +704,149 @@
             'other': '其他'
         };
         
+        // 公司名称映射（用于英文显示）
+        const companyNameMap = {
+            // 海外
+            'Figure AI': { name: 'Figure AI', nameEn: 'Figure AI' },
+            'Physical Intelligence': { name: 'Physical Intelligence', nameEn: 'Physical Intelligence' },
+            '1X Technologies': { name: '1X Technologies', nameEn: '1X Technologies' },
+            'Skild AI': { name: 'Skild AI', nameEn: 'Skild AI' },
+            'Apptronik': { name: 'Apptronik', nameEn: 'Apptronik' },
+            'Agility Robotics': { name: 'Agility Robotics', nameEn: 'Agility Robotics' },
+            'Sanctuary AI': { name: 'Sanctuary AI', nameEn: 'Sanctuary AI' },
+            'Sunday Robotics': { name: 'Sunday Robotics', nameEn: 'Sunday Robotics' },
+            'Field AI': { name: 'Field AI', nameEn: 'Field AI' },
+            'Mimic Robotics': { name: 'Mimic Robotics', nameEn: 'Mimic Robotics' },
+            'Anybotics': { name: 'Anybotics', nameEn: 'Anybotics' },
+            'Skydio': { name: 'Skydio', nameEn: 'Skydio' },
+            'Hexagon': { name: 'Hexagon', nameEn: 'Hexagon' },
+            'Boston Dynamics': { name: 'Boston Dynamics', nameEn: 'Boston Dynamics' },
+            'Tesla Optimus': { name: 'Tesla Optimus', nameEn: 'Tesla Optimus' },
+            // 国内（显示中文名，英文名统一放这里）
+            '英伟达 (NVIDIA)': { name: '英伟达', nameEn: 'NVIDIA' },
+            '宇树科技': { name: '宇树科技', nameEn: 'Unitree Robotics' },
+            '灵心巧手': { name: '灵心巧手', nameEn: 'Lingxin Qiaoshou' },
+            '银河通用': { name: '银河通用', nameEn: 'Galbot' },
+            '它石智航': { name: '它石智航', nameEn: 'Tashi Zhihang' },
+            '星海图': { name: '星海图', nameEn: 'StellarSea' },
+            '星动纪元': { name: '星动纪元', nameEn: 'Stardom Era' },
+            '智元机器人': { name: '智元机器人', nameEn: 'Agibot' },
+            '傅利叶智能': { name: '傅利叶智能', nameEn: 'Fourier Intelligence' },
+            '至简动力': { name: '至简动力', nameEn: 'Zhijian Dynamics' },
+            '光轮智能': { name: '光轮智能', nameEn: 'Guanglun Intelligence' },
+            '逐际动力': { name: '逐际动力', nameEn: 'Zorbit Dynamics' },
+            '智平方': { name: '智平方', nameEn: 'Zhipingfang' },
+            '千寻智能': { name: '千寻智能', nameEn: 'Qianxun Intelligence' },
+            '自变量机器人': { name: '自变量机器人', nameEn: 'Zibiangliang Robot' },
+            '帕西尼感知': { name: '帕西尼感知', nameEn: 'Paxini' },
+            '普渡机器人': { name: '普渡机器人', nameEn: ' Pudu Robotics' },
+            '魔法原子': { name: '魔法原子', nameEn: 'Magic Atom' },
+            '乐聚机器人': { name: '乐聚机器人', nameEn: 'Leju Robotics' },
+            '加速进化': { name: '加速进化', nameEn: 'Accelerated Evolution' },
+            '梅卡曼德': { name: '梅卡曼德', nameEn: 'Mech-Mind' },
+            '灵初智能': { name: '灵初智能', nameEn: 'Lingchu Intelligence' },
+            '思灵机器人': { name: '思灵机器人', nameEn: 'Agile Robots' },
+            '穹彻智能': { name: '穹彻智能', nameEn: 'Everyday Robots' },
+            '破壳机器人': { name: '破壳机器人', nameEn: 'PokeBot' },
+            '大晓机器人': { name: '大晓机器人', nameEn: 'Daxiao Robotics' },
+            '七腾机器人': { name: '七腾机器人', nameEn: 'Qiteng Robotics' },
+            '灵御智能': { name: '灵御智能', nameEn: 'Lingyu Intelligence' },
+            '觅蜂科技': { name: '觅蜂科技', nameEn: 'Mifeng Tech' },
+            '卧安机器人': { name: '卧安机器人', nameEn: 'Woan Robotics' },
+            '小鹏鹏行': { name: '小鹏鹏行', nameEn: 'XPeng Robotics' },
+            '云深处': { name: '云深处', nameEn: 'DeepCloud' },
+            '松延动力': { name: '松延动力', nameEn: 'Songyan Dynamics' },
+            '开普勒人形机器人': { name: '开普勒人形机器人', nameEn: 'Kepler Robotics' },
+            '理工华汇': { name: '理工华汇', nameEn: 'Beijing Robot' },
+            '天链机器人': { name: '天链机器人', nameEn: 'Tianlian Robotics' },
+            '青瞳视觉': { name: '青瞳视觉', nameEn: 'Qingtong Vision' },
+            '墨奇科技': { name: '墨奇科技', nameEn: 'Moqi Tech' },
+            '星尘智能': { name: '星尘智能', nameEn: 'Stardust Intelligence' },
+            '钛虎机器人': { name: '钛虎机器人', nameEn: 'Taihui Robotics' },
+            '苏度科技': { name: '苏度科技', nameEn: 'Sudo Robotics' },
+            '超维动力': { name: '超维动力', nameEn: 'Kinetix AI' },
+            '自然意志': { name: '自然意志', nameEn: 'Natural Will' },
+            '地瓜机器人': { name: '地瓜机器人', nameEn: 'Digua Robotics' },
+            '星源智机器人': { name: '星源智机器人', nameEn: 'StarSource AI' },
+            '优必选': { name: '优必选', nameEn: 'UBTech' },
+            '珞石机器人': { name: '珞石机器人', nameEn: 'Rokae' },
+            '镜识科技': { name: '镜识科技', nameEn: 'Jingshi Tech' },
+            '优理奇智能': { name: '优理奇智能', nameEn: 'YouLiQi' },
+            '智朝机器人': { name: '智朝机器人', nameEn: 'Zhichao Robotics' },
+            '艾欧': { name: '艾欧', nameEn: 'AIO' },
+            '戴盟': { name: '戴盟', nameEn: 'Daimon' },
+            '宇叠': { name: '宇叠', nameEn: 'Yudie' },
+            '诺亦腾': { name: '诺亦腾', nameEn: 'Noitom' },
+            '跨维智能': { name: '跨维智能', nameEn: 'Kuawe Intelligence' },
+            '简智机器人': { name: '简智机器人', nameEn: 'Jianzhi Robotics' },
+            '智平方机器人': { name: '智平方机器人', nameEn: 'Zhipingfang Robot' },
+            '智在无界': { name: '智在无界', nameEn: 'BeingBeyond' },
+        };
+        
+        // 估值英文映射
+        const valuationEnMap = {
+            '390亿美元': '$39B',
+            '56亿美元': '$5.6B',
+            '100亿美元': '$10B',
+            '140亿美元': '$14B',
+            '53亿美元': '$5.3B',
+            '17.5亿美元': '$1.75B',
+            '约10亿美元': '~$1B',
+            '11.5亿美元': '$1.15B',
+            '约5亿美元': '~$500M',
+            '约2亿美元': '~$200M',
+            '约15亿美元': '~$1.5B',
+            '约200亿美元': '~$20B',
+            '上市~2万亿美元': 'Listed ~$2T',
+            '420亿人民币': '¥42B (~$5.8B)',
+            '240亿人民币': '¥24B (~$3.3B)',
+            '210亿人民币': '¥21B (~$2.9B)',
+            '216亿人民币': '¥21.6B (~$3B)',
+            '200亿人民币': '¥20B (~$2.8B)',
+            '130亿+人民币': '¥13B+ (~$1.8B+)',
+            '150亿人民币': '¥15B (~$2.1B)',
+            '80亿人民币': '¥8B (~$1.1B)',
+            '72亿+人民币': '¥7.2B+ (~$1B+)',
+            '70亿+人民币': '¥7B+ (~$970M+)',
+            '100亿+人民币': '¥10B+ (~$1.4B+)',
+            '90亿人民币': '¥9B (~$1.25B)',
+            '30亿+人民币': '¥3B+ (~$420M+)',
+            '20亿+人民币': '¥2B+ (~$280M+)',
+            '70亿+人民币': '¥7B+ (~$970M+)',
+            '15亿+人民币': '¥1.5B+ (~$210M+)',
+            '约4亿美元': '~$400M',
+            '约10亿人民币': '¥1B (~$140M)',
+            '约1亿人民币': '¥100M (~$14M)',
+            '约8亿人民币': '¥800M (~$110M)',
+            '约5亿人民币': '¥500M (~$70M)',
+            '约3亿人民币': '¥300M (~$42M)',
+            '约2亿人民币': '¥200M (~$28M)',
+            '约20亿人民币': '¥2B (~$280M)',
+            '约40亿人民币': '¥4B (~$560M)',
+            '约50亿人民币': '¥5B (~$700M)',
+            '约255亿港元': '~HK$25.5B',
+            '上市~550亿港元': 'Listed ~HK$55B',
+            'Tesla上市主体市值': 'Tesla Listed Value',
+            '新发布，估值待定': 'New Release, TBD',
+            '非上市': 'Unlisted',
+            '约140亿人民币': '¥14B (~$1.9B)',
+        };
+        
+        // 获取显示名称（根据语言）
+        function getDisplayName(companyName) {
+            const nameData = companyNameMap[companyName];
+            if (!nameData) return companyName;
+            return currentLang === 'en' ? nameData.nameEn : nameData.name;
+        }
+        
+        // 获取显示估值（根据语言）
+        function getDisplayValuation(valuation) {
+            if (currentLang === 'en') {
+                return valuationEnMap[valuation] || valuation;
+            }
+            return valuation;
+        }
+        
         // 公司扩展数据（从rankingData加载）
         let companyData = null;
         
@@ -1333,6 +1476,9 @@
         
         function renderCompanyPage(company, events) {
             const currencySymbol = company.currency === '美元' ? '💵' : '💴';
+            const displayName = getDisplayName(company.name);
+            const displayNameEn = companyNameMap[company.name]?.nameEn || company.name_en || '';
+            const displayValuation = getDisplayValuation(company.valuation);
             
             // 解析数据路径
             const segmentParts = (company.segment || '').split(' / ');
@@ -1361,14 +1507,14 @@
             };
             const pathIcon = pathIconMap[dataPath] || '🔀';
             
-            document.title = `${company.name} - ${t('pageTitle')}`;
+            document.title = `${displayName} - ${t('pageTitle')}`;
 
             document.getElementById('content').innerHTML = `
                 <div class="company-header">
                     <div class="company-title">
                         <div>
-                            <div class="company-name">${company.name}</div>
-                            <div class="company-name-en">${company.name_en}</div>
+                            <div class="company-name">${displayName}</div>
+                            <div class="company-name-en">${displayNameEn}</div>
                             <a href="${company.website}" target="_blank" class="company-website">
                                 🌐 ${company.website.replace('https://', '')}
                             </a>
@@ -1378,7 +1524,7 @@
                         </div>
                     </div>
                     <div class="valuation-badge">
-                        <div class="valuation-value">${company.valuation}</div>
+                        <div class="valuation-value">${displayValuation}</div>
                         <div class="valuation-label">${t('valuationLabel')} ${currencySymbol}</div>
                     </div>
                 </div>
@@ -1394,7 +1540,7 @@
                     </div>
                     <div class="stat-card">
                         <div class="stat-label">${t('latestFundingLabel')}</div>
-                        <div class="stat-value">${company.latest}</div>
+                        <div class="stat-value">${currentLang === 'en' && company.latest_en ? company.latest_en : company.latest}</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-label">${t('latestEventLabel')}</div>
