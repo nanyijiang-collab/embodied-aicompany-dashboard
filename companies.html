@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监测公司列表 - 具身智能监测</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0a0e1a;
+            color: #e0e8ff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ─── Header ─── */
+        .header {
+            background: rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+        .back-btn {
+            color: #7899d4;
+            text-decoration: none;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(120,153,212,0.3);
+            transition: all 0.2s;
+        }
+        .back-btn:hover { background: rgba(120,153,212,0.1); color: #a0bcf0; }
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #c8d8ff;
+        }
+        .header-count {
+            margin-left: auto;
+            font-size: 12px;
+            color: #6888b8;
+            background: rgba(255,255,255,0.04);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* ─── Main Layout ─── */
+        .main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            height: calc(100vh - 61px);
+        }
+
+        /* ─── Left Panel: Company List ─── */
+        .company-list {
+            width: 320px;
+            min-width: 260px;
+            border-right: 1px solid rgba(255,255,255,0.07);
+            overflow-y: auto;
+            background: rgba(255,255,255,0.02);
+            flex-shrink: 0;
+        }
+        .company-list::-webkit-scrollbar { width: 4px; }
+        .company-list::-webkit-scrollbar-track { background: transparent; }
+        .company-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+        .list-search {
+            position: sticky;
+            top: 0;
+            background: #0a0e1a;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            z-index: 10;
+        }
+        .list-search input {
+            width: 100%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 7px 12px;
+            color: #c8d8ff;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .list-search input:focus { border-color: rgba(120,153,212,0.5); }
+        .list-search input::placeholder { color: #445577; }
+
+        .company-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            transition: background 0.15s;
+            text-decoration: none;
+        }
+        .company-item:hover { background: rgba(120,153,212,0.07); }
+        .company-item.active { background: rgba(120,153,212,0.14); border-left: 2px solid #7899d4; }
+
+        .rank-num {
+            font-size: 11px;
+            color: #445577;
+            min-width: 24px;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+        .company-name {
+            font-size: 13px;
+            color: #c8d8ff;
+            flex: 1;
+            line-height: 1.4;
+        }
+        .company-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .badge-overseas {
+            background: rgba(100,160,255,0.12);
+            color: #6499d4;
+            border: 1px solid rgba(100,160,255,0.2);
+        }
+        .badge-cn {
+            background: rgba(255,160,80,0.1);
+            color: #d47840;
+            border: 1px solid rgba(255,160,80,0.2);
+        }
+        .has-tag-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #4a9a6a;
+            flex-shrink: 0;
+        }
+
+        /* ─── Right Panel: Tag Detail ─── */
+        .tag-panel {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px 40px;
+        }
+        .tag-panel::-webkit-scrollbar { width: 4px; }
+        .tag-panel::-webkit-scrollbar-track { background: transparent; }
+        .tag-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #445577;
+            gap: 12px;
+        }
+        .empty-state .icon { font-size: 48px; opacity: 0.4; }
+        .empty-state p { font-size: 14px; }
+
+        .tag-header {
+            margin-bottom: 28px;
+        }
+        .tag-company-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e0e8ff;
+            margin-bottom: 8px;
+        }
+        .tag-company-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #7899d4;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(120,153,212,0.3);
+            transition: all 0.2s;
+        }
+        .tag-company-link:hover { background: rgba(120,153,212,0.1); color: #a0bcf0; }
+
+        .tag-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 900px) { .tag-grid { grid-template-columns: 1fr; } }
+
+        .tag-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.2s;
+        }
+        .tag-card:hover { border-color: rgba(120,153,212,0.2); }
+        .tag-card.full-width { grid-column: 1 / -1; }
+
+        .tag-card-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #556688;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .tag-value {
+            font-size: 15px;
+            color: #c8d8ff;
+            line-height: 1.5;
+        }
+        .tag-value .bracket-tag {
+            display: inline-block;
+            background: rgba(100,160,255,0.1);
+            color: #7aadff;
+            border: 1px solid rgba(100,160,255,0.2);
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-size: 12px;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+        .tag-value .en-part {
+            display: block;
+            font-size: 11px;
+            color: #6888b8;
+            margin-top: 4px;
+        }
+
+        .rationale-card {
+            background: rgba(120,153,212,0.05);
+            border: 1px solid rgba(120,153,212,0.15);
+        }
+        .rationale-text {
+            font-size: 14px;
+            color: #c0d0f0;
+            line-height: 1.7;
+        }
+
+        .no-tag-hint {
+            background: rgba(255,255,255,0.03);
+            border: 1px dashed rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            color: #445577;
+            font-size: 13px;
+        }
+
+        /* ─── Section divider ─── */
+        .section-divider {
+            padding: 6px 16px 4px;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #334466;
+            font-weight: 600;
+            background: rgba(255,255,255,0.01);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            position: sticky;
+            top: 52px;
+            z-index: 9;
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <a href="index.html" class="back-btn">← 返回监测看板</a>
+    <div class="header-title">监测公司列表</div>
+    <div class="header-count" id="headerCount">—</div>
+</div>
+
+<div class="main">
+    <!-- 左侧公司列表 -->
+    <div class="company-list" id="companyList">
+        <div class="list-search">
+            <input type="text" id="searchInput" placeholder="搜索公司名称…" oninput="filterList()">
+        </div>
+        <!-- 公司条目由 JS 生成 -->
+    </div>
+
+    <!-- 右侧标签面板 -->
+    <div class="tag-panel" id="tagPanel">
+        <div class="empty-state">
+            <div class="icon">◈</div>
+            <p>从左侧选择一家公司，查看标签详情</p>
+        </div>
+    </div>
+</div>
+
+<script>
+// ─── 公司完整列表（与index.html rankingData同步）──────────────────────────────
+const allCompanies = [
+    // 海外
+    { company: 'Figure AI', valuation: '390亿美元', isOverseas: true },
+    { company: 'Physical Intelligence', valuation: '56亿美元', isOverseas: true },
+    { company: '1X Technologies', valuation: '100亿美元', isOverseas: true },
+    { company: 'Skild AI', valuation: '140亿美元', isOverseas: true },
+    { company: 'Apptronik', valuation: '53亿美元', isOverseas: true },
+    { company: 'Agility Robotics', valuation: '17.5亿美元', isOverseas: true },
+    { company: 'Sanctuary AI', valuation: '约10亿美元', isOverseas: true },
+    { company: 'Sunday Robotics', valuation: '11.5亿美元', isOverseas: true },
+    { company: 'Field AI', valuation: '约5亿美元', isOverseas: true },
+    { company: 'Mimic Robotics', valuation: '约2亿美元', isOverseas: true },
+    { company: 'Anybotics', valuation: '约5亿美元', isOverseas: true },
+    { company: 'Skydio', valuation: '约10亿美元', isOverseas: true },
+    { company: 'Hexagon', valuation: '约200亿美元', isOverseas: true },
+    { company: '英伟达 (NVIDIA)', valuation: '上市~2万亿美元', isOverseas: true },
+    { company: 'Boston Dynamics', valuation: '约15亿美元', isOverseas: true },
+    { company: 'Tesla Optimus', valuation: 'Tesla上市主体市值', isOverseas: true },
+    // 国内
+    { company: '宇树科技', valuation: '420亿人民币', isOverseas: false },
+    { company: '灵心巧手', valuation: '240亿人民币', isOverseas: false },
+    { company: '银河通用', valuation: '210亿人民币', isOverseas: false },
+    { company: '它石智航', valuation: '216亿人民币', isOverseas: false },
+    { company: '星海图', valuation: '200亿人民币', isOverseas: false },
+    { company: '星动纪元', valuation: '130亿+人民币', isOverseas: false },
+    { company: '智元机器人', valuation: '150亿人民币', isOverseas: false },
+    { company: '傅利叶智能', valuation: '80亿人民币', isOverseas: false },
+    { company: '至简动力', valuation: '72亿+人民币', isOverseas: false },
+    { company: '光轮智能', valuation: '70亿+人民币', isOverseas: false },
+    { company: '逐际动力', valuation: '100亿+人民币', isOverseas: false },
+    { company: '智平方', valuation: '100亿+人民币', isOverseas: false },
+    { company: '千寻智能', valuation: '100亿+人民币', isOverseas: false },
+    { company: '自变量机器人', valuation: '100亿+人民币', isOverseas: false },
+    { company: '帕西尼感知', valuation: '100亿+人民币', isOverseas: false },
+    { company: '普渡机器人', valuation: '100亿+人民币', isOverseas: false },
+    { company: '魔法原子', valuation: '100亿+人民币', isOverseas: false },
+    { company: '乐聚机器人', valuation: '90亿人民币', isOverseas: false },
+    { company: '加速进化', valuation: '70亿+人民币', isOverseas: false },
+    { company: '梅卡曼德', valuation: '30亿+人民币', isOverseas: false },
+    { company: '灵初智能', valuation: '20亿+人民币', isOverseas: false },
+    { company: '思灵机器人', valuation: '70亿+人民币', isOverseas: false },
+    { company: '穹彻智能', valuation: '15亿+人民币', isOverseas: false },
+    { company: '破壳机器人', valuation: '约4亿美元', isOverseas: false },
+    { company: '大晓机器人', valuation: '约10亿人民币', isOverseas: false },
+    { company: '七腾机器人', valuation: '约10亿人民币', isOverseas: false },
+    { company: '觅蜂科技', valuation: '约10亿人民币', isOverseas: false },
+    { company: '艾欧', valuation: '约8亿人民币', isOverseas: false },
+    { company: '戴盟', valuation: '约8亿人民币', isOverseas: false },
+    { company: '宇叠', valuation: '约5亿人民币', isOverseas: false },
+    { company: '诺亦腾', valuation: '约5亿人民币', isOverseas: false },
+    { company: '跨维智能', valuation: '约8亿人民币', isOverseas: false },
+    { company: '珞石机器人', valuation: '约20亿人民币', isOverseas: false },
+    { company: '镜识科技', valuation: '约5亿人民币', isOverseas: false },
+    { company: '优理奇智能', valuation: '约5亿人民币', isOverseas: false },
+    { company: '优必选', valuation: '上市~550亿港元', isOverseas: false },
+    { company: '卧安机器人', valuation: '上市~255亿港元', isOverseas: false },
+    { company: '小鹏鹏行', valuation: '约50亿人民币', isOverseas: false },
+    { company: '云深处', valuation: '约10亿人民币', isOverseas: false },
+    { company: '松延动力', valuation: '约5亿人民币', isOverseas: false },
+    { company: '卓益得机器人', valuation: '约3亿人民币', isOverseas: false },
+    { company: '开普勒人形机器人', valuation: '约5亿人民币', isOverseas: false },
+    { company: '理工华汇', valuation: '约5亿人民币', isOverseas: false },
+    { company: '天链机器人', valuation: '约3亿人民币', isOverseas: false },
+    { company: '青瞳视觉', valuation: '约2亿人民币', isOverseas: false },
+    { company: '墨奇科技', valuation: '约5亿人民币', isOverseas: false },
+    { company: '国地具身智能', valuation: '约3亿人民币', isOverseas: false },
+    { company: '北京人形机器人创新中心', valuation: '非上市', isOverseas: false },
+    { company: '国家地方共建具身智能机器人创新中心', valuation: '非上市', isOverseas: false },
+    { company: '星尘智能', valuation: '约3亿人民币', isOverseas: false },
+    { company: '钛虎机器人', valuation: '约2亿人民币', isOverseas: false },
+    { company: '爱动超越', valuation: '约2亿人民币', isOverseas: false },
+    { company: '神源久机器人', valuation: '约1亿人民币', isOverseas: false },
+    { company: '千秒机器人', valuation: '约1亿人民币', isOverseas: false },
+    { company: '坤维科技', valuation: '约3亿人民币', isOverseas: false },
+    { company: '因时机器人', valuation: '约3亿人民币', isOverseas: false },
+    { company: '思特威', valuation: '约5亿人民币', isOverseas: false },
+    { company: '灵宇宙', valuation: '约2亿人民币', isOverseas: false },
+    { company: '简智机器人', valuation: '约10亿人民币', isOverseas: false },
+    { company: '智平方机器人', valuation: '约10亿人民币', isOverseas: false },
+    { company: '智在无界', valuation: '约5亿人民币', isOverseas: false },
+    { company: '苏度科技', valuation: '约140亿人民币', isOverseas: false },
+    { company: '超维动力', valuation: '新发布，估值待定', isOverseas: false },
+    { company: '自然意志', valuation: '约40亿人民币', isOverseas: false },
+    { company: '地瓜机器人', valuation: '约20亿人民币', isOverseas: false },
+    { company: '智朝机器人', valuation: '约10亿人民币', isOverseas: false },
+    { company: '灵御智能', valuation: '约2亿人民币', isOverseas: false },
+    { company: '星源智机器人', valuation: '约3亿人民币', isOverseas: false }
+];
+
+// ─── 标签数据（来自标签.xlsx）───────────────────────────────────────────────
+// 字段：brainArch | trainingParadigm | scenarioLabels | rationale
+// 匹配规则：用公司名称模糊匹配（部分匹配）
+const tagData = {
+    'NVIDIA': { brainArch: '[Platform-Infra] 平台与基建', trainingParadigm: '[Synthetic-Data] 合成数据驱动', scenarioLabels: '[Agnostic] 通用领域', rationale: '底层环境供应 (Infra Provider)：提供 Isaac 仿真与算力。' },
+    '英伟达': { brainArch: '[Platform-Infra] 平台与基建', trainingParadigm: '[Synthetic-Data] 合成数据驱动', scenarioLabels: '[Agnostic] 通用领域', rationale: '底层环境供应 (Infra Provider)：提供 Isaac 仿真与算力。' },
+    'Tesla Optimus': { brainArch: '[E2E-VLA] 端到端视言行', trainingParadigm: '[Real-World-Transfer] 真实视觉迁移', scenarioLabels: '[I-Heavy] 重工业', rationale: '定义者 (Definer)：基于 FSD 自动驾驶数据大规模迁移。' },
+    'Figure AI': { brainArch: '[E2E-VLA] 端到端视言行', trainingParadigm: '[VLM-Micro-tuning] 多模态微调', scenarioLabels: '[I-Heavy] [C-Home]', rationale: '标杆竞品 (Benchmark)：VLA 商业化最成熟，主打工业协作。' },
+    '1X Technologies': { brainArch: '[World Model] 世界模型', trainingParadigm: '[Video-Pretrain] 视频预训练', scenarioLabels: '[S-Comm] [C-Home]', rationale: '路径参照 (Path Reference)：物理直觉极强，动作丝滑度高。' },
+    'Hexagon': { brainArch: '[Hierarchical] 分层架构', trainingParadigm: '[Digital-Twin] 数字孪生驱动', scenarioLabels: '[I-Heavy] 重工业', rationale: '关键竞品 (Direct Competitor)：工业测量积累深，欧洲市场强势。' },
+    'Skild AI': { brainArch: '[Cross-Embodiment] 跨本体', trainingParadigm: '[Heterogeneous-Data] 异构数据缩放', scenarioLabels: '[I-Precision] [L-Log]', rationale: '算法伙伴 (Algorithm Partner)：不造硬件，纯大脑模型供应商。' },
+    'Physical Intelligence': { brainArch: '[E2E-VLA] 端到端视言行', trainingParadigm: '[Foundation-Scale] 基础大模型规模', scenarioLabels: '[Agnostic] 通用领域', rationale: '潜在伙伴 (Potential Partner)：π₀ 模型的跨平台大脑。' },
+    '智元机器人': { brainArch: '[Hierarchical] 分层架构', trainingParadigm: '[Proprietary-IL] 自研模仿学习', scenarioLabels: '[I-Light] [S-Comm]', rationale: '国产领头羊 (Local Leader)：商业化落地最快，灵巧手领先。' },
+    '宇树科技': { brainArch: '[Sim2Real-RL] 仿真强化学习', trainingParadigm: '[Massive-RL] 暴力强化学习', scenarioLabels: '[C-Edu] [L-Log]', rationale: '本体供应商 (Hardware OEM)：性价比极高，可作为大脑载体。' },
+    '星尘智能': { brainArch: '[IL-Teleop] 模仿学习-遥操作', trainingParadigm: '[High-Precision-IL] 高精模仿', scenarioLabels: '[I-Precision] [S-Comm]', rationale: '精密专家 (Precision Expert)：Astribot 动作上限极高。' },
+    '银河通用': { brainArch: '[Sim2Real-RL] 仿真强化学习', trainingParadigm: '[Synthetic-Generalist] 合成通用化', scenarioLabels: '[L-Logistics] [I-Heavy]', rationale: '工业竞品 (Industrial Rival)：专注大负载抓取与物流场景。' },
+    '苏度科技': { brainArch: '[World Model] 世界模型', trainingParadigm: '[Zero-Shot-Sim] 零样本仿真训练', scenarioLabels: '[I-Precision] 精密制造', rationale: '新锐对标 (Emerging Rival)：纯仿真练出高精操作大脑。' },
+    '星海图': { brainArch: '[E2E-VLA] 端到端视言行', trainingParadigm: '[Hierarchical-VLA] 分层端到端', scenarioLabels: '[L-Logistics] 仓储物流', rationale: '技术对标 (Tech Match)：强调全身协同与多模态感知。' },
+    '至简动力': { brainArch: '[Integrated-OEM] 软硬一体', trainingParadigm: '[Deep-Coupling] 深度耦合训练', scenarioLabels: '[I-Heavy] [I-Light]', rationale: '全栈竞品 (Full-stack Rival)：追求软硬极致优化的工业人形。' },
+    '逐际动力': { brainArch: '[Sim2Real-RL] 仿真强化学习', trainingParadigm: '[Locomotion-Expert] 运动控制专家', scenarioLabels: '[L-Log] [Outdoor]', rationale: '底座伙伴 (Base Partner)：复杂地形移动大脑领先。' },
+    '普渡机器人': { brainArch: '[Hierarchical] 分层架构', trainingParadigm: '[Scenario-Data] 垂直场景数据', scenarioLabels: '[S-Commercial] 商业服务', rationale: '场景巨头 (Scenario Giant)：已有海量商用服务机器人数据。' },
+    '灵心巧手': { brainArch: '[Component] 核心零部件', trainingParadigm: '[Tactile-Focus] 触觉感知驱动', scenarioLabels: '[I-Precision] 精密制造', rationale: '战略供应商 (Strategic Vendor)：多感知灵巧手核心件。' },
+    '坤维科技': { brainArch: '[Component] 核心零部件', trainingParadigm: '[Hardware-Defined] 硬件参数定义', scenarioLabels: '[Component] 零部件', rationale: '供应链 (Supply Chain)：力觉传感器与执行器关键厂商。' },
+    '因时机器人': { brainArch: '[Component] 核心零部件', trainingParadigm: '[Hardware-Defined] 硬件参数定义', scenarioLabels: '[Component] 零部件', rationale: '供应链 (Supply Chain)：力觉传感器与执行器关键厂商。' },
+    '卧安机器人': { brainArch: '[Hierarchical] 分层架构', trainingParadigm: '[Consumer-Data] 消费者场景数据', scenarioLabels: '[C-Home] 家庭消费', rationale: '数据派 (Data-Driven)：SwitchBot 品牌下的海量家庭数据。' },
+    '光轮智能': { brainArch: '[Platform-Infra] 平台与基建', trainingParadigm: '[Gen-Data] 生成式仿真数据', scenarioLabels: '[Agnostic] 通用领域', rationale: '数据供应商 (Data Vendor)：为工业大脑提供合成训练数据。' },
+    'Anybotics': { brainArch: '[Hierarchical] 分层架构', trainingParadigm: '[Field-RL] 实地强化学习', scenarioLabels: '[H-Special] 特种巡检', rationale: '能源场景对标 (Energy Sector)：欧洲巡检机器人霸主。' },
+    'Mimic Robotics': { brainArch: '[IL-Teleop] 模仿学习-遥操作', trainingParadigm: '[Human-to-Robot-IL] 匠人技能克隆', scenarioLabels: '[I-Precision] [I-Heavy]', rationale: '欧洲直接竞品 (Direct Rival)：德系制造背景，精密操作强。' },
+    '加速进化': { brainArch: '[Sim2Real-RL] 仿真强化学习', trainingParadigm: '[Algorithm-Bench] 算法基准训练', scenarioLabels: '[Research] [L-Log]', rationale: '底座伙伴 (Base Partner)：专注于高性能行走与平衡算法。' },
+    '帕西尼感知': { brainArch: '[Component] 核心零部件', trainingParadigm: '[Tactile-Brain] 触觉大脑驱动', scenarioLabels: '[I-Precision] 精密制造', rationale: '传感专家 (Sensing Expert)：强调多阵列触觉感知。' },
+    '穹彻智能': { brainArch: '[Hierarchical] 分层架构', trainingParadigm: '[Force-Control-IL] 力控模仿学习', scenarioLabels: '[I-Precision] 精密制造', rationale: '细分竞品 (Niche Rival)：解决工业精密装配的"手感"问题。' },
+    '北京人形机器人创新中心': { brainArch: '[Platform-Hub] 平台与中心', trainingParadigm: '[Ecosystem-Data] 生态公共数据', scenarioLabels: '[Agnostic] 通用领域', rationale: '政策与标准 (Policy/Standard)：国家级/北京/上海等数据中试平台。' },
+    '国家地方共建具身智能机器人创新中心': { brainArch: '[Platform-Hub] 平台与中心', trainingParadigm: '[Ecosystem-Data] 生态公共数据', scenarioLabels: '[Agnostic] 通用领域', rationale: '政策与标准 (Policy/Standard)：国家级/北京/上海等数据中试平台。' },
+    '国地具身智能': { brainArch: '[Platform-Hub] 平台与中心', trainingParadigm: '[Ecosystem-Data] 生态公共数据', scenarioLabels: '[Agnostic] 通用领域', rationale: '政策与标准 (Policy/Standard)：国家级/北京/上海等数据中试平台。' }
+};
+
+// ─── 获取标签（支持模糊匹配）──────────────────────────────────────────────
+function getTag(companyName) {
+    // 精确匹配
+    if (tagData[companyName]) return tagData[companyName];
+    // 模糊匹配
+    for (const key of Object.keys(tagData)) {
+        if (companyName.includes(key) || key.includes(companyName)) {
+            return tagData[key];
+        }
+    }
+    return null;
+}
+
+// ─── 解析 bracket tags ────────────────────────────────────────────────────
+function renderTagValue(raw) {
+    if (!raw) return '<span style="color:#445577">—</span>';
+    // 将 [xxx] 包裹成 badge
+    const html = raw.replace(/\[([^\]]+)\]/g, '<span class="bracket-tag">[$1]</span>');
+    return html;
+}
+
+// ─── 渲染公司列表 ─────────────────────────────────────────────────────────
+function renderList(filter = '') {
+    const container = document.getElementById('companyList');
+    const search = container.querySelector('.list-search');
+    
+    // 清空，保留搜索框
+    container.innerHTML = '';
+    container.appendChild(search);
+
+    const overseasList = allCompanies.filter(c => c.isOverseas);
+    const cnList = allCompanies.filter(c => !c.isOverseas);
+    const fl = filter.toLowerCase();
+
+    let overseasShown = 0, cnShown = 0;
+
+    function renderSection(list, labelText, isOverseas) {
+        const divider = document.createElement('div');
+        divider.className = 'section-divider';
+        divider.textContent = labelText;
+        container.appendChild(divider);
+
+        let shown = 0;
+        list.forEach((c, idx) => {
+            if (fl && !c.company.toLowerCase().includes(fl)) return;
+            shown++;
+            const tag = getTag(c.company);
+            const item = document.createElement('div');
+            item.className = 'company-item';
+            item.dataset.company = c.company;
+            item.innerHTML = `
+                <span class="rank-num">${String(idx + 1).padStart(2,'')}</span>
+                <span class="company-name">${c.company}</span>
+                ${tag ? '<span class="has-tag-dot" title="已打标签"></span>' : ''}
+                <span class="company-badge ${isOverseas ? 'badge-overseas' : 'badge-cn'}">${isOverseas ? '海外' : '国内'}</span>
+            `;
+            item.addEventListener('click', () => selectCompany(c.company, item));
+            container.appendChild(item);
+        });
+        return shown;
+    }
+
+    overseasShown = renderSection(overseasList, `海外公司 (${overseasList.length})`, true);
+    cnShown = renderSection(cnList, `国内公司 (${cnList.length})`, false);
+
+    document.getElementById('headerCount').textContent =
+        `共 ${allCompanies.length} 家监测企业`;
+}
+
+// ─── 选中公司，展示标签 ──────────────────────────────────────────────────
+let activeItem = null;
+
+function selectCompany(name, el) {
+    if (activeItem) activeItem.classList.remove('active');
+    el.classList.add('active');
+    activeItem = el;
+
+    const tag = getTag(name);
+    const panel = document.getElementById('tagPanel');
+
+    if (!tag) {
+        panel.innerHTML = `
+            <div class="tag-header">
+                <div class="tag-company-name">${name}</div>
+                <a href="company.html?name=${encodeURIComponent(name)}" class="tag-company-link" target="_blank">
+                    查看公司详情 →
+                </a>
+            </div>
+            <div class="no-tag-hint">
+                <p style="font-size:24px;margin-bottom:10px;">○</p>
+                <p>该公司暂无标签数据</p>
+                <p style="margin-top:6px;font-size:12px;color:#334466;">标签将根据分类逻辑逐步补充</p>
+            </div>`;
+        return;
+    }
+
+    panel.innerHTML = `
+        <div class="tag-header">
+            <div class="tag-company-name">${name}</div>
+            <a href="company.html?name=${encodeURIComponent(name)}" class="tag-company-link" target="_blank">
+                查看公司详情 →
+            </a>
+        </div>
+
+        <div class="tag-grid">
+            <div class="tag-card">
+                <div class="tag-card-label">大脑架构 · Brain Architecture</div>
+                <div class="tag-value">${renderTagValue(tag.brainArch)}</div>
+            </div>
+            <div class="tag-card">
+                <div class="tag-card-label">训练与数据范式 · Training & Data Paradigm</div>
+                <div class="tag-value">${renderTagValue(tag.trainingParadigm)}</div>
+            </div>
+            <div class="tag-card">
+                <div class="tag-card-label">场景标签 · Scenario Labels</div>
+                <div class="tag-value">${renderTagValue(tag.scenarioLabels)}</div>
+            </div>
+            <div class="tag-card rationale-card full-width">
+                <div class="tag-card-label">核心逻辑与 FMC³ 关联 · Rationale</div>
+                <div class="rationale-text">${tag.rationale}</div>
+            </div>
+        </div>`;
+}
+
+// ─── 搜索过滤 ─────────────────────────────────────────────────────────────
+function filterList() {
+    const q = document.getElementById('searchInput').value;
+    const activeCompany = activeItem ? activeItem.dataset.company : null;
+    renderList(q);
+    // 恢复选中状态
+    if (activeCompany) {
+        const el = document.querySelector(`.company-item[data-company="${CSS.escape(activeCompany)}"]`);
+        if (el) { el.classList.add('active'); activeItem = el; }
+    }
+}
+
+// ─── 初始化 ───────────────────────────────────────────────────────────────
+renderList();
+</script>
+</body>
+</html>

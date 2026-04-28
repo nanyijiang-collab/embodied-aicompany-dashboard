@@ -665,10 +665,11 @@
         
         <!-- Stats Cards -->
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="value" id="totalCompanies">42</div>
+            <div class="stat-card" style="cursor:pointer;" onclick="window.location.href='companies.html'">
+                <div class="value" id="totalCompanies" style="text-decoration:none;">42</div>
                 <div class="label" data-i18n="monitored">监控公司</div>
                 <div class="trend up" id="companiesTrend" style="display:none">+0</div>
+                <div style="font-size:10px;color:#888;margin-top:4px;">点击查看列表 →</div>
             </div>
             <div class="stat-card">
                 <div class="value" id="totalEvents">0</div>

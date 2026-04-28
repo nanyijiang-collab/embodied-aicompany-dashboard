@@ -1,0 +1,31 @@
+﻿Sheets: ['Sheet1']
+
+=== Sheet1 ===
+['公司名称 (Company Name)', '大脑架构 (Brain Architecture)', '训练与数据范式 (Training & Data Paradigm)', '场景标签 (Scenario Labels)', '核心逻辑与 FMC³ 关联 (Rationale & FMC³ Relevance)']
+      公司名称 (Company Name) 大脑架构 (Brain Architecture) 训练与数据范式 (Training & Data Paradigm)   场景标签 (Scenario Labels) 核心逻辑与 FMC³ 关联 (Rationale & FMC³ Relevance)
+0            NVIDIA (英伟达)    [Platform-Infra] 平台与基建            [Synthetic-Data] 合成数据驱动          [Agnostic] 通用领域    底层环境供应 (Infra Provider)：提供 Isaac 仿真与算力。
+1     Tesla Optimus (特斯拉)          [E2E-VLA] 端到端视言行       [Real-World-Transfer] 真实视觉迁移            [I-Heavy] 重工业          定义者 (Definer)：基于 FSD 自动驾驶数据大规模迁移。
+2               Figure AI          [E2E-VLA] 端到端视言行           [VLM-Micro-tuning] 多模态微调       [I-Heavy] [C-Home]        标杆竞品 (Benchmark)：VLA 商业化最成熟，主打工业协作。
+3         1X Technologies        [World Model] 世界模型             [Video-Pretrain] 视频预训练        [S-Comm] [C-Home]       路径参照 (Path Reference)：物理直觉极强，动作丝滑度高。
+4          Hexagon (海克斯康)       [Hierarchical] 分层架构              [Digital-Twin] 数字孪生驱动            [I-Heavy] 重工业   关键竞品 (Direct Competitor)：工业测量积累深，欧洲市场强势。
+5                Skild AI    [Cross-Embodiment] 跨本体        [Heterogeneous-Data] 异构数据缩放    [I-Precision] [L-Log]    算法伙伴 (Algorithm Partner)：不造硬件，纯大脑模型供应商。
+6   Physical Intelligence          [E2E-VLA] 端到端视言行         [Foundation-Scale] 基础大模型规模          [Agnostic] 通用领域      潜在伙伴 (Potential Partner)：π₀ 模型的跨平台大脑。
+7          智元机器人 (Agibot)       [Hierarchical] 分层架构            [Proprietary-IL] 自研模仿学习       [I-Light] [S-Comm]        国产领头羊 (Local Leader)：商业化落地最快，灵巧手领先。
+8          宇树科技 (Unitree)      [Sim2Real-RL] 仿真强化学习                [Massive-RL] 暴力强化学习          [C-Edu] [L-Log]        本体供应商 (Hardware OEM)：性价比极高，可作为大脑载体。
+9         星尘智能 (Stardust)      [IL-Teleop] 模仿学习-遥操作           [High-Precision-IL] 高精模仿   [I-Precision] [S-Comm]   精密专家 (Precision Expert)：Astribot 动作上限极高。
+10          银河通用 (Galbot)      [Sim2Real-RL] 仿真强化学习       [Synthetic-Generalist] 合成通用化  [L-Logistics] [I-Heavy]      工业竞品 (Industrial Rival)：专注大负载抓取与物流场景。
+11            苏度科技 (Sudo)        [World Model] 世界模型            [Zero-Shot-Sim] 零样本仿真训练       [I-Precision] 精密制造         新锐对标 (Emerging Rival)：纯仿真练出高精操作大脑。
+12          星海图 (Galaxea)          [E2E-VLA] 端到端视言行           [Hierarchical-VLA] 分层端到端       [L-Logistics] 仓储物流            技术对标 (Tech Match)：强调全身协同与多模态感知。
+13          至简动力 (Simple)     [Integrated-OEM] 软硬一体             [Deep-Coupling] 深度耦合训练      [I-Heavy] [I-Light]     全栈竞品 (Full-stack Rival)：追求软硬极致优化的工业人形。
+14            逐际动力 (LimX)      [Sim2Real-RL] 仿真强化学习         [Locomotion-Expert] 运动控制专家        [L-Log] [Outdoor]            底座伙伴 (Base Partner)：复杂地形移动大脑领先。
+15           普渡机器人 (Pudu)       [Hierarchical] 分层架构             [Scenario-Data] 垂直场景数据      [S-Commercial] 商业服务       场景巨头 (Scenario Giant)：已有海量商用服务机器人数据。
+16         灵心巧手 (Linkhou)         [Component] 核心零部件             [Tactile-Focus] 触觉感知驱动       [I-Precision] 精密制造        战略供应商 (Strategic Vendor)：多感知灵巧手核心件。
+17              坤维科技 / 因时         [Component] 核心零部件          [Hardware-Defined] 硬件参数定义          [Component] 零部件          供应链 (Supply Chain)：力觉传感器与执行器关键厂商。
+18           卧安机器人 (Woan)       [Hierarchical] 分层架构            [Consumer-Data] 消费者场景数据            [C-Home] 家庭消费    数据派 (Data-Driven)：SwitchBot 品牌下的海量家庭数据。
+19           光轮智能 (Lucid)    [Platform-Infra] 平台与基建                 [Gen-Data] 生成式仿真数据          [Agnostic] 通用领域         数据供应商 (Data Vendor)：为工业大脑提供合成训练数据。
+20              Anybotics       [Hierarchical] 分层架构                  [Field-RL] 实地强化学习         [H-Special] 特种巡检          能源场景对标 (Energy Sector)：欧洲巡检机器人霸主。
+21         Mimic Robotics      [IL-Teleop] 模仿学习-遥操作         [Human-to-Robot-IL] 匠人技能克隆  [I-Precision] [I-Heavy]        欧洲直接竞品 (Direct Rival)：德系制造背景，精密操作强。
+22        加速进化 (RobotEra)      [Sim2Real-RL] 仿真强化学习           [Algorithm-Bench] 算法基准训练       [Research] [L-Log]         底座伙伴 (Base Partner)：专注于高性能行走与平衡算法。
+23         帕西尼感知 (PaXini)         [Component] 核心零部件             [Tactile-Brain] 触觉大脑驱动       [I-Precision] 精密制造           传感专家 (Sensing Expert)：强调多阵列触觉感知。
+24            穹彻智能 (Omni)       [Hierarchical] 分层架构          [Force-Control-IL] 力控模仿学习       [I-Precision] 精密制造        细分竞品 (Niche Rival)：解决工业精密装配的“手感”问题。
+25      创新中心 (Innovation)      [Platform-Hub] 平台与中心            [Ecosystem-Data] 生态公共数据          [Agnostic] 通用领域  政策与标准 (Policy/Standard)：国家级/北京/上海等数据中试平台。
