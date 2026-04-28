@@ -218,13 +218,14 @@
 
 <!-- Header -->
 <div class="header">
-    <a href="index.html" class="back-btn">← 返回看板</a>
+    <a href="index.html" class="back-btn" id="backBtn">← 返回看板</a>
     <div>
-        <span class="header-title">监测公司列表</span>
-        <span class="header-sub">Embodied AI Watchlist</span>
+        <span class="header-title" id="pageTitle">监测公司列表</span>
+        <span class="header-sub" id="pageSubtitle">Embodied AI Watchlist</span>
     </div>
     <div class="header-right">
-        <div class="count-badge">共 <span id="visibleCount">0</span> / <span id="totalCount">0</span> 家</div>
+        <button id="langToggle" class="filter-btn" style="font-size:12px;padding:4px 10px;" onclick="toggleLanguage()">EN</button>
+        <div class="count-badge" id="countBadge">共 <span id="visibleCount">0</span> / <span id="totalCount">0</span> 家</div>
         <div class="search-wrap">
             <span class="search-icon">🔍</span>
             <input class="search-input" id="searchInput" type="text" placeholder="搜索公司名称…" oninput="filterTable()">
@@ -234,15 +235,15 @@
 
 <!-- Filter bar -->
 <div class="filter-bar">
-    <button class="filter-btn active" onclick="setFilter('all', this)">全部</button>
-    <button class="filter-btn" onclick="setFilter('overseas', this)">🌐 海外</button>
-    <button class="filter-btn" onclick="setFilter('domestic', this)">🇨🇳 国内</button>
-    <button class="filter-btn" onclick="setFilter('E2E-VLA', this)">[E2E-VLA]</button>
-    <button class="filter-btn" onclick="setFilter('Hierarchical', this)">[Hierarchical]</button>
-    <button class="filter-btn" onclick="setFilter('Sim2Real', this)">[Sim2Real-RL]</button>
-    <button class="filter-btn" onclick="setFilter('World Model', this)">[World Model]</button>
-    <button class="filter-btn" onclick="setFilter('Component', this)">[Component]</button>
-    <button class="filter-btn" onclick="setFilter('Platform', this)">[Platform]</button>
+    <button class="filter-btn active" id="filterAll" onclick="setFilter('all', this)">全部</button>
+    <button class="filter-btn" id="filterOverseas" onclick="setFilter('overseas', this)">🌐 海外</button>
+    <button class="filter-btn" id="filterDomestic" onclick="setFilter('domestic', this)">🇨🇳 国内</button>
+    <button class="filter-btn" id="filterE2E" onclick="setFilter('E2E-VLA', this)">[E2E-VLA]</button>
+    <button class="filter-btn" id="filterHierarchical" onclick="setFilter('Hierarchical', this)">[Hierarchical]</button>
+    <button class="filter-btn" id="filterSim2Real" onclick="setFilter('Sim2Real', this)">[Sim2Real-RL]</button>
+    <button class="filter-btn" id="filterWorldModel" onclick="setFilter('World Model', this)">[World Model]</button>
+    <button class="filter-btn" id="filterComponent" onclick="setFilter('Component', this)">[Component]</button>
+    <button class="filter-btn" id="filterPlatform" onclick="setFilter('Platform', this)">[Platform]</button>
 </div>
 
 <!-- Table -->
@@ -251,11 +252,11 @@
     <thead>
         <tr>
             <th>#</th>
-            <th class="col-name">公司名称</th>
-            <th class="col-brain">大脑架构</th>
-            <th class="col-training">训练与数据范式</th>
-            <th class="col-scene">场景标签</th>
-            <th class="col-pos">定位</th>
+            <th class="col-name" id="thName">公司名称</th>
+            <th class="col-brain" id="thBrain">大脑架构</th>
+            <th class="col-training" id="thTraining">训练与数据范式</th>
+            <th class="col-scene" id="thScene">场景标签</th>
+            <th class="col-pos" id="thPosition">定位</th>
         </tr>
     </thead>
     <tbody id="tableBody">
@@ -264,6 +265,88 @@
 </div>
 
 <script>
+// ============================================================
+// i18n 双语翻译系统
+// ============================================================
+const i18n = {
+    zh: {
+        backBtn: '← 返回看板',
+        pageTitle: '监测公司列表',
+        pageSubtitle: 'Embodied AI Watchlist',
+        countBadge: '共 {visible} / {total} 家',
+        searchPlaceholder: '搜索公司名称…',
+        filterAll: '全部',
+        filterOverseas: '🌐 海外',
+        filterDomestic: '🇨🇳 国内',
+        thName: '公司名称',
+        thBrain: '大脑架构',
+        thTraining: '训练与数据范式',
+        thScene: '场景标签',
+        thPosition: '定位',
+        noTag: '---',
+        emptyRow: '---'
+    },
+    en: {
+        backBtn: '← Back to Dashboard',
+        pageTitle: 'Company Watchlist',
+        pageSubtitle: 'Embodied AI Watchlist',
+        countBadge: '{visible} / {total} companies',
+        searchPlaceholder: 'Search companies…',
+        filterAll: 'All',
+        filterOverseas: '🌐 Overseas',
+        filterDomestic: '🇨🇳 Domestic',
+        thName: 'Company',
+        thBrain: 'Brain Architecture',
+        thTraining: 'Training Paradigm',
+        thScene: 'Scene Tags',
+        thPosition: 'Positioning',
+        noTag: '---',
+        emptyRow: '---'
+    }
+};
+
+let currentLang = localStorage.getItem('lang') || 'zh';
+
+function toggleLanguage() {
+    currentLang = currentLang === 'zh' ? 'en' : 'zh';
+    localStorage.setItem('lang', currentLang);
+    applyTranslations();
+    updateLangButton();
+}
+
+function updateLangButton() {
+    document.getElementById('langToggle').textContent = currentLang === 'zh' ? 'EN' : '中';
+}
+
+function applyTranslations() {
+    const t = i18n[currentLang];
+    
+    // Header elements
+    document.getElementById('backBtn').textContent = t.backBtn;
+    document.getElementById('pageTitle').textContent = t.pageTitle;
+    document.getElementById('pageSubtitle').textContent = t.pageSubtitle;
+    document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+    
+    // Count badge
+    const visibleCount = document.getElementById('visibleCount').textContent;
+    const totalCount = document.getElementById('totalCount').textContent;
+    document.getElementById('countBadge').innerHTML = t.countBadge
+        .replace('{visible}', '<span id="visibleCount">' + visibleCount + '</span>')
+        .replace('{total}', '<span id="totalCount">' + totalCount + '</span>');
+    
+    // Filter tabs
+    document.getElementById('filterAll').textContent = t.filterAll;
+    document.getElementById('filterOverseas').textContent = t.filterOverseas;
+    document.getElementById('filterDomestic').textContent = t.filterDomestic;
+    
+    // Table headers
+    document.getElementById('thName').textContent = t.thName;
+    document.getElementById('thBrain').textContent = t.thBrain;
+    document.getElementById('thTraining').textContent = t.thTraining;
+    document.getElementById('thScene').textContent = t.thScene;
+    document.getElementById('thPosition').textContent = t.thPosition;
+}
+
 // ============================================================
 // 标签数据（来自 标签2.xlsx）
 // ============================================================
@@ -436,6 +519,8 @@ function setFilter(val, btn) {
 
 // Init
 renderTable();
+applyTranslations();
+updateLangButton();
 </script>
 </body>
 </html>

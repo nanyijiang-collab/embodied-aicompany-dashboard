@@ -343,11 +343,46 @@
             text-align: center;
             color: var(--accent-red);
         }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .lang-btn {
+            padding: 8px 14px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="#" class="back-btn" onclick="window.history.back(); return false;">← 返回上一页</a>
+        <div class="lang-toggle" id="langToggle">
+            <button class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+            <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+        </div>
+        <a href="#" class="back-btn" onclick="window.history.back(); return false;" data-i18n="backBtn">← 返回上一页</a>
         
         <div id="content">
             <div class="loading">加载中...</div>
@@ -355,12 +390,310 @@
     </div>
     
     <script>
+        // ========== i18n 双语翻译系统 ==========
+        let currentLang = localStorage.getItem('lang') || 'zh';
+
+        const i18n = {
+            zh: {
+                backBtn: '← 返回上一页',
+                pageTitle: '公司详情',
+                loading: '加载中...',
+                errorNotFound: '未找到公司：',
+                errorNotFoundHint: '请返回主页选择有效的公司',
+                errorLoadFailed: '数据加载失败',
+                errorNoCompany: '未指定公司',
+                errorNoCompanyHint: '请通过 ?name=公司名 访问',
+                valuationLabel: '估值',
+                foundedLabel: '成立时间',
+                hqLabel: '总部',
+                latestFundingLabel: '最新融资',
+                latestEventLabel: '最新事件',
+                sectionTechTags: '🏷️ 技术标签',
+                labelBrain: '🧠 大脑架构',
+                labelTraining: '📊 训练范式',
+                labelScene: '🎯 商业场景',
+                sectionPositioning: '📍 定位说明',
+                sectionTechPath: '🔍 技术路径说明',
+                techPathCompanyPos: '公司定位：',
+                techPathDataMethod: '数据获取方式：',
+                sectionTeam: '👥 创始团队',
+                sectionInvestors: '💰 投资方',
+                sectionMilestones: '📅 重大事件',
+                sectionNews: '📰 最新动态',
+                newsCount: '条',
+                eventUnknownSource: '未知来源',
+                eventReadOriginal: '阅读原文 →',
+                noData: '暂无动态数据',
+                noDataTeam: '暂无团队数据',
+                noDataInvestors: '暂无投资方数据',
+                // 事件类型
+                typeFunding: '融资',
+                typeProduct: '产品发布',
+                typeTech: '技术突破',
+                typeProject: '项目落地',
+                typeEvent: '活动展会',
+                typeInterview: '采访观点',
+                typePersonnel: '人事动态',
+                typeOther: '其他',
+                // 数据路径
+                pathTeleop: '遥操作',
+                pathVideo: '视频学习',
+                pathSim: '仿真',
+                pathSimTeleop: '仿真+遥操作',
+                pathReal: '物理世界',
+                pathHybrid: '混合',
+                // 数据路径描述
+                pathDescTeleop: '通过人类操作员使用VR手柄、外骨骼或示教器远程控制机器人，采集人类演示数据。数据质量高但规模受限，适合精细操作任务（如灵巧手操作）。',
+                pathDescVideo: '从YouTube、纪录片、教学视频等互联网视频中学习人类动作模式。数据规模大但需解决Sim2Real泛化问题，适合通用技能学习。',
+                pathDescSim: '在Isaac Gym、Mujoco、UniSim等仿真平台中合成训练数据。可大规模生成但存在Sim2Real gap，需Domain Randomization等技巧。',
+                pathDescSimTeleop: '结合仿真合成和遥操作采集的数据，兼顾规模和质量。仿真数据用于预训练，遥操作数据用于微调。',
+                pathDescReal: '直接在实际机器人或物理环境中采集数据。真实性最高但成本高、风险大，适合落地验证。',
+                pathDescHybrid: '综合使用多种数据获取方式，兼顾数据规模、质量和泛化能力。'
+            },
+            en: {
+                backBtn: '← Back',
+                pageTitle: 'Company Details',
+                loading: 'Loading...',
+                errorNotFound: 'Company not found: ',
+                errorNotFoundHint: 'Please go back and select a valid company',
+                errorLoadFailed: 'Failed to load data',
+                errorNoCompany: 'No company specified',
+                errorNoCompanyHint: 'Please access via ?name=CompanyName',
+                valuationLabel: 'Valuation',
+                foundedLabel: 'Founded',
+                hqLabel: 'HQ',
+                latestFundingLabel: 'Latest Funding',
+                latestEventLabel: 'Latest Event',
+                sectionTechTags: '🏷️ Tech Tags',
+                labelBrain: '🧠 Brain Architecture',
+                labelTraining: '📊 Training Paradigm',
+                labelScene: '🎯 Business Scenarios',
+                sectionPositioning: '📍 Positioning',
+                sectionTechPath: '🔍 Tech Path',
+                techPathCompanyPos: 'Company Position: ',
+                techPathDataMethod: 'Data Acquisition: ',
+                sectionTeam: '👥 Founding Team',
+                sectionInvestors: '💰 Investors',
+                sectionMilestones: '📅 Milestones',
+                sectionNews: '📰 Latest News',
+                newsCount: 'items',
+                eventUnknownSource: 'Unknown source',
+                eventReadOriginal: 'Read original →',
+                noData: 'No news data available',
+                noDataTeam: 'No team data available',
+                noDataInvestors: 'No investor data available',
+                // Event types
+                typeFunding: 'Funding',
+                typeProduct: 'Product Launch',
+                typeTech: 'Tech Breakthrough',
+                typeProject: 'Project Deployment',
+                typeEvent: 'Events & Exhibitions',
+                typeInterview: 'Interviews & Opinions',
+                typePersonnel: 'Personnel',
+                typeOther: 'Other',
+                // Data paths
+                pathTeleop: 'Teleoperation',
+                pathVideo: 'Video Learning',
+                pathSim: 'Simulation',
+                pathSimTeleop: 'Sim + Teleop',
+                pathReal: 'Real World',
+                pathHybrid: 'Hybrid',
+                // Data path descriptions
+                pathDescTeleop: 'Remote control of robots via VR controllers, exoskeletons, or teach pendants by human operators. High data quality but limited scale, suitable for fine manipulation tasks.',
+                pathDescVideo: 'Learning human action patterns from internet videos (YouTube, documentaries, tutorials). Large-scale data but requires Sim2Real generalization, suitable for general skill learning.',
+                pathDescSim: 'Synthesizing training data in simulation platforms like Isaac Gym, Mujoco, UniSim. Scalable generation but Sim2Real gap exists, requiring Domain Randomization techniques.',
+                pathDescSimTeleop: 'Combining simulation-synthesized and teleoperation-collected data, balancing scale and quality. Simulation data for pre-training, teleoperation data for fine-tuning.',
+                pathDescReal: 'Collecting data directly from real robots or physical environments. Highest authenticity but high cost and risk, suitable for deployment validation.',
+                pathDescHybrid: 'Using multiple data acquisition methods comprehensively, balancing data scale, quality, and generalization capability.'
+            }
+        };
+
+        function t(key) {
+            return i18n[currentLang][key] || i18n.zh[key] || key;
+        }
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            // Update button active state
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.trim() === (lang === 'zh' ? '中文' : 'EN'));
+            });
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            applyTranslations();
+        }
+
+        function applyTranslations() {
+            const lang = currentLang;
+
+            // Static elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            // Page title
+            if (companyData) {
+                document.title = `${companyData.name} - ${t('pageTitle')}`;
+            }
+
+            // Back button
+            const backBtn = document.querySelector('.back-btn');
+            if (backBtn) backBtn.innerHTML = t('backBtn');
+
+            // Valuation label
+            const valLabel = document.querySelector('.valuation-label');
+            if (valLabel) {
+                const currencySymbol = companyData && companyData.currency === '美元' ? '💵' : '💴';
+                valLabel.textContent = `${t('valuationLabel')} ${currencySymbol}`;
+            }
+
+            // Stat labels
+            const statLabels = document.querySelectorAll('.stat-label');
+            if (statLabels[0]) statLabels[0].textContent = t('foundedLabel');
+            if (statLabels[1]) statLabels[1].textContent = t('hqLabel');
+            if (statLabels[2]) statLabels[2].textContent = t('latestFundingLabel');
+            if (statLabels[3]) statLabels[3].textContent = t('latestEventLabel');
+
+            // Section titles
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(titleEl => {
+                const text = titleEl.textContent;
+                if (text.includes('技术标签') || text.includes('Tech Tags')) titleEl.innerHTML = t('sectionTechTags');
+                else if (text.includes('定位说明') || text.includes('Positioning')) titleEl.innerHTML = t('sectionPositioning');
+                else if (text.includes('技术路径说明') || text.includes('Tech Path')) titleEl.innerHTML = t('sectionTechPath');
+                else if (text.includes('创始团队') || text.includes('Founding Team')) titleEl.innerHTML = t('sectionTeam');
+                else if (text.includes('投资方') || text.includes('Investors')) titleEl.innerHTML = t('sectionInvestors');
+                else if (text.includes('重大事件') || text.includes('Milestones')) titleEl.innerHTML = t('sectionMilestones');
+                else if (text.includes('最新动态') || text.includes('Latest News')) {
+                    const countMatch = titleEl.textContent.match(/\((\d+)/);
+                    const count = countMatch ? countMatch[1] : '0';
+                    titleEl.innerHTML = `${t('sectionNews')} (${count}${t('newsCount')})`;
+                }
+            });
+
+            // Tag labels (brain, training, scene)
+            const tagLabels = document.querySelectorAll('.section div[style*="font-size: 12px"]');
+            tagLabels.forEach(labelEl => {
+                const text = labelEl.textContent;
+                if (text.includes('大脑架构') || text.includes('Brain Architecture')) labelEl.innerHTML = t('labelBrain');
+                else if (text.includes('训练范式') || text.includes('Training Paradigm')) labelEl.innerHTML = t('labelTraining');
+                else if (text.includes('商业场景') || text.includes('Business Scenarios')) labelEl.innerHTML = t('labelScene');
+            });
+
+            // Tech path description - company position & data method
+            const strongEls = document.querySelectorAll('.section p strong');
+            strongEls.forEach(strongEl => {
+                const text = strongEl.textContent;
+                if (text.includes('公司定位') || text.includes('Company Position')) strongEl.textContent = t('techPathCompanyPos');
+                else if (text.includes('数据获取方式') || text.includes('Data Acquisition')) strongEl.textContent = t('techPathDataMethod');
+            });
+
+            // Data path description paragraph
+            if (companyData) {
+                const segmentParts = (companyData.segment || '').split(' / ');
+                const dataPath = segmentParts[1] || '混合';
+                const descKeyMap = {
+                    '遥操作': 'pathDescTeleop',
+                    '视频学习': 'pathDescVideo',
+                    '仿真': 'pathDescSim',
+                    '仿真+遥操作': 'pathDescSimTeleop',
+                    '物理世界': 'pathDescReal',
+                    '混合': 'pathDescHybrid'
+                };
+                const descKey = descKeyMap[dataPath];
+                const descPs = document.querySelectorAll('.section p[style*="margin-top: 12px"]');
+                descPs.forEach(p => {
+                    if (descKey && i18n[lang][descKey]) {
+                        p.textContent = i18n[lang][descKey];
+                    }
+                });
+            }
+
+            // Event meta: unknown source & read original
+            document.querySelectorAll('.event-meta span').forEach(span => {
+                const text = span.textContent;
+                if (text.includes('未知来源') || text.includes('Unknown source')) {
+                    span.textContent = `📍 ${t('eventUnknownSource')}`;
+                }
+            });
+            document.querySelectorAll('.event-link').forEach(link => {
+                link.textContent = t('eventReadOriginal');
+            });
+
+            // Event type badges
+            document.querySelectorAll('.event-badge').forEach(badge => {
+                const text = badge.textContent;
+                const typeMap = {
+                    '融资': 'typeFunding', 'Funding': 'typeFunding',
+                    '产品发布': 'typeProduct', 'Product Launch': 'typeProduct',
+                    '技术突破': 'typeTech', 'Tech Breakthrough': 'typeTech',
+                    '项目落地': 'typeProject', 'Project Deployment': 'typeProject',
+                    '活动展会': 'typeEvent', 'Events': 'typeEvent',
+                    '采访观点': 'typeInterview', 'Interviews': 'typeInterview',
+                    '人事动态': 'typePersonnel', 'Personnel': 'typePersonnel',
+                    '其他': 'typeOther', 'Other': 'typeOther'
+                };
+                for (const [cn, key] of Object.entries(typeMap)) {
+                    if (text === cn) {
+                        badge.textContent = t(key);
+                        break;
+                    }
+                }
+            });
+
+            // No data placeholder
+            document.querySelectorAll('.loading').forEach(el => {
+                const text = el.textContent;
+                if (text.includes('暂无动态数据') || text.includes('No news data')) el.textContent = t('noData');
+                else if (text.includes('暂无团队') || text.includes('No team data')) el.textContent = t('noDataTeam');
+                else if (text.includes('暂无投资方') || text.includes('No investor')) el.textContent = t('noDataInvestors');
+            });
+
+            // Error messages
+            document.querySelectorAll('.error-msg').forEach(errEl => {
+                const h2 = errEl.querySelector('h2');
+                const p = errEl.querySelector('p');
+                if (h2) {
+                    if (h2.textContent.includes('未找到公司') || h2.textContent.includes('not found')) h2.textContent = t('errorNotFound') + (companyName || '');
+                    else if (h2.textContent.includes('未指定公司') || h2.textContent.includes('No company')) h2.textContent = t('errorNoCompany');
+                    else if (h2.textContent.includes('数据加载失败') || h2.textContent.includes('Failed to load')) h2.textContent = t('errorLoadFailed');
+                }
+                if (p) {
+                    if (p.textContent.includes('请返回主页')) p.textContent = t('errorNotFoundHint');
+                    else if (p.textContent.includes('请通过')) p.textContent = t('errorNoCompanyHint');
+                }
+            });
+
+            // Update typeNames mapping for dynamic event rendering
+            typeNames = {
+                'funding': t('typeFunding'),
+                'product': t('typeProduct'),
+                'tech_breakthrough': t('typeTech'),
+                'project': t('typeProject'),
+                'event': t('typeEvent'),
+                'interview': t('typeInterview'),
+                'personnel': t('typePersonnel'),
+                'other': t('typeOther')
+            };
+        }
+
+        // 初始化语言状态
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = localStorage.getItem('lang') || 'zh';
+            if (lang !== 'zh') {
+                switchLanguage(lang);
+            }
+        });
+
         // 从URL获取公司名
         const params = new URLSearchParams(window.location.search);
         const companyName = params.get('name');
         
         // 类型名称映射
-        const typeNames = {
+        let typeNames = {
             'funding': '融资',
             'product': '产品发布',
             'tech_breakthrough': '技术突破',
@@ -631,8 +964,8 @@
                 if (!companyInfo) {
                     document.getElementById('content').innerHTML = `
                         <div class="error-msg">
-                            <h2>未找到公司：${companyName}</h2>
-                            <p style="margin-top:12px;color:var(--text-secondary)">请返回主页选择有效的公司</p>
+                            <h2>${t('errorNotFound')}${companyName}</h2>
+                            <p style="margin-top:12px;color:var(--text-secondary)">${t('errorNotFoundHint')}</p>
                         </div>
                     `;
                     return;
@@ -653,7 +986,7 @@
                 console.error(err);
                 document.getElementById('content').innerHTML = `
                     <div class="error-msg">
-                        <h2>数据加载失败</h2>
+                        <h2>${t('errorLoadFailed')}</h2>
                         <p style="margin-top:12px;color:var(--text-secondary)">${err.message}</p>
                     </div>
                 `;
@@ -988,12 +1321,12 @@
         // 数据路径说明
         function getDataPathDescription(path) {
             const descriptions = {
-                '遥操作': '通过人类操作员使用VR手柄、外骨骼或示教器远程控制机器人，采集人类演示数据。数据质量高但规模受限，适合精细操作任务（如灵巧手操作）。',
-                '视频学习': '从YouTube、纪录片、教学视频等互联网视频中学习人类动作模式。数据规模大但需解决Sim2Real泛化问题，适合通用技能学习。',
-                '仿真': '在Isaac Gym、Mujoco、UniSim等仿真平台中合成训练数据。可大规模生成但存在Sim2Real gap，需Domain Randomization等技巧。',
-                '仿真+遥操作': '结合仿真合成和遥操作采集的数据，兼顾规模和质量。仿真数据用于预训练，遥操作数据用于微调。',
-                '物理世界': '直接在实际机器人或物理环境中采集数据。真实性最高但成本高、风险大，适合落地验证。',
-                '混合': '综合使用多种数据获取方式，兼顾数据规模、质量和泛化能力。'
+                '遥操作': t('pathDescTeleop'),
+                '视频学习': t('pathDescVideo'),
+                '仿真': t('pathDescSim'),
+                '仿真+遥操作': t('pathDescSimTeleop'),
+                '物理世界': t('pathDescReal'),
+                '混合': t('pathDescHybrid')
             };
             return descriptions[path] || descriptions['混合'];
         }
@@ -1028,8 +1361,8 @@
             };
             const pathIcon = pathIconMap[dataPath] || '🔀';
             
-            document.title = `${company.name} - 公司详情`;
-            
+            document.title = `${company.name} - ${t('pageTitle')}`;
+
             document.getElementById('content').innerHTML = `
                 <div class="company-header">
                     <div class="company-title">
@@ -1046,77 +1379,78 @@
                     </div>
                     <div class="valuation-badge">
                         <div class="valuation-value">${company.valuation}</div>
-                        <div class="valuation-label">估值 ${currencySymbol}</div>
+                        <div class="valuation-label">${t('valuationLabel')} ${currencySymbol}</div>
                     </div>
                 </div>
-                
+
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-label">成立时间</div>
+                        <div class="stat-label">${t('foundedLabel')}</div>
                         <div class="stat-value">${company.founded}</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-label">总部</div>
+                        <div class="stat-label">${t('hqLabel')}</div>
                         <div class="stat-value">${company.headquarters}</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-label">最新融资</div>
+                        <div class="stat-label">${t('latestFundingLabel')}</div>
                         <div class="stat-value">${company.latest}</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-label">最新事件</div>
+                        <div class="stat-label">${t('latestEventLabel')}</div>
                         <div class="stat-value" style="font-size:14px;">${company.date || '-'}</div>
                     </div>
                 </div>
-                
+
                 <!-- 标签模块 -->
                 ${company.brain || company.training || company.scene ? `
                 <div class="section">
-                    <div class="section-title">🏷️ 技术标签</div>
+                    <div class="section-title">${t('sectionTechTags')}</div>
                     <div style="display: flex; flex-wrap: wrap; gap: 16px;">
                         ${company.brain ? `
                         <div style="flex: 1; min-width: 200px;">
-                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">🧠 大脑架构</div>
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">${t('labelBrain')}</div>
                             <span class="tag tag-segment">${company.brain}</span>
                         </div>
                         ` : ''}
                         ${company.training ? `
                         <div style="flex: 1; min-width: 200px;">
-                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">📊 训练范式</div>
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">${t('labelTraining')}</div>
                             <span class="tag tag-funding">${company.training}</span>
                         </div>
                         ` : ''}
                         ${company.scene ? `
                         <div style="flex: 1; min-width: 200px;">
-                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">🎯 商业场景</div>
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">${t('labelScene')}</div>
                             <span class="tag" style="background: rgba(34, 197, 94, 0.2); color: #22c55e;">${company.scene}</span>
                         </div>
                         ` : ''}
                     </div>
                 </div>
                 ` : ''}
-                
+
                 <!-- 定位说明 -->
                 ${company.positioning ? `
                 <div class="section">
-                    <div class="section-title">📍 定位说明</div>
+                    <div class="section-title">${t('sectionPositioning')}</div>
                     <div style="color: var(--text-secondary); line-height: 1.8; font-size: 14px;">${company.positioning}</div>
                 </div>
                 ` : ''}
-                
+
                 <div class="section">
-                    <div class="section-title">🔍 技术路径说明</div>
+                    <div class="section-title">${t('sectionTechPath')}</div>
                     <div style="color: var(--text-secondary); line-height: 1.8;">
-                        <p><strong>公司定位：</strong>${mainSegment}</p>
-                        <p><strong>数据获取方式：</strong>${dataPath}</p>
+                        <p><strong>${t('techPathCompanyPos')}</strong>${mainSegment}</p>
+                        <p><strong>${t('techPathDataMethod')}</strong>${dataPath}</p>
                         <p style="margin-top: 12px; font-size: 13px;">
                             ${getDataPathDescription(dataPath)}
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="section">
-                    <div class="section-title">👥 创始团队</div>
+                    <div class="section-title">${t('sectionTeam')}</div>
+                    ${company.founders.length > 0 ? `
                     <div class="team-list">
                         ${company.founders.map(f => `
                             <div class="team-card">
@@ -1126,19 +1460,22 @@
                             </div>
                         `).join('')}
                     </div>
+                    ` : `<div class="loading">${t('noDataTeam')}</div>`}
                 </div>
-                
+
                 <div class="section">
-                    <div class="section-title">💰 投资方</div>
+                    <div class="section-title">${t('sectionInvestors')}</div>
+                    ${company.investors.length > 0 ? `
                     <div class="investors-list">
                         ${company.investors.map(i => `
                             <span class="investor-tag">${i.name} <span style="color:var(--text-secondary)">${i.round}</span></span>
                         `).join('')}
                     </div>
+                    ` : `<div class="loading">${t('noDataInvestors')}</div>`}
                 </div>
-                
+
                 <div class="section">
-                    <div class="section-title">📅 重大事件</div>
+                    <div class="section-title">${t('sectionMilestones')}</div>
                     <div class="timeline">
                         ${company.milestones.map(m => `
                             <div class="timeline-item">
@@ -1148,9 +1485,9 @@
                         `).join('')}
                     </div>
                 </div>
-                
+
                 <div class="section">
-                    <div class="section-title">📰 最新动态 (${events.length}条)</div>
+                    <div class="section-title">${t('sectionNews')} (${events.length}${t('newsCount')})</div>
                     ${events.length > 0 ? `
                         <div class="events-list">
                             ${events.map(e => `
@@ -1159,15 +1496,15 @@
                                         <div class="event-title">${e.title}</div>
                                         <div class="event-meta">
                                             <span>📅 ${e.date}</span>
-                                            <span>📍 ${e.source || '未知来源'}</span>
+                                            <span>📍 ${e.source || t('eventUnknownSource')}</span>
                                             <span class="event-badge type-${e.type}">${typeNames[e.type] || e.type}</span>
                                         </div>
-                                        ${e.source_url ? `<a href="${e.source_url}" target="_blank" class="event-link">阅读原文 →</a>` : ''}
+                                        ${e.source_url ? `<a href="${e.source_url}" target="_blank" class="event-link">${t('eventReadOriginal')}</a>` : ''}
                                     </div>
                                 </div>
                             `).join('')}
                         </div>
-                    ` : '<div class="loading">暂无动态数据</div>'}
+                    ` : `<div class="loading">${t('noData')}</div>`}
                 </div>
             `;
         }
@@ -1178,8 +1515,8 @@
         } else {
             document.getElementById('content').innerHTML = `
                 <div class="error-msg">
-                    <h2>未指定公司</h2>
-                    <p style="margin-top:12px">请通过 ?name=公司名 访问</p>
+                    <h2>${t('errorNoCompany')}</h2>
+                    <p style="margin-top:12px">${t('errorNoCompanyHint')}</p>
                 </div>
             `;
         }
