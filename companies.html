@@ -267,101 +267,87 @@
 // ============================================================
 // 标签数据（来自 标签2.xlsx）
 // ============================================================
-const tagData = [
-  {"name":"NVIDIA (英伟达)","brain":"[Platform-Infra] 平台与基建","training":"[Synthetic-Data] 合成数据驱动","scene":"[Agnostic] 通用领域","positioning":"底层环境供应 (Infra Provider)：提供 Isaac 仿真与算力。"},
-  {"name":"Tesla Optimus (特斯拉)","brain":"[E2E-VLA] 端到端视言行","training":"[Real-World-Transfer] 真实视觉迁移","scene":"[I-Heavy] 重工业","positioning":"定义者 (Definer)：基于 FSD 自动驾驶数据大规模迁移。"},
-  {"name":"Figure AI","brain":"[E2E-VLA] 端到端视言行","training":"[VLM-Micro-tuning] 多模态微调","scene":"[I-Heavy] [C-Home]","positioning":"标杆竞品 (Benchmark)：VLA 商业化最成熟，主打工业协作。"},
-  {"name":"1X Technologies","brain":"[World Model] 世界模型","training":"[Video-Pretrain] 视频预训练","scene":"[S-Comm] [C-Home]","positioning":"路径参照 (Path Reference)：物理直觉极强，动作丝滑度高。"},
-  {"name":"Hexagon (海克斯康)","brain":"[Hierarchical] 分层架构","training":"[Digital-Twin] 数字孪生驱动","scene":"[I-Heavy] 重工业","positioning":"关键竞品 (Direct Competitor)：工业测量积累深，欧洲市场强势。"},
-  {"name":"Skild AI","brain":"[Cross-Embodiment] 跨本体","training":"[Heterogeneous-Data] 异构数据缩放","scene":"[I-Precision] [L-Log]","positioning":"算法伙伴 (Algorithm Partner)：不造硬件，纯大脑模型供应商。"},
-  {"name":"Physical Intelligence","brain":"[E2E-VLA] 端到端视言行","training":"[Foundation-Scale] 基础大模型规模","scene":"[Agnostic] 通用领域","positioning":"潜在伙伴 (Potential Partner)：π₀ 模型的跨平台大脑。"},
-  {"name":"智元机器人 (Agibot)","brain":"[Hierarchical] 分层架构","training":"[Proprietary-IL] 自研模仿学习","scene":"[I-Light] [S-Comm]","positioning":"国产领头羊 (Local Leader)：商业化落地最快，灵巧手领先。"},
-  {"name":"宇树科技 (Unitree)","brain":"[Sim2Real-RL] 仿真强化学习","training":"[Massive-RL] 暴力强化学习","scene":"[C-Edu] [L-Log]","positioning":"本体供应商 (Hardware OEM)：性价比极高，可作为大脑载体。"},
-  {"name":"星尘智能 (Stardust)","brain":"[IL-Teleop] 模仿学习-遥操作","training":"[High-Precision-IL] 高精模仿","scene":"[I-Precision] [S-Comm]","positioning":"精密专家 (Precision Expert)：Astribot 动作上限极高。"},
-  {"name":"银河通用 (Galbot)","brain":"[Sim2Real-RL] 仿真强化学习","training":"[Synthetic-Generalist] 合成通用化","scene":"[L-Logistics] [I-Heavy]","positioning":"工业竞品 (Industrial Rival)：专注大负载抓取与物流场景。"},
-  {"name":"苏度科技 (Sudo)","brain":"[World Model] 世界模型","training":"[Zero-Shot-Sim] 零样本仿真训练","scene":"[I-Precision] 精密制造","positioning":"新锐对标 (Emerging Rival)：纯仿真练出高精操作大脑。"},
-  {"name":"星海图 (Galaxea)","brain":"[E2E-VLA] 端到端视言行","training":"[Hierarchical-VLA] 分层端到端","scene":"[L-Logistics] 仓储物流","positioning":"技术对标 (Tech Match)：强调全身协同与多模态感知。"},
-  {"name":"至简动力 (Simple)","brain":"[Integrated-OEM] 软硬一体","training":"[Deep-Coupling] 深度耦合训练","scene":"[I-Heavy] [I-Light]","positioning":"全栈竞品 (Full-stack Rival)：追求软硬极致优化的工业人形。"},
-  {"name":"逐际动力 (LimX)","brain":"[Sim2Real-RL] 仿真强化学习","training":"[Locomotion-Expert] 运动控制专家","scene":"[L-Log] [Outdoor]","positioning":"底座伙伴 (Base Partner)：复杂地形移动大脑领先。"},
-  {"name":"普渡机器人 (Pudu)","brain":"[Hierarchical] 分层架构","training":"[Scenario-Data] 垂直场景数据","scene":"[S-Commercial] 商业服务","positioning":"场景巨头 (Scenario Giant)：已有海量商用服务机器人数据。"},
-  {"name":"灵心巧手 (Linkhou)","brain":"[Component] 核心零部件","training":"[Tactile-Focus] 触觉感知驱动","scene":"[I-Precision] 精密制造","positioning":"战略供应商 (Strategic Vendor)：多感知灵巧手核心件。"},
-  {"name":"坤维科技 / 因时","brain":"[Component] 核心零部件","training":"[Hardware-Defined] 硬件参数定义","scene":"[Component] 零部件","positioning":"供应链 (Supply Chain)：力觉传感器与执行器关键厂商。"},
-  {"name":"卧安机器人 (Woan)","brain":"[Hierarchical] 分层架构","training":"[Consumer-Data] 消费者场景数据","scene":"[C-Home] 家庭消费","positioning":"数据派 (Data-Driven)：SwitchBot 品牌下的海量家庭数据。"},
-  {"name":"光轮智能 (Lucid)","brain":"[Platform-Infra] 平台与基建","training":"[Gen-Data] 生成式仿真数据","scene":"[Agnostic] 通用领域","positioning":"数据供应商 (Data Vendor)：为工业大脑提供合成训练数据。"},
-  {"name":"Anybotics","brain":"[Hierarchical] 分层架构","training":"[Field-RL] 实地强化学习","scene":"[H-Special] 特种巡检","positioning":"能源场景对标 (Energy Sector)：欧洲巡检机器人霸主。"},
-  {"name":"Mimic Robotics","brain":"[IL-Teleop] 模仿学习-遥操作","training":"[Human-to-Robot-IL] 匠人技能克隆","scene":"[I-Precision] [I-Heavy]","positioning":"欧洲直接竞品 (Direct Rival)：德系制造背景，精密操作强。"},
-  {"name":"加速进化 (RobotEra)","brain":"[Sim2Real-RL] 仿真强化学习","training":"[Algorithm-Bench] 算法基准训练","scene":"[Research] [L-Log]","positioning":"底座伙伴 (Base Partner)：专注于高性能行走与平衡算法。"},
-  {"name":"帕西尼感知 (PaXini)","brain":"[Component] 核心零部件","training":"[Tactile-Brain] 触觉大脑驱动","scene":"[I-Precision] 精密制造","positioning":"传感专家 (Sensing Expert)：强调多阵列触觉感知。"},
-  {"name":"穹彻智能 (Omni)","brain":"[Hierarchical] 分层架构","training":"[Force-Control-IL] 力控模仿学习","scene":"[I-Precision] 精密制造","positioning":"细分竞品 (Niche Rival)：解决工业精密装配的"手感"问题。"},
-  {"name":"北京人形机器人创新中心","brain":"[Platform-Hub] 平台与中心","training":"[Ecosystem-Data] 生态公共数据","scene":"[Agnostic] 通用领域","positioning":"政策与标准 (Policy/Standard)：国家级/北京/上海等数据中试平台。"},
-  {"name":"优必选 (UBTECH)","brain":"[Hierarchical] 分层架构","training":"[Real-World-Data] 真实场景数据驱动","scene":"[I-Heavy] [S-Comm] 汽车重工/商业服务","positioning":"[Servo-Drive] 自研伺服驱动器，国内人形机器人第一股，主打任务编排与车厂实地测试数据。"},
-  {"name":"它石智航 (T-Robot)","brain":"[Hierarchical] 分层架构","training":"[Industry-SOP] 工业标准流程训练","scene":"[L-Logistics] 仓储物流","positioning":"[Mobile-Base] 轮式/履带高可靠底座，专注非结构化环境下的清洁与物流。"},
-  {"name":"智平方 (SmartSquare)","brain":"[E2E-VLA] 端到端视言行","training":"[VLA-Scaling] 模型规模化扩展","scene":"[Agnostic] 通用领域","positioning":"[Brain-VLA] 纯正端到端派系，强调大模型直接输出控制指令，不依赖人工规则。"},
-  {"name":"千寻智能 (Seeker)","brain":"[E2E-VLA] 端到端视言行","training":"[Data-Scaling] 异构数据缩放训练","scene":"[I-Light] [S-Comm] 轻工业/商业服务","positioning":"[Brain-Model] 通用控制大脑，通过大规模异构机器人数据训练跨本体大脑。"},
-  {"name":"自变量机器人","brain":"[E2E-VLA] 端到端视言行","training":"[Self-Supervised] 自监督物理学习","scene":"[Agnostic] 通用领域","positioning":"[Foundation-Model] 具身基础大模型，利用海量视频和仿真数据训练物理常识。"},
-  {"name":"魔法原子 (Magic Atom)","brain":"[World Model] 世界模型","training":"[Physical-Sim] 物理推理仿真","scene":"[Research] 实验室/科研","positioning":"[Sim-Software] 高精度物理引擎工具，专注让机器人"理解"物理规律。"},
-  {"name":"乐聚机器人 (Leju)","brain":"[Hierarchical] 分层架构","training":"[Open-Harmony] 鸿蒙生态数据协同","scene":"[C-Edu] [I-Heavy] 教育康养/重工","positioning":"[Modular-Joint] 模块化一体化关节，与华为生态深度绑定，强调场景适配能力。"},
-  {"name":"Sunday Robotics","brain":"[E2E-VLA] 端到端视言行","training":"[High-Freq-Loop] 高频控制闭环","scene":"[I-Light] 轻工业精密操作","positioning":"[Dexterous-Module] 灵巧操作模组，专注极高频响应（100Hz+）端到端操作。"},
-  {"name":"傅利叶智能 (Fourier)","brain":"[Hierarchical] 分层架构","training":"[Locomotion-Data] 运动控制数据积累","scene":"[Medical] [I-Heavy] 医疗康复/重工","positioning":"[Actuator-X] 高性能一体化关节执行器，从康复外骨骼转型，强调高扭矩与步态平衡。"},
-  {"name":"Agility Robotics","brain":"[Hierarchical] 分层架构","training":"[Digit-V3] 数字化流程训练","scene":"[L-Logistics] 仓储物流","positioning":"[Legged-Pedal] 专用鸟型腿部结构，亚马逊物流测试明星，双足搬运灵活避障。"},
-  {"name":"Boston Dynamics","brain":"[Hierarchical/RL] 分层/强化学习","training":"[Real-World-RL] 真实物理环境强化学习","scene":"[I-Heavy] [H-Special] 重工/特种巡检","positioning":"[Electric-Actuator] 顶级电驱动执行器，运动控制的"神"，全身协同与柔韧性标杆。"},
-  {"name":"思灵机器人 (Flexiv)","brain":"[Hierarchical] 分层架构","training":"[Force-Centric] 力觉驱动范式","scene":"[I-Precision] 精密制造","positioning":"[Force-Control-Joint] 七轴力控关节，工业界力控"标杆"，能感知 0.1N 细微力变化。"},
-  {"name":"小鹏鹏行 (Xpeng)","brain":"[Hierarchical] 分层架构","training":"[Car-AI-Transfer] 自动驾驶技术平移","scene":"[C-Home] 家庭陪伴","positioning":"[In-house-Actuator] 自研一体化执行器，将小鹏汽车视觉感知技术迁移到人形。"},
-  {"name":"自然意志 (NatureWill)","brain":"[World Model] 世界模型","training":"[Bionic-Logic] 仿生逻辑训练","scene":"[I-Precision] 精密制造","positioning":"[Muscle-Actuator] 仿生肌肉执行器，通过模仿人类肌肉纤维的收缩逻辑实现力量输出。"},
-  {"name":"Field AI","brain":"[Brain-Vision] 视觉大脑","training":"[Rugged-Environ] 恶劣环境实测数据","scene":"[H-Special] 野外特种巡检","positioning":"[Sensor-Fusion-Kit] 多传感器融合单元，专注无 GPS 环境下的自主导航。"},
-  {"name":"梅卡曼德 (Mech-Mind)","brain":"[Brain-Vision] 视觉大脑","training":"[3D-Vision-AI] 3D 视觉深度学习","scene":"[L-Log] [I-Heavy] 物流分拣/重工","positioning":"[3D-Camera] 高精度工业 3D 相机，解决工业场景下反光、堆叠物体的精准定位。"},
-  {"name":"破壳机器人 (Poke)","brain":"[Component] 核心零部件","training":"[Actuator-Innov] 执行器创新设计","scene":"[Component] 零部件供应","positioning":"[High-Torque-Joint] 高扭矩关节模组，专注高性能执行器底层研发。"},
-  {"name":"灵初智能 (PsiBot)","brain":"[E2E-VLA] 端到端视言行","training":"[Data-Engine] 双系统数据引擎驱动","scene":"[I-Precision] 精密制造","positioning":"[Data-Gloves] 高精度数据采集手套，强调"高质量数据是第一生产力"。"},
-  {"name":"珞石机器人 (Ruoshi)","brain":"[Hierarchical] 分层架构","training":"[Industry-Control] 工业级运控算法","scene":"[I-Heavy] 汽车/金属加工","positioning":"[Control-System] 自研 xCore 控制系统，侧重高精度轨迹规划与工业协议兼容性。"},
-  {"name":"地瓜机器人 (Horizon)","brain":"[Platform-Infra] 平台与基建","training":"[Chip-Level-Opt] 芯片级算法优化","scene":"[Agnostic] 通用领域","positioning":"[AI-Silicon] 具身智能专用计算芯片（BPU），主打高能效比的实时推理。"},
-  {"name":"觅蜂科技 (Meef)","brain":"[Hierarchical] 分层架构","training":"[Logistics-SOP] 物流标准场景训练","scene":"[L-Logistics] 仓储/最后一公里","positioning":"[Handling-Module] 自动化装卸模组，专注物流末端自动化闭环与多机协同。"},
-  {"name":"大晓机器人 (Daxiao)","brain":"[Hierarchical] 分层架构","training":"[Research-Data] 科研/教学场景数据","scene":"[Research] [C-Edu] 科研/教育","positioning":"[Humanoid-Frame] 通用人形硬件载体，提供高开放度平台，方便研究者二次开发。"},
-  {"name":"七腾机器人 (Qiteng)","brain":"[Hierarchical] 分层架构","training":"[Inspection-RL] 复杂环境巡检强化学习","scene":"[H-Special] 油气/电力巡检","positioning":"[Explosion-Proof] 防爆等级移动底座，侧重极端环境下的感知与风险预判。"},
-  {"name":"智朝机器人","brain":"[Hierarchical] 分层架构","training":"[Human-Demo] 人类演示数据采集","scene":"[S-Comm] [Agnostic] 商业服务/通用","positioning":"[Modular-Joint] 模块化一体化关节，强调硬件快速迭代与通用任务逻辑编排。"},
-  {"name":"云深处 (DeepRobotics)","brain":"[Hierarchical/RL] 分层/强化学习","training":"[Sim2Real-RL] 复杂地形强化学习","scene":"[H-Special] [I-Heavy] 电力巡检/工业侦察","positioning":"[Quadruped-Joint] 高动态四足关节，国内四足机器人领军者，非结构化地形算法壁垒极高。"},
-  {"name":"智平方机器人","brain":"[E2E-VLA] 端到端视言行","training":"[VLA-Scaling] 大规模模型缩放","scene":"[Agnostic] [I-Light] 通用领域/轻工","positioning":"[Brain-Model] 具身通用大脑，坚持"大模型定义机器"路径，强调感知与执行深度融合。"},
-  {"name":"简智机器人","brain":"[Hierarchical] 分层架构","training":"[Small-Model] 轻量化模型部署","scene":"[I-Light] [S-Comm] 轻工/商用服务","positioning":"[Control-Board] 嵌入式控制主板，通过轻量化大脑实现低功耗、高实时的场景响应。"},
-  {"name":"艾欧 (Io)","brain":"[Hierarchical] 分层架构","training":"[Proprietary-IL] 垂直场景模仿学习","scene":"[I-Light] [I-Precision] 轻工/精密装配","positioning":"[Actuator] 精密执行器模组，专注特定工业工位的自动化升级。"},
-  {"name":"戴盟 (Daimeng)","brain":"[Component] 硬件驱动逻辑","training":"[Haptic-Focus] 触觉反馈引导","scene":"[I-Precision] [Component] 精密制造","positioning":"[Tactile-Hand] 阵列触觉灵巧手，清华系背景，核心竞争力在于"指尖触觉"信号处理。"},
-  {"name":"跨维智能 (Kuavi)","brain":"[Platform-Infra] 平台基建","training":"[Sim2Real-3D] 3D 视觉合成数据","scene":"[I-Precision] [I-Light] 精密制造/3C","positioning":"[3D-Vision-Engine] 3D 视觉感知引擎，利用仿真生成 3D 数据解决工业相机感知盲区。"},
-  {"name":"宇叠 (Yudie)","brain":"[Component] 硬件驱动逻辑","training":"[Elastic-Sensing] 柔性感知采集","scene":"[Component] [Research] 零部件/科研","positioning":"[VR-Glove] 触觉采集 VR 手套，为 [IL-Teleop] 路径提供高质量真实触觉数据。"},
-  {"name":"镜识科技 (In-Sight)","brain":"[Platform-Infra] 平台基建","training":"[System-Opt] 系统级协同优化","scene":"[Agnostic] [I-Heavy] 通用/汽车重工","positioning":"[Software-Platform] 机器人开发底座，提供软硬结合工具链，降低算法迁移难度。"},
-  {"name":"优理奇智能","brain":"[Component] 硬件驱动逻辑","training":"[Spec-Actuator] 特种执行器逻辑","scene":"[Component] 零部件供应","positioning":"[Precision-Joint] 高精密机器人关节，专注高功率密度执行器。"},
-  {"name":"松延动力","brain":"[Component] 硬件驱动逻辑","training":"[High-Dynamic] 高动态响应控制","scene":"[Component] 零部件供应","positioning":"[Servo-Motor] 高性能伺服电机，专注底层电机控制算法，确保动作指令瞬间执行。"},
-  {"name":"开普勒人形机器人","brain":"[Hierarchical] 分层架构","training":"[Industrial-RL] 工业环境强化学习","scene":"[I-Heavy] [L-Log] 汽车制造/物流搬运","positioning":"[Kepler-Actuator] 自研一体化执行器，硬件对标 Optimus，专注重载搬运稳定性。"},
-  {"name":"理工华汇","brain":"[Hierarchical] 分层架构","training":"[Special-Task] 特种任务逻辑训练","scene":"[H-Special] [Research] 特种作业/科研","positioning":"[High-Load-Joint] 大负载高可靠关节，北理工系背景，侧重复杂机构协同控制。"},
-  {"name":"墨奇科技 (Magic Data)","brain":"[Platform-Infra] 平台基建","training":"[Unstructured] 非结构化数据索引","scene":"[Agnostic] [Research] 通用领域/数据科学","positioning":"[Data-Search-System] 多模态数据搜索引擎，通过向量数据库解决海量视频数据的检索与对齐。"},
-  {"name":"思特威 (Smartsens)","brain":"[Component] 硬件驱动逻辑","training":"[Sensor-Param] 图像传感器底层参数","scene":"[Component] 零部件供应","positioning":"[CMOS-Sensor] 高性能图像传感器芯片，具身智能"视网膜"供应商。"},
-  {"name":"智在无界","brain":"[E2E-VLA] 端到端视言行","training":"[General-Data] 通用常识数据训练","scene":"[Agnostic] [S-Comm] 通用领域/商业","positioning":"[Brain-Model] 通用具身智能大脑，强调跨模态理解能力，自然语言指令执行复杂任务。"},
-  {"name":"卓益得机器人","brain":"[Hierarchical] 分层架构","training":"[Walking-RL] 动态步行强化学习","scene":"[Research] [C-Edu] 科研/教育","positioning":"[Bionic-Legs] 仿生双足行走机构，核心壁垒在于动态平衡与步态平滑度。"},
-  {"name":"天链机器人","brain":"[Hierarchical] 分层架构","training":"[Aerospace-Data] 航天/极端环境数据","scene":"[H-Special] [I-Heavy] 特种作业/重工","positioning":"[Flex-Joint] 高自由度柔性关节，侧重极端复杂空间下的路径避障与操作。"},
-  {"name":"国地具身智能","brain":"[Platform-Hub] 平台中心","training":"[Ecosystem-Data] 生态公共数据集","scene":"[Agnostic] 通用领域","positioning":"[Reference-Platform] 具身智能参考样机，国家队/标准制定者，构建公共仿真环境与数据集。"},
-  {"name":"青瞳视觉","brain":"[Component] 硬件驱动逻辑","training":"[MoCap-Data] 动作捕捉数据生成","scene":"[Component] [Research] 零部件/科研","positioning":"[Motion-Capture-Cam] 红外光学动捕系统，提供高质量人类动作数据，IL-Teleop 路径基础设施。"},
-  {"name":"钛虎机器人 (Tiger)","brain":"[Component] 硬件驱动逻辑","training":"[Integrated-Design] 轻量化集成逻辑","scene":"[Component] 零部件供应","positioning":"[Integrated-Actuator] 轻量化关节模组，降低整机自重，减少平衡控制算力负担。"},
-  {"name":"爱动超越","brain":"[Component] 硬件驱动逻辑","training":"[High-Speed-Sens] 高速位置感应","scene":"[Component] 零部件供应","positioning":"[Optical-Encoder] 高精度光学编码器，提供关节"角度传感器"，实现亚毫米级定位。"},
-  {"name":"灵宇宙","brain":"[Platform-Infra] 平台基建","training":"[Virtual-Data] 虚拟合成数据训练","scene":"[Agnostic] [C-Home] 通用/家庭元宇宙","positioning":"[Metaverse-Platform] 具身仿真训练场，云端大规模并行仿真环境，为 Sim2Real 路径提供算力支撑。"},
-  {"name":"灵御智能","brain":"[Hierarchical] 分层架构","training":"[Guard-Data] 安防巡检场景数据","scene":"[H-Special] [S-Comm] 安防/商业服务","positioning":"[Mobile-Base] 轮式全向移动底座，侧重多机协同调度与视觉异常检测。"},
-  {"name":"神源久机器人","brain":"[Component] 硬件驱动逻辑","training":"[Precision-Trans] 精密传动逻辑","scene":"[Component] 零部件供应","positioning":"[Harmonic-Reducer] 谐波减速器，决定大脑指令转化成动作时的平顺性与背隙精度。"},
-  {"name":"千秒机器人","brain":"[Component] 硬件驱动逻辑","training":"[Fast-Response] 快速响应电机控制","scene":"[Component] [I-Light] 零部件/轻工","positioning":"[Fast-Actuator] 高速响应执行器，适合需要大脑快速反应的工业分拣与交互场景。"},
-  {"name":"超维动力","brain":"[Component] 硬件驱动逻辑","training":"[Power-Density] 功率密度优化","scene":"[Component] 零部件供应","positioning":"[Servo-Driver] 高功率密度伺服驱动器，精准电流控制，执行大脑微小动作指令的底层保障。"},
-  {"name":"共建中心 (创新中心)","brain":"[Platform-Hub] 平台中心","training":"[Policy-Standard] 行业标准与公共测试","scene":"[Agnostic] 通用领域","positioning":"[Common-Hardware] 通用硬件测试平台，国家队：解决具身智能落地中的"中试"问题。"}
+const allCompanies = [
+  { name:"NVIDIA (英伟达)", overseas:true, brain:"[Platform-Infra] 平台与基建", training:"[Synthetic-Data] 合成数据驱动", scene:"[Agnostic] 通用领域", positioning:"底层环境供应 (Infra Provider)：提供 Isaac 仿真与算力。" },
+  { name:"Tesla Optimus (特斯拉)", overseas:true, brain:"[E2E-VLA] 端到端视言行", training:"[Real-World-Transfer] 真实视觉迁移", scene:"[I-Heavy] 重工业", positioning:"定义者 (Definer)：基于 FSD 自动驾驶数据大规模迁移。" },
+  { name:"Figure AI", overseas:true, brain:"[E2E-VLA] 端到端视言行", training:"[VLM-Micro-tuning] 多模态微调", scene:"[I-Heavy] [C-Home]", positioning:"标杆竞品 (Benchmark)：VLA 商业化最成熟，主打工业协作。" },
+  { name:"1X Technologies", overseas:true, brain:"[World Model] 世界模型", training:"[Video-Pretrain] 视频预训练", scene:"[S-Comm] [C-Home]", positioning:"路径参照 (Path Reference)：物理直觉极强，动作丝滑度高。" },
+  { name:"Hexagon (海克斯康)", overseas:true, brain:"[Hierarchical] 分层架构", training:"[Digital-Twin] 数字孪生驱动", scene:"[I-Heavy] 重工业", positioning:"关键竞品 (Direct Competitor)：工业测量积累深，欧洲市场强势。" },
+  { name:"Skild AI", overseas:true, brain:"[Cross-Embodiment] 跨本体", training:"[Heterogeneous-Data] 异构数据缩放", scene:"[I-Precision] [L-Log]", positioning:"算法伙伴 (Algorithm Partner)：不造硬件，纯大脑模型供应商。" },
+  { name:"Physical Intelligence", overseas:true, brain:"[E2E-VLA] 端到端视言行", training:"[Foundation-Scale] 基础大模型规模", scene:"[Agnostic] 通用领域", positioning:"潜在伙伴 (Potential Partner)：π₀ 模型的跨平台大脑。" },
+  { name:"智元机器人 (Agibot)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Proprietary-IL] 自研模仿学习", scene:"[I-Light] [S-Comm]", positioning:"国产领头羊 (Local Leader)：商业化落地最快，灵巧手领先。" },
+  { name:"宇树科技 (Unitree)", overseas:false, brain:"[Sim2Real-RL] 仿真强化学习", training:"[Massive-RL] 暴力强化学习", scene:"[C-Edu] [L-Log]", positioning:"本体供应商 (Hardware OEM)：性价比极高，可作为大脑载体。" },
+  { name:"星尘智能 (Stardust)", overseas:false, brain:"[IL-Teleop] 模仿学习-遥操作", training:"[High-Precision-IL] 高精模仿", scene:"[I-Precision] [S-Comm]", positioning:"精密专家 (Precision Expert)：Astribot 动作上限极高。" },
+  { name:"银河通用 (Galbot)", overseas:false, brain:"[Sim2Real-RL] 仿真强化学习", training:"[Synthetic-Generalist] 合成通用化", scene:"[L-Logistics] [I-Heavy]", positioning:"工业竞品 (Industrial Rival)：专注大负载抓取与物流场景。" },
+  { name:"苏度科技 (Sudo)", overseas:false, brain:"[World Model] 世界模型", training:"[Zero-Shot-Sim] 零样本仿真训练", scene:"[I-Precision] 精密制造", positioning:"新锐对标 (Emerging Rival)：纯仿真练出高精操作大脑。" },
+  { name:"星海图 (Galaxea)", overseas:false, brain:"[E2E-VLA] 端到端视言行", training:"[Hierarchical-VLA] 分层端到端", scene:"[L-Logistics] 仓储物流", positioning:"技术对标 (Tech Match)：强调全身协同与多模态感知。" },
+  { name:"至简动力 (Simple)", overseas:false, brain:"[Integrated-OEM] 软硬一体", training:"[Deep-Coupling] 深度耦合训练", scene:"[I-Heavy] [I-Light]", positioning:"全栈竞品 (Full-stack Rival)：追求软硬极致优化的工业人形。" },
+  { name:"逐际动力 (LimX)", overseas:false, brain:"[Sim2Real-RL] 仿真强化学习", training:"[Locomotion-Expert] 运动控制专家", scene:"[L-Log] [Outdoor]", positioning:"底座伙伴 (Base Partner)：复杂地形移动大脑领先。" },
+  { name:"普渡机器人 (Pudu)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Scenario-Data] 垂直场景数据", scene:"[S-Commercial] 商业服务", positioning:"场景巨头 (Scenario Giant)：已有海量商用服务机器人数据。" },
+  { name:"灵心巧手 (Linkhou)", overseas:false, brain:"[Component] 核心零部件", training:"[Tactile-Focus] 触觉感知驱动", scene:"[I-Precision] 精密制造", positioning:"战略供应商 (Strategic Vendor)：多感知灵巧手核心件。" },
+  { name:"坤维科技 / 因时", overseas:false, brain:"[Component] 核心零部件", training:"[Hardware-Defined] 硬件参数定义", scene:"[Component] 零部件", positioning:"供应链 (Supply Chain)：力觉传感器与执行器关键厂商。" },
+  { name:"卧安机器人 (Woan)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Consumer-Data] 消费者场景数据", scene:"[C-Home] 家庭消费", positioning:"数据派 (Data-Driven)：SwitchBot 品牌下的海量家庭数据。" },
+  { name:"光轮智能 (Lucid)", overseas:false, brain:"[Platform-Infra] 平台与基建", training:"[Gen-Data] 生成式仿真数据", scene:"[Agnostic] 通用领域", positioning:"数据供应商 (Data Vendor)：为工业大脑提供合成训练数据。" },
+  { name:"Anybotics", overseas:true, brain:"[Hierarchical] 分层架构", training:"[Field-RL] 实地强化学习", scene:"[H-Special] 特种巡检", positioning:"能源场景对标 (Energy Sector)：欧洲巡检机器人霸主。" },
+  { name:"Mimic Robotics", overseas:true, brain:"[IL-Teleop] 模仿学习-遥操作", training:"[Human-to-Robot-IL] 匠人技能克隆", scene:"[I-Precision] [I-Heavy]", positioning:"欧洲直接竞品 (Direct Rival)：德系制造背景，精密操作强。" },
+  { name:"加速进化 (RobotEra)", overseas:false, brain:"[Sim2Real-RL] 仿真强化学习", training:"[Algorithm-Bench] 算法基准训练", scene:"[Research] [L-Log]", positioning:"底座伙伴 (Base Partner)：专注于高性能行走与平衡算法。" },
+  { name:"帕西尼感知 (PaXini)", overseas:false, brain:"[Component] 核心零部件", training:"[Tactile-Brain] 触觉大脑驱动", scene:"[I-Precision] 精密制造", positioning:"传感专家 (Sensing Expert)：强调多阵列触觉感知。" },
+  { name:"穹彻智能 (Omni)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Force-Control-IL] 力控模仿学习", scene:"[I-Precision] 精密制造", positioning:"细分竞品 (Niche Rival)：解决工业精密装配的“手感”问题。" },
+  { name:"北京人形机器人创新中心", overseas:false, brain:"[Platform-Hub] 平台与中心", training:"[Ecosystem-Data] 生态公共数据", scene:"[Agnostic] 通用领域", positioning:"政策与标准 (Policy/Standard)：国家级/北京/上海等数据中试平台。" },
+  { name:"优必选 (UBTECH)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Real-World-Data] 真实场景数据驱动", scene:"[I-Heavy] [S-Comm] 汽车重工/商业服务", positioning:"[Servo-Drive] 自研伺服驱动器国内人形机器人第一股，主打“大脑”的任务编排与车厂实地测试数据。" },
+  { name:"它石智航 (T-Robot)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Industry-SOP] 工业标准流程训练", scene:"[L-Logistics] 仓储物流", positioning:"[Mobile-Base] 轮式/履带高可靠底座专注于非结构化环境下的清洁与物流，强项在于底座的稳定性与路径规划。" },
+  { name:"智平方 (SmartSquare)", overseas:false, brain:"[E2E-VLA] 端到端视言行", training:"[VLA-Scaling] 模型规模化扩展", scene:"[Agnostic] 通用领域", positioning:"[Brain-VLA] 具身通用大脑模型纯正的端到端派系，强调大模型直接输出控制指令，不依赖人工规则。" },
+  { name:"千寻智能 (Seeker)", overseas:false, brain:"[E2E-VLA] 端到端视言行", training:"[Data-Scaling] 异构数据缩放训练", scene:"[I-Light] [S-Comm] 轻工业/商业服务", positioning:"[Brain-Model] 通用控制大脑强调数据效率，通过大规模异构机器人数据训练跨本体的通用大脑。" },
+  { name:"自变量机器人", overseas:false, brain:"[E2E-VLA] 端到端视言行", training:"[Self-Supervised] 自监督物理学习", scene:"[Agnostic] 通用领域", positioning:"[Foundation-Model] 具身基础大模型走“具身大模型”路线，利用海量视频和仿真数据训练机器人的物理常识。" },
+  { name:"魔法原子 (Magic Atom)", overseas:false, brain:"[World Model] 世界模型", training:"[Physical-Sim] 物理推理仿真", scene:"[Research] 实验室/科研", positioning:"[Sim-Software] 高精度物理引擎工具专注于让机器人“理解”物理规律（如重力、因果），而非单纯的动作模仿。" },
+  { name:"乐聚机器人 (Leju)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Open-Harmony] 鸿蒙生态数据协同", scene:"[C-Edu] [I-Heavy] 教育康养/重工", positioning:"[Modular-Joint] 模块化一体化关节“夸父”人形机器人的载体，与华为生态深度绑定，强调场景适配能力。" },
+  { name:"Sunday Robotics", overseas:true, brain:"[E2E-VLA] 端到端视言行", training:"[High-Freq-Loop] 高频控制闭环", scene:"[I-Light] 轻工业精密操作", positioning:"[Dexterous-Module] 灵巧操作模组专注于极高频响应（100Hz+）的端到端操作，适合处理精细化的工业任务。" },
+  { name:"傅利叶智能 (Fourier)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Locomotion-Data] 运动控制数据积累", scene:"[Medical] [I-Heavy] 医疗康复/重工", positioning:"[Actuator-X] 高性能一体化关节执行器从康复外骨骼转型，其 GR-1 强调高扭矩输出和复杂的步态平衡能力。" },
+  { name:"Agility Robotics", overseas:true, brain:"[Hierarchical] 分层架构", training:"[Digit-V3] 数字化流程训练", scene:"[L-Logistics] 仓储物流", positioning:"[Legged-Pedal] 专用鸟型腿部结构亚马逊物流测试的明星，强项在于双足搬运在狭窄空间的灵活避障。" },
+  { name:"Boston Dynamics", overseas:true, brain:"[Hierarchical/RL] 分层/强化学习", training:"[Real-World-RL] 真实物理环境强化学习", scene:"[I-Heavy] [H-Special] 重工/特种巡检", positioning:"[Electric-Actuator] 顶级电驱动执行器运动控制的“神”，新版全电动 Atlas 展示了近乎完美的全身协同与柔韧性。" },
+  { name:"思灵机器人 (Flexiv)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Force-Centric] 力觉驱动范式", scene:"[I-Precision] 精密制造", positioning:"[Force-Control-Joint] 七轴力控关节/手臂工业界力控“标杆”，其大脑自带“手感”，能感知 0.1N 的细微力变化。" },
+  { name:"小鹏鹏行 (Xpeng)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Car-AI-Transfer] 自动驾驶技术平移", scene:"[C-Home] 家庭陪伴", positioning:"[In-house-Actuator] 自研一体化执行器将小鹏汽车的视觉感知识别技术迁移到人形，定位未来的家庭管家。" },
+  { name:"自然意志 (NatureWill)", overseas:false, brain:"[World Model] 世界模型", training:"[Bionic-Logic] 仿生逻辑训练", scene:"[I-Precision] 精密制造", positioning:"[Muscle-Actuator] 仿生肌肉执行器探索非传统电机路径，通过模仿人类肌肉纤维的收缩逻辑来实现力量输出。" },
+  { name:"Field AI", overseas:true, brain:"[Brain-Vision] 视觉大脑", training:"[Rugged-Environ] 恶劣环境实测数据", scene:"[H-Special] 野外特种巡检", positioning:"[Sensor-Fusion-Kit] 多传感器融合单元专注于无 GPS 环境下的自主导航，大脑具备极强的复杂地形解析能力。" },
+  { name:"梅卡曼德 (Mech-Mind)", overseas:false, brain:"[Brain-Vision] 视觉大脑", training:"[3D-Vision-AI] 3D 视觉深度学习", scene:"[L-Log] [I-Heavy] 物流分拣/重工", positioning:"[3D-Camera] 高精度工业 3D 相机赋予机器人“眼睛”，解决工业场景下反光、杂乱堆叠物体的精准定位。" },
+  { name:"破壳机器人 (Poke)", overseas:false, brain:"[Component] 核心零部件", training:"[Actuator-Innov] 执行器创新设计", scene:"[Component] 零部件供应", positioning:"[High-Torque-Joint] 高扭矩关节模组专注于高性能执行器的底层研发，为整机厂商提供大负载的动力源。" },
+  { name:"灵初智能 (PsiBot)", overseas:false, brain:"[E2E-VLA] 端到端视言行", training:"[Data-Engine] 双系统数据引擎驱动", scene:"[I-Precision] 精密制造", positioning:"[Data-Gloves] 高精度数据采集手套强调“高质量数据是第一生产力”，通过采集熟练工数据来快速克隆技能。" },
+  { name:"珞石机器人 (Ruoshi)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Industry-Control] 工业级运控算法", scene:"[I-Heavy] 汽车/金属加工", positioning:"[Control-System] 自研 xCore 控制系统工业臂巨头背景，大脑侧重于高精度轨迹规划与工业协议的兼容性。" },
+  { name:"地瓜机器人 (Horizon)", overseas:false, brain:"[Platform-Infra] 平台与基建", training:"[Chip-Level-Opt] 芯片级算法优化", scene:"[Agnostic] 通用领域", positioning:"[AI-Silicon] 具身智能专用计算芯片提供大脑运行的底层“心脏”（BPU芯片），主打高能效比的实时推理。" },
+  { name:"觅蜂科技 (Meef)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Logistics-SOP] 物流标准场景训练", scene:"[L-Logistics] 仓储/最后一公里", positioning:"[Handling-Module] 自动化装卸模组专注于物流末端的自动化闭环，大脑侧重于任务的接力与多机协同。" },
+  { name:"大晓机器人 (Daxiao)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Research-Data] 科研/教学场景数据", scene:"[Research] [C-Edu] 科研/教育", positioning:"[Humanoid-Frame] 通用人形硬件载体提供高开放度的硬件平台，方便研究者通过其大脑接口进行二次开发。" },
+  { name:"七腾机器人 (Qiteng)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Inspection-RL] 复杂环境巡检强化学习", scene:"[H-Special] 油气/电力巡检", positioning:"[Explosion-Proof] 防爆等级移动底座大脑侧重于极端环境（高低温、易燃易爆）下的感知与风险预判。" },
+  { name:"智朝机器人", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Human-Demo] 人类演示数据采集", scene:"[S-Comm] [Agnostic] 商业服务/通用", positioning:"[Modular-Joint] 模块化一体化关节强调硬件的快速迭代与场景适配，大脑侧重于通用任务的逻辑编排。" },
+  { name:"云深处 (DeepRobotics)", overseas:false, brain:"[Hierarchical/RL] 分层/强化学习", training:"[Sim2Real-RL] 复杂地形强化学习", scene:"[H-Special] [I-Heavy] 电力巡检/工业侦察", positioning:"[Quadruped-Joint] 高动态四足关节国内四足机器人领军者，大脑在“非结构化地形移动”上具有极高算法壁垒。" },
+  { name:"智平方机器人", overseas:false, brain:"[E2E-VLA] 端到端视言行", training:"[VLA-Scaling] 大规模模型缩放", scene:"[Agnostic] [I-Light] 通用领域/轻工", positioning:"[Brain-Model] 具身通用大脑坚持“大模型定义机器”路径，强调感知与执行的深度融合，减少人工干预。" },
+  { name:"简智机器人", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Small-Model] 轻量化模型部署", scene:"[I-Light] [S-Comm] 轻工/商用服务", positioning:"[Control-Board] 嵌入式控制主板侧重于边缘端推理，通过轻量化大脑实现低功耗、高实时的场景响应。" },
+  { name:"艾欧 (Io)", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Proprietary-IL] 垂直场景模仿学习", scene:"[I-Light] [I-Precision] 轻工/精密装配", positioning:"[Actuator] 精密执行器模组专注于特定工业工位的自动化升级，大脑针对工序 SOP 做深度优化。" },
+  { name:"戴盟 (Daimeng)", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[Haptic-Focus] 触觉反馈引导", scene:"[I-Precision] [Component] 精密制造", positioning:"[Tactile-Hand] 阵列触觉灵巧手清华系背景，核心竞争力在于赋予机器人“指尖触觉”，大脑侧重于触觉信号处理。" },
+  { name:"跨维智能 (Kuavi)", overseas:false, brain:"[Platform-Infra] 平台基建", training:"[Sim2Real-3D] 3D 视觉合成数据", scene:"[I-Precision] [I-Light] 精密制造/3C", positioning:"[3D-Vision-Engine] 3D 视觉感知引擎FMC³ 战略伙伴预选：利用仿真生成 3D 数据解决工业相机“拍不到、认不出”的问题。" },
+  { name:"宇叠 (Yudie)", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[Elastic-Sensing] 柔性感知采集", scene:"[Component] [Research] 零部件/科研", positioning:"[VR-Glove] 触觉采集 VR 手套数据采集环节的关键节点，通过传感器手套为 [IL-Teleop] 路径提供高质量真实触觉数据。" },
+  { name:"镜识科技 (In-Sight)", overseas:false, brain:"[Platform-Infra] 平台基建", training:"[System-Opt] 系统级协同优化", scene:"[Agnostic] [I-Heavy] 通用/汽车重工", positioning:"[Software-Platform] 机器人开发底座提供软硬结合的开发工具链，降低大脑算法在特定硬件上的迁移难度。" },
+  { name:"优理奇智能", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[Spec-Actuator] 特种执行器逻辑", scene:"[Component] 零部件供应", positioning:"[Precision-Joint] 高精密机器人关节专注于高功率密度执行器，为整机提供更强劲、更精准的动力输出。" },
+  { name:"松延动力", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[High-Dynamic] 高动态相应控制", scene:"[Component] 零部件供应", positioning:"[Servo-Motor] 高性能伺服电机侧重于底层电机控制算法，确保机器人大脑发出的动作指令能被瞬间执行。" },
+  { name:"开普勒人形机器人", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Industrial-RL] 工业环境强化学习", scene:"[I-Heavy] [L-Log] 汽车制造/物流搬运", positioning:"[Kepler-Actuator] 自研一体化执行器硬件对标 Optimus，大脑侧重于在工厂长路径行走与重载搬运的稳定性。" },
+  { name:"理工华汇", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Special-Task] 特种任务逻辑训练", scene:"[H-Special] [Research] 特种作业/科研", positioning:"[High-Load-Joint] 大负载高可靠关节北理工系背景，大脑侧重于复杂机构（如足式/轮手复合）的协同控制。" },
+  { name:"墨奇科技 (Magic Data)", overseas:false, brain:"[Platform-Infra] 平台基建", training:"[Unstructured] 非结构化数据索引", scene:"[Agnostic] [Research] 通用领域/数据科学", positioning:"[Data-Search-System] 多模态数据搜索引擎数据引擎竞品/伙伴：通过向量数据库技术解决具身智能海量视频数据的检索与对齐。" },
+  { name:"思特威 (Smartsens)", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[Sensor-Param] 图像传感器底层参数", scene:"[Component] 零部件供应", positioning:"[CMOS-Sensor] 高性能图像传感器芯片具身智能的“视网膜”供应商，解决机器人视觉在高速运动下的拖影与光影适应。" },
+  { name:"智在无界", overseas:false, brain:"[E2E-VLA] 端到端视言行", training:"[General-Data] 通用常识数据训练", scene:"[Agnostic] [S-Comm] 通用领域/商业", positioning:"[Brain-Model] 通用具身智能大脑强调算法的跨模态理解能力，让机器人能够通过自然语言指令执行复杂任务。" },
+  { name:"卓益得机器人", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Walking-RL] 动态步行强化学习", scene:"[Research] [C-Edu] 科研/教育", positioning:"[Bionic-Legs] 仿生双足行走机构专注于“走得像人”，大脑核心壁垒在于双足动态平衡与步态平滑度。" },
+  { name:"天链机器人", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Aerospace-Data] 航天/极端环境数据", scene:"[H-Special] [I-Heavy] 特种作业/重工", positioning:"[Flex-Joint] 高自由度柔性关节核心件具备高自由度特征，大脑侧重于极端复杂空间下的路径避障与操作。" },
+  { name:"国地具身智能", overseas:false, brain:"[Platform-Hub] 平台中心", training:"[Ecosystem-Data] 生态公共数据集", scene:"[Agnostic] 通用领域", positioning:"[Reference-Platform] 具身智能参考样机国家队/标准制定者：负责构建公共仿真环境和数据集，制定具身智能技术接口标准。" },
+  { name:"青瞳视觉", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[MoCap-Data] 动作捕捉数据生成", scene:"[Component] [Research] 零部件/科研", positioning:"[Motion-Capture-Cam] 红外光学动捕系统提供高质量的人类动作真实数据，是 [IL-Teleop] 路径必不可少的基础设施。" },
+  { name:"钛虎机器人 (Tiger)", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[Integrated-Design] 轻量化集成逻辑", scene:"[Component] 零部件供应", positioning:"[Integrated-Actuator] 轻量化关节模组提供极其轻便的执行器，降低整机自重，从而降低大脑对平衡控制的算力负担。" },
+  { name:"爱动超越", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[High-Speed-Sens] 高速位置感应", scene:"[Component] 零部件供应", positioning:"[Optical-Encoder] 高精度光学编码器提供机器人关节的“角度传感器”，大脑依赖其反馈来实现亚毫米级的定位。" },
+  { name:"灵宇宙", overseas:false, brain:"[Platform-Infra] 平台基建", training:"[Virtual-Data] 虚拟合成数据训练", scene:"[Agnostic] [C-Home] 通用/家庭元宇宙", positioning:"[Metaverse-Platform] 具身仿真训练场侧重于在云端构建大规模并行仿真环境，为 [Sim2Real] 路径提供算力支撑。" },
+  { name:"灵御智能", overseas:false, brain:"[Hierarchical] 分层架构", training:"[Guard-Data] 安防巡检场景数据", scene:"[H-Special] [S-Comm] 安防/商业服务", positioning:"[Mobile-Base] 轮式全向移动底座大脑侧重于多机协同调度与视觉异常检测（如火情、入侵报警）。" },
+  { name:"神源久机器人", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[Precision-Trans] 精密传动逻辑", scene:"[Component] 零部件供应", positioning:"[Harmonic-Reducer] 谐波减速器机器人的“减速箱”，决定了大脑指令转化成实际动作时的平顺性与背隙精度。" },
+  { name:"千秒机器人", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[Fast-Response] 快速响应电机控制", scene:"[Component] [I-Light] 零部件/轻工", positioning:"[Fast-Actuator] 高速响应执行器专注于响应时间（毫秒级），适合需要大脑快速反应的工业分拣与交互场景。" },
+  { name:"超维动力", overseas:false, brain:"[Component] 硬件驱动逻辑", training:"[Power-Density] 功率密度优化", scene:"[Component] 零部件供应", positioning:"[Servo-Driver] 高功率密度伺服驱动器专注于电流层面的精准控制，是执行大脑微小动作指令的底层保障。" },
+  { name:"共建中心 (创新中心)", overseas:false, brain:"[Platform-Hub] 平台中心", training:"[Policy-Standard] 行业标准与公共测试", scene:"[Agnostic] 通用领域", positioning:"[Common-Hardware] 通用硬件测试平台国家队：解决具身智能落地中的“中试”问题，提供统一的测试评价体系。" }
 ];
 
-// 海外公司名单（tagData 里名称的首词全英文则判定为海外）
-const OVERSEAS_SET = new Set([
-    'NVIDIA (英伟达)', 'Tesla Optimus (特斯拉)', 'Figure AI', '1X Technologies',
-    'Hexagon (海克斯康)', 'Skild AI', 'Physical Intelligence', 'Anybotics',
-    'Mimic Robotics', 'Field AI', 'Agility Robotics', 'Sunday Robotics',
-    'Boston Dynamics', 'Skydio', 'Sanctuary AI', 'Apptronik', 'Generalist'
-]);
-
-// 直接用 tagData 作为数据源，附加 overseas 标记
-const allCompanies = tagData.map(t => ({
-    ...t,
-    overseas: OVERSEAS_SET.has(t.name)
-}));
-
-// 脑架构 → CSS class
+// Brain arch -> CSS class
 function brainClass(brain) {
     if (!brain) return 'tag-default';
     if (brain.includes('E2E-VLA')) return 'tag-e2e';
@@ -380,66 +366,58 @@ function brainClass(brain) {
 }
 
 function renderTag(text, cls) {
-    if (!text || text === '-') return '<span class="no-tag">—</span>';
-    return `<span class="tag ${cls}">${text}</span>`;
+    if (!text || text === '-') return '<span class="no-tag">---</span>';
+    return '<span class="tag ' + cls + '">' + text + '</span>';
 }
 
 function renderPos(pos) {
-    if (!pos || pos === '-') return '<span class="no-tag">暂无数据</span>';
-    // 拆分"[标签] 描述"格式
-    const m = pos.match(/^(\[[\w\-]+\])\s+(.+)$/);
-    if (m) {
-        return `<span class="pos-text"><span class="pos-key">${m[1]}</span> ${m[2]}</span>`;
-    }
-    // "中文关键词 (英文)：描述" 格式
-    return `<span class="pos-text">${pos}</span>`;
+    if (!pos || pos === '-') return '<span class="no-tag">---</span>';
+    return '<span class="pos-text">' + pos + '</span>';
 }
 
-let activeFilter = 'all';
+var activeFilter = 'all';
 
 function renderTable() {
-    const tbody = document.getElementById('tableBody');
-    const search = document.getElementById('searchInput').value.trim().toLowerCase();
+    var tbody = document.getElementById('tableBody');
+    var search = document.getElementById('searchInput').value.trim().toLowerCase();
+    var visCount = 0;
+    var rows = allCompanies.map(function(c, i) {
+        var brain    = c.brain    || '-';
+        var training = c.training || '-';
+        var scene    = c.scene    || '-';
+        var pos      = c.positioning || '-';
 
-    let visCount = 0;
-    const rows = allCompanies.map((c, i) => {
-        const brain    = c.brain    || '-';
-        const training = c.training || '-';
-        const scene    = c.scene    || '-';
-        const pos      = c.positioning || '-';
+        var matchesSearch = !search
+            || c.name.toLowerCase().indexOf(search) > -1
+            || brain.toLowerCase().indexOf(search) > -1
+            || scene.toLowerCase().indexOf(search) > -1
+            || training.toLowerCase().indexOf(search) > -1;
 
-        // Filter logic
-        const matchesSearch = !search || c.name.toLowerCase().includes(search)
-            || brain.toLowerCase().includes(search)
-            || scene.toLowerCase().includes(search)
-            || training.toLowerCase().includes(search);
-        let matchesFilter = true;
+        var matchesFilter = true;
         if (activeFilter === 'overseas') matchesFilter = c.overseas;
         else if (activeFilter === 'domestic') matchesFilter = !c.overseas;
         else if (activeFilter !== 'all') {
-            matchesFilter = brain.toLowerCase().includes(activeFilter.toLowerCase());
+            matchesFilter = brain.toLowerCase().indexOf(activeFilter.toLowerCase()) > -1;
         }
 
-        const visible = matchesSearch && matchesFilter;
+        var visible = matchesSearch && matchesFilter;
         if (visible) visCount++;
 
-        return `<tr class="${visible ? '' : 'hidden'}" data-overseas="${c.overseas}" data-brain="${brain}">
-            <td style="color:#334060;font-size:11px;white-space:nowrap;">${i + 1}</td>
-            <td class="col-name">
-                <a href="company.html?name=${encodeURIComponent(c.name)}" class="company-link">
-                    <span class="region-dot ${c.overseas ? 'overseas' : 'domestic'}"></span>
-                    ${c.name}
-                </a>
-            </td>
-            <td class="col-brain">${renderTag(brain, brainClass(brain))}</td>
-            <td class="col-training">${renderTag(training, 'tag-train')}</td>
-            <td class="col-scene">${renderTag(scene, 'tag-scene')}</td>
-            <td class="col-pos">${renderPos(pos)}</td>
-        </tr>`;
+        return '<tr class="' + (visible ? '' : 'hidden') + '">' +
+            '<td style="color:#334060;font-size:11px;white-space:nowrap;">' + (i + 1) + '</td>' +
+            '<td class="col-name">' +
+            '<a href="company.html?name=' + encodeURIComponent(c.name) + '" class="company-link">' +
+            '<span class="region-dot ' + (c.overseas ? 'overseas' : 'domestic') + '"></span>' +
+            c.name + '</a></td>' +
+            '<td class="col-brain">' + renderTag(brain, brainClass(brain)) + '</td>' +
+            '<td class="col-training">' + renderTag(training, 'tag-train') + '</td>' +
+            '<td class="col-scene">' + renderTag(scene, 'tag-scene') + '</td>' +
+            '<td class="col-pos">' + renderPos(pos) + '</td>' +
+            '</tr>';
     });
 
-    const emptyRow = visCount === 0
-        ? `<tr class="empty-row"><td colspan="6">没有匹配的公司</td></tr>` : '';
+    var emptyRow = visCount === 0
+        ? '<tr class="empty-row"><td colspan="6">---</td></tr>' : '';
 
     tbody.innerHTML = rows.join('') + emptyRow;
     document.getElementById('visibleCount').textContent = visCount;
@@ -449,9 +427,10 @@ function renderTable() {
 function filterTable() { renderTable(); }
 
 function setFilter(val, btn) {
-    activeFilter = val;
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    var btns = document.querySelectorAll('.filter-btn');
+    for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
     btn.classList.add('active');
+    activeFilter = val;
     renderTable();
 }
 
