@@ -50,6 +50,11 @@ class LinkValidator:
         'mifeng.com', 'qiankun.ai', 'boonzi.com', 'paxini.com',
     }
 
+    # 来源黑名单：这些来源的新闻会被过滤掉（因为数据质量问题）
+    SOURCE_BLACKLIST = {
+        '世界机器人大会官网',  # 数据有未来日期（2026-08-01），来源不可靠
+    }
+
     def __init__(self, timeout: int = 8):
         self.session = requests.Session()
         self.session.headers.update({
@@ -701,14 +706,16 @@ class EmbodiedAICrawler:
         seen_ids = set()
         seen_titles = set()  # 标题去重：规范化标题用于跨来源去重
 
-        # 加载已有数据（只保留非微信来源）
+        # 加载已有数据（只保留非微信来源，且不在黑名单）
         if os.path.exists(EVENTS_FILE):
             with open(EVENTS_FILE, 'r', encoding='utf-8') as f:
                 existing = json.load(f)
-            # 过滤掉搜狗/微信来源
+            # 过滤掉搜狗/微信来源 + 黑名单来源
             existing = [
                 e for e in existing
-                if '微信' not in e.get('source', '') and 'sogou' not in e.get('source_url', '').lower()
+                if '微信' not in e.get('source', '')
+                and 'sogou' not in e.get('source_url', '').lower()
+                and e.get('source', '') not in LinkValidator.SOURCE_BLACKLIST
             ]
             seen_ids = {e['id'] for e in existing}
             for e in existing:
@@ -732,6 +739,9 @@ class EmbodiedAICrawler:
         print('\n[163] Crawling media accounts...')
         media_163_events = self.crawl_163_media_accounts()
         for event in media_163_events:
+            # 过滤黑名单来源
+            if event.get('source', '') in LinkValidator.SOURCE_BLACKLIST:
+                continue
             norm_title = self._normalize_title(event.get('title', ''))
             if event['id'] not in seen_ids and norm_title not in seen_titles:
                 all_events.append(event)
@@ -765,6 +775,9 @@ class EmbodiedAICrawler:
 
                 new_count = 0
                 for event in events:
+                    # 过滤黑名单来源
+                    if event.get('source', '') in LinkValidator.SOURCE_BLACKLIST:
+                        continue
                     # 双重去重：id去重 + 标题去重
                     norm_title = self._normalize_title(event.get('title', ''))
                     if event['id'] not in seen_ids and norm_title not in seen_titles:

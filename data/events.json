@@ -1,50 +1,5 @@
 [
   {
-    "id": "galbot067wrc",
-    "company": "银河通用",
-    "type": "event",
-    "title": "银河通用Galbot将亮相2026世界机器人大会",
-    "title_en": "Galbot to Exhibit at World Robot Conference 2026",
-    "summary": "银河通用确认参展WRC 2026，展示Galbot G1等旗舰产品",
-    "source": "世界机器人大会官网",
-    "source_url": "https://www.worldrobotconference.com/expo/company/434.html",
-    "date": "2026-08-01",
-    "created_at": "2026-04-23T15:20:00",
-    "media_sources": [
-      "世界机器人大会"
-    ]
-  },
-  {
-    "id": "stardom072wrc",
-    "company": "星动纪元",
-    "type": "event",
-    "title": "星动纪元Robot Era确认参展2026世界机器人大会",
-    "title_en": "Robot Era to Exhibit at World Robot Conference 2026",
-    "summary": "唯一清华大学占股的人形机器人企业，将携最新产品亮相WRC 2026",
-    "source": "世界机器人大会官网",
-    "source_url": "https://www.worldrobotconference.com/expo/company/438.html",
-    "date": "2026-08-01",
-    "created_at": "2026-04-23T15:20:00",
-    "media_sources": [
-      "世界机器人大会"
-    ]
-  },
-  {
-    "id": "unitree074wrc",
-    "company": "宇树科技",
-    "type": "event",
-    "title": "宇树科技确认参展2026世界机器人大会（展位A109）",
-    "title_en": "Unitree Robotics to Exhibit at World Robot Conference 2026",
-    "summary": "宇树科技作为全球民用机器人领军企业，展位号A109，将展示高性能人形及四足机器人",
-    "source": "世界机器人大会官网",
-    "source_url": "https://www.worldrobotconference.com/expo/company/399.html",
-    "date": "2026-08-01",
-    "created_at": "2026-04-23T15:20:00",
-    "media_sources": [
-      "世界机器人大会"
-    ]
-  },
-  {
     "id": "2e13b49c46df",
     "company": "行业动态",
     "type": "other",
