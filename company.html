@@ -203,6 +203,77 @@
             gap: 10px;
         }
         
+        /* 表格样式 */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+        .info-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .info-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+        .info-table .name-cell {
+            font-weight: 600;
+            min-width: 120px;
+        }
+        .info-table .title-cell {
+            color: var(--accent-blue);
+            min-width: 150px;
+        }
+        .info-table .bio-cell {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        .info-table .investor-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .info-table .round-cell {
+            color: var(--text-secondary);
+        }
+        .info-table .date-cell {
+            color: var(--accent-purple);
+            white-space: nowrap;
+            min-width: 100px;
+        }
+        .info-table .event-cell {
+            color: var(--text-primary);
+        }
+        
+        /* 融资说明 */
+        .funding-note {
+            background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        .funding-note-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 8px;
+        }
+        .funding-note-content {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+        
         /* Tags */
         .tag {
             display: inline-block;
@@ -736,68 +807,67 @@
             'Apptronik': { name: 'Apptronik', nameEn: 'Apptronik' },
             'Agility Robotics': { name: 'Agility Robotics', nameEn: 'Agility Robotics' },
             'Sanctuary AI': { name: 'Sanctuary AI', nameEn: 'Sanctuary AI' },
-            'Sunday Robotics': { name: 'Sunday Robotics', nameEn: 'Sunday Robotics' },
-            'Field AI': { name: 'Field AI', nameEn: 'Field AI' },
-            'Mimic Robotics': { name: 'Mimic Robotics', nameEn: 'Mimic Robotics' },
-            'Anybotics': { name: 'Anybotics', nameEn: 'Anybotics' },
+            'Sunday Robotics': { name: 'Sunday Robotics', nameEn: 'Sunday Robotics' }, fundingTable: [{ round: 'A轮', date: '2025年', amount: '$3500万', valuation: '—', investors: 'Benchmark等' }, { round: 'B轮', date: '2026年3月', amount: '$1.65亿', valuation: '$11.5亿', investors: 'Coatue Management（领投）' }], fundingNote: '📌 成立于2024年，美国山景城。专注家用机器人Memo。' }
+            'Field AI': { name: 'Field AI', nameEn: 'Field AI' }, fundingTable: [{ round: '早期VC', date: '2023年5月', amount: '$1亿', valuation: '—', investors: '—' }, { round: '早期VC', date: '2024年1月', amount: '$9100万', valuation: '—', investors: '—' }], fundingNote: '📌 成立于2023年，加州。专注野外AI技术。累计融资$5.06亿。' }
+            'Mimic Robotics': { name: 'Mimic Robotics', nameEn: 'Mimic Robotics' }, fundingTable: [{ round: '早期VC', date: '2025年11月', amount: '$1600万', valuation: '—', investors: 'Elaia Partners等' }], fundingNote: '📌 成立于2023年，ETH Zurich衍生。专注工业灵巧手。' }
+            'Anybotics': { name: 'Anybotics', nameEn: 'Anybotics' }, fundingTable: [{ round: '种子轮', date: '2016年', amount: '未披露', valuation: '—', investors: '—' }, { round: 'A轮', date: '2018年2月', amount: '$800万', valuation: '—', investors: 'Playground Global' }, { round: 'B轮', date: '2022年4月', amount: '$1.5亿', valuation: '—', investors: 'DCVC等' }, { round: 'C轮', date: '2024年10月', amount: '$1.1亿', valuation: '—', investors: 'Virginia Venture Partners等' }, { round: 'C3轮', date: '2025年6月', amount: '$4亿', valuation: '~$21亿', investors: 'WP Global Partners（领投）' }], fundingNote: '📌 成立于2016年，ETH Zurich衍生。累计融资超$2.93亿。' }
             'Skydio': { name: 'Skydio', nameEn: 'Skydio' },
             'Hexagon': { name: 'Hexagon', nameEn: 'Hexagon' },
-            'Boston Dynamics': { name: 'Boston Dynamics', nameEn: 'Boston Dynamics' },
+            'Boston Dynamics': { name: 'Boston Dynamics', nameEn: 'Boston Dynamics' }, fundingTable: [{ round: '成立', date: '1992年', amount: '—', valuation: '—', investors: 'MIT衍生' }, { round: '收购', date: '2013年', amount: '—', valuation: '—', investors: 'Google收购' }, { round: '收购', date: '2017年', amount: '—', valuation: '—', investors: 'SoftBank收购' }, { round: '收购', date: '2021年6月', amount: '$11亿', valuation: '$11亿', investors: 'Hyundai Motor Group收购80%' }, { round: '追加投资', date: '2025年', amount: '$6270万', valuation: '—', investors: 'Hyundai Glovis' }], fundingNote: '📌 估值从2021年$11亿飙升至2026年约$200亿。计划2027年纳斯达克IPO。' }
             'Tesla Optimus': { name: 'Tesla Optimus', nameEn: 'Tesla Optimus' },
             // 国内（显示中文名，英文名统一放这里）
             '英伟达 (NVIDIA)': { name: '英伟达', nameEn: 'NVIDIA' },
             '宇树科技': { name: '宇树科技', nameEn: 'Unitree Robotics' },
-            '灵心巧手': { name: '灵心巧手', nameEn: 'Lingxin Qiaoshou' },
+            '灵心巧手': { name: '灵心巧手', nameEn: 'Lingxin Qiaoshou', fundingTable: [{ round: '天使轮', date: '2023年', amount: '未披露', valuation: '—', investors: '—' }, { round: 'Pre-A轮', date: '2024年', amount: '未披露', valuation: '—', investors: '—' }, { round: 'A轮', date: '2025年8月', amount: '¥10亿', valuation: '—', investors: '京东（战略领投）' }, { round: 'B轮', date: '2026年3月', amount: '超¥10亿', valuation: '超¥100亿', investors: '黄浦江资本、凯泰资本等' }], fundingNote: '📌 成立于2023年，专注灵巧手研发。2026年新晋百亿估值独角兽。' }
             '银河通用': { name: '银河通用', nameEn: 'Galbot' },
             '它石智航': { name: '它石智航', nameEn: 'Tashi Zhihang' },
-            '星海图': { name: '星海图', nameEn: 'StellarSea' },
+            '星海图': { name: '星海图', nameEn: 'StellarSea' }, fundingTable: [{ round: '天使轮', date: '2024年3月', amount: '千万级美元', valuation: '—', investors: 'IDG资本、无限基金SEE Fund等' }, { round: 'Pre-A轮', date: '2024年11月', amount: '超¥2亿', valuation: '—', investors: '蚂蚁集团、高瓴创投等' }, { round: 'A轮', date: '2025年2月', amount: '近¥3亿', valuation: '—', investors: '蚂蚁集团、凯辉基金等' }, { round: 'A+轮', date: '2025年7月', amount: '$1亿', valuation: '—', investors: '今日资本、美团龙珠等' }, { round: 'B轮', date: '2026年2月', amount: '¥10亿', valuation: '¥100亿', investors: '金鼎资本（领投）等' }, { round: 'B+轮', date: '2026年4月', amount: '近¥20亿', valuation: '>¥200亿', investors: '华登科技、蓝思科技等' }], fundingNote: '📌 成立于2023年9月，累计融资近¥50亿，估值突破¥200亿。' }
             '星动纪元': { name: '星动纪元', nameEn: 'Stardom Era' },
             '智元机器人': { name: '智元机器人', nameEn: 'Agibot' },
-            '傅利叶智能': { name: '傅利叶智能', nameEn: 'Fourier Intelligence' },
-            '至简动力': { name: '至简动力', nameEn: 'Zhijian Dynamics' },
-            '光轮智能': { name: '光轮智能', nameEn: 'Guanglun Intelligence' },
-            '逐际动力': { name: '逐际动力', nameEn: 'Zorbit Dynamics' },
-            '无界动力': { name: '无界动力', nameEn: 'Wujie Dynamics' },
-            '智平方': { name: '智平方', nameEn: 'Zhipingfang' },
-            '千寻智能': { name: '千寻智能', nameEn: 'Qianxun Intelligence' },
+            '傅利叶智能': { name: '傅利叶智能', nameEn: 'Fourier Intelligence' }, fundingTable: [{ round: '天使轮', date: '2016年', amount: '未披露', valuation: '—', investors: '松禾资本' }, { round: 'A轮', date: '2017年', amount: '未披露', valuation: '—', investors: '深创投' }, { round: 'B轮', date: '2018年', amount: '未披露', valuation: '—', investors: '腾讯投资' }, { round: '战略融资', date: '2023年', amount: '未披露', valuation: '—', investors: '蔚来资本' }, { round: '战略融资', date: '2024年', amount: '未披露', valuation: '—', investors: '华为哈勃投资' }, { round: '战略融资', date: '2025年', amount: '未披露', valuation: '—', investors: '中国移动' }], fundingNote: '📌 成立于2015年，累计融资近¥10亿。计划科创板IPO。' }
+            '至简动力': { name: '至简动力', nameEn: 'Zhijian Dynamics' }, fundingTable: [{ round: '天使轮', date: '2025年7月', amount: '$5000万', valuation: '—', investors: '元璟资本' }, { round: '连续4轮', date: '2025年下半年–2026年初', amount: '累计20亿', valuation: '>$10亿', investors: '元璟资本、蓝驰创投、红杉中国等' }], fundingNote: '📌 成立于2025年7月，创始团队来自理想汽车。半年内连续完成5轮融资。' }
+            '光轮智能': { name: '光轮智能', nameEn: 'Guanglun Intelligence' }, fundingTable: [{ round: '种子轮', date: '2023年', amount: '未披露', valuation: '—', investors: '三七互娱、商汤科技等' }, { round: 'Pre-A轮', date: '2025年11月', amount: '¥2亿', valuation: '¥12亿', investors: '国方创新等' }], fundingNote: '📌 成立于2023年，全球首家具身数据独角兽。专注合成数据。' }
+            '逐际动力': { name: '逐际动力', nameEn: 'Zorbit Dynamics' }, fundingTable: [{ round: '天使轮', date: '2023年10月', amount: '未披露', valuation: '—', investors: '峰瑞资本等' }, { round: 'Pre-A轮', date: '2023年10月', amount: '近¥2亿', valuation: '—', investors: '绿洲资本（领投）、联想创投' }, { round: '战略投资', date: '2024年5月', amount: '未披露', valuation: '—', investors: '阿里巴巴' }, { round: 'A轮', date: '2024年7月', amount: '数亿元', valuation: '—', investors: '阿里巴巴等' }, { round: 'B轮', date: '2026年2月', amount: '$2亿', valuation: '—', investors: '阿联酋磊石资本等' }], fundingNote: '📌 成立于2022年，深圳。创始人张巍为南方科技大学长聘教授。' }
+            '无界动力': { name: '无界动力', nameEn: 'Wujie Dynamics' }, fundingTable: [{ round: '天使轮', date: '2026年4月', amount: '数千万美元', valuation: '—', investors: '云启资本、顺为资本、弘晖基金等' }], fundingNote: '📌 成立于2025年3月，北京。聚焦机器人"通用大脑"。' }
+            '智平方': { name: '智平方', nameEn: 'Zhipingfang', fundingTable: [{ round: '天使轮', date: '2023年', amount: '未披露', valuation: '—', investors: '—' }, { round: 'A轮', date: '2024年', amount: '未披露', valuation: '—', investors: '红杉中国、蚂蚁集团等' }, { round: 'A+轮', date: '2025年11月', amount: '数亿元', valuation: '¥16亿', investors: '东方富海、三七互娱等' }], fundingNote: '📌 成立于2023年，创始人郭彦东博士。5位斯坦福全球前2%科学家加盟。' }
+            '千寻智能': { name: '千寻智能', nameEn: 'Qianxun Intelligence', fundingTable: [{ round: '天使轮', date: '2023年12月', amount: '数千万', valuation: '—', investors: '九合创投、联想之星' }, { round: 'A轮', date: '2025年5月', amount: '数亿元', valuation: '—', investors: '美团（领投）' }, { round: 'A+轮', date: '2025年9月', amount: '近¥10亿', valuation: '—', investors: '阿里云、国科投资（联合领投）' }, { round: 'A++轮', date: '2026年1月', amount: '¥10亿', valuation: '—', investors: '字节跳动、红杉中国（联合领投）' }, { round: '新融资', date: '2026年2月', amount: '数亿元', valuation: '超¥100亿', investors: '上汽金控、中金上汽基金（联合领投）' }], fundingNote: '📌 成立于2023年，人形具身智能产线已在宁德时代投运。' }
+            '墨奇智能': { name: '墨奇智能', nameEn: 'Moqi Intelligence' },
             '自变量机器人': { name: '自变量机器人', nameEn: 'Zibiangliang Robot' },
-            '帕西尼感知': { name: '帕西尼感知', nameEn: 'Paxini' },
+            '帕西尼感知': { name: '帕西尼感知', nameEn: 'Paxini' }, fundingTable: [{ round: '天使轮', date: '2023年', amount: '未披露', valuation: '—', investors: '—' }, { round: 'B轮', date: '2026年3月', amount: '近¥10亿', valuation: '—', investors: '晨道资本（领投）' }], fundingNote: '📌 成立于2021年，专注机器人皮肤触觉智能。百亿估值俱乐部成员。' }
             '普渡机器人': { name: '普渡机器人', nameEn: ' Pudu Robotics' },
             '魔法原子': { name: '魔法原子', nameEn: 'Magic Atom' },
-            '乐聚机器人': { name: '乐聚机器人', nameEn: 'Leju Robotics' },
-            '加速进化': { name: '加速进化', nameEn: 'Accelerated Evolution' },
-            '梅卡曼德': { name: '梅卡曼德', nameEn: 'Mech-Mind' },
+            '乐聚机器人': { name: '乐聚机器人', nameEn: 'Leju Robotics' }, fundingTable: [{ round: '天使轮', date: '2024年6月', amount: '¥7亿', valuation: '—', investors: '美团战投、北汽产投等' }, { round: '战略轮', date: '2024年11月', amount: '¥5亿', valuation: '—', investors: '上汽恒旭、深创投等' }, { round: 'B轮', date: '2025年6月', amount: '超¥11亿', valuation: '—', investors: '宁德时代（领投）' }], fundingNote: '📌 成立于2016年，深圳。产品包括Aelos、Pando、夸父等系列机器人。' }
+            '加速进化': { name: '加速进化', nameEn: 'Accelerated Evolution' }, fundingTable: [{ round: '种子轮', date: '2023年', amount: '未披露', valuation: '—', investors: '经纬创投、蓝驰创投' }, { round: 'Pre-A轮', date: '2025年', amount: '未披露', valuation: '—', investors: '张科垚坤基金等' }, { round: 'A++轮', date: '2026年4月', amount: '亿元级', valuation: '—', investors: '赛富投资基金（领投）' }], fundingNote: '📌 成立于2023年，北京海淀。Booster T1人形机器人。' }
+            '梅卡曼德': { name: '梅卡曼德', nameEn: 'Mech-Mind' }, fundingTable: [{ round: 'Pre-A轮', date: '2016年9月', amount: '¥1500万', valuation: '—', investors: '火山石投资、IDG资本' }, { round: 'A轮', date: '2018年2月', amount: '¥3000万', valuation: '—', investors: '火山石投资、IDG资本' }, { round: 'B轮', date: '2019年7月', amount: '数千万', valuation: '—', investors: '旦恩资本等' }, { round: 'C轮', date: '2020年10月', amount: '¥1亿', valuation: '—', investors: '前海母基金' }, { round: 'D轮', date: '2022年1月', amount: '¥4亿', valuation: '—', investors: '软银愿景基金2期（领投）' }, { round: 'E轮', date: '2025年1月', amount: '¥8亿', valuation: '—', investors: '国鑫投资等' }], fundingNote: '📌 成立于2016年，工业3D视觉和AI机器人软件龙头。累计融资$3.14亿。' }
             '灵初智能': { name: '灵初智能', nameEn: 'Lingchu Intelligence' },
-            '思灵机器人': { name: '思灵机器人', nameEn: 'Agile Robots' },
-            '穹彻智能': { name: '穹彻智能', nameEn: 'Everyday Robots' },
+            '思灵机器人': { name: '思灵机器人', nameEn: 'Agile Robots' }, fundingTable: [{ round: '天使轮', date: '2014年', amount: '未披露', valuation: '—', investors: '—' }, { round: 'A轮', date: '2017年11月', amount: '¥4000万', valuation: '—', investors: '清控银杏（领投）' }, { round: 'B轮', date: '2018年', amount: '未披露', valuation: '—', investors: '顺为资本（领投）' }, { round: '战略轮', date: '2020年', amount: '未披露', valuation: '—', investors: '新希望集团' }, { round: '战略+轮', date: '2022年2月', amount: '¥4亿', valuation: '—', investors: '新希望集团' }, { round: '战略+轮', date: '2024年4月', amount: '超¥5亿', valuation: '超¥40亿', investors: '国家制造业转型升级基金' }], fundingNote: '📌 成立于2016年，全球首台自适应机器人原创者。' }
+            '穹彻智能': { name: '穹彻智能', nameEn: 'Everyday Robots', fundingTable: [{ round: '天使轮', date: '2023年', amount: '未披露', valuation: '—', investors: '—' }, { round: 'Pre-A轮', date: '2024年', amount: '未披露', valuation: '—', investors: '水木创投、源码资本' }, { round: 'Pre-A+轮', date: '2024年7月', amount: '近¥1亿', valuation: '—', investors: '英诺天使基金、海国投' }, { round: 'A轮', date: '2025年7月', amount: '未披露', valuation: '—', investors: '—' }], fundingNote: '📌 成立于2023年11月，由非夕科技战略孵化。专注具身智能"大脑"系统。' }
             '破壳机器人': { name: '破壳机器人', nameEn: 'PokeBot' },
             '大晓机器人': { name: '大晓机器人', nameEn: 'Daxiao Robotics' },
-            '七腾机器人': { name: '七腾机器人', nameEn: 'Qiteng Robotics' },
+            '七腾机器人': { name: '七腾机器人', nameEn: 'Qiteng Robotics' }, fundingTable: [{ round: '天使轮', date: '2010年', amount: '未披露', valuation: '—', investors: '—' }, { round: 'A轮', date: '2021年', amount: '未披露', valuation: '—', investors: '红马资本等' }, { round: '增资', date: '2025年10月', amount: '¥1.3亿', valuation: '¥40亿', investors: '李起富（个人）' }], fundingNote: '📌 成立于2010年，重庆。专注特种机器人。累计超10轮融资。' }
             '灵御智能': { name: '灵御智能', nameEn: 'Lingyu Intelligence' },
             '觅蜂科技': { name: '觅蜂科技', nameEn: 'Mifeng Tech' },
             '卧安机器人': { name: '卧安机器人', nameEn: 'Woan Robotics' },
-            '小鹏鹏行': { name: '小鹏鹏行', nameEn: 'XPeng Robotics' },
-            '云深处': { name: '云深处', nameEn: 'DeepCloud' },
-            '松延动力': { name: '松延动力', nameEn: 'Songyan Dynamics' },
-            '开普勒人形机器人': { name: '开普勒人形机器人', nameEn: 'Kepler Robotics' },
-            '理工华汇': { name: '理工华汇', nameEn: 'Beijing Robot' },
-            '天链机器人': { name: '天链机器人', nameEn: 'Tianlian Robotics' },
-            '青瞳视觉': { name: '青瞳视觉', nameEn: 'Qingtong Vision' },
-            '墨奇科技': { name: '墨奇科技', nameEn: 'Moqi Tech' },
+            '小鹏鹏行': { name: '小鹏鹏行', nameEn: 'XPeng Robotics' }, fundingTable: [{ round: '成立', date: '2016年', amount: '—', valuation: '—', investors: '何小鹏、小鹏汽车' }, { round: 'A轮', date: '2022年7月', amount: '$1亿', valuation: '—', investors: 'IDG Capital（领投）' }], fundingNote: '📌 成立于2016年，小鹏汽车旗下仿生机器人公司。估值超$10亿。' }
+            '云深处': { name: '云深处', nameEn: 'DeepCloud' }, fundingTable: [{ round: '天使轮', date: '2017年', amount: '未披露', valuation: '—', investors: '英诺天使基金' }, { round: 'A轮', date: '2018年', amount: '未披露', valuation: '—', investors: '元禾原点' }, { round: 'C轮', date: '2025年7月', amount: '近¥5亿', valuation: '—', investors: '达晨财智、国新基金（联合领投）' }], fundingNote: '📌 成立于2017年，杭州，"杭州六小龙"之一。产品"绝影"系列四足机器人。' }
+            '松延动力': { name: '松延动力', nameEn: 'Songyan Dynamics' }, fundingTable: [{ round: '天使轮', date: '2023年', amount: '数千万', valuation: '—', investors: '昆仲资本（独投）' }, { round: '天使+轮', date: '2024–2025年', amount: '亿元级', valuation: '—', investors: '国中资本、金鼎资本等' }, { round: '战略轮', date: '2025年12月', amount: '亿元级', valuation: '—', investors: '中国移动链长基金' }], fundingNote: '📌 成立于2023年，北京。"小布米"（首款万元级高性能人形机器人）。' }
+            '开普勒人形机器人': { name: '开普勒人形机器人', nameEn: 'Kepler Robotics' }, fundingTable: [{ round: 'A+轮', date: '2025年9月', amount: '数亿元', valuation: '—', investors: '成都天投、中车资本等' }, { round: 'B轮', date: '2026年2月', amount: '超¥10亿', valuation: '超¥100亿', investors: '百度战投、中车资本等' }], fundingNote: '📌 成立于2023年8月，上海。产品"先行者K1/K2"人形机器人。' }
+            '理工华汇': { name: '理工华汇', nameEn: 'Beijing Robot' }, fundingTable: [{ round: '天使轮', date: '2018年6月', amount: '未披露', valuation: '—', investors: '檀沐企业管理等' }, { round: 'A轮', date: '2018年9月', amount: '数千万', valuation: '¥1.5亿', investors: '和合资本、华盖资本' }], fundingNote: '📌 北京理工大学张伟民教授团队孵化。' }
+            '天链机器人': { name: '天链机器人', nameEn: 'Tianlian Robotics' }, fundingTable: [{ round: 'B轮', date: '2018年8月', amount: '数千万美元', valuation: '—', investors: '芯动能投资（领投）、联想创投' }, { round: '定向增发', date: '2024年12月', amount: '¥8000万', valuation: '约¥8亿', investors: '浙江思考私募基金等' }], fundingNote: '📌 成立于2012年，四川，新三板挂牌（川机器人）。' }
+            '青瞳视觉': { name: '青瞳视觉', nameEn: 'Qingtong Vision' }, fundingTable: [{ round: '天使轮', date: '2016年', amount: '数百万', valuation: '—', investors: '米粒影业等' }, { round: 'A轮', date: '2016年7月', amount: '未披露', valuation: '—', investors: '金复资本等' }], fundingNote: '📌 成立于2015年，上海。红外光学位置追踪系统研发商。' }
             '星尘智能': { name: '星尘智能', nameEn: 'Stardust Intelligence' },
-            '钛虎机器人': { name: '钛虎机器人', nameEn: 'Taihui Robotics' },
+            '钛虎机器人': { name: '钛虎机器人', nameEn: 'Taihui Robotics' }, fundingTable: [{ round: '天使轮', date: '2022年3月', amount: '近千万美元', valuation: '—', investors: '松禾资本、真格基金' }, { round: 'Pre-A轮', date: '2022年10月', amount: '亿元级', valuation: '—', investors: '联创资本（领投）' }, { round: 'A1&A2轮', date: '2025年7月', amount: '数亿元', valuation: '—', investors: '成都科创投、洪泰基金（联合领投）' }], fundingNote: '📌 成立于2020年，上海。专注高性能轻量化关节模组。' }
             '苏度科技': { name: '苏度科技', nameEn: 'Sudo Robotics' },
             '超维动力': { name: '超维动力', nameEn: 'Kinetix AI' },
             '自然意志': { name: '自然意志', nameEn: 'Natural Will' },
-            '地瓜机器人': { name: '地瓜机器人', nameEn: 'Digua Robotics' },
+            '地瓜机器人': { name: '地瓜机器人', nameEn: 'Digua Robotics' }, fundingTable: [{ round: 'A轮', date: '2025年5月', amount: '$1亿', valuation: '—', investors: '高瓴创投等' }, { round: 'B1轮', date: '2026年3月', amount: '$1.2亿', valuation: '~$12亿', investors: 'Synstellation Capital等' }, { round: 'B2轮', date: '2026年4月', amount: '$1.5亿', valuation: '$15亿', investors: 'Prosperity7 Ventures等' }], fundingNote: '📌 成立于2024年1月，地平线分拆。机器人软硬件通用底座。累计融资$3.7亿+。' }
             '星源智机器人': { name: '星源智机器人', nameEn: 'StarSource AI' },
             '优必选': { name: '优必选', nameEn: 'UBTech' },
             '珞石机器人': { name: '珞石机器人', nameEn: 'Rokae' },
-            '镜识科技': { name: '镜识科技', nameEn: 'Jingshi Tech' },
-            '优理奇智能': { name: '优理奇智能', nameEn: 'YouLiQi' },
-            '智朝机器人': { name: '智朝机器人', nameEn: 'Zhichao Robotics' },
+            '镜识科技': { name: '镜识科技', nameEn: 'Jingshi Tech' }, fundingTable: [{ round: '天使轮', date: '2024年10月', amount: '数千万', valuation: '¥1亿', investors: '深创投、方广资本、软通动力' }], fundingNote: '📌 成立于2024年5月，上海。"黑豹2.0"四足机器人（全球最快）。' }
+            '优理奇智能': { name: '优理奇智能', nameEn: 'YouLiQi' }, fundingTable: [{ round: '种子轮', date: '2025年', amount: '未披露', valuation: '—', investors: 'BV百度风投（领投）' }, { round: '天使轮', date: '2025年12月', amount: '未披露', valuation: '—', investors: '顺为资本（领投）' }], fundingNote: '📌 成立于2024年，通用具身智能机器人公司。' }
             '艾欧': { name: '艾欧', nameEn: 'AIO' },
-            '戴盟': { name: '戴盟', nameEn: 'Daimon' },
+            '戴盟': { name: '戴盟', nameEn: 'Daimon', fundingTable: [{ round: 'Pre-A轮', date: '2024年', amount: '未披露', valuation: '—', investors: '吴中金控、涌铧投资' }, { round: '新一轮', date: '2026年3月', amount: '近¥3亿', valuation: '—', investors: '中金汇融、洪山资本、广州产投等' }], fundingNote: '📌 成立于2023年，深圳。专注高分辨率视触觉感知与灵巧操作。' }
             '宇叠': { name: '宇叠', nameEn: 'Yudie' },
             '诺亦腾': { name: '诺亦腾', nameEn: 'Noitom' },
             '跨维智能': { name: '跨维智能', nameEn: 'Kuawe Intelligence' },
@@ -905,6 +975,7 @@
             { company: '无界动力', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2025年2月', headquarters: '北京' },
             { company: '智平方', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年4月', headquarters: '深圳' },
             { company: '千寻智能', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2024年1月', headquarters: '深圳' },
+            { company: '墨奇智能', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年', headquarters: '深圳' },
             { company: '自变量机器人', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年9月', headquarters: '深圳' },
             { company: '帕西尼感知', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2021年6月', headquarters: '深圳' },
             { company: '普渡机器人', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2016年1月', headquarters: '深圳' },
@@ -920,7 +991,6 @@
             { company: '七腾机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2018年', headquarters: '重庆' },
             { company: '灵御智能', valuation: '约1亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年2月', headquarters: '北京' },
             { company: '觅蜂科技', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
-            { company: '智朝机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '待确认' },
             { company: '国家地方共建具身智能机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '北京/上海' },
             { company: '共建中心 (创新中心)', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '北京/上海' },
             { company: '艾欧', valuation: '约8亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年5月', headquarters: '深圳' },
@@ -942,18 +1012,15 @@
             { company: '理工华汇', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2015年9月', headquarters: '北京' },
             { company: '天链机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2012年7月', headquarters: '绵阳' },
             { company: '青瞳视觉', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2018年', headquarters: '上海' },
-            { company: '墨奇科技', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年/2017年', headquarters: '北京' },
             { company: '国地具身智能', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '上海' },
             { company: '北京人形机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '北京' },
             { company: '国家地方共建具身智能机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '待确认' },
             { company: '星尘智能', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2022年12月', headquarters: '深圳' },
             { company: '钛虎机器人', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '2020年8月', headquarters: '上海' },
             { company: '爱动超越', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '2017年6月', headquarters: '北京' },
-            { company: '神源久机器人', valuation: '约1亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
             { company: '千秒机器人', valuation: '约1亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '待确认' },
             { company: '坤维科技', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2018年5月', headquarters: '北京' },
             { company: '因时机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年', headquarters: '北京' },
-            { company: '思特威', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2017年', headquarters: '上海' },
             { company: '灵宇宙', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
             { company: '简智机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年5月', headquarters: '北京' },
             { company: '智平方机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年4月', headquarters: '深圳' },
@@ -995,6 +1062,7 @@
             '思灵机器人': 'Agile Robots',
             '魔法原子': 'MagicLab',
             '千寻智能': 'Chasing Intelligence',
+            '墨奇智能': 'Moqi Intelligence',
             '星海图': 'Sea of Stars',
             '自变量机器人': 'Autobias Robotics',
             '智平方': 'Botric',
@@ -1061,6 +1129,7 @@
             '它石智航': { brain: '[Hierarchical] 分层架构', training: '[Industry-SOP] 工业标准流程训练', scene: '[L-Logistics] 仓储物流' },
             '智平方': { brain: '[E2E-VLA] 端到端视言行', training: '[VLA-Scaling] 模型规模化扩展', scene: '[Agnostic] 通用领域' },
             '千寻智能': { brain: '[E2E-VLA] 端到端视言行', training: '[Data-Scaling] 异构数据缩放训练', scene: '[I-Light] [S-Comm]' },
+            '墨奇智能': { brain: '[E2E-VLA] 端到端视言行', training: '[Multi-Body-Data] 多本体数据训练', scene: '[Agnostic] 通用领域' },
             '自变量机器人': { brain: '[E2E-VLA] 端到端视言行', training: '[Self-Supervised] 自监督物理学习', scene: '[Agnostic] 通用领域' },
             '魔法原子': { brain: '[World Model] 世界模型', training: '[Physical-Sim] 物理推理仿真', scene: '[Research] 科研' },
             '乐聚机器人': { brain: '[Hierarchical] 分层架构', training: '[Open-Harmony] 鸿蒙生态数据协同', scene: '[C-Edu] [I-Heavy]' },
@@ -1090,8 +1159,6 @@
             '松延动力': { brain: '[Component] 核心零部件', training: '[High-Dynamic] 高动态', scene: '[Component] 零部件' },
             '开普勒人形机器人': { brain: '[Hierarchical] 分层架构', training: '[Industrial-RL] 工业强化学习', scene: '[I-Heavy] [L-Log]' },
             '理工华汇': { brain: '[Hierarchical] 分层架构', training: '[Special-Task] 特种任务', scene: '[H-Special] [Research]' },
-            '墨奇科技': { brain: '[Platform-Infra] 平台基建', training: '[Unstructured] 非结构化数据', scene: '[Agnostic] [Research]' },
-            '思特威': { brain: '[Component] 核心零部件', training: '[Sensor-Param] 图像传感器', scene: '[Component] 零部件' },
             '智在无界': { brain: '[E2E-VLA] 端到端视言行', training: '[General-Data] 通用常识', scene: '[Agnostic] [S-Comm]' },
             '卓益得机器人': { brain: '[Hierarchical] 分层架构', training: '[Walking-RL] 步行强化学习', scene: '[Research] [C-Edu]' },
             '天链机器人': { brain: '[Hierarchical] 分层架构', training: '[Aerospace-Data] 航天数据', scene: '[H-Special] [I-Heavy]' },
@@ -1101,7 +1168,6 @@
             '爱动超越': { brain: '[Component] 核心零部件', training: '[High-Speed-Sens] 高速传感', scene: '[Component] 零部件' },
             '灵宇宙': { brain: '[Platform-Infra] 平台基建', training: '[Virtual-Data] 虚拟数据', scene: '[Agnostic] [C-Home]' },
             '灵御智能': { brain: '[Hierarchical] 分层架构', training: '[Guard-Data] 安防数据', scene: '[H-Special] [S-Comm]' },
-            '神源久机器人': { brain: '[Component] 核心零部件', training: '[Precision-Trans] 精密传动', scene: '[Component] 零部件' },
             '千秒机器人': { brain: '[Component] 核心零部件', training: '[Fast-Response] 快速响应', scene: '[Component] [I-Light]' },
             '超维动力': { brain: '[Component] 核心零部件', training: '[Power-Density] 功率密度', scene: '[Component] 零部件' },
             '共建中心': { brain: '[Platform-Hub] 平台中心', training: '[Policy-Standard] 行业标准', scene: '[Agnostic] 通用' },
@@ -1110,7 +1176,6 @@
             'Skydio': { brain: '[Autonomous-AI] 自主AI', training: '[Sim2Real-RL] 仿真强化学习', scene: '[H-Special] 特种巡检' },
             '英伟达 (NVIDIA)': { brain: '[Platform-Infra] 平台与基建', training: '[Synthetic-Data] 合成数据驱动', scene: '[Agnostic] 通用领域' },
             '星动纪元': { brain: '[E2E-VLA] 端到端视言行', training: '[VLA-Scaling] 模型规模化扩展', scene: '[I-Heavy] 重工业' },
-            '智朝机器人': { brain: '[Hierarchical] 分层架构', training: '[IL-Teleop] 模仿学习', scene: '[S-Commercial] 商业服务' },
             '国家地方共建具身智能机器人创新中心': { brain: '[Platform-Hub] 平台中心', training: '[Policy-Standard] 行业标准', scene: '[Agnostic] 通用' },
             '共建中心 (创新中心)': { brain: '[Platform-Hub] 平台中心', training: '[Policy-Standard] 行业标准', scene: '[Agnostic] 通用' },
             '宇叠': { brain: '[E2E-VLA] 端到端视言行', training: '[Sim2Real-RL] 仿真强化学习', scene: '[I-Precision] 工业精密' },
@@ -1206,7 +1271,20 @@
                         {date: '2023.08', event: '发布人形机器人H1'},
                         {date: '2025.02', event: 'H1人形机器人迭代升级'},
                         {date: '2026.03', event: '科创板IPO，募资42亿'}
-                    ]
+                    ],
+                    fundingTable: [
+                        { round: '天使轮', date: '2020年', amount: '¥200万', valuation: '—', investors: '尹方鸣（个人）' },
+                        { round: 'Pre-A轮', date: '2020年', amount: '未披露', valuation: '—', investors: '红杉种子、初心资本' },
+                        { round: 'A轮', date: '2021年', amount: '未披露', valuation: '—', investors: '祥峰投资' },
+                        { round: 'A+轮', date: '2022年', amount: '未披露', valuation: '—', investors: '顺为资本、经纬创投' },
+                        { round: 'B轮', date: '2022年', amount: '未披露', valuation: '—', investors: '经纬创投等' },
+                        { round: 'B2轮', date: '2024年2月', amount: '近¥10亿', valuation: '—', investors: '深创投、中网投、容亿投资、经纬创投、源码资本、美团战略投资部、中信金石、博睿智联、钧石创投' },
+                        { round: 'C轮（部分）', date: '2024年9月', amount: '数亿元', valuation: '¥80亿', investors: '北京机器人产业投资基金（领投）、美团龙珠、中关村科学城、琥珀资本、上海科创基金、红杉中国、中信证券、祥峰投资中国基金等' },
+                        { round: 'C轮（交割）', date: '2025年6月', amount: '~¥7亿', valuation: '¥120亿', investors: '中国移动旗下基金、腾讯、锦秋基金、阿里巴巴、蚂蚁集团、吉利资本（共同领投），老股东跟投' },
+                        { round: 'C+轮/追加', date: '2025年7月', amount: '未披露', valuation: '¥130亿', investors: '首程控股（北京机器人基金追加投资）' },
+                        { round: 'Pre-IPO轮', date: '2025年6月', amount: '¥6.95亿', valuation: '—', investors: '腾讯科技、中移和创、无锡锦秋等27个股东' }
+                    ],
+                    fundingNote: '📌 累计11轮融资。2024年营收已超¥10亿，自2020年起每年盈利。目前估值超¥130亿，已启动A股IPO辅导。'
                 },
                 '灵御智能': {
                     name: '灵御智能',
@@ -1237,7 +1315,13 @@
                         {date: '2025.09', event: '完成千万元级种子+轮融资'},
                         {date: '2026.03', event: '完成数千万元天使轮融资'},
                         {date: '2026.04', event: '遥操作系统延迟降至50ms'}
-                    ]
+                    ],
+                    fundingTable: [
+                        { round: '种子轮', date: '2025年', amount: '未披露', valuation: '—', investors: '英诺天使基金、水木校友种子基金、远镜创投' },
+                        { round: '种子+轮', date: '2025年', amount: '未披露', valuation: '—', investors: '华映资本（领投）；英诺天使基金、水木校友种子基金、远镜创投跟投' },
+                        { round: '天使轮', date: '2026年3月', amount: '数千万元', valuation: '—', investors: '银河创新资本（领投）；国海创新资本、天鹰资本、厦门思明科创基金跟投；老股东英诺天使基金、华映资本、远镜创投持续加注' }
+                    ],
+                    fundingNote: '📌 累计融资近亿元。核心团队来自清华大学自动化系。'
                 },
                 'Generalist': {
                     name: 'Generalist',
@@ -1269,6 +1353,385 @@
                         {date: '2026.04', event: '发布GEN-1具身基础模型，成功率99%'}
                     ]
                 },
+// === 以下为由Word文档数据更新的公司（2026-04-29） ===
+'Figure AI': {
+    name: 'Figure AI',
+    name_en: 'Figure AI',
+    website: 'https://www.figure.ai',
+    founded: '2022年',
+    headquarters: '美国加州',
+    segment: '人形整机 / 混合',
+    isOverseas: true,
+    valuation: '390亿美元',
+    valuationCNY: 2835,
+    currency: '美元',
+    latest: 'C轮$15亿+',
+    date: '2025.09',
+    brain: '[E2E-VLA] 端到端视言行',
+    training: '[VLM-Micro-tuning] 多模态微调',
+    scene: '[I-Heavy] [C-Home]',
+    founders: [
+        {name: 'Brett Adcock', title: '创始人', bio: '连续创业者，曾创立 Archer Aviation'}
+    ],
+    fundingTable: [
+        { round: '种子/资本化', date: '2022年1月', amount: '$1亿', valuation: '—', investors: '—' },
+        { round: 'A轮', date: '2023年5月', amount: '$7000万', valuation: '$5亿', investors: 'Parkway Venture Capital（领投）' },
+        { round: 'B轮', date: '2024年2月', amount: '$6.75亿', valuation: '$26亿', investors: 'Microsoft、OpenAI、NVIDIA、Amazon、Intel Capital、Jeff Bezos（Bezos Expeditions）等' },
+        { round: 'C轮', date: '2025年9月', amount: '超$10亿（PitchBook记为$15亿）', valuation: '$390亿', investors: 'Parkway Venture Capital（领投）、Brookfield Asset Management、NVIDIA、Macquarie Capital、Intel Capital、Salesforce、T-Mobile Ventures、Qualcomm Ventures 等' }
+    ],
+    fundingNote: '📌 累计融资约 $19–23.4亿，目前估值 $390亿，是估值最高的人形机器人公司。'
+},
+'1X Technologies': {
+    name: '1X Technologies',
+    name_en: '1X Technologies',
+    website: 'https://www.1x.tech',
+    founded: '2014年',
+    headquarters: '挪威奥斯陆/美国加州',
+    segment: '人形整机 / 视频学习',
+    isOverseas: true,
+    valuation: '100亿美元',
+    valuationCNY: 728,
+    currency: '美元',
+    latest: 'B轮$1亿',
+    date: '2024.01',
+    brain: '[World Model] 世界模型',
+    training: '[Video-Pretrain] 视频预训练',
+    scene: '[S-Comm] [C-Home]',
+    founders: [
+        {name: 'Bernt Øyvind Børnich', title: 'CEO', bio: '机器人学与纳米电子学背景'}
+    ],
+    investors: [
+        {name: 'Nistad Group', round: '种子轮'},
+        {name: 'Sandwater', round: '种子轮'},
+        {name: 'Skagerak Capital', round: '种子轮'},
+        {name: 'OpenAI Startup Fund', round: 'A2轮领投'},
+        {name: 'Tiger Global', round: 'A2轮'},
+        {name: 'EQT Ventures', round: 'B轮领投'},
+        {name: 'Samsung NEXT', round: 'B轮'}
+    ],
+    fundingTable: [
+        { round: '种子/早期', date: '—', amount: '—', valuation: '—', investors: 'Nistad Group、Sandwater、Skagerak Capital' },
+        { round: 'A2轮', date: '2023年3月', amount: '$2350万', valuation: '—', investors: 'OpenAI Startup Fund（领投）、Tiger Global' },
+        { round: 'B轮', date: '2024年1月', amount: '$1亿', valuation: '$8.2亿', investors: 'EQT Ventures（领投）、Samsung NEXT、OpenAI Startup Fund、Tiger Global' },
+        { round: '新一轮（洽谈中）', date: '2025年9月', amount: '拟$10亿', valuation: '目标≥$100亿', investors: '—' }
+    ],
+    fundingNote: '📌 累计融资约 $1.25亿。2025年9月传出拟以 ≥$100亿 估值融资$10亿的消息，但截至2026年初尚未确认关闭。'
+},
+'Skild AI': {
+    name: 'Skild AI',
+    name_en: 'Skild AI',
+    website: 'https://www.skild.ai',
+    founded: '2023年5月',
+    headquarters: '美国匹兹堡',
+    segment: '具身大脑 / 异构数据',
+    isOverseas: true,
+    valuation: '140亿美元',
+    valuationCNY: 1018,
+    currency: '美元',
+    latest: 'C轮$14亿',
+    date: '2026.01',
+    brain: '[Cross-Embodiment] 跨本体',
+    training: '[Heterogeneous-Data] 异构数据缩放',
+    scene: '[I-Precision] [L-Log]',
+    founders: [
+        {name: 'Abhinav Gupta', title: '联合创始人', bio: '前卡内基梅隆大学教授、Meta AI研究员'},
+        {name: 'Deepak Pathak', title: '联合创始人兼CEO', bio: '前卡内基梅隆大学教授'}
+    ],
+    investors: [
+        {name: 'SoftBank Group', round: 'C轮领投'},
+        {name: 'NVIDIA (NVentures)', round: 'C轮'},
+        {name: 'Bezos Expeditions', round: 'C轮'},
+        {name: 'Samsung', round: 'C轮'},
+        {name: 'LG Technology Ventures', round: 'C轮'},
+        {name: 'Schneider Electric', round: 'C轮'}
+    ],
+    fundingTable: [
+        { round: '种子轮', date: '—', amount: '$1400万', valuation: '—', investors: '—' },
+        { round: 'A轮', date: '2024年5月', amount: '$3亿', valuation: '—', investors: '—' },
+        { round: 'B轮', date: '2025年5月', amount: '$1.35亿', valuation: '$45亿', investors: '—' },
+        { round: 'C轮', date: '2026年1月', amount: '$14亿', valuation: '$140亿', investors: 'SoftBank Group（领投）、NVentures（NVIDIA）、Bezos Expeditions、Samsung、LG Technology Ventures、Schneider Electric、Salesforce Ventures、CommonSpirit Health 等' }
+    ],
+    fundingNote: '📌 累计融资超 $22.1亿，估值 $140亿。2025年营收从零增长至约$3000万。'
+},
+'Physical Intelligence': {
+    name: 'Physical Intelligence',
+    name_en: 'Physical Intelligence',
+    website: 'https://www.physicalintelligence.ai',
+    founded: '2024年3月',
+    headquarters: '美国旧金山',
+    segment: '具身大脑 / 基础大模型',
+    isOverseas: true,
+    valuation: '56亿美元',
+    valuationCNY: 407,
+    currency: '美元',
+    latest: 'B轮$6亿',
+    date: '2025.12',
+    brain: '[E2E-VLA] 端到端视言行',
+    training: '[Foundation-Scale] 基础大模型规模',
+    scene: '[Agnostic] 通用领域',
+    founders: [
+        {name: 'Karol Hausman', title: '联合创始人兼CEO', bio: '前谷歌大脑高级研究科学家'},
+        {name: 'Chelsea Finn', title: '联合创始人', bio: '斯坦福助理教授，前谷歌大脑研究科学家'},
+        {name: 'Sergey Levine', title: '联合创始人', bio: 'UC Berkeley 助理教授'}
+    ],
+    investors: [
+        {name: 'OpenAI', round: 'A轮'},
+        {name: 'Jeff Bezos (Bezos Expeditions)', round: 'A轮'},
+        {name: 'CapitalG (Alphabet)', round: 'B轮领投'},
+        {name: 'Thrive Capital', round: 'B轮'},
+        {name: 'Lux Capital', round: 'B轮'},
+        {name: 'NVIDIA (NVentures)', round: 'B轮'},
+        {name: 'Index Ventures', round: 'B轮'},
+        {name: 'T. Rowe Price', round: 'B轮'}
+    ],
+    fundingTable: [
+        { round: '初始融资', date: '2024年', amount: '~$7000万', valuation: '—', investors: '—' },
+        { round: 'A轮', date: '—', amount: '$4亿', valuation: '$24亿', investors: 'OpenAI、Jeff Bezos（Bezos Expeditions）等' },
+        { round: 'B轮', date: '—', amount: '$6亿', valuation: '$56亿', investors: 'CapitalG（Alphabet，领投）、OpenAI、Thrive Capital、Lux Capital、NVIDIA（NVentures）、Index Ventures、T. Rowe Price 等' },
+        { round: '新一轮（洽谈中）', date: '2026年3月', amount: '拟$10亿', valuation: '$110亿', investors: 'Founders Fund、Lightspeed Venture Partners、Thrive Capital、Lux Capital 等' }
+    ],
+    fundingNote: '📌 累计已融资超 $10亿。公司尚无商业化产品或收入，专注于通用机器人基础模型"π0"的研发。'
+},
+'智元机器人': {
+    name: '智元机器人',
+    name_en: 'Agibot',
+    website: 'https://www.agibot.com',
+    founded: '2023年2月',
+    headquarters: '上海',
+    segment: '人形整机 / 分层架构',
+    isOverseas: false,
+    valuation: '150亿人民币',
+    valuationCNY: 150,
+    currency: '人民币',
+    latest: '战略投资',
+    date: '2025.08',
+    brain: '[Hierarchical] 分层架构',
+    training: '[Proprietary-IL] 自研模仿学习',
+    scene: '[I-Light] [S-Comm]',
+    founders: [
+        {name: '彭志辉（稚晖君）', title: '创始人/CTO', bio: '前华为"天才少年"'}
+    ],
+    investors: [
+        {name: '高瓴创投', round: '种子轮'},
+        {name: '鼎晖投资', round: 'A轮'},
+        {name: '比亚迪', round: 'A++轮/A+++轮'},
+        {name: '蓝驰创投', round: 'A++轮'},
+        {name: 'BV百度风投', round: 'A+轮'},
+        {name: 'M31资本', round: 'A4轮'},
+        {name: '红杉中国', round: 'A4轮'},
+        {name: '腾讯', round: 'B轮领投'},
+        {name: 'LG电子', round: '战略投资领投'},
+        {name: '未来资产集团', round: '战略投资联合领投'}
+    ],
+    fundingTable: [
+        { round: '种子轮', date: '2023年3月', amount: '未披露', valuation: '—', investors: '高瓴创投（领投）、奇绩创坛' },
+        { round: 'A轮', date: '2023年4月', amount: '未披露', valuation: '—', investors: '鼎晖投资、高榕资本' },
+        { round: 'A+轮', date: '2023年', amount: '未披露', valuation: '—', investors: 'BV百度风投' },
+        { round: 'A++轮', date: '2023年8月', amount: '未披露', valuation: '—', investors: '比亚迪、蓝驰创投' },
+        { round: 'A+++轮', date: '2023年12月', amount: '超¥6亿', valuation: '—', investors: '比亚迪、三花控股、BV百度风投、高瓴创投等' },
+        { round: 'A4轮', date: '2024年3月', amount: '超¥10亿', valuation: '—', investors: 'M31资本、尚颀资本、红杉中国' },
+        { round: 'A5轮', date: '2024年9月', amount: '未披露', valuation: '超¥70亿', investors: 'LCVPF Holdco Limited、软通动力、中科创星、慕华科创' },
+        { round: 'B轮', date: '2025年3月', amount: '数亿元', valuation: '¥150亿', investors: '腾讯（领投）、龙旗科技、卧龙电气、华发集团、蓝驰创投、TCL创投、华金资本' },
+        { round: 'B+轮', date: '2025年5月', amount: '未披露', valuation: '—', investors: '京东、上海具身智能基金、孚腾资本、红杉中国、上汽创投、TCL等' },
+        { round: '战略投资', date: '2025年7月', amount: '未披露', valuation: '—', investors: '正大集团旗下正大机器人' },
+        { round: '战略投资', date: '2025年8月', amount: '未披露', valuation: '~¥180亿', investors: 'LG电子、韩国未来资产集团（联合领投）' }
+    ],
+    fundingNote: '📌 成立于2023年2月，累计完成 11轮融资，估值约 ¥150–180亿（约$20–25亿）。创始人彭志辉（稚晖君）为前华为"天才少年"。'
+},
+'星尘智能': {
+    name: '星尘智能',
+    name_en: 'Stardust Intelligence',
+    website: 'https://www.stardust.ai',
+    founded: '2022年12月',
+    headquarters: '深圳',
+    segment: '人形整机 / 模仿学习',
+    isOverseas: false,
+    valuation: '约3亿人民币',
+    valuationCNY: 3,
+    currency: '人民币',
+    latest: 'A++轮',
+    date: '2025.11',
+    brain: '[IL-Teleop] 模仿学习-遥操作',
+    training: '[High-Precision-IL] 高精模仿',
+    scene: '[I-Precision] [S-Comm]',
+    founders: [
+        {name: '来杰', title: 'CEO', bio: '前腾讯 RoboticsX 实验室"一号员工"，前百度小度机器人团队负责人'}
+    ],
+    investors: [
+        {name: '云启资本', round: '天使轮'},
+        {name: '德迅投资', round: '天使轮'},
+        {name: '经纬创投', round: 'Pre-A轮领投'},
+        {name: '道彤投资', round: 'Pre-A轮'},
+        {name: '锦秋基金', round: 'A轮&A+轮联合领投'},
+        {name: '蚂蚁集团', round: 'A轮&A+轮联合领投'},
+        {name: '国科投资', round: 'A++轮联合领投'}
+    ],
+    fundingTable: [
+        { round: '天使轮', date: '2023年3月', amount: '未披露', valuation: '—', investors: '云启资本' },
+        { round: '天使轮', date: '2023年10月', amount: '未披露', valuation: '—', investors: '德迅投资' },
+        { round: 'Pre-A轮', date: '2024年6月', amount: '数千万美元', valuation: '—', investors: '经纬创投（领投）、道彤投资、清辉投资' },
+        { round: 'A轮 & A+轮', date: '2025年4月', amount: '数亿元', valuation: '—', investors: '锦秋基金、蚂蚁集团（联合领投），云启资本、道彤资本等老股东跟投' },
+        { round: 'A++轮', date: '2025年11月', amount: '数亿元', valuation: '—', investors: '国科投资、蚂蚁集团（联合领投），Bloom Advance Capital、时代伯乐、南山战新投等跟投，锦秋基金追投' }
+    ],
+    fundingNote: '📌 成立于2022年12月，全球首个实现绳驱AI机器人量产的公司。蚂蚁集团和锦秋基金为连续多轮加注的核心股东。'
+},
+'银河通用': {
+    name: '银河通用',
+    name_en: 'Galbot',
+    website: 'https://www.galbot.cn',
+    founded: '2023年5月',
+    headquarters: '北京',
+    segment: '人形整机 / 仿真强化',
+    isOverseas: false,
+    valuation: '210亿人民币',
+    valuationCNY: 210,
+    currency: '人民币',
+    latest: 'C轮$3亿+',
+    date: '2025.12',
+    brain: '[Sim2Real-RL] 仿真强化学习',
+    training: '[Synthetic-Generalist] 合成通用化',
+    scene: '[L-Logistics] [I-Heavy]',
+    founders: [
+        {name: '王鹤', title: '创始人&CTO', bio: '北大助理教授，斯坦福博士'},
+        {name: '姚腾洲', title: '联合创始人&董事长', bio: '前ABB核心工程师'}
+    ],
+    investors: [
+        {name: '经纬创投', round: '种子轮'},
+        {name: '蓝驰创投', round: '种子轮'},
+        {name: '美团战投', round: '天使轮领投'},
+        {name: '北汽产投', round: '天使轮'},
+        {name: '上汽恒旭', round: 'A轮领投'},
+        {name: '宁德时代', round: 'B轮领投'},
+        {name: '中国移动', round: 'C轮领投'},
+        {name: '国家大基金', round: '新一轮'}
+    ],
+    fundingTable: [
+        { round: '种子轮', date: '2023年6月', amount: '未披露', valuation: '—', investors: '经纬创投、蓝驰创投' },
+        { round: '天使轮', date: '2024年6月', amount: '¥7亿', valuation: '—', investors: '美团战投、北汽产投、商汤国香基金、讯飞基金、启明创投、蓝驰创投、经纬创投、源码资本、IDG资本' },
+        { round: '战略轮/A轮', date: '2024年11月', amount: '¥5亿', valuation: '—', investors: '上汽恒旭、香港投资公司HKIC（港版"淡马锡"）、深创投、上海人工智能产业基金、北京机器人产业基金；老股东IDG、经纬、蓝驰、北京人工智能产业基金追加' },
+        { round: 'B轮', date: '2025年6月', amount: '超¥11亿', valuation: '—', investors: '宁德时代（领投）、溥泉资本、国开科创、北京机器人产业基金、纪源资本等' },
+        { round: 'C轮', date: '2025年12月', amount: '超$3亿（~¥21.6亿）', valuation: '$30亿（~¥200亿）', investors: '中国移动（领投）、中金资本、中科院基金、苏创投、央视融媒体基金、天奇股份等；中东、新加坡国际资本首次加入' },
+        { round: '新一轮', date: '2026年3月', amount: '¥25亿', valuation: '>¥200亿', investors: '国家人工智能产业投资基金（国家大基金，首次投资具身智能）、中国石化、中信投资控股、中银资产、上汽金控、中芯聚源、鲲鹏基金、无锡创投、福建产投、成都科创投等；深创投、上海人工智能基金等老股东追加' }
+    ],
+    fundingNote: '📌 成立于2023年5月，不到三年累计融资超 ¥70亿，估值突破 ¥200亿。2026年春晚首个"自主干活机器人"即来自银河通用。'
+},
+'普渡机器人': {
+    name: '普渡机器人',
+    name_en: 'Pudu Robotics',
+    website: 'https://www.pudurobotics.com',
+    founded: '2016年1月',
+    headquarters: '深圳',
+    segment: '商用服务 / 分层架构',
+    isOverseas: false,
+    valuation: '100亿+人民币',
+    valuationCNY: 100,
+    currency: '人民币',
+    latest: 'E轮近¥10亿',
+    date: '2026.04',
+    brain: '[Hierarchical] 分层架构',
+    training: '[Scenario-Data] 垂直场景数据',
+    scene: '[S-Commercial] 商业服务',
+    founders: [
+        {name: '张涛', title: '创始人兼CEO', bio: '香港科技大学硕士，连续创业者，曾创办科技媒体雷锋网'}
+    ],
+    investors: [
+        {name: '松禾资本', round: '天使轮'},
+        {name: '深创投', round: 'A轮'},
+        {name: '腾讯投资', round: 'B轮'},
+        {name: '洪泰基金', round: 'C轮'},
+        {name: '龙岗金控', round: 'E轮领投'},
+        {name: '亚投资本', round: 'E轮联合领投'},
+        {name: '北汽产投', round: 'E轮'},
+        {name: '蓝思科技', round: 'E轮'}
+    ],
+    fundingTable: [
+        { round: '天使轮', date: '2016年', amount: '未披露', valuation: '—', investors: '松禾资本、真格基金' },
+        { round: 'Pre-A轮', date: '2022年10月', amount: '亿元级人民币', valuation: '—', investors: '联创资本（领投）；星涵资本担任财务顾问' },
+        { round: '战略融资', date: '2024年5月', amount: '未披露', valuation: '—', investors: '联想创投（领投）；广州华南理工大学资产经营有限公司' },
+        { round: '股权融资', date: '2024年12月', amount: '未披露', valuation: '—', investors: '前海互兴' },
+        { round: 'A轮', date: '2025年1月', amount: '未披露', valuation: '—', investors: '清智资本、天鹰资本' },
+        { round: 'A1&A2轮', date: '2025年7月', amount: '数亿元', valuation: '—', investors: '成都科创投、洪泰基金（联合领投）；天鹰资本、四川院士基金、南山战新投、一村淞灵、探元创投；老股东联想创投持续加码' },
+        { round: 'A+轮', date: '2025年7月', amount: '数亿元', valuation: '—', investors: '一村资本、南山战新投、四川院士基金、天鹰资本、成都科创投集团、探元基金、洪泰基金；联想创投等老股东持续加码' }
+    ],
+    fundingNote: '📌 成立于2016年，累计融资超 ¥20亿。全球商用服务机器人领军企业，累计出货量突破 12万台，覆盖80余国。'
+},
+'优必选': {
+    name: '优必选',
+    name_en: 'UBTech',
+    website: 'https://www.ubtrobot.com',
+    founded: '2012年3月31日',
+    headquarters: '深圳',
+    segment: '人形整机 / 分层架构',
+    isOverseas: false,
+    valuation: '上市~550亿港元',
+    valuationCNY: 500,
+    currency: '港元',
+    latest: '战略融资$10亿',
+    date: '2025.08',
+    brain: '[Hierarchical] 分层架构',
+    training: '[Real-World-Data] 真实场景数据驱动',
+    scene: '[I-Heavy] [S-Comm]',
+    founders: [
+        {name: '周剑', title: '创始人、董事会主席兼行政总裁', bio: '带领优必选成为"人形机器人第一股"'}
+    ],
+    investors: [
+        {name: '正轩投资', round: '天使轮'},
+        {name: '启明创投', round: 'A轮'},
+        {name: '科大讯飞', round: 'A轮/A+轮'},
+        {name: '鼎晖投资', round: 'B轮'},
+        {name: '腾讯', round: 'C轮领投'},
+        {name: '鼎晖资本', round: 'C轮'},
+        {name: '亦庄国投', round: '基石投资'},
+        {name: 'Infiniti Capital', round: '战略融资'}
+    ],
+    fundingTable: [
+        { round: '天使轮', date: '2013年10月', amount: '¥2000万', valuation: '—', investors: '正轩投资、力合华睿' },
+        { round: 'A轮', date: '2015年3月', amount: '$2000万', valuation: '—', investors: '启明创投、科大讯飞' },
+        { round: 'A+轮', date: '2015年8月', amount: '$900万', valuation: '—', investors: '科大讯飞' },
+        { round: 'B轮', date: '2016年1月', amount: '$1亿', valuation: '$10亿', investors: '鼎晖投资、科大讯飞、中信证券、金石投资' },
+        { round: 'B+轮', date: '2018年1月', amount: '未披露', valuation: '—', investors: '徽派投资、鼎实财富、麦高富达、华金资本、华发集团等' },
+        { round: 'Pre-C轮', date: '2018年1月', amount: '未披露', valuation: '—', investors: '金箴资产、时代伯乐、居然之家、海献资本等' },
+        { round: 'C轮', date: '2018年5月', amount: '$8.2亿', valuation: '$50亿', investors: '腾讯（领投）；工商银行、海尔、民生证券、澳洲电信（Telstra）、居然之家、泰国正大集团、民生银行、宜信集团、中广核、铁投集团、松禾资本等；鼎晖资本追加' },
+        { round: '基石投资', date: '2023年12月', amount: '¥5亿', valuation: '—', investors: '亦庄国投' },
+        { round: 'IPO', date: '2023年12月29日', amount: '10.15亿港元', valuation: '375.65亿港元（首日）', investors: '港交所主板上市（9880.HK），"人形机器人第一股"' },
+        { round: '定向增发', date: '2025年7月', amount: '$3.15亿', valuation: '—', investors: '—' },
+        { round: '战略融资', date: '2025年8月', amount: '$10亿', valuation: '—', investors: 'Infiniti Capital' },
+        { round: '收购', date: '2025年12月', amount: '¥16.65亿', valuation: '—', investors: '收购上市公司润阳科技（300920.SZ）' }
+    ],
+    fundingNote: '📌 成立于2012年，"人形机器人第一股"。累计融资超¥56.1亿。目前市值约551亿港元。'
+},
+'Agility Robotics': {
+    name: 'Agility Robotics',
+    name_en: 'Agility Robotics',
+    website: 'https://www.agilityrobotics.com',
+    founded: '2015年',
+    headquarters: '美国俄勒冈',
+    segment: '人形整机 / 分层架构',
+    isOverseas: true,
+    valuation: '17.5亿美元',
+    valuationCNY: 127,
+    currency: '美元',
+    latest: 'C3轮$4亿',
+    date: '2025.06',
+    brain: '[Hierarchical] 分层架构',
+    training: '[Digit-V3] 数字化流程训练',
+    scene: '[L-Logistics] 仓储物流',
+    founders: [
+        {name: 'Jonathan Hurst', title: '联合创始人兼CTO', bio: '卡内基梅隆大学博士，俄勒冈州立大学机器人学教授'}
+    ],
+    fundingTable: [
+        { round: '大学衍生', date: '2015年1月', amount: '未披露', valuation: '—', investors: 'ETH Zurich Soft Robotics Lab孵化' },
+        { round: '加速器/孵化器', date: '2015年1月', amount: '未披露', valuation: '—', investors: '—' },
+        { round: '种子轮', date: '2016年10月', amount: '未披露', valuation: '—', investors: 'Playground Global、Konstantin Othmer、Tuff YEN' },
+        { round: 'A轮', date: '2018年2月', amount: '$800万', valuation: '—', investors: 'Playground Global、Konstantin Othmer、Tuff YEN' },
+        { round: 'A轮', date: '2020年10月', amount: '$2000万', valuation: '—', investors: 'DCVC (Data Collective)、Playground Global' },
+        { round: 'B轮', date: '2022年4月', amount: '$1.5亿', valuation: '—', investors: 'DCVC、Playground Global（领投）；10X Group、468 Capital、BITKRAFT Ventures、Casa Verde Capital、Dell Technologies Capital、FirstMark Capital、Firstminute Capital、Insight Partners、K2 Global、LA Famiglia、Sound Ventures、TDK Ventures、Team Global、Tribe Capital、XFactor Ventures；Marc Benioff、Paul George、Ryan Tedder、Steve Aoki、Gwyneth Paltrow、James Corden等名人；Amazon' },
+        { round: 'C轮', date: '2024年10月', amount: '$1.1亿', valuation: '—', investors: 'Virginia Venture Partners、Y Combinator、Saturnin Pugnet' },
+        { round: 'C3轮', date: '2025年6月', amount: '$4亿', valuation: '~$21亿', investors: 'WP Global Partners（领投）；SoftBank、Amazon Industrial Innovation Fund、DCVC、Playground Global；NVentures (NVIDIA)、Sony Innovation Fund、Humanoid Global Holdings、Safar Partners' }
+    ],
+    fundingNote: '📌 成立于2015年，产品Digit是首款商业化人形机器人，采用RaaS模式。累计融资约 $6.83亿，估值约 $21亿。342名员工。'
+},
+// === 以上为由Word文档数据更新的公司 ===
                 '智在无界': {
                     name: '智在无界',
                     name_en: 'BeingBeyond',
@@ -1302,7 +1765,11 @@
                         {date: '2025.06', event: '发布Being-VL、Being-H、Being-M、Being-W四大核心模型'},
                         {date: '2026.01', event: '发布Being-H0.5，实现30种不同机器人共享统一智能系统'},
                         {date: '2026.04', event: '发布最强世界模型U1'}
-                    ]
+                    ],
+                    fundingTable: [
+                        { round: '种子轮', date: '2025年6月', amount: '数千万元', valuation: '¥1.5亿', investors: '联想之星（领投）；智谱Z基金、燕缘创投、彬复资本跟投；势能资本担任独家财务顾问' }
+                    ],
+                    fundingNote: '📌 成立于2025年1月，北京。创始人卢宗青（北大计算机学院长聘副教授）。专注人形机器人通用大模型，发布首个面向人形机器人的通用智能体Being-0。'
                 },
                 'Tesla Optimus': {
                     name: 'Tesla Optimus',
@@ -1366,7 +1833,12 @@
                         {date: '2025.05', event: '完成A轮融资'},
                         {date: '2026.04.20', event: '发布#Sudo R1具身通用模型'},
                         {date: '2026.04', event: '完成5亿美元Pre-A轮融资，估值突破20亿美元（约140亿人民币）'}
-                    ]
+                    ],
+                    fundingTable: [
+                        { round: '天使轮', date: '2025年5月–年底', amount: '未披露', valuation: '—', investors: '宁德时代、阿里巴巴、高瓴创投、腾讯投资、蚂蚁集团、IDG资本、蓝驰创投、孚腾资本、复旦科创、云晖资本、绿洲资本、国寿股权、君联资本等' },
+                        { round: 'Pre-A轮', date: '2026年4月', amount: '$5亿（~¥34.1亿）', valuation: '$20亿（~¥136.4亿）', investors: '宁德时代、阿里巴巴、高瓴创投、腾讯投资、蚂蚁集团、IDG资本、蓝驰创投、孚腾资本、复旦科创、云晖资本、绿洲资本、国寿股权、君联资本' }
+                    ],
+                    fundingNote: '📌 成立仅一年，累计融资超¥140亿。核心产品Sudo R1采用3D世界模型与强化学习一体化设计，零真机数据训练即可实现近100%抓取成功率。'
                 },
                 '超维动力': {
                     name: '超维动力',
@@ -1394,7 +1866,13 @@
                     milestones: [
                         {date: '2025年', event: '公司成立'},
                         {date: '2026.04.26', event: '发布KAI人形机器人（全球最高自由度）'}
-                    ]
+                    ],
+                    fundingTable: [
+                        { round: '天使轮', date: '2025年', amount: '未披露', valuation: '—', investors: 'BV百度风投（领投）；Momenta、九识、星海图跟投' },
+                        { round: '种子+轮', date: '2025年', amount: '未披露', valuation: '—', investors: '速腾聚创（领投）；BV百度风投跟投' },
+                        { round: '天使轮', date: '2025年12月', amount: '未披露', valuation: '—', investors: '顺为资本（领投）；初心资本、BV百度风投超额跟投' }
+                    ],
+                    fundingNote: '📌 成立于2025年7月17日，深圳，香港设有研发中心。专注具身智能基础模型和智能机器人研发。'
                 },
                 '自然意志': {
                     name: '自然意志',
@@ -1421,10 +1899,14 @@
                         {name: '真格基金', round: '天使轮'}
                     ],
                     milestones: [
-                        {date: '2026.01.08', event: '公司成立'},
+                        {date: '2025.01.08', event: '公司成立'},
                         {date: '2026.01', event: '完成天使轮融资，估值约40亿人民币'},
                         {date: '2026.04', event: 'AI科技评论独家报道'}
-                    ]
+                    ],
+                    fundingTable: [
+                        { round: '天使轮', date: '2026年4月', amount: '未披露', valuation: '¥40亿', investors: 'IDG资本、峰瑞资本、真格基金' }
+                    ],
+                    fundingNote: '📌 成立于2026年，清华大学助理教授丁宁创立。专注通用物理智能，研发具备物理世界交互能力的"具身大脑"。'
                 }
             };
             
@@ -1625,41 +2107,135 @@
                 </div>
 
                 <div class="section">
-                    <div class="section-title">${t('sectionTeam')}</div>
-                    ${company.founders.length > 0 ? `
-                    <div class="team-list">
-                        ${company.founders.map(f => `
-                            <div class="team-card">
-                                <div class="team-name">${f.name}</div>
-                                <div class="team-title">${f.title}</div>
-                                ${f.bio ? `<div class="team-title" style="margin-top:6px;font-size:12px">${f.bio}</div>` : ''}
-                            </div>
-                        `).join('')}
-                    </div>
+                    <div class="section-title">👥 ${t('sectionTeam')}</div>
+                    ${company.founders && company.founders.length > 0 ? `
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>职位</th>
+                                <th>背景简介</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${company.founders.map(f => `
+                            <tr>
+                                <td class="name-cell">${f.name}</td>
+                                <td class="title-cell">${f.title}</td>
+                                <td class="bio-cell">${f.bio || '-'}</td>
+                            </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
                     ` : `<div class="loading">${t('noDataTeam')}</div>`}
                 </div>
 
                 <div class="section">
-                    <div class="section-title">${t('sectionInvestors')}</div>
-                    ${company.investors.length > 0 ? `
-                    <div class="investors-list">
-                        ${company.investors.map(i => `
-                            <span class="investor-tag">${i.name} <span style="color:var(--text-secondary)">${i.round}</span></span>
-                        `).join('')}
+                    <div class="section-title">💰 融资一览</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>轮次</th>
+                                <th>时间</th>
+                                <th>融资金额</th>
+                                <th>投后估值</th>
+                                <th>主要投资方</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${company.fundingTable && company.fundingTable.length > 0 ? 
+                                company.fundingTable.map(row => `
+                                <tr>
+                                    <td class="round-cell">${row.round}</td>
+                                    <td class="date-cell">${row.date}</td>
+                                    <td class="event-cell">${row.amount}</td>
+                                    <td class="round-cell">${row.valuation}</td>
+                                    <td class="event-cell">${row.investors}</td>
+                                </tr>
+                                `).join('') :
+                                (company.milestones ? company.milestones.map(m => {
+                                    // 跳过非融资事件
+                                    if (!m.event.match(/轮|IPO|上市|融资|募资|收购/i)) {
+                                        return '';
+                                    }
+                                    
+                                    // 解析轮次
+                                    let round = '-';
+                                    const roundPatterns = [
+                                        /^(种子轮|天使轮|[A-Z][轮期]|Pre-?[ABCDEFG]|A[+]?[轮期]|B[+]?[轮期]|C[+]?[轮期]|战略|收购)/i,
+                                        /(种子轮|天使轮|[A-Z][轮期]|Pre-?[ABCDEFG])/i
+                                    ];
+                                    for (const pattern of roundPatterns) {
+                                        const match = m.event.match(pattern);
+                                        if (match) {
+                                            round = match[0];
+                                            break;
+                                        }
+                                    }
+                                    
+                                    // 解析金额
+                                    let amount = '-';
+                                    const amountMatch = m.event.match(/[\$¥][^\\n,，()（)【】\[\]]+/g);
+                                    if (amountMatch) {
+                                        amount = amountMatch.filter(a => !a.includes('估值')).join(', ');
+                                    }
+                                    
+                                    // 解析估值
+                                    let valuation = '-';
+                                    const valPatterns = [
+                                        /估值[：:]\s*([^\n,，()（）【】[\]]+)/,
+                                        /\(([^)]*[估]?[^)]*)\)/,
+                                        /([\$¥][^\\n,，()（)【】[\]]+[^\\n,，]*估)/
+                                    ];
+                                    for (const pattern of valPatterns) {
+                                        const match = m.event.match(pattern);
+                                        if (match) {
+                                            let val = match[1] || match[0];
+                                            if (val.includes('估值')) {
+                                                val = val.replace(/估值/g, '').trim();
+                                            }
+                                            if (val.length > 2 && !val.includes('投资方')) {
+                                                valuation = val;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    // 解析投资方
+                                    let investors = '-';
+                                    const invPatterns = [
+                                        /\(([^)]+)\)/,
+                                        /（([^）]+)）/,
+                                        /([^\n,，。：:（）()]+(?:资本|投资|基金|集团| Partners?| Expeditions?| Ventures?| Holdings?| Capital))/g
+                                    ];
+                                    for (const pattern of invPatterns) {
+                                        const match = m.event.match(pattern);
+                                        if (match) {
+                                            let inv = Array.isArray(match) ? match.slice(0, 3).join('、') : match[1] || match[0];
+                                            if (!inv.includes('估值') && inv.length > 1) {
+                                                investors = inv;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    return `<tr>
+                                        <td class="round-cell">${round}</td>
+                                        <td class="date-cell">${m.date}</td>
+                                        <td class="event-cell">${amount}</td>
+                                        <td class="round-cell">${valuation}</td>
+                                        <td class="event-cell">${investors}</td>
+                                    </tr>`;
+                                }).join('') : '')
+                            }
+                        </tbody>
+                    </table>
+                    
+                    ${company.fundingNote ? `
+                    <div class="funding-note">
+                        <div class="funding-note-content">${company.fundingNote}</div>
                     </div>
-                    ` : `<div class="loading">${t('noDataInvestors')}</div>`}
-                </div>
-
-                <div class="section">
-                    <div class="section-title">${t('sectionMilestones')}</div>
-                    <div class="timeline">
-                        ${company.milestones.map(m => `
-                            <div class="timeline-item">
-                                <div class="timeline-date">${m.date}</div>
-                                <div class="timeline-event">${m.event}</div>
-                            </div>
-                        `).join('')}
-                    </div>
+                    ` : ''}
                 </div>
 
                 <div class="section">
