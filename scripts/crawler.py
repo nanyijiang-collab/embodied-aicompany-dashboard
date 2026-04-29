@@ -29,6 +29,31 @@ try:
 except Exception:
     pass
 
+# ============== 大公司具身智能过滤 ==============
+# NVIDIA、Tesla 业务广泛，需要额外过滤非具身智能新闻
+EMBODIED_AI_KEYWORDS = [
+    # 英文关键词
+    'robot', 'robotics', 'humanoid', 'embodied', 'automation',
+    'GR00T', 'Optimus', 'Digit', 'Atlas', 'Figure', 'physical intelligence',
+    '具身', '人形机器人', '机械臂', '机械手', '机器人', '自动化',
+    'industrial robot', 'service robot', 'autonomous', 'AI agent',
+    # NVIDIA 专用
+    'nvidia robot', 'nvidia humanoid', 'nvidia isaac', 'nvidia robotics',
+    '英伟达 机器人', '英伟达 具身', '英伟达 人形', '英伟达 自动驾驶',
+]
+
+def is_embodied_ai_related(title: str, company: str) -> bool:
+    """检查新闻标题是否与具身智能相关"""
+    title_lower = title.lower()
+    # 非 NVIDIA/Tesla 公司不需要过滤
+    if company not in ['NVIDIA', 'Tesla', 'Tesla Optimus']:
+        return True
+    # NVIDIA/Tesla 需要检查关键词
+    for keyword in EMBODIED_AI_KEYWORDS:
+        if keyword.lower() in title_lower:
+            return True
+    return False
+
 # ============== 链接验证器 ==============
 class LinkValidator:
     """链接质量验证器"""
@@ -731,7 +756,7 @@ class EmbodiedAICrawler:
             last_crawl = state.get('last_crawl', None)
             if last_crawl:
                 days_since = (datetime.now() - datetime.fromisoformat(last_crawl)).days
-                if days_since < 7:
+                if days_since < 1:
                     print('Skipping crawl (last: ' + last_crawl + ', ' + str(days_since) + ' days ago)')
                     return all_events
 
@@ -777,6 +802,9 @@ class EmbodiedAICrawler:
                 for event in events:
                     # 过滤黑名单来源
                     if event.get('source', '') in LinkValidator.SOURCE_BLACKLIST:
+                        continue
+                    # NVIDIA/Tesla 大公司具身智能过滤
+                    if not is_embodied_ai_related(event.get('title', ''), company['name']):
                         continue
                     # 双重去重：id去重 + 标题去重
                     norm_title = self._normalize_title(event.get('title', ''))
