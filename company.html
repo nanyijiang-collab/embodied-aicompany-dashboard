@@ -2153,7 +2153,80 @@
                                     <td class="event-cell">${row.investors}</td>
                                 </tr>
                                 `).join('') :
-                                `<tr><td colspan="5" style="text-align:center;color:var(--text-secondary);padding:20px;">暂无完整融资数据</td></tr>`
+                                (company.milestones ? company.milestones.map(m => {
+                                    // 跳过非融资事件
+                                    if (!m.event.match(/轮|IPO|上市|融资|募资|收购/i)) {
+                                        return '';
+                                    }
+                                    
+                                    // 解析轮次
+                                    let round = '-';
+                                    const roundPatterns = [
+                                        /^(种子轮|天使轮|[A-Z][轮期]|Pre-?[ABCDEFG]|A[+]?[轮期]|B[+]?[轮期]|C[+]?[轮期]|战略|收购)/i,
+                                        /(种子轮|天使轮|[A-Z][轮期]|Pre-?[ABCDEFG])/i
+                                    ];
+                                    for (const pattern of roundPatterns) {
+                                        const match = m.event.match(pattern);
+                                        if (match) {
+                                            round = match[0];
+                                            break;
+                                        }
+                                    }
+                                    
+                                    // 解析金额
+                                    let amount = '-';
+                                    const amountMatch = m.event.match(/[\$¥][^\\n,，()（)【】\[\]]+/g);
+                                    if (amountMatch) {
+                                        amount = amountMatch.filter(a => !a.includes('估值')).join(', ');
+                                    }
+                                    
+                                    // 解析估值
+                                    let valuation = '-';
+                                    const valPatterns = [
+                                        /估值[：:]\s*([^\n,，()（）【】[\]]+)/,
+                                        /\(([^)]*[估]?[^)]*)\)/,
+                                        /([\$¥][^\\n,，()（)【】[\]]+[^\\n,，]*估)/
+                                    ];
+                                    for (const pattern of valPatterns) {
+                                        const match = m.event.match(pattern);
+                                        if (match) {
+                                            let val = match[1] || match[0];
+                                            if (val.includes('估值')) {
+                                                val = val.replace(/估值/g, '').trim();
+                                            }
+                                            if (val.length > 2 && !val.includes('投资方')) {
+                                                valuation = val;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    // 解析投资方
+                                    let investors = '-';
+                                    const invPatterns = [
+                                        /\(([^)]+)\)/,
+                                        /（([^）]+)）/,
+                                        /([^\n,，。：:（）()]+(?:资本|投资|基金|集团| Partners?| Expeditions?| Ventures?| Holdings?| Capital))/g
+                                    ];
+                                    for (const pattern of invPatterns) {
+                                        const match = m.event.match(pattern);
+                                        if (match) {
+                                            let inv = Array.isArray(match) ? match.slice(0, 3).join('、') : match[1] || match[0];
+                                            if (!inv.includes('估值') && inv.length > 1) {
+                                                investors = inv;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    return `<tr>
+                                        <td class="round-cell">${round}</td>
+                                        <td class="date-cell">${m.date}</td>
+                                        <td class="event-cell">${amount}</td>
+                                        <td class="round-cell">${valuation}</td>
+                                        <td class="event-cell">${investors}</td>
+                                    </tr>`;
+                                }).join('') : '')
                             }
                         </tbody>
                     </table>
