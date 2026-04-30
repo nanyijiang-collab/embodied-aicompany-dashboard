@@ -1996,6 +1996,13 @@
                 return rn === nn || nn.includes(rn) || rn.includes(nn) ||
                        (ne && (rn.toLowerCase().includes(ne) || re.includes(nn.toLowerCase())));
             });
+            // 尝试从companyNameMap获取founders数据
+            const nameMapEntry = Object.entries(companyNameMap).find(([k]) => {
+                const kn = normName(k);
+                const ke = getEnglish(k);
+                return kn === nn || nn.includes(kn) || kn.includes(nn) ||
+                       (ne && (kn.toLowerCase().includes(ne) || ke.includes(nn.toLowerCase())));
+            })?.[1];
             // 尝试从tagsMap获取标签
             const tagEntry = Object.entries(companyTagsMap).find(([k]) => {
                 const kn = normName(k);
@@ -2018,7 +2025,7 @@
                     latest: rankingInfo.latest || '-',
                     latest_en: rankingInfo.latest_en || '',
                     date: rankingInfo.date || '',
-                    founders: [],
+                    founders: nameMapEntry?.founders || [],
                     investors: [],
                     brain: tagEntry?.brain || '',
                     training: tagEntry?.training || '',
