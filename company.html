@@ -1026,6 +1026,7 @@
             { company: '智平方机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年4月', headquarters: '深圳' },
             { company: '智在无界', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年1月', headquarters: '北京' },
             { company: 'Tesla Optimus', valuation: 'Tesla上市主体市值', segment: 'n.a.', isOverseas: true, founded: '2022年', headquarters: '美国弗里蒙特' },
+            { company: 'Sereact', valuation: '约6亿美元', segment: 'n.a.', isOverseas: true, founded: '2021年', headquarters: '德国斯图加特' },
             { company: '苏度科技', valuation: '约140亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年5月', headquarters: '上海' },
             { company: '超维动力', valuation: '新发布，估值待定', segment: 'n.a.', isOverseas: false, founded: '2025年', headquarters: '深圳' },
             { company: '自然意志', valuation: '约40亿人民币', segment: 'n.a.', isOverseas: false, founded: '2026年1月', headquarters: '北京' },
@@ -1094,7 +1095,8 @@
             '优必选': 'UBTech',
             '简智机器人': 'GenRobot.ai',
             '破壳机器人': 'Poke Robotics',
-            '星尘智能': 'Stardust Intelligence'
+            '星尘智能': 'Stardust Intelligence',
+            'Sereact': 'Sereact'
         };
         
                 // 公司标签映射（从companies.html同步）
@@ -1183,7 +1185,8 @@
             '坤维科技': { brain: '[Component] 核心零部件', training: '[Sensor-Fusion] 传感器融合', scene: '[I-Precision] 工业精密' },
             '因时机器人': { brain: '[Component] 核心零部件', training: '[Precision-Trans] 精密传动', scene: '[Component] 零部件' },
             '智平方机器人': { brain: '[E2E-VLA] 端到端视言行', training: '[VLA-Scaling] 模型规模化扩展', scene: '[Agnostic] 通用领域' },
-            '星源智机器人': { brain: '[World Model] 物理世界模型', training: '[Sim2Real-RL] 仿真强化学习', scene: '[I-Heavy] 重工业' }
+            '星源智机器人': { brain: '[World Model] 物理世界模型', training: '[Sim2Real-RL] 仿真强化学习', scene: '[I-Heavy] 重工业' },
+            'Sereact': { brain: '[E2E-VLA] 端到端视言行', training: '[Sim2Real-RL] 仿真强化学习', scene: '[L-Logistics] 仓储物流' }
         };
 
         async function loadData() {
@@ -1907,6 +1910,47 @@
                         { round: '天使轮', date: '2026年4月', amount: '未披露', valuation: '¥40亿', investors: 'IDG资本、峰瑞资本、真格基金' }
                     ],
                     fundingNote: '📌 成立于2026年，清华大学助理教授丁宁创立。专注通用物理智能，研发具备物理世界交互能力的"具身大脑"。'
+                },
+                'Sereact': {
+                    name: 'Sereact',
+                    name_en: 'Sereact GmbH',
+                    website: 'https://sereact.ai/',
+                    founded: '2021年',
+                    headquarters: '德国斯图加特',
+                    segment: '物理AI / 仓储物流机器人',
+                    isOverseas: true,
+                    valuation: '约6亿美元',
+                    valuationCNY: 42,
+                    currency: '美元',
+                    latest: 'B轮',
+                    date: '2026.04',
+                    brain: '[E2E-VLA] 端到端视言行',
+                    training: '[Sim2Real-RL] 仿真强化学习',
+                    scene: '[L-Logistics] 仓储物流',
+                    founders: [
+                        {name: 'Ralf Gulde', title: 'CEO & 联合创始人'},
+                        {name: 'Marc Tuscher', title: 'CTO & 联合创始人'}
+                    ],
+                    investors: [
+                        {name: 'Headline', round: 'B轮'},
+                        {name: 'Bullhound Capital', round: 'B轮'},
+                        {name: 'Daphni', round: 'B轮'},
+                        {name: 'Felix Capital', round: 'B轮'},
+                        {name: 'Air Street Capital', round: 'A轮'},
+                        {name: 'Creandum', round: 'A轮'},
+                        {name: 'Point Nine', round: 'A轮'}
+                    ],
+                    milestones: [
+                        {date: '2021年', event: '公司成立于德国斯图加特'},
+                        {date: '2025年', event: '完成A轮融资，Creandum领投'},
+                        {date: '2026年4月', event: '完成B轮融资1.1亿美元，Headline领投，累计融资超1.4亿美元'},
+                        {date: '2026年4月', event: '发布Cortex 2.0，融合VLA模型+世界模型'}
+                    ],
+                    fundingTable: [
+                        { round: 'A轮', date: '2025年', amount: '未披露', valuation: '—', investors: 'Creandum（领投）；Air Street Capital、Point Nine跟投' },
+                        { round: 'B轮', date: '2026年4月', amount: '1.1亿美元', valuation: '约6亿美元', investors: 'Headline（领投）；Bullhound Capital、Daphni、Felix Capital跟投' }
+                    ],
+                    fundingNote: '📌 德国斯图加特AI机器人软件公司，使命"One Brain. Any Robot."。核心产品Cortex机器人大脑（VLA+世界模型），累计完成超10亿次真实生产抓取，欧洲部署200+套系统，服务Daimler Truck、BMW、Mercedes-Benz、bol.等客户。'
                 }
             };
             
