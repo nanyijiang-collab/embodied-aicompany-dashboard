@@ -1031,7 +1031,8 @@
             { company: '超维动力', valuation: '新发布，估值待定', segment: 'n.a.', isOverseas: false, founded: '2025年', headquarters: '深圳' },
             { company: '自然意志', valuation: '约40亿人民币', segment: 'n.a.', isOverseas: false, founded: '2026年1月', headquarters: '北京' },
             { company: '地瓜机器人', valuation: '约20亿人民币', segment: 'n.a.', isOverseas: false, founded: '2024年1月', headquarters: '深圳' },
-            { company: '星源智机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' }
+            { company: '星源智机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
+            { company: '原力无限', valuation: '超5亿订单', segment: 'n.a.', isOverseas: false, founded: '2023年', headquarters: '杭州' }
         ];
 
 // 公司名英文映射
@@ -1096,7 +1097,8 @@
             '简智机器人': 'GenRobot.ai',
             '破壳机器人': 'Poke Robotics',
             '星尘智能': 'Stardust Intelligence',
-            'Sereact': 'Sereact'
+            'Sereact': 'Sereact',
+            '原力无限': 'INFIFORCE'
         };
         
                 // 公司标签映射（从companies.html同步）
@@ -1186,7 +1188,8 @@
             '因时机器人': { brain: '[Component] 核心零部件', training: '[Precision-Trans] 精密传动', scene: '[Component] 零部件' },
             '智平方机器人': { brain: '[E2E-VLA] 端到端视言行', training: '[VLA-Scaling] 模型规模化扩展', scene: '[Agnostic] 通用领域' },
             '星源智机器人': { brain: '[World Model] 物理世界模型', training: '[Sim2Real-RL] 仿真强化学习', scene: '[I-Heavy] 重工业' },
-            'Sereact': { brain: '[E2E-VLA] 端到端视言行', training: '[Sim2Real-RL] 仿真强化学习', scene: '[L-Logistics] 仓储物流' }
+            'Sereact': { brain: '[E2E-VLA] 端到端视言行', training: '[Sim2Real-RL] 仿真强化学习', scene: '[L-Logistics] 仓储物流' },
+            '原力无限': { brain: '[World Model] 世界模型', training: '[VLA+World-Model] VLA与世界模型协同', scene: '[I-Heavy] [S-Comm] 重工业/商业服务' }
         };
 
         async function loadData() {
@@ -1951,6 +1954,44 @@
                         { round: 'B轮', date: '2026年4月', amount: '1.1亿美元', valuation: '约6亿美元', investors: 'Headline（领投）；Bullhound Capital、Daphni、Felix Capital跟投' }
                     ],
                     fundingNote: '📌 德国斯图加特AI机器人软件公司，使命"One Brain. Any Robot."。核心产品Cortex机器人大脑（VLA+世界模型），累计完成超10亿次真实生产抓取，欧洲部署200+套系统，服务Daimler Truck、BMW、Mercedes-Benz、bol.等客户。'
+                },
+                '原力无限': {
+                    name: '原力无限',
+                    name_en: 'INFIFORCE',
+                    website: 'https://infiforce.cn',
+                    founded: '2023年',
+                    headquarters: '杭州',
+                    segment: '具身大脑 / 人形整机',
+                    isOverseas: false,
+                    valuation: '超5亿订单',
+                    valuationCNY: 5,
+                    currency: '人民币',
+                    latest: '具身大脑训练中心揭牌',
+                    date: '2026.04',
+                    brain: '[World Model] 世界模型',
+                    training: '[VLA+World-Model] VLA与世界模型协同',
+                    scene: '[I-Heavy] [S-Comm] 重工业/商业服务',
+                    founders: [
+                        {name: '白惠源 (Isabella Bai)', title: '创始人/CEO', bio: '阿里前副总裁，百亿独角兽创业经历；2023年创立原力无限（INFIFORCE），母公司ELU.AI'},
+                        {name: '王一舟', title: 'CTO', bio: 'UC Berkeley机械工程博士，前英伟达高级工程经理；GEIA Asia 2026发表《原力觉醒：从智驾看具身》'},
+                        {name: '陈佳玉', title: '首席科学家', bio: 'VLA与世界模型前沿研究；第一新声专访阐述具身智能技术路线'}
+                    ],
+                    investors: [
+                        {name: '待确认', round: '—'}
+                    ],
+                    milestones: [
+                        {date: '2023年', event: '公司成立，母公司ELU.AI，专注具身大脑核心技术'},
+                        {date: '2026.01', event: 'CEO白惠源CES 2026核心圆桌论坛演讲'},
+                        {date: '2026.02', event: '前英伟达自动驾驶创始人加入'},
+                        {date: '2026.04', event: 'CTO王一舟GEIA Asia 2026发表《原力觉醒：从智驾看具身》'},
+                        {date: '2026.04', event: '全球首个具身大脑训练中心在杭州云谷中心D7揭牌'},
+                        {date: '2025年', event: '2025年商业订单超5亿元，单笔最大2.6亿元（全球具身智能赛道纪录）'},
+                        {date: '进行中', event: 'FORCE系列在全国30+城市规模化落地，启动数据飞轮'}
+                    ],
+                    fundingTable: [
+                        { round: '—', date: '—', amount: '未公开', valuation: '—', investors: '待确认' }
+                    ],
+                    fundingNote: '📌 核心技术：Hyper-VLA（模仿学习，快速落地）+ 因果世界模型（物理推理，3-5年成熟期），双模型协同闭环。六要素框架：感知→理解→推理→预测→执行→学习。产品矩阵：AstroDroid（通用人形）、小原子（教育陪伴）、UltraDroid（特种）、FORCE（垂直场景已商业验证）。全栈AI Infra覆盖数据采集→仿真生成→模型训练→部署反馈。杭州总部+深圳研究院+北京实验室。'
                 }
             };
             
