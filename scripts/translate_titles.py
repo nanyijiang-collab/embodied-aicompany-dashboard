@@ -51,15 +51,15 @@ def main():
     print(f"\n并行翻译 {len(batch)} 条 ({THREADS} 线程)...\n")
     start = time.time()
     
-    # 多线程并行翻译
-    translations = []
+    # 多线程并行翻译（用 index 保证结果顺序与 batch 一致）
+    translations = [''] * len(batch)
     with ThreadPoolExecutor(max_workers=THREADS) as executor:
         futures = {executor.submit(translate_single, t): i for i, t in enumerate(batch)}
-        
+
         completed = 0
         for future in as_completed(futures):
-            result = future.result()
-            translations.append(result)
+            orig_idx = futures[future]
+            translations[orig_idx] = future.result()
             completed += 1
             if completed % 100 == 0:
                 print(f"  进度: {completed}/{len(batch)}")
