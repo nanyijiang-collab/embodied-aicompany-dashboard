@@ -894,22 +894,140 @@ personnel_events = [
         "source": "AI科技评论",
         "source_url": "https://www.m.aitntnews.com/newDetail.html?newId=24473",
         "date": "2026-01-08"
+    },
+    # ===== 2026-05-21 新增人事动态 =====
+    {
+        "company": "斜跃智能",
+        "person_name": "陈伟",
+        "action": "创业",
+        "old_role": "理想汽车AI首席科学家/基座模型负责人",
+        "new_role": "董事长兼CTO",
+        "title": "理想汽车前AI首席科学家陈伟联合创办斜跃智能",
+        "title_en": "Ex-Li Auto AI Chief Scientist Chen Wei Co-founds Xieyue Intelligence",
+        "summary": "理想汽车前AI首席科学家、基座模型负责人陈伟，联合理想前第二产品线总裁张骁，于2026年1月共同创办消费级具身智能公司斜跃智能。陈伟任董事长兼CTO（持股43.5%），带队完成理想智能座舱自研、MindGPT研发及马赫100芯片研发。获元璟资本、理想汽车数千万元天使轮投资。",
+        "source": "21世纪经济报道",
+        "source_url": "https://m.21jingji.com/article/20260409/61e0fad58a48ab82eda3c122f9f05abb.html",
+        "date": "2026-04-07"
+    },
+    {
+        "company": "斜跃智能",
+        "person_name": "张骁",
+        "action": "创业",
+        "old_role": "理想汽车前第二产品线总裁",
+        "new_role": "CEO",
+        "title": "理想汽车前产品线总裁张骁联合创办斜跃智能任CEO",
+        "title_en": "Ex-Li Auto Product President Zhang Xiao Co-founds Xieyue Intelligence as CEO",
+        "summary": "理想汽车前第二产品线总裁张骁，与陈伟联合创办斜跃智能，任CEO（持股28.5%）。张骁为资深产品经理，深度参与理想L9产品定义，推动'冰箱、彩电、大沙发'配置策略。公司聚焦家庭场景消费级具身智能。",
+        "source": "21世纪经济报道",
+        "source_url": "https://finance.sina.com.cn/wm/2026-04-08/doc-inhtuqhe1612743.shtml",
+        "date": "2026-04-07"
+    },
+    {
+        "company": "鹿明机器人",
+        "person_name": "喻超",
+        "action": "创业",
+        "old_role": "追觅科技人形机器人业务负责人/创新机器人研究院负责人",
+        "new_role": "创始人兼CEO",
+        "title": "追觅前人形机器人负责人喻超创办鹿明机器人，A轮累计融资近10亿元",
+        "title_en": "Ex-Dreame Robotics Head Yu Chao Founds Luming Robotics, Raises ~1B RMB in Series A",
+        "summary": "喻超2020年加入追觅，负责人形机器人业务及创新机器人研究院，带队完成小米CyberDog电机研发与量产、追觅四足机器人研发。2024年9月创办鹿明机器人，2026年5月连续完成A1/A2两轮数亿元融资（三菱电机领投），累计融资近10亿元。自主研发FastUMI Pro数据采集系统。",
+        "source": "搜狐网",
+        "source_url": "https://www.sohu.com/a/1021264029_646494",
+        "date": "2026-05-12"
+    },
+    {
+        "company": "乐享科技",
+        "person_name": "郭人杰",
+        "action": "创业",
+        "old_role": "追觅科技中国区执行总裁",
+        "new_role": "创始人兼CEO",
+        "title": "追觅前中国区执行总裁郭人杰创办乐享科技/Zeroth元点智能",
+        "title_en": "Ex-Dreame China President Guo Renjie Founds Zeroth for Home Humanoid Robots",
+        "summary": "郭人杰（'95后'）三年内从追觅营销总监升至中国区执行总裁，推动中国区业务从0到60亿突破。2024年底离职创办乐享科技，品牌名Zeroth元点智能，聚焦消费级家用具身智能机器人。2025年累计完成近2亿+1亿+2亿三轮融资。2026年3月AWE首秀，5月接入腾讯OpenClaw（小龙虾）。",
+        "source": "新浪财经",
+        "source_url": "https://finance.sina.com.cn/tech/roll/2026-05-19/doc-inhymcpp2315698.shtml",
+        "date": "2026-05-19"
+    },
+    {
+        "company": "魔法原子",
+        "person_name": "吴长征",
+        "action": "创业",
+        "old_role": "魔法原子创始人兼CEO",
+        "new_role": "墨奇智能创始人",
+        "title": "魔法原子创始人吴长征离职后创办墨奇智能，继续布局机器人",
+        "title_en": "MagicLab Founder Wu Changzheng Starts New Venture Moqi Intelligence",
+        "summary": "魔法原子创始人吴长征于2026年3月正式离职后，已启动个人创业项目墨奇智能，继续布局四足、轮式和人形机器人业务线。吴长征2024年1月以创始团队成员身份加入魔法原子出任CEO，推动人形机器人'小麦'及MagicDog系列发布，带领公司完成央视春晚百台机器人群控表演。",
+        "source": "新浪财经",
+        "source_url": "https://finance.sina.com.cn/tech/roll/2026-05-19/doc-inhymcpp2315698.shtml",
+        "date": "2026-05-19"
+    },
+    {
+        "company": "智元机器人",
+        "person_name": "邓泰华",
+        "action": "创业",
+        "old_role": "-",
+        "new_role": "临界点（AGILINK）创始人/法定代表人",
+        "title": "智元机器人拆分灵巧手业务成立临界点AGILINK，邓泰华任法定代表人",
+        "title_en": "AgiBot Spins Off Dexterous Hand Unit as AGILINK, Valued at $1B in 5 Months",
+        "summary": "2026年1月，智元机器人拆分灵巧手业务成立独立子公司临界点（AGILINK），法定代表人邓泰华，实际业务由前腾讯Robotics X核心成员熊坤带队。2026年5月完成第四轮融资数亿元，估值突破10亿美元成为'光速独角兽'。灵巧手累计交付超8000台。",
+        "source": "澎湃新闻",
+        "source_url": "https://news.qq.com/rain/a/20260520A02COR00",
+        "date": "2026-05-19"
+    },
+    {
+        "company": "智元机器人",
+        "person_name": "熊坤",
+        "action": "创业",
+        "old_role": "腾讯Robotics X实验室核心成员/智元灵巧手业务负责人",
+        "new_role": "临界点（AGILINK）实际负责人",
+        "title": "前腾讯Robotics X核心成员熊坤带队智元拆分项目临界点AGILINK",
+        "title_en": "Ex-Tencent Robotics X Core Member Xiong Kun Leads AgiBot Spin-off AGILINK",
+        "summary": "熊坤毕业于香港科技大学机器人研究所，曾任腾讯Robotics X实验室核心成员，深度参与实验室从0到1创建。后任智元机器人灵巧手业务负责人，2026年1月带队拆分成立临界点（AGILINK），专注灵巧手研发，5个月内完成四轮融资估值破10亿美元。",
+        "source": "澎湃新闻",
+        "source_url": "https://news.qq.com/rain/a/20260520A02COR00",
+        "date": "2026-05-19"
     }
 ]
+
+def is_personnel_exists(events, pe):
+    """检查人事事件是否已存在于事件库中"""
+    company = pe['company']
+    date = pe['date']
+    person_name = pe['person_name']
+    action = pe['action']
+    title_norm = normalize_text(pe['title'])
+    for e in events:
+        if e.get('company') != company:
+            continue
+        if e.get('date', '')[:10] != date:
+            continue
+        if e.get('person_name', '') == person_name and e.get('action', '') == action:
+            return True
+        # 标题相似度兜底
+        if e.get('type') == 'personnel' and similarity(title_norm, normalize_text(e.get('title', ''))) >= 0.8:
+            return True
+    return False
 
 def main():
     # 加载现有事件
     events = load_events()
     existing_ids = {e.get('id') for e in events}
     
-    # 生成新事件
+    # 生成新事件（插入前去重检查）
     new_count = 0
+    skipped = 0
     for pe in personnel_events:
+        # 先检查是否已存在
+        if is_personnel_exists(events, pe):
+            skipped += 1
+            continue
+        
         event_id = generate_id(pe['company'], pe['date'])
         idx = 0
         while event_id in existing_ids:
             idx += 1
             event_id = generate_id(pe['company'], pe['date'], idx)
+        existing_ids.add(event_id)
         
         event = {
             "id": event_id,
@@ -933,13 +1051,16 @@ def main():
         new_count += 1
         print(f"+ {pe['company']} - {pe['person_name']} {pe['action']} ({pe['date']})")
     
-    # 去重
+    if skipped > 0:
+        print(f"\n[Skip] {skipped} existing personnel events skipped")
+    
+    # 最终安全去重（防御性）
     print("\n[Dedup] Running deduplication...")
     events = deduplicate_events(events)
     
     # 保存
     save_events(events)
-    print(f"[OK] Added {new_count} personnel events")
+    print(f"[OK] Added {new_count} new personnel events")
     print(f"[Total] Current events: {len(events)}")
 
 if __name__ == '__main__':
