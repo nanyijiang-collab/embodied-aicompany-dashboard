@@ -1,0 +1,1791 @@
+
+        // ========== i18n 双语翻译系统 ==========
+        let currentLang = localStorage.getItem('lang') || 'zh';
+
+        const i18n = {
+            zh: {
+                backBtn: '← 返回上一页',
+                pageTitle: '公司详情',
+                loading: '加载中...',
+                errorNotFound: '未找到公司：',
+                errorNotFoundHint: '请返回主页选择有效的公司',
+                errorLoadFailed: '数据加载失败',
+                errorNoCompany: '未指定公司',
+                errorNoCompanyHint: '请通过 ?name=公司名 访问',
+                valuationLabel: '估值',
+                foundedLabel: '成立时间',
+                hqLabel: '总部',
+                latestFundingLabel: '最新融资',
+                latestEventLabel: '最新事件',
+                sectionTechTags: '🏷️ 技术标签',
+                labelBrain: '🧠 大脑架构',
+                labelTraining: '📊 训练范式',
+                labelScene: '🎯 商业场景',
+                sectionPositioning: '📍 定位说明',
+                sectionTechPath: '🔍 技术路径说明',
+                techPathCompanyPos: '公司定位：',
+                techPathDataMethod: '数据获取方式：',
+                sectionTeam: '👥 创始团队',
+                sectionInvestors: '💰 投资方',
+                sectionMilestones: '📅 重大事件',
+                sectionNews: '📰 最新动态',
+                newsCount: '条',
+                eventUnknownSource: '未知来源',
+                eventReadOriginal: '阅读原文 →',
+                noData: '暂无动态数据',
+                noDataTeam: '暂无团队数据',
+                noDataInvestors: '暂无投资方数据',
+                // 事件类型
+                typeFunding: '融资',
+                typeProduct: '产品发布',
+                typeTech: '技术突破',
+                typeProject: '项目落地',
+                typeEvent: '活动展会',
+                typeInterview: '采访观点',
+                typePersonnel: '人事动态',
+                typeOther: '其他',
+                // 数据路径
+                pathTeleop: '遥操作',
+                pathVideo: '视频学习',
+                pathSim: '仿真',
+                pathSimTeleop: '仿真+遥操作',
+                pathReal: '物理世界',
+                pathHybrid: '混合',
+                // 数据路径描述
+                pathDescTeleop: '通过人类操作员使用VR手柄、外骨骼或示教器远程控制机器人，采集人类演示数据。数据质量高但规模受限，适合精细操作任务（如灵巧手操作）。',
+                pathDescVideo: '从YouTube、纪录片、教学视频等互联网视频中学习人类动作模式。数据规模大但需解决Sim2Real泛化问题，适合通用技能学习。',
+                pathDescSim: '在Isaac Gym、Mujoco、UniSim等仿真平台中合成训练数据。可大规模生成但存在Sim2Real gap，需Domain Randomization等技巧。',
+                pathDescSimTeleop: '结合仿真合成和遥操作采集的数据，兼顾规模和质量。仿真数据用于预训练，遥操作数据用于微调。',
+                pathDescReal: '直接在实际机器人或物理环境中采集数据。真实性最高但成本高、风险大，适合落地验证。',
+                pathDescHybrid: '综合使用多种数据获取方式，兼顾数据规模、质量和泛化能力。'
+            },
+            en: {
+                backBtn: '← Back',
+                pageTitle: 'Company Details',
+                loading: 'Loading...',
+                errorNotFound: 'Company not found: ',
+                errorNotFoundHint: 'Please go back and select a valid company',
+                errorLoadFailed: 'Failed to load data',
+                errorNoCompany: 'No company specified',
+                errorNoCompanyHint: 'Please access via ?name=CompanyName',
+                valuationLabel: 'Valuation',
+                foundedLabel: 'Founded',
+                hqLabel: 'HQ',
+                latestFundingLabel: 'Latest Funding',
+                latestEventLabel: 'Latest Event',
+                sectionTechTags: '🏷️ Tech Tags',
+                labelBrain: '🧠 Brain Architecture',
+                labelTraining: '📊 Training Paradigm',
+                labelScene: '🎯 Business Scenarios',
+                sectionPositioning: '📍 Positioning',
+                sectionTechPath: '🔍 Tech Path',
+                techPathCompanyPos: 'Company Position: ',
+                techPathDataMethod: 'Data Acquisition: ',
+                sectionTeam: '👥 Founding Team',
+                sectionInvestors: '💰 Investors',
+                sectionMilestones: '📅 Milestones',
+                sectionNews: '📰 Latest News',
+                newsCount: 'items',
+                eventUnknownSource: 'Unknown source',
+                eventReadOriginal: 'Read original →',
+                noData: 'No news data available',
+                noDataTeam: 'No team data available',
+                noDataInvestors: 'No investor data available',
+                // Event types
+                typeFunding: 'Funding',
+                typeProduct: 'Product Launch',
+                typeTech: 'Tech Breakthrough',
+                typeProject: 'Project Deployment',
+                typeEvent: 'Events & Exhibitions',
+                typeInterview: 'Interviews & Opinions',
+                typePersonnel: 'Personnel',
+                typeOther: 'Other',
+                // Data paths
+                pathTeleop: 'Teleoperation',
+                pathVideo: 'Video Learning',
+                pathSim: 'Simulation',
+                pathSimTeleop: 'Sim + Teleop',
+                pathReal: 'Real World',
+                pathHybrid: 'Hybrid',
+                // Data path descriptions
+                pathDescTeleop: 'Remote control of robots via VR controllers, exoskeletons, or teach pendants by human operators. High data quality but limited scale, suitable for fine manipulation tasks.',
+                pathDescVideo: 'Learning human action patterns from internet videos (YouTube, documentaries, tutorials). Large-scale data but requires Sim2Real generalization, suitable for general skill learning.',
+                pathDescSim: 'Synthesizing training data in simulation platforms like Isaac Gym, Mujoco, UniSim. Scalable generation but Sim2Real gap exists, requiring Domain Randomization techniques.',
+                pathDescSimTeleop: 'Combining simulation-synthesized and teleoperation-collected data, balancing scale and quality. Simulation data for pre-training, teleoperation data for fine-tuning.',
+                pathDescReal: 'Collecting data directly from real robots or physical environments. Highest authenticity but high cost and risk, suitable for deployment validation.',
+                pathDescHybrid: 'Using multiple data acquisition methods comprehensively, balancing data scale, quality, and generalization capability.'
+            }
+        };
+
+        function t(key) {
+            return i18n[currentLang][key] || i18n.zh[key] || key;
+        }
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            // Update button active state
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.trim() === (lang === 'zh' ? '中文' : 'EN'));
+            });
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            applyTranslations();
+        }
+
+        function applyTranslations() {
+            const lang = currentLang;
+
+            // Static elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            // Page title
+            if (companyData) {
+                document.title = `${companyData.name} - ${t('pageTitle')}`;
+            }
+
+            // Back button
+            const backBtn = document.querySelector('.back-btn');
+            if (backBtn) backBtn.innerHTML = t('backBtn');
+
+            // Valuation label
+            const valLabel = document.querySelector('.valuation-label');
+            if (valLabel) {
+                const currencySymbol = companyData && companyData.currency === '美元' ? '💵' : '💴';
+                valLabel.textContent = `${t('valuationLabel')} ${currencySymbol}`;
+            }
+
+            // Stat labels
+            const statLabels = document.querySelectorAll('.stat-label');
+            if (statLabels[0]) statLabels[0].textContent = t('foundedLabel');
+            if (statLabels[1]) statLabels[1].textContent = t('hqLabel');
+            if (statLabels[2]) statLabels[2].textContent = t('latestFundingLabel');
+            if (statLabels[3]) statLabels[3].textContent = t('latestEventLabel');
+
+            // Section titles
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(titleEl => {
+                const text = titleEl.textContent;
+                if (text.includes('技术标签') || text.includes('Tech Tags')) titleEl.innerHTML = t('sectionTechTags');
+                else if (text.includes('定位说明') || text.includes('Positioning')) titleEl.innerHTML = t('sectionPositioning');
+                else if (text.includes('技术路径说明') || text.includes('Tech Path')) titleEl.innerHTML = t('sectionTechPath');
+                else if (text.includes('创始团队') || text.includes('Founding Team')) titleEl.innerHTML = t('sectionTeam');
+                else if (text.includes('投资方') || text.includes('Investors')) titleEl.innerHTML = t('sectionInvestors');
+                else if (text.includes('重大事件') || text.includes('Milestones')) titleEl.innerHTML = t('sectionMilestones');
+                else if (text.includes('最新动态') || text.includes('Latest News')) {
+                    const countMatch = titleEl.textContent.match(/\((\d+)/);
+                    const count = countMatch ? countMatch[1] : '0';
+                    titleEl.innerHTML = `${t('sectionNews')} (${count}${t('newsCount')})`;
+                }
+            });
+
+            // Tag labels (brain, training, scene)
+            const tagLabels = document.querySelectorAll('.section div[style*="font-size: 12px"]');
+            tagLabels.forEach(labelEl => {
+                const text = labelEl.textContent;
+                if (text.includes('大脑架构') || text.includes('Brain Architecture')) labelEl.innerHTML = t('labelBrain');
+                else if (text.includes('训练范式') || text.includes('Training Paradigm')) labelEl.innerHTML = t('labelTraining');
+                else if (text.includes('商业场景') || text.includes('Business Scenarios')) labelEl.innerHTML = t('labelScene');
+            });
+
+            // Tech path description - company position & data method
+            const strongEls = document.querySelectorAll('.section p strong');
+            strongEls.forEach(strongEl => {
+                const text = strongEl.textContent;
+                if (text.includes('公司定位') || text.includes('Company Position')) strongEl.textContent = t('techPathCompanyPos');
+                else if (text.includes('数据获取方式') || text.includes('Data Acquisition')) strongEl.textContent = t('techPathDataMethod');
+            });
+
+            // Data path description paragraph
+            if (companyData) {
+                const segmentParts = (companyData.segment || '').split(' / ');
+                const dataPath = segmentParts[1] || '混合';
+                const descKeyMap = {
+                    '遥操作': 'pathDescTeleop',
+                    '视频学习': 'pathDescVideo',
+                    '仿真': 'pathDescSim',
+                    '仿真+遥操作': 'pathDescSimTeleop',
+                    '物理世界': 'pathDescReal',
+                    '混合': 'pathDescHybrid'
+                };
+                const descKey = descKeyMap[dataPath];
+                const descPs = document.querySelectorAll('.section p[style*="margin-top: 12px"]');
+                descPs.forEach(p => {
+                    if (descKey && i18n[lang][descKey]) {
+                        p.textContent = i18n[lang][descKey];
+                    }
+                });
+            }
+
+            // Event meta: unknown source & read original
+            document.querySelectorAll('.event-meta span').forEach(span => {
+                const text = span.textContent;
+                if (text.includes('未知来源') || text.includes('Unknown source')) {
+                    span.textContent = `📍 ${t('eventUnknownSource')}`;
+                }
+            });
+            document.querySelectorAll('.event-link').forEach(link => {
+                link.textContent = t('eventReadOriginal');
+            });
+
+            // Event type badges
+            document.querySelectorAll('.event-badge').forEach(badge => {
+                const text = badge.textContent;
+                const typeMap = {
+                    '融资': 'typeFunding', 'Funding': 'typeFunding',
+                    '产品发布': 'typeProduct', 'Product Launch': 'typeProduct',
+                    '技术突破': 'typeTech', 'Tech Breakthrough': 'typeTech',
+                    '项目落地': 'typeProject', 'Project Deployment': 'typeProject',
+                    '活动展会': 'typeEvent', 'Events': 'typeEvent',
+                    '采访观点': 'typeInterview', 'Interviews': 'typeInterview',
+                    '人事动态': 'typePersonnel', 'Personnel': 'typePersonnel',
+                    '其他': 'typeOther', 'Other': 'typeOther'
+                };
+                for (const [cn, key] of Object.entries(typeMap)) {
+                    if (text === cn) {
+                        badge.textContent = t(key);
+                        break;
+                    }
+                }
+            });
+
+            // No data placeholder
+            document.querySelectorAll('.loading').forEach(el => {
+                const text = el.textContent;
+                if (text.includes('暂无动态数据') || text.includes('No news data')) el.textContent = t('noData');
+                else if (text.includes('暂无团队') || text.includes('No team data')) el.textContent = t('noDataTeam');
+                else if (text.includes('暂无投资方') || text.includes('No investor')) el.textContent = t('noDataInvestors');
+            });
+
+            // Error messages
+            document.querySelectorAll('.error-msg').forEach(errEl => {
+                const h2 = errEl.querySelector('h2');
+                const p = errEl.querySelector('p');
+                if (h2) {
+                    if (h2.textContent.includes('未找到公司') || h2.textContent.includes('not found')) h2.textContent = t('errorNotFound') + (companyName || '');
+                    else if (h2.textContent.includes('未指定公司') || h2.textContent.includes('No company')) h2.textContent = t('errorNoCompany');
+                    else if (h2.textContent.includes('数据加载失败') || h2.textContent.includes('Failed to load')) h2.textContent = t('errorLoadFailed');
+                }
+                if (p) {
+                    if (p.textContent.includes('请返回主页')) p.textContent = t('errorNotFoundHint');
+                    else if (p.textContent.includes('请通过')) p.textContent = t('errorNoCompanyHint');
+                }
+            });
+
+            // Update typeNames mapping for dynamic event rendering
+            typeNames = {
+                'funding': t('typeFunding'),
+                'product': t('typeProduct'),
+                'tech_breakthrough': t('typeTech'),
+                'project': t('typeProject'),
+                'event': t('typeEvent'),
+                'interview': t('typeInterview'),
+                'personnel': t('typePersonnel'),
+                'other': t('typeOther')
+            };
+        }
+
+        // 初始化语言状态
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = localStorage.getItem('lang') || 'zh';
+            if (lang !== 'zh') {
+                switchLanguage(lang);
+            }
+        });
+
+        // 从URL获取公司名
+        const params = new URLSearchParams(window.location.search);
+        const companyName = params.get('name');
+        
+        // 类型名称映射
+        let typeNames = {
+            'funding': '融资',
+            'product': '产品发布',
+            'tech_breakthrough': '技术突破',
+            'project': '项目落地',
+            'event': '活动展会',
+            'interview': '采访观点',
+            'personnel': '人事动态',
+            'other': '其他'
+        };
+        
+        // 公司名称映射（用于英文显示）
+        const companyNameMap = {
+            // 海外
+            'Figure AI': { name: 'Figure AI', nameEn: 'Figure AI' },
+            'Physical Intelligence': { name: 'Physical Intelligence', nameEn: 'Physical Intelligence' },
+            '1X Technologies': { name: '1X Technologies', nameEn: '1X Technologies' },
+            'Skild AI': { name: 'Skild AI', nameEn: 'Skild AI' },
+            'Apptronik': { name: 'Apptronik', nameEn: 'Apptronik' },
+            'Agility Robotics': { name: 'Agility Robotics', nameEn: 'Agility Robotics' },
+            'Sanctuary AI': { name: 'Sanctuary AI', nameEn: 'Sanctuary AI' },
+            'Sunday Robotics': { name: 'Sunday Robotics', nameEn: 'Sunday Robotics' },
+            'Field AI': { name: 'Field AI', nameEn: 'Field AI' },
+            'Mimic Robotics': { name: 'Mimic Robotics', nameEn: 'Mimic Robotics' },
+            'Anybotics': { name: 'Anybotics', nameEn: 'Anybotics' },
+            'Skydio': { name: 'Skydio', nameEn: 'Skydio' },
+            'Hexagon': { name: 'Hexagon', nameEn: 'Hexagon' },
+            'Boston Dynamics': { name: 'Boston Dynamics', nameEn: 'Boston Dynamics' },
+            'Tesla Optimus': { name: 'Tesla Optimus', nameEn: 'Tesla Optimus' },
+            // 国内（显示中文名，英文名统一放这里）
+            '英伟达 (NVIDIA)': { name: '英伟达', nameEn: 'NVIDIA' },
+            '宇树科技': { name: '宇树科技', nameEn: 'Unitree Robotics' },
+            '灵心巧手': { name: '灵心巧手', nameEn: 'Lingxin Qiaoshou' },
+            '银河通用': { name: '银河通用', nameEn: 'Galbot' },
+            '它石智航': { name: '它石智航', nameEn: 'Tashi Zhihang' },
+            '星海图': { name: '星海图', nameEn: 'StellarSea' },
+            '星动纪元': { name: '星动纪元', nameEn: 'Stardom Era' },
+            '智元机器人': { name: '智元机器人', nameEn: 'Agibot' },
+            '傅利叶智能': { name: '傅利叶智能', nameEn: 'Fourier Intelligence' },
+            '至简动力': { name: '至简动力', nameEn: 'Zhijian Dynamics' },
+            '光轮智能': { name: '光轮智能', nameEn: 'Guanglun Intelligence' },
+            '逐际动力': { name: '逐际动力', nameEn: 'Zorbit Dynamics' },
+            '无界动力': { name: '无界动力', nameEn: 'Wujie Dynamics' },
+            '智平方': { name: '智平方', nameEn: 'Zhipingfang' },
+            '千寻智能': { name: '千寻智能', nameEn: 'Qianxun Intelligence' },
+            '墨奇智能': { name: '墨奇智能', nameEn: 'Moqi Intelligence' },
+            '自变量机器人': { name: '自变量机器人', nameEn: 'Zibiangliang Robot' },
+            '帕西尼感知': { name: '帕西尼感知', nameEn: 'Paxini' },
+            '普渡机器人': { name: '普渡机器人', nameEn: 'Pudu Robotics' },
+            '魔法原子': { name: '魔法原子', nameEn: 'Magic Atom' },
+            '乐聚机器人': { name: '乐聚机器人', nameEn: 'Leju Robotics' },
+            '加速进化': { name: '加速进化', nameEn: 'Accelerated Evolution' },
+            '梅卡曼德': { name: '梅卡曼德', nameEn: 'Mech-Mind' },
+            '灵初智能': { name: '灵初智能', nameEn: 'Lingchu Intelligence' },
+            '思灵机器人': { name: '思灵机器人', nameEn: 'Agile Robots' },
+            '穹彻智能': { name: '穹彻智能', nameEn: 'Everyday Robots' },
+            '破壳机器人': { name: '破壳机器人', nameEn: 'PokeBot' },
+            '大晓机器人': { name: '大晓机器人', nameEn: 'Daxiao Robotics' },
+            '七腾机器人': { name: '七腾机器人', nameEn: 'Qiteng Robotics' },
+            '灵御智能': { name: '灵御智能', nameEn: 'Lingyu Intelligence' },
+            '觅蜂科技': { name: '觅蜂科技', nameEn: 'Mifeng Tech' },
+            '卧安机器人': { name: '卧安机器人', nameEn: 'Woan Robotics' },
+            '小鹏鹏行': { name: '小鹏鹏行', nameEn: 'XPeng Robotics' },
+            '云深处': { name: '云深处', nameEn: 'DeepCloud' },
+            '松延动力': { name: '松延动力', nameEn: 'Songyan Dynamics' },
+            '开普勒人形机器人': { name: '开普勒人形机器人', nameEn: 'Kepler Robotics' },
+            '理工华汇': { name: '理工华汇', nameEn: 'Beijing Robot' },
+            '天链机器人': { name: '天链机器人', nameEn: 'Tianlian Robotics' },
+            '青瞳视觉': { name: '青瞳视觉', nameEn: 'Qingtong Vision' },
+            '星尘智能': { name: '星尘智能', nameEn: 'Stardust Intelligence' },
+            '钛虎机器人': { name: '钛虎机器人', nameEn: 'Taihui Robotics' },
+            '苏度科技': { name: '苏度科技', nameEn: 'Sudo Robotics' },
+            '超维动力': { name: '超维动力', nameEn: 'Kinetix AI' },
+            '自然意志': { name: '自然意志', nameEn: 'Natural Will' },
+            '地瓜机器人': { name: '地瓜机器人', nameEn: 'Digua Robotics' },
+            '星源智机器人': { name: '星源智机器人', nameEn: 'StarSource AI' },
+            '优必选': { name: '优必选', nameEn: 'UBTech' },
+            '珞石机器人': { name: '珞石机器人', nameEn: 'Rokae' },
+            '镜识科技': { name: '镜识科技', nameEn: 'Jingshi Tech' },
+            '优理奇智能': { name: '优理奇智能', nameEn: 'YouLiQi' },
+            '艾欧': { name: '艾欧', nameEn: 'AIO' },
+            '戴盟': { name: '戴盟', nameEn: 'Daimon' },
+            '宇叠': { name: '宇叠', nameEn: 'Yudie' },
+            '诺亦腾': { name: '诺亦腾', nameEn: 'Noitom' },
+            '跨维智能': { name: '跨维智能', nameEn: 'Kuawe Intelligence' },
+            '简智机器人': { name: '简智机器人', nameEn: 'Jianzhi Robotics' },
+            '智平方机器人': { name: '智平方机器人', nameEn: 'Zhipingfang Robot' },
+            '智在无界': { name: '智在无界', nameEn: 'BeingBeyond' },
+        };
+        
+        // 估值英文映射
+        const valuationEnMap = {
+            '390亿美元': '$39B',
+            '56亿美元': '$5.6B',
+            '100亿美元': '$10B',
+            '140亿美元': '$14B',
+            '53亿美元': '$5.3B',
+            '17.5亿美元': '$1.75B',
+            '约10亿美元': '~$1B',
+            '11.5亿美元': '$1.15B',
+            '约5亿美元': '~$500M',
+            '约2亿美元': '~$200M',
+            '约15亿美元': '~$1.5B',
+            '约200亿美元': '~$20B',
+            '上市~2万亿美元': 'Listed ~$2T',
+            '420亿人民币': '¥42B (~$5.8B)',
+            '240亿人民币': '¥24B (~$3.3B)',
+            '210亿人民币': '¥21B (~$2.9B)',
+            '216亿人民币': '¥21.6B (~$3B)',
+            '200亿人民币': '¥20B (~$2.8B)',
+            '130亿+人民币': '¥13B+ (~$1.8B+)',
+            '150亿人民币': '¥15B (~$2.1B)',
+            '80亿人民币': '¥8B (~$1.1B)',
+            '72亿+人民币': '¥7.2B+ (~$1B+)',
+            '70亿+人民币': '¥7B+ (~$970M+)',
+            '100亿+人民币': '¥10B+ (~$1.4B+)',
+            '90亿人民币': '¥9B (~$1.25B)',
+            '30亿+人民币': '¥3B+ (~$420M+)',
+            '20亿+人民币': '¥2B+ (~$280M+)',
+            '70亿+人民币': '¥7B+ (~$970M+)',
+            '15亿+人民币': '¥1.5B+ (~$210M+)',
+            '约4亿美元': '~$400M',
+            '约10亿人民币': '¥1B (~$140M)',
+            '约1亿人民币': '¥100M (~$14M)',
+            '约8亿人民币': '¥800M (~$110M)',
+            '约5亿人民币': '¥500M (~$70M)',
+            '约3亿人民币': '¥300M (~$42M)',
+            '约2亿人民币': '¥200M (~$28M)',
+            '约20亿人民币': '¥2B (~$280M)',
+            '约40亿人民币': '¥4B (~$560M)',
+            '约50亿人民币': '¥5B (~$700M)',
+            '约255亿港元': '~HK$25.5B',
+            '上市~550亿港元': 'Listed ~HK$55B',
+            'Tesla上市主体市值': 'Tesla Listed Value',
+            '新发布，估值待定': 'New Release, TBD',
+            '非上市': 'Unlisted',
+            '约140亿人民币': '¥14B (~$1.9B)',
+        };
+        
+        // 获取显示名称（根据语言）
+        function getDisplayName(companyName) {
+            const nameData = companyNameMap[companyName];
+            if (!nameData) return companyName;
+            return currentLang === 'en' ? nameData.nameEn : nameData.name;
+        }
+        
+        // 获取显示估值（根据语言）
+        function getDisplayValuation(valuation) {
+            if (currentLang === 'en') {
+                return valuationEnMap[valuation] || valuation;
+            }
+            return valuation;
+        }
+        
+        // 公司扩展数据（从rankingData加载）
+        let companyData = null;
+        
+                // rankingData - 所有公司基础数据（与index.html同步）
+        const rankingData = [
+            // === 海外公司 ===
+            { company: 'Figure AI', valuation: '390亿美元', segment: 'n.a.', isOverseas: true, founded: '2022年', headquarters: '美国加州' },
+            { company: 'Physical Intelligence', valuation: '56亿美元', segment: 'n.a.', isOverseas: true, founded: '2023年', headquarters: '美国旧金山' },
+            { company: '1X Technologies', valuation: '100亿美元', segment: 'n.a.', isOverseas: true, founded: '2014年', headquarters: '挪威奥斯陆/美国加州' },
+            { company: 'Skild AI', valuation: '140亿美元', segment: 'n.a.', isOverseas: true, founded: '2023年', headquarters: '美国匹兹堡' },
+            { company: 'Apptronik', valuation: '53亿美元', segment: 'n.a.', isOverseas: true, founded: '2016年', headquarters: '美国奥斯汀' },
+            { company: 'Agility Robotics', valuation: '17.5亿美元', segment: 'n.a.', isOverseas: true, founded: '2015年', headquarters: '美国俄勒冈' },
+            { company: 'Sanctuary AI', valuation: '约10亿美元', segment: 'n.a.', isOverseas: true, founded: '2018年', headquarters: '加拿大温哥华' },
+            { company: 'Sunday Robotics', valuation: '11.5亿美元', segment: 'n.a.', isOverseas: true, founded: '2024年', headquarters: '美国山景城' },
+            { company: 'Field AI', valuation: '约5亿美元', segment: 'n.a.', isOverseas: true, founded: '约2023年', headquarters: '海外' },
+            { company: 'Mimic Robotics', valuation: '约2亿美元', segment: 'n.a.', isOverseas: true, founded: '约2022年', headquarters: '德国' },
+            { company: 'Anybotics', valuation: '约5亿美元', segment: 'n.a.', isOverseas: true, founded: '2014年', headquarters: '瑞士苏黎世' },
+            { company: 'Skydio', valuation: '约10亿美元', segment: 'n.a.', isOverseas: true, founded: '2014年', headquarters: '美国加州' },
+            { company: 'Hexagon', valuation: '约200亿美元', segment: 'n.a.', isOverseas: true, founded: '1993年', headquarters: '瑞典斯德哥尔摩' },
+            { company: '英伟达 (NVIDIA)', valuation: '上市~2万亿美元', segment: 'n.a.', isOverseas: true, founded: '1993年', headquarters: '美国加州' },
+            // === 国内公司 ===
+            { company: '宇树科技', valuation: '420亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年', headquarters: '杭州' },
+            { company: '灵心巧手', valuation: '240亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年7月', headquarters: '北京' },
+            { company: '银河通用', valuation: '210亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年5月', headquarters: '北京' },
+            { company: '它石智航', valuation: '216亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '北京' },
+            { company: '星海图', valuation: '200亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年9月', headquarters: '北京' },
+            { company: '星动纪元', valuation: '130亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年8月', headquarters: '北京' },
+            { company: '智元机器人', valuation: '150亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年2月', headquarters: '上海' },
+            { company: '傅利叶智能', valuation: '80亿人民币', segment: 'n.a.', isOverseas: false, founded: '2015年7月', headquarters: '上海' },
+            { company: '至简动力', valuation: '72亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2025年7月', headquarters: '杭州' },
+            { company: '光轮智能', valuation: '70亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年1月', headquarters: '北京' },
+            { company: '逐际动力', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2022年1月', headquarters: '深圳' },
+            { company: '无界动力', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2025年2月', headquarters: '北京' },
+            { company: '智平方', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年4月', headquarters: '深圳' },
+            { company: '千寻智能', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2024年1月', headquarters: '深圳' },
+            { company: '墨奇智能', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年', headquarters: '深圳' },
+            { company: '自变量机器人', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年9月', headquarters: '深圳' },
+            { company: '帕西尼感知', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2021年6月', headquarters: '深圳' },
+            { company: '普渡机器人', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2016年1月', headquarters: '深圳' },
+            { company: '魔法原子', valuation: '100亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2024年1月', headquarters: '无锡' },
+            { company: '乐聚机器人', valuation: '90亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年', headquarters: '深圳' },
+            { company: '加速进化', valuation: '70亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年6月', headquarters: '北京' },
+            { company: '梅卡曼德', valuation: '30亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2016年9月', headquarters: '北京' },
+            { company: '灵初智能', valuation: '20亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2024年9月', headquarters: '上海' },
+            { company: '思灵机器人', valuation: '70亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2018年7月', headquarters: '北京/慕尼黑' },
+            { company: '穹彻智能', valuation: '15亿+人民币', segment: 'n.a.', isOverseas: false, founded: '2023年11月', headquarters: '上海' },
+            { company: '破壳机器人', valuation: '约4亿美元', segment: 'n.a.', isOverseas: false, founded: '2026年3月', headquarters: '北京' },
+            { company: '大晓机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年7月', headquarters: '上海' },
+            { company: '七腾机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2018年', headquarters: '重庆' },
+            { company: '灵御智能', valuation: '约1亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年2月', headquarters: '北京' },
+            { company: '觅蜂科技', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
+            { company: '国家地方共建具身智能机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '北京/上海' },
+            { company: '共建中心 (创新中心)', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '北京/上海' },
+            { company: '艾欧', valuation: '约8亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年5月', headquarters: '深圳' },
+            { company: '戴盟', valuation: '约8亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '深圳' },
+            { company: '宇叠', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2022年', headquarters: '南京' },
+            { company: '诺亦腾', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年(母公司2012年)', headquarters: '北京' },
+            { company: '跨维智能', valuation: '约8亿人民币', segment: 'n.a.', isOverseas: false, founded: '2021年6月', headquarters: '深圳' },
+            { company: '珞石机器人', valuation: '约20亿人民币', segment: 'n.a.', isOverseas: false, founded: '2015年', headquarters: '北京' },
+            { company: '镜识科技', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
+            { company: '优理奇智能', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2024年4月', headquarters: '苏州' },
+            { company: '优必选', valuation: '上市~550亿港元', segment: 'n.a.', isOverseas: false, founded: '2012年', headquarters: '深圳' },
+            { company: 'Boston Dynamics', valuation: '约15亿美元', segment: 'n.a.', isOverseas: true, founded: '1992年', headquarters: '美国波士顿' },
+            { company: '卧安机器人', valuation: '上市~255亿港元', segment: 'n.a.', isOverseas: false, founded: '2015年', headquarters: '深圳' },
+            { company: '小鹏鹏行', valuation: '约50亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年', headquarters: '深圳' },
+            { company: '云深处', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2017年', headquarters: '杭州' },
+            { company: '松延动力', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年9月', headquarters: '北京' },
+            { company: '卓益得机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2021年5月', headquarters: '上海' },
+            { company: '开普勒人形机器人', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年8月', headquarters: '上海' },
+            { company: '理工华汇', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2015年9月', headquarters: '北京' },
+            { company: '天链机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2012年7月', headquarters: '绵阳' },
+            { company: '青瞳视觉', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2018年', headquarters: '上海' },
+            { company: '国地具身智能', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '上海' },
+            { company: '北京人形机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '北京' },
+            { company: '国家地方共建具身智能机器人创新中心', valuation: '非上市', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '待确认' },
+            { company: '星尘智能', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2022年12月', headquarters: '深圳' },
+            { company: '钛虎机器人', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '2020年8月', headquarters: '上海' },
+            { company: '爱动超越', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '2017年6月', headquarters: '北京' },
+            { company: '千秒机器人', valuation: '约1亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2024年', headquarters: '待确认' },
+            { company: '坤维科技', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2018年5月', headquarters: '北京' },
+            { company: '因时机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '2016年', headquarters: '北京' },
+            { company: '灵宇宙', valuation: '约2亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' },
+            { company: '简智机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年5月', headquarters: '北京' },
+            { company: '智平方机器人', valuation: '约10亿人民币', segment: 'n.a.', isOverseas: false, founded: '2023年4月', headquarters: '深圳' },
+            { company: '智在无界', valuation: '约5亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年1月', headquarters: '北京' },
+            { company: 'Tesla Optimus', valuation: 'Tesla上市主体市值', segment: 'n.a.', isOverseas: true, founded: '2022年', headquarters: '美国弗里蒙特' },
+            { company: '苏度科技', valuation: '约140亿人民币', segment: 'n.a.', isOverseas: false, founded: '2025年5月', headquarters: '上海' },
+            { company: '超维动力', valuation: '新发布，估值待定', segment: 'n.a.', isOverseas: false, founded: '2025年', headquarters: '深圳' },
+            { company: '自然意志', valuation: '约40亿人民币', segment: 'n.a.', isOverseas: false, founded: '2026年1月', headquarters: '北京' },
+            { company: '地瓜机器人', valuation: '约20亿人民币', segment: 'n.a.', isOverseas: false, founded: '2024年1月', headquarters: '深圳' },
+            { company: '星源智机器人', valuation: '约3亿人民币', segment: 'n.a.', isOverseas: false, founded: '约2023年', headquarters: '待确认' }
+        ];
+
+// 公司名英文映射
+        const companyNameMapEN = {
+            'Figure AI': 'Figure AI',
+            'Physical Intelligence': 'Physical Intelligence',
+            '1X Technologies': '1X Technologies',
+            'Skild AI': 'Skild AI',
+            'Apptronik': 'Apptronik',
+            'Agility Robotics': 'Agility Robotics',
+            'Sanctuary AI': 'Sanctuary AI',
+            'Sunday Robotics': 'Sunday Robotics',
+            'Field AI': 'Field AI',
+            'Mimic Robotics': 'Mimic Robotics',
+            'Anybotics': 'Anybotics',
+            'Skydio': 'Skydio',
+            'Hexagon': 'Hexagon',
+            '英伟达 (NVIDIA)': 'NVIDIA',
+            'Boston Dynamics': 'Boston Dynamics',
+            'Tesla Optimus': 'Tesla Optimus',
+            '宇树科技': 'Unitree Robotics',
+            '灵心巧手': 'Dexterous Heart',
+            '银河通用': 'Galaxy Bots',
+            '星动纪元': 'Robot Era',
+            '智元机器人': 'AgiBot',
+            '逐际动力': 'CLIMBER Robotics',
+            '无界动力': 'Wujie Dynamics',
+            '傅利叶智能': 'Fourier Intelligence',
+            '思灵机器人': 'Agile Robots',
+            '魔法原子': 'MagicLab',
+            '千寻智能': 'Chasing Intelligence',
+            '墨奇智能': 'Moqi Intelligence',
+            '星海图': 'Sea of Stars',
+            '自变量机器人': 'Autobias Robotics',
+            '智平方': 'Botric',
+            '它石智航': 'Tashik',
+            '跨维智能': 'Mixverse',
+            '穹彻智能': 'Anyhome Robotics',
+            '帕西尼感知': 'Paxini',
+            '梅卡曼德': 'Mech-Mind',
+            '七腾机器人': 'Qitenn Robotics',
+            '珞石机器人': 'Rock robotics',
+            '镜识科技': 'MirrorTech',
+            '优理奇智能': 'Yulqi',
+            '加速进化': 'Boosted Robotics',
+            '灵初智能': 'Lingchu Intelligence',
+            '大晓机器人': 'Daxiao Robotics',
+            '地瓜机器人': 'Sweet Potato Robotics',
+            '觅蜂科技': 'Mifeng Technology',
+            '灵御智能': 'Lingyu Intelligence',
+            '卧安机器人': 'Woan Robotics',
+            '至简动力': 'ZhiJian Dynamics',
+            '苏度科技': 'Sudo Robotics',
+            '超维动力': 'Kinetix AI',
+            '自然意志': 'Natural Will',
+            '光轮智能': 'LightWheel Intelligence',
+            '乐聚机器人': 'Leju Robotics',
+            '小鹏鹏行': 'XPeng Robotics',
+            '松延动力': 'Songyan Dynamics',
+            '开普勒人形机器人': 'Kepler Humanoid',
+            '优必选': 'UBTech',
+            '简智机器人': 'GenRobot.ai',
+            '破壳机器人': 'Poke Robotics',
+            '星尘智能': 'Stardust Intelligence'
+        };
+        
+                // 公司标签映射（从companies.html同步）
+        const companyTagsMap = {
+            'NVIDIA': { brain: '[Platform-Infra] 平台与基建', training: '[Synthetic-Data] 合成数据驱动', scene: '[Agnostic] 通用领域' },
+            'Tesla Optimus': { brain: '[E2E-VLA] 端到端视言行', training: '[Real-World-Transfer] 真实视觉迁移', scene: '[I-Heavy] 重工业' },
+            'Figure AI': { brain: '[E2E-VLA] 端到端视言行', training: '[VLM-Micro-tuning] 多模态微调', scene: '[I-Heavy] [C-Home]' },
+            '1X Technologies': { brain: '[World Model] 世界模型', training: '[Video-Pretrain] 视频预训练', scene: '[S-Comm] [C-Home]' },
+            'Hexagon': { brain: '[Hierarchical] 分层架构', training: '[Digital-Twin] 数字孪生驱动', scene: '[I-Heavy] 重工业' },
+            'Skild AI': { brain: '[Cross-Embodiment] 跨本体', training: '[Heterogeneous-Data] 异构数据缩放', scene: '[I-Precision] [L-Log]' },
+            'Physical Intelligence': { brain: '[E2E-VLA] 端到端视言行', training: '[Foundation-Scale] 基础大模型规模', scene: '[Agnostic] 通用领域' },
+            '智元机器人': { brain: '[Hierarchical] 分层架构', training: '[Proprietary-IL] 自研模仿学习', scene: '[I-Light] [S-Comm]' },
+            '宇树科技': { brain: '[Sim2Real-RL] 仿真强化学习', training: '[Massive-RL] 暴力强化学习', scene: '[C-Edu] [L-Log]' },
+            '星尘智能': { brain: '[IL-Teleop] 模仿学习-遥操作', training: '[High-Precision-IL] 高精模仿', scene: '[I-Precision] [S-Comm]' },
+            '银河通用': { brain: '[Sim2Real-RL] 仿真强化学习', training: '[Synthetic-Generalist] 合成通用化', scene: '[L-Logistics] [I-Heavy]' },
+            '苏度科技': { brain: '[World Model] 世界模型', training: '[Zero-Shot-Sim] 零样本仿真训练', scene: '[I-Precision] 精密制造' },
+            '星海图': { brain: '[E2E-VLA] 端到端视言行', training: '[Hierarchical-VLA] 分层端到端', scene: '[L-Logistics] 仓储物流' },
+            '至简动力': { brain: '[Integrated-OEM] 软硬一体', training: '[Deep-Coupling] 深度耦合训练', scene: '[I-Heavy] [I-Light]' },
+            '逐际动力': { brain: '[Sim2Real-RL] 仿真强化学习', training: '[Locomotion-Expert] 运动控制专家', scene: '[L-Log] [Outdoor]' },
+            '无界动力': { brain: '[World Model] 世界模型', training: '[Shadow-Mode-RL] 影子模式强化学习', scene: '[I-Precision] 精密制造' },
+            '普渡机器人': { brain: '[Hierarchical] 分层架构', training: '[Scenario-Data] 垂直场景数据', scene: '[S-Commercial] 商业服务' },
+            '灵心巧手': { brain: '[Component] 核心零部件', training: '[Tactile-Focus] 触觉感知驱动', scene: '[I-Precision] 精密制造' },
+            '卧安机器人': { brain: '[Hierarchical] 分层架构', training: '[Consumer-Data] 消费者场景数据', scene: '[C-Home] 家庭消费' },
+            '光轮智能': { brain: '[Platform-Infra] 平台与基建', training: '[Gen-Data] 生成式仿真数据', scene: '[Agnostic] 通用领域' },
+            'Anybotics': { brain: '[Hierarchical] 分层架构', training: '[Field-RL] 实地强化学习', scene: '[H-Special] 特种巡检' },
+            'Mimic Robotics': { brain: '[IL-Teleop] 模仿学习-遥操作', training: '[Human-to-Robot-IL] 匠人技能克隆', scene: '[I-Precision] [I-Heavy]' },
+            '加速进化': { brain: '[Sim2Real-RL] 仿真强化学习', training: '[Algorithm-Bench] 算法基准训练', scene: '[Research] [L-Log]' },
+            '帕西尼感知': { brain: '[Component] 核心零部件', training: '[Tactile-Brain] 触觉大脑驱动', scene: '[I-Precision] 精密制造' },
+            '穹彻智能': { brain: '[Hierarchical] 分层架构', training: '[Force-Control-IL] 力控模仿学习', scene: '[I-Precision] 精密制造' },
+            '北京人形机器人创新中心': { brain: '[Platform-Hub] 平台与中心', training: '[Ecosystem-Data] 生态公共数据', scene: '[Agnostic] 通用领域' },
+            '优必选': { brain: '[Hierarchical] 分层架构', training: '[Real-World-Data] 真实场景数据驱动', scene: '[I-Heavy] [S-Comm]' },
+            '它石智航': { brain: '[Hierarchical] 分层架构', training: '[Industry-SOP] 工业标准流程训练', scene: '[L-Logistics] 仓储物流' },
+            '智平方': { brain: '[E2E-VLA] 端到端视言行', training: '[VLA-Scaling] 模型规模化扩展', scene: '[Agnostic] 通用领域' },
+            '千寻智能': { brain: '[E2E-VLA] 端到端视言行', training: '[Data-Scaling] 异构数据缩放训练', scene: '[I-Light] [S-Comm]' },
+            '墨奇智能': { brain: '[E2E-VLA] 端到端视言行', training: '[Multi-Body-Data] 多本体数据训练', scene: '[Agnostic] 通用领域' },
+            '自变量机器人': { brain: '[E2E-VLA] 端到端视言行', training: '[Self-Supervised] 自监督物理学习', scene: '[Agnostic] 通用领域' },
+            '魔法原子': { brain: '[World Model] 世界模型', training: '[Physical-Sim] 物理推理仿真', scene: '[Research] 科研' },
+            '乐聚机器人': { brain: '[Hierarchical] 分层架构', training: '[Open-Harmony] 鸿蒙生态数据协同', scene: '[C-Edu] [I-Heavy]' },
+            'Sunday Robotics': { brain: '[E2E-VLA] 端到端视言行', training: '[High-Freq-Loop] 高频控制闭环', scene: '[I-Light] 轻工业' },
+            '傅利叶智能': { brain: '[Hierarchical] 分层架构', training: '[Locomotion-Data] 运动控制数据积累', scene: '[Medical] [I-Heavy]' },
+            'Agility Robotics': { brain: '[Hierarchical] 分层架构', training: '[Digit-V3] 数字化流程训练', scene: '[L-Logistics] 仓储物流' },
+            'Boston Dynamics': { brain: '[Hierarchical/RL] 分层/强化学习', training: '[Real-World-RL] 真实物理环境强化学习', scene: '[I-Heavy] [H-Special]' },
+            '思灵机器人': { brain: '[Hierarchical] 分层架构', training: '[Force-Centric] 力觉驱动范式', scene: '[I-Precision] 精密制造' },
+            '小鹏鹏行': { brain: '[Hierarchical] 分层架构', training: '[Car-AI-Transfer] 自动驾驶技术平移', scene: '[C-Home] 家庭陪伴' },
+            '自然意志': { brain: '[World Model] 世界模型', training: '[Bionic-Logic] 仿生逻辑训练', scene: '[I-Precision] 精密制造' },
+            'Field AI': { brain: '[Brain-Vision] 视觉大脑', training: '[Rugged-Environ] 恶劣环境实测数据', scene: '[H-Special] 野外特种' },
+            '梅卡曼德': { brain: '[Brain-Vision] 视觉大脑', training: '[3D-Vision-AI] 3D视觉深度学习', scene: '[L-Log] [I-Heavy]' },
+            '破壳机器人': { brain: '[Component] 核心零部件', training: '[Actuator-Innov] 执行器创新设计', scene: '[Component] 零部件' },
+            '灵初智能': { brain: '[E2E-VLA] 端到端视言行', training: '[Data-Engine] 双系统数据引擎', scene: '[I-Precision] 精密制造' },
+            '珞石机器人': { brain: '[Hierarchical] 分层架构', training: '[Industry-Control] 工业级运控算法', scene: '[I-Heavy] 汽车' },
+            '地瓜机器人': { brain: '[Platform-Infra] 平台与基建', training: '[Chip-Level-Opt] 芯片级算法优化', scene: '[Agnostic] 通用' },
+            '觅蜂科技': { brain: '[Hierarchical] 分层架构', training: '[Logistics-SOP] 物流标准场景', scene: '[L-Logistics] 仓储' },
+            '大晓机器人': { brain: '[Hierarchical] 分层架构', training: '[Research-Data] 科研/教学数据', scene: '[Research] [C-Edu]' },
+            '七腾机器人': { brain: '[Hierarchical] 分层架构', training: '[Inspection-RL] 巡检强化学习', scene: '[H-Special] 油气电力' },
+            '云深处': { brain: '[Hierarchical/RL] 分层/强化学习', training: '[Sim2Real-RL] 复杂地形强化', scene: '[H-Special] [I-Heavy]' },
+            '简智机器人': { brain: '[Hierarchical] 分层架构', training: '[Small-Model] 轻量化模型', scene: '[I-Light] [S-Comm]' },
+            '艾欧': { brain: '[Hierarchical] 分层架构', training: '[Proprietary-IL] 垂直场景模仿', scene: '[I-Light] [I-Precision]' },
+            '戴盟': { brain: '[Component] 核心零部件', training: '[Haptic-Focus] 触觉反馈', scene: '[I-Precision] [Component]' },
+            '跨维智能': { brain: '[Platform-Infra] 平台基建', training: '[Sim2Real-3D] 3D视觉合成', scene: '[I-Precision] [I-Light]' },
+            '镜识科技': { brain: '[Platform-Infra] 平台基建', training: '[System-Opt] 系统级优化', scene: '[Agnostic] [I-Heavy]' },
+            '优理奇智能': { brain: '[Component] 核心零部件', training: '[Spec-Actuator] 特种执行器', scene: '[Component] 零部件' },
+            '松延动力': { brain: '[Component] 核心零部件', training: '[High-Dynamic] 高动态', scene: '[Component] 零部件' },
+            '开普勒人形机器人': { brain: '[Hierarchical] 分层架构', training: '[Industrial-RL] 工业强化学习', scene: '[I-Heavy] [L-Log]' },
+            '理工华汇': { brain: '[Hierarchical] 分层架构', training: '[Special-Task] 特种任务', scene: '[H-Special] [Research]' },
+            '智在无界': { brain: '[E2E-VLA] 端到端视言行', training: '[General-Data] 通用常识', scene: '[Agnostic] [S-Comm]' },
+            '卓益得机器人': { brain: '[Hierarchical] 分层架构', training: '[Walking-RL] 步行强化学习', scene: '[Research] [C-Edu]' },
+            '天链机器人': { brain: '[Hierarchical] 分层架构', training: '[Aerospace-Data] 航天数据', scene: '[H-Special] [I-Heavy]' },
+            '国地具身智能': { brain: '[Platform-Hub] 平台中心', training: '[Ecosystem-Data] 生态数据', scene: '[Agnostic] 通用' },
+            '青瞳视觉': { brain: '[Component] 核心零部件', training: '[MoCap-Data] 动作捕捉', scene: '[Component] [Research]' },
+            '钛虎机器人': { brain: '[Component] 核心零部件', training: '[Integrated-Design] 集成设计', scene: '[Component] 零部件' },
+            '爱动超越': { brain: '[Component] 核心零部件', training: '[High-Speed-Sens] 高速传感', scene: '[Component] 零部件' },
+            '灵宇宙': { brain: '[Platform-Infra] 平台基建', training: '[Virtual-Data] 虚拟数据', scene: '[Agnostic] [C-Home]' },
+            '灵御智能': { brain: '[Hierarchical] 分层架构', training: '[Guard-Data] 安防数据', scene: '[H-Special] [S-Comm]' },
+            '千秒机器人': { brain: '[Component] 核心零部件', training: '[Fast-Response] 快速响应', scene: '[Component] [I-Light]' },
+            '超维动力': { brain: '[Component] 核心零部件', training: '[Power-Density] 功率密度', scene: '[Component] 零部件' },
+            '共建中心': { brain: '[Platform-Hub] 平台中心', training: '[Policy-Standard] 行业标准', scene: '[Agnostic] 通用' },
+            'Apptronik': { brain: '[E2E-VLA] 端到端视言行', training: '[IL-Teleop] 模仿学习', scene: '[I-Heavy] 重工业' },
+            'Sanctuary AI': { brain: '[E2E-VLA] 端到端视言行', training: '[VLM-Micro-tuning] 多模态微调', scene: '[I-Heavy] [S-Commercial]' },
+            'Skydio': { brain: '[Autonomous-AI] 自主AI', training: '[Sim2Real-RL] 仿真强化学习', scene: '[H-Special] 特种巡检' },
+            '英伟达 (NVIDIA)': { brain: '[Platform-Infra] 平台与基建', training: '[Synthetic-Data] 合成数据驱动', scene: '[Agnostic] 通用领域' },
+            '星动纪元': { brain: '[E2E-VLA] 端到端视言行', training: '[VLA-Scaling] 模型规模化扩展', scene: '[I-Heavy] 重工业' },
+            '国家地方共建具身智能机器人创新中心': { brain: '[Platform-Hub] 平台中心', training: '[Policy-Standard] 行业标准', scene: '[Agnostic] 通用' },
+            '共建中心 (创新中心)': { brain: '[Platform-Hub] 平台中心', training: '[Policy-Standard] 行业标准', scene: '[Agnostic] 通用' },
+            '宇叠': { brain: '[E2E-VLA] 端到端视言行', training: '[Sim2Real-RL] 仿真强化学习', scene: '[I-Precision] 工业精密' },
+            '诺亦腾': { brain: '[Component] 核心零部件', training: '[Precision-Trans] 精密传动', scene: '[Component] 零部件' },
+            '坤维科技': { brain: '[Component] 核心零部件', training: '[Sensor-Fusion] 传感器融合', scene: '[I-Precision] 工业精密' },
+            '因时机器人': { brain: '[Component] 核心零部件', training: '[Precision-Trans] 精密传动', scene: '[Component] 零部件' },
+            '智平方机器人': { brain: '[E2E-VLA] 端到端视言行', training: '[VLA-Scaling] 模型规模化扩展', scene: '[Agnostic] 通用领域' },
+            '星源智机器人': { brain: '[World Model] 物理世界模型', training: '[Sim2Real-RL] 仿真强化学习', scene: '[I-Heavy] 重工业' }
+        };
+
+        async function loadData() {
+            try {
+                // 加载事件数据
+                const eventsRes = await fetch('data/events.json');
+                const events = await eventsRes.json();
+                
+                // 从index.html提取rankingData（这里简化处理，直接嵌入关键数据）
+                const companyInfo = getCompanyInfo(companyName);
+                
+                if (!companyInfo) {
+                    document.getElementById('content').innerHTML = `
+                        <div class="error-msg">
+                            <h2>${t('errorNotFound')}${companyName}</h2>
+                            <p style="margin-top:12px;color:var(--text-secondary)">${t('errorNotFoundHint')}</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                companyData = companyInfo;
+                
+                // 筛选该公司的事件
+                const companyEvents = events.filter(e => 
+                    e.company === companyName || 
+                    (e.company && e.company.includes(companyName)) ||
+                    (companyInfo.name_en && e.company && e.company.includes(companyInfo.name_en))
+                ).slice(0, 10);
+                
+                renderCompanyPage(companyInfo, companyEvents);
+                
+            } catch (err) {
+                console.error(err);
+                document.getElementById('content').innerHTML = `
+                    <div class="error-msg">
+                        <h2>${t('errorLoadFailed')}</h2>
+                        <p style="margin-top:12px;color:var(--text-secondary)">${err.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function getCompanyInfo(name) {
+            // 名称标准化：去掉 emoji 和英文括号后缀
+            const stripEmoji = (s) => s.replace(/[\u{10000}-\u{10FFFF}]/gu, '');
+            const normName = (s) => stripEmoji(s).replace(/\s*\([^)]*\)\s*$/, '').trim();
+            // 提取纯英文部分
+            const getEnglish = (s) => {
+                const match = s.match(/[a-zA-Z\s]+/);
+                return match ? match[0].trim().toLowerCase() : '';
+            };
+            const nn = normName(name);
+            const ne = getEnglish(name);
+            // 公司完整信息库（可扩展）
+            const companies = {
+                '宇树科技': {
+                    name: '宇树科技',
+                    name_en: 'Unitree Robotics',
+                    website: 'https://unitree.com',
+                    founded: '2016年',
+                    headquarters: '杭州',
+                    segment: '人形整机 / 物理世界',
+                    isOverseas: false,
+                    valuation: '420亿人民币',
+                    valuationCNY: 420,
+                    currency: '人民币',
+                    latest: 'IPO募资42亿',
+                    date: '2026.03',
+                    brain: '[Sim2Real-RL] 仿真强化学习',
+                    training: '[Massive-RL] 暴力强化学习',
+                    scene: '[C-Edu] [L-Log] 教育/物流',
+                    founders: [
+                        {name: '王兴兴', title: '创始人/CEO/CTO', bio: '1990年生，浙江宁波余姚人；浙江理工大学本科，上海大学机械工程硕士；2016年创立宇树科技'},
+                        {name: '陈立', title: '联合创始人', bio: '2025年10月代表宇树在清华有为青年公开课演讲'}
+                    ],
+                    investors: [
+                        {name: '红杉中国', round: 'A轮'},
+                        {name: '源码资本', round: 'B轮'},
+                        {name: '深创投', round: 'C轮'}
+                    ],
+                    milestones: [
+                        {date: '2017.01', event: '发布首款四足机器人Laikago'},
+                        {date: '2021.06', event: '发布消费级四足机器人Go1'},
+                        {date: '2023.08', event: '发布人形机器人H1'},
+                        {date: '2025.02', event: 'H1人形机器人迭代升级'},
+                        {date: '2026.03', event: '科创板IPO，募资42亿'}
+                    ],
+                    fundingTable: [
+                        { round: '天使轮', date: '2020年', amount: '¥200万', valuation: '—', investors: '尹方鸣（个人）' },
+                        { round: 'Pre-A轮', date: '2020年', amount: '未披露', valuation: '—', investors: '红杉种子、初心资本' },
+                        { round: 'A轮', date: '2021年', amount: '未披露', valuation: '—', investors: '祥峰投资' },
+                        { round: 'A+轮', date: '2022年', amount: '未披露', valuation: '—', investors: '顺为资本、经纬创投' },
+                        { round: 'B轮', date: '2022年', amount: '未披露', valuation: '—', investors: '经纬创投等' },
+                        { round: 'B2轮', date: '2024年2月', amount: '近¥10亿', valuation: '—', investors: '深创投、中网投、容亿投资、经纬创投、源码资本、美团战略投资部、中信金石、博睿智联、钧石创投' },
+                        { round: 'C轮（部分）', date: '2024年9月', amount: '数亿元', valuation: '¥80亿', investors: '北京机器人产业投资基金（领投）、美团龙珠、中关村科学城、琥珀资本、上海科创基金、红杉中国、中信证券、祥峰投资中国基金等' },
+                        { round: 'C轮（交割）', date: '2025年6月', amount: '~¥7亿', valuation: '¥120亿', investors: '中国移动旗下基金、腾讯、锦秋基金、阿里巴巴、蚂蚁集团、吉利资本（共同领投），老股东跟投' },
+                        { round: 'C+轮/追加', date: '2025年7月', amount: '未披露', valuation: '¥130亿', investors: '首程控股（北京机器人基金追加投资）' },
+                        { round: 'Pre-IPO轮', date: '2025年6月', amount: '¥6.95亿', valuation: '—', investors: '腾讯科技、中移和创、无锡锦秋等27个股东' }
+                    ],
+                    fundingNote: '📌 累计11轮融资。2024年营收已超¥10亿，自2020年起每年盈利。目前估值超¥130亿，已启动A股IPO辅导。'
+                },
+                '灵御智能': {
+                    name: '灵御智能',
+                    name_en: 'Lingyu Intelligence',
+                    website: 'https://www.lingyuai.com',
+                    founded: '2025年2月',
+                    headquarters: '北京',
+                    segment: '具身大脑 / 遥操作',
+                    isOverseas: false,
+                    valuation: '数千万人民币',
+                    valuationCNY: 1,
+                    currency: '人民币',
+                    latest: '天使轮',
+                    date: '2026.03',
+                    brain: '[Hierarchical] 分层架构',
+                    training: '[Guard-Data] 安防数据',
+                    scene: '[H-Special] [S-Comm] 安防/商业',
+                    founders: [
+                        {name: '金戈', title: '联合创始人/CEO', bio: '清华大学自动化系学士，清华经管学院MBA；前远镜创投管理合伙人，奥量光子副总；2025年2月创立灵御智能'}
+                    ],
+                    investors: [
+                        {name: '华映资本', round: '种子+轮'},
+                        {name: '银河创新资本', round: '天使轮'},
+                        {name: '英诺天使基金', round: '种子轮'}
+                    ],
+                    milestones: [
+                        {date: '2025.02', event: '公司成立，专注具身智能基础设施'},
+                        {date: '2025.09', event: '完成千万元级种子+轮融资'},
+                        {date: '2026.03', event: '完成数千万元天使轮融资'},
+                        {date: '2026.04', event: '遥操作系统延迟降至50ms'}
+                    ],
+                    fundingTable: [
+                        { round: '种子轮', date: '2025年', amount: '未披露', valuation: '—', investors: '英诺天使基金、水木校友种子基金、远镜创投' },
+                        { round: '种子+轮', date: '2025年', amount: '未披露', valuation: '—', investors: '华映资本（领投）；英诺天使基金、水木校友种子基金、远镜创投跟投' },
+                        { round: '天使轮', date: '2026年3月', amount: '数千万元', valuation: '—', investors: '银河创新资本（领投）；国海创新资本、天鹰资本、厦门思明科创基金跟投；老股东英诺天使基金、华映资本、远镜创投持续加注' }
+                    ],
+                    fundingNote: '📌 累计融资近亿元。核心团队来自清华大学自动化系。'
+                },
+                'Generalist': {
+                    name: 'Generalist',
+                    name_en: 'Generalist AI',
+                    website: 'https://generalist.ai',
+                    founded: '2023年',
+                    headquarters: '美国加州',
+                    segment: '具身大脑 / 混合',
+                    isOverseas: true,
+                    valuation: '未披露',
+                    valuationCNY: 0,
+                    currency: '美元',
+                    latest: 'GEN-1发布',
+                    date: '2026.04',
+                    brain: '[E2E-VLA] 端到端视言行',
+                    training: '[Foundation-Scale] 基础大模型',
+                    scene: '[Agnostic] 通用领域',
+                    founders: [
+                        {name: 'Pete Florence', title: 'CEO/创始人', bio: '前DeepMind高级研究科学家，参与PaLM-E、RT-2两大里程碑项目；2025年3月创立Generalist AI'},
+                        {name: '待补充', title: 'CTO', bio: '核心团队来自OpenAI、Google DeepMind、Waymo、波士顿动力等公司'}
+                    ],
+                    investors: [
+                        {name: 'NVIDIA', round: '种子轮'}
+                    ],
+                    milestones: [
+                        {date: '2023年', event: '公司成立'},
+                        {date: '2025.03', event: 'Pete Florence离开DeepMind创业'},
+                        {date: '2025.03', event: '获NVIDIA投资'},
+                        {date: '2026.04', event: '发布GEN-1具身基础模型，成功率99%'}
+                    ]
+                },
+// === 以下为由Word文档数据更新的公司（2026-04-29） ===
+'Figure AI': {
+    name: 'Figure AI',
+    name_en: 'Figure AI',
+    website: 'https://www.figure.ai',
+    founded: '2022年',
+    headquarters: '美国加州',
+    segment: '人形整机 / 混合',
+    isOverseas: true,
+    valuation: '390亿美元',
+    valuationCNY: 2835,
+    currency: '美元',
+    latest: 'C轮$15亿+',
+    date: '2025.09',
+    brain: '[E2E-VLA] 端到端视言行',
+    training: '[VLM-Micro-tuning] 多模态微调',
+    scene: '[I-Heavy] [C-Home]',
+    founders: [
+        {name: 'Brett Adcock', title: '创始人', bio: '连续创业者，曾创立 Archer Aviation'}
+    ],
+    fundingTable: [
+        { round: '种子/资本化', date: '2022年1月', amount: '$1亿', valuation: '—', investors: '—' },
+        { round: 'A轮', date: '2023年5月', amount: '$7000万', valuation: '$5亿', investors: 'Parkway Venture Capital（领投）' },
+        { round: 'B轮', date: '2024年2月', amount: '$6.75亿', valuation: '$26亿', investors: 'Microsoft、OpenAI、NVIDIA、Amazon、Intel Capital、Jeff Bezos（Bezos Expeditions）等' },
+        { round: 'C轮', date: '2025年9月', amount: '超$10亿（PitchBook记为$15亿）', valuation: '$390亿', investors: 'Parkway Venture Capital（领投）、Brookfield Asset Management、NVIDIA、Macquarie Capital、Intel Capital、Salesforce、T-Mobile Ventures、Qualcomm Ventures 等' }
+    ],
+    fundingNote: '📌 累计融资约 $19–23.4亿，目前估值 $390亿，是估值最高的人形机器人公司。'
+},
+'1X Technologies': {
+    name: '1X Technologies',
+    name_en: '1X Technologies',
+    website: 'https://www.1x.tech',
+    founded: '2014年',
+    headquarters: '挪威奥斯陆/美国加州',
+    segment: '人形整机 / 视频学习',
+    isOverseas: true,
+    valuation: '100亿美元',
+    valuationCNY: 728,
+    currency: '美元',
+    latest: 'B轮$1亿',
+    date: '2024.01',
+    brain: '[World Model] 世界模型',
+    training: '[Video-Pretrain] 视频预训练',
+    scene: '[S-Comm] [C-Home]',
+    founders: [
+        {name: 'Bernt Øyvind Børnich', title: 'CEO', bio: '机器人学与纳米电子学背景'}
+    ],
+    investors: [
+        {name: 'Nistad Group', round: '种子轮'},
+        {name: 'Sandwater', round: '种子轮'},
+        {name: 'Skagerak Capital', round: '种子轮'},
+        {name: 'OpenAI Startup Fund', round: 'A2轮领投'},
+        {name: 'Tiger Global', round: 'A2轮'},
+        {name: 'EQT Ventures', round: 'B轮领投'},
+        {name: 'Samsung NEXT', round: 'B轮'}
+    ],
+    fundingTable: [
+        { round: '种子/早期', date: '—', amount: '—', valuation: '—', investors: 'Nistad Group、Sandwater、Skagerak Capital' },
+        { round: 'A2轮', date: '2023年3月', amount: '$2350万', valuation: '—', investors: 'OpenAI Startup Fund（领投）、Tiger Global' },
+        { round: 'B轮', date: '2024年1月', amount: '$1亿', valuation: '$8.2亿', investors: 'EQT Ventures（领投）、Samsung NEXT、OpenAI Startup Fund、Tiger Global' },
+        { round: '新一轮（洽谈中）', date: '2025年9月', amount: '拟$10亿', valuation: '目标≥$100亿', investors: '—' }
+    ],
+    fundingNote: '📌 累计融资约 $1.25亿。2025年9月传出拟以 ≥$100亿 估值融资$10亿的消息，但截至2026年初尚未确认关闭。'
+},
+'Skild AI': {
+    name: 'Skild AI',
+    name_en: 'Skild AI',
+    website: 'https://www.skild.ai',
+    founded: '2023年5月',
+    headquarters: '美国匹兹堡',
+    segment: '具身大脑 / 异构数据',
+    isOverseas: true,
+    valuation: '140亿美元',
+    valuationCNY: 1018,
+    currency: '美元',
+    latest: 'C轮$14亿',
+    date: '2026.01',
+    brain: '[Cross-Embodiment] 跨本体',
+    training: '[Heterogeneous-Data] 异构数据缩放',
+    scene: '[I-Precision] [L-Log]',
+    founders: [
+        {name: 'Abhinav Gupta', title: '联合创始人', bio: '前卡内基梅隆大学教授、Meta AI研究员'},
+        {name: 'Deepak Pathak', title: '联合创始人兼CEO', bio: '前卡内基梅隆大学教授'}
+    ],
+    investors: [
+        {name: 'SoftBank Group', round: 'C轮领投'},
+        {name: 'NVIDIA (NVentures)', round: 'C轮'},
+        {name: 'Bezos Expeditions', round: 'C轮'},
+        {name: 'Samsung', round: 'C轮'},
+        {name: 'LG Technology Ventures', round: 'C轮'},
+        {name: 'Schneider Electric', round: 'C轮'}
+    ],
+    fundingTable: [
+        { round: '种子轮', date: '—', amount: '$1400万', valuation: '—', investors: '—' },
+        { round: 'A轮', date: '2024年5月', amount: '$3亿', valuation: '—', investors: '—' },
+        { round: 'B轮', date: '2025年5月', amount: '$1.35亿', valuation: '$45亿', investors: '—' },
+        { round: 'C轮', date: '2026年1月', amount: '$14亿', valuation: '$140亿', investors: 'SoftBank Group（领投）、NVentures（NVIDIA）、Bezos Expeditions、Samsung、LG Technology Ventures、Schneider Electric、Salesforce Ventures、CommonSpirit Health 等' }
+    ],
+    fundingNote: '📌 累计融资超 $22.1亿，估值 $140亿。2025年营收从零增长至约$3000万。'
+},
+'Physical Intelligence': {
+    name: 'Physical Intelligence',
+    name_en: 'Physical Intelligence',
+    website: 'https://www.physicalintelligence.ai',
+    founded: '2024年3月',
+    headquarters: '美国旧金山',
+    segment: '具身大脑 / 基础大模型',
+    isOverseas: true,
+    valuation: '56亿美元',
+    valuationCNY: 407,
+    currency: '美元',
+    latest: 'B轮$6亿',
+    date: '2025.12',
+    brain: '[E2E-VLA] 端到端视言行',
+    training: '[Foundation-Scale] 基础大模型规模',
+    scene: '[Agnostic] 通用领域',
+    founders: [
+        {name: 'Karol Hausman', title: '联合创始人兼CEO', bio: '前谷歌大脑高级研究科学家'},
+        {name: 'Chelsea Finn', title: '联合创始人', bio: '斯坦福助理教授，前谷歌大脑研究科学家'},
+        {name: 'Sergey Levine', title: '联合创始人', bio: 'UC Berkeley 助理教授'}
+    ],
+    investors: [
+        {name: 'OpenAI', round: 'A轮'},
+        {name: 'Jeff Bezos (Bezos Expeditions)', round: 'A轮'},
+        {name: 'CapitalG (Alphabet)', round: 'B轮领投'},
+        {name: 'Thrive Capital', round: 'B轮'},
+        {name: 'Lux Capital', round: 'B轮'},
+        {name: 'NVIDIA (NVentures)', round: 'B轮'},
+        {name: 'Index Ventures', round: 'B轮'},
+        {name: 'T. Rowe Price', round: 'B轮'}
+    ],
+    fundingTable: [
+        { round: '初始融资', date: '2024年', amount: '~$7000万', valuation: '—', investors: '—' },
+        { round: 'A轮', date: '—', amount: '$4亿', valuation: '$24亿', investors: 'OpenAI、Jeff Bezos（Bezos Expeditions）等' },
+        { round: 'B轮', date: '—', amount: '$6亿', valuation: '$56亿', investors: 'CapitalG（Alphabet，领投）、OpenAI、Thrive Capital、Lux Capital、NVIDIA（NVentures）、Index Ventures、T. Rowe Price 等' },
+        { round: '新一轮（洽谈中）', date: '2026年3月', amount: '拟$10亿', valuation: '$110亿', investors: 'Founders Fund、Lightspeed Venture Partners、Thrive Capital、Lux Capital 等' }
+    ],
+    fundingNote: '📌 累计已融资超 $10亿。公司尚无商业化产品或收入，专注于通用机器人基础模型"π0"的研发。'
+},
+'智元机器人': {
+    name: '智元机器人',
+    name_en: 'Agibot',
+    website: 'https://www.agibot.com',
+    founded: '2023年2月',
+    headquarters: '上海',
+    segment: '人形整机 / 分层架构',
+    isOverseas: false,
+    valuation: '150亿人民币',
+    valuationCNY: 150,
+    currency: '人民币',
+    latest: '战略投资',
+    date: '2025.08',
+    brain: '[Hierarchical] 分层架构',
+    training: '[Proprietary-IL] 自研模仿学习',
+    scene: '[I-Light] [S-Comm]',
+    founders: [
+        {name: '彭志辉（稚晖君）', title: '创始人/CTO', bio: '前华为"天才少年"'}
+    ],
+    investors: [
+        {name: '高瓴创投', round: '种子轮'},
+        {name: '鼎晖投资', round: 'A轮'},
+        {name: '比亚迪', round: 'A++轮/A+++轮'},
+        {name: '蓝驰创投', round: 'A++轮'},
+        {name: 'BV百度风投', round: 'A+轮'},
+        {name: 'M31资本', round: 'A4轮'},
+        {name: '红杉中国', round: 'A4轮'},
+        {name: '腾讯', round: 'B轮领投'},
+        {name: 'LG电子', round: '战略投资领投'},
+        {name: '未来资产集团', round: '战略投资联合领投'}
+    ],
+    fundingTable: [
+        { round: '种子轮', date: '2023年3月', amount: '未披露', valuation: '—', investors: '高瓴创投（领投）、奇绩创坛' },
+        { round: 'A轮', date: '2023年4月', amount: '未披露', valuation: '—', investors: '鼎晖投资、高榕资本' },
+        { round: 'A+轮', date: '2023年', amount: '未披露', valuation: '—', investors: 'BV百度风投' },
+        { round: 'A++轮', date: '2023年8月', amount: '未披露', valuation: '—', investors: '比亚迪、蓝驰创投' },
+        { round: 'A+++轮', date: '2023年12月', amount: '超¥6亿', valuation: '—', investors: '比亚迪、三花控股、BV百度风投、高瓴创投等' },
+        { round: 'A4轮', date: '2024年3月', amount: '超¥10亿', valuation: '—', investors: 'M31资本、尚颀资本、红杉中国' },
+        { round: 'A5轮', date: '2024年9月', amount: '未披露', valuation: '超¥70亿', investors: 'LCVPF Holdco Limited、软通动力、中科创星、慕华科创' },
+        { round: 'B轮', date: '2025年3月', amount: '数亿元', valuation: '¥150亿', investors: '腾讯（领投）、龙旗科技、卧龙电气、华发集团、蓝驰创投、TCL创投、华金资本' },
+        { round: 'B+轮', date: '2025年5月', amount: '未披露', valuation: '—', investors: '京东、上海具身智能基金、孚腾资本、红杉中国、上汽创投、TCL等' },
+        { round: '战略投资', date: '2025年7月', amount: '未披露', valuation: '—', investors: '正大集团旗下正大机器人' },
+        { round: '战略投资', date: '2025年8月', amount: '未披露', valuation: '~¥180亿', investors: 'LG电子、韩国未来资产集团（联合领投）' }
+    ],
+    fundingNote: '📌 成立于2023年2月，累计完成 11轮融资，估值约 ¥150–180亿（约$20–25亿）。创始人彭志辉（稚晖君）为前华为"天才少年"。'
+},
+'星尘智能': {
+    name: '星尘智能',
+    name_en: 'Stardust Intelligence',
+    website: 'https://www.stardust.ai',
+    founded: '2022年12月',
+    headquarters: '深圳',
+    segment: '人形整机 / 模仿学习',
+    isOverseas: false,
+    valuation: '约3亿人民币',
+    valuationCNY: 3,
+    currency: '人民币',
+    latest: 'A++轮',
+    date: '2025.11',
+    brain: '[IL-Teleop] 模仿学习-遥操作',
+    training: '[High-Precision-IL] 高精模仿',
+    scene: '[I-Precision] [S-Comm]',
+    founders: [
+        {name: '来杰', title: 'CEO', bio: '前腾讯 RoboticsX 实验室"一号员工"，前百度小度机器人团队负责人'}
+    ],
+    investors: [
+        {name: '云启资本', round: '天使轮'},
+        {name: '德迅投资', round: '天使轮'},
+        {name: '经纬创投', round: 'Pre-A轮领投'},
+        {name: '道彤投资', round: 'Pre-A轮'},
+        {name: '锦秋基金', round: 'A轮&A+轮联合领投'},
+        {name: '蚂蚁集团', round: 'A轮&A+轮联合领投'},
+        {name: '国科投资', round: 'A++轮联合领投'}
+    ],
+    fundingTable: [
+        { round: '天使轮', date: '2023年3月', amount: '未披露', valuation: '—', investors: '云启资本' },
+        { round: '天使轮', date: '2023年10月', amount: '未披露', valuation: '—', investors: '德迅投资' },
+        { round: 'Pre-A轮', date: '2024年6月', amount: '数千万美元', valuation: '—', investors: '经纬创投（领投）、道彤投资、清辉投资' },
+        { round: 'A轮 & A+轮', date: '2025年4月', amount: '数亿元', valuation: '—', investors: '锦秋基金、蚂蚁集团（联合领投），云启资本、道彤资本等老股东跟投' },
+        { round: 'A++轮', date: '2025年11月', amount: '数亿元', valuation: '—', investors: '国科投资、蚂蚁集团（联合领投），Bloom Advance Capital、时代伯乐、南山战新投等跟投，锦秋基金追投' }
+    ],
+    fundingNote: '📌 成立于2022年12月，全球首个实现绳驱AI机器人量产的公司。蚂蚁集团和锦秋基金为连续多轮加注的核心股东。'
+},
+'银河通用': {
+    name: '银河通用',
+    name_en: 'Galbot',
+    website: 'https://www.galbot.cn',
+    founded: '2023年5月',
+    headquarters: '北京',
+    segment: '人形整机 / 仿真强化',
+    isOverseas: false,
+    valuation: '210亿人民币',
+    valuationCNY: 210,
+    currency: '人民币',
+    latest: 'C轮$3亿+',
+    date: '2025.12',
+    brain: '[Sim2Real-RL] 仿真强化学习',
+    training: '[Synthetic-Generalist] 合成通用化',
+    scene: '[L-Logistics] [I-Heavy]',
+    founders: [
+        {name: '王鹤', title: '创始人&CTO', bio: '北大助理教授，斯坦福博士'},
+        {name: '姚腾洲', title: '联合创始人&董事长', bio: '前ABB核心工程师'}
+    ],
+    investors: [
+        {name: '经纬创投', round: '种子轮'},
+        {name: '蓝驰创投', round: '种子轮'},
+        {name: '美团战投', round: '天使轮领投'},
+        {name: '北汽产投', round: '天使轮'},
+        {name: '上汽恒旭', round: 'A轮领投'},
+        {name: '宁德时代', round: 'B轮领投'},
+        {name: '中国移动', round: 'C轮领投'},
+        {name: '国家大基金', round: '新一轮'}
+    ],
+    fundingTable: [
+        { round: '种子轮', date: '2023年6月', amount: '未披露', valuation: '—', investors: '经纬创投、蓝驰创投' },
+        { round: '天使轮', date: '2024年6月', amount: '¥7亿', valuation: '—', investors: '美团战投、北汽产投、商汤国香基金、讯飞基金、启明创投、蓝驰创投、经纬创投、源码资本、IDG资本' },
+        { round: '战略轮/A轮', date: '2024年11月', amount: '¥5亿', valuation: '—', investors: '上汽恒旭、香港投资公司HKIC（港版"淡马锡"）、深创投、上海人工智能产业基金、北京机器人产业基金；老股东IDG、经纬、蓝驰、北京人工智能产业基金追加' },
+        { round: 'B轮', date: '2025年6月', amount: '超¥11亿', valuation: '—', investors: '宁德时代（领投）、溥泉资本、国开科创、北京机器人产业基金、纪源资本等' },
+        { round: 'C轮', date: '2025年12月', amount: '超$3亿（~¥21.6亿）', valuation: '$30亿（~¥200亿）', investors: '中国移动（领投）、中金资本、中科院基金、苏创投、央视融媒体基金、天奇股份等；中东、新加坡国际资本首次加入' },
+        { round: '新一轮', date: '2026年3月', amount: '¥25亿', valuation: '>¥200亿', investors: '国家人工智能产业投资基金（国家大基金，首次投资具身智能）、中国石化、中信投资控股、中银资产、上汽金控、中芯聚源、鲲鹏基金、无锡创投、福建产投、成都科创投等；深创投、上海人工智能基金等老股东追加' }
+    ],
+    fundingNote: '📌 成立于2023年5月，不到三年累计融资超 ¥70亿，估值突破 ¥200亿。2026年春晚首个"自主干活机器人"即来自银河通用。'
+},
+'普渡机器人': {
+    name: '普渡机器人',
+    name_en: 'Pudu Robotics',
+    website: 'https://www.pudurobotics.com',
+    founded: '2016年1月',
+    headquarters: '深圳',
+    segment: '商用服务 / 分层架构',
+    isOverseas: false,
+    valuation: '100亿+人民币',
+    valuationCNY: 100,
+    currency: '人民币',
+    latest: 'E轮近¥10亿',
+    date: '2026.04',
+    brain: '[Hierarchical] 分层架构',
+    training: '[Scenario-Data] 垂直场景数据',
+    scene: '[S-Commercial] 商业服务',
+    founders: [
+        {name: '张涛', title: '创始人兼CEO', bio: '香港科技大学硕士，连续创业者，曾创办科技媒体雷锋网'}
+    ],
+    investors: [
+        {name: '松禾资本', round: '天使轮'},
+        {name: '深创投', round: 'A轮'},
+        {name: '腾讯投资', round: 'B轮'},
+        {name: '洪泰基金', round: 'C轮'},
+        {name: '龙岗金控', round: 'E轮领投'},
+        {name: '亚投资本', round: 'E轮联合领投'},
+        {name: '北汽产投', round: 'E轮'},
+        {name: '蓝思科技', round: 'E轮'}
+    ],
+    fundingTable: [
+        { round: '天使轮', date: '2016年', amount: '未披露', valuation: '—', investors: '松禾资本、真格基金' },
+        { round: 'Pre-A轮', date: '2022年10月', amount: '亿元级人民币', valuation: '—', investors: '联创资本（领投）；星涵资本担任财务顾问' },
+        { round: '战略融资', date: '2024年5月', amount: '未披露', valuation: '—', investors: '联想创投（领投）；广州华南理工大学资产经营有限公司' },
+        { round: '股权融资', date: '2024年12月', amount: '未披露', valuation: '—', investors: '前海互兴' },
+        { round: 'A轮', date: '2025年1月', amount: '未披露', valuation: '—', investors: '清智资本、天鹰资本' },
+        { round: 'A1&A2轮', date: '2025年7月', amount: '数亿元', valuation: '—', investors: '成都科创投、洪泰基金（联合领投）；天鹰资本、四川院士基金、南山战新投、一村淞灵、探元创投；老股东联想创投持续加码' },
+        { round: 'A+轮', date: '2025年7月', amount: '数亿元', valuation: '—', investors: '一村资本、南山战新投、四川院士基金、天鹰资本、成都科创投集团、探元基金、洪泰基金；联想创投等老股东持续加码' }
+    ],
+    fundingNote: '📌 成立于2016年，累计融资超 ¥20亿。全球商用服务机器人领军企业，累计出货量突破 12万台，覆盖80余国。'
+},
+'优必选': {
+    name: '优必选',
+    name_en: 'UBTech',
+    website: 'https://www.ubtrobot.com',
+    founded: '2012年3月31日',
+    headquarters: '深圳',
+    segment: '人形整机 / 分层架构',
+    isOverseas: false,
+    valuation: '上市~550亿港元',
+    valuationCNY: 500,
+    currency: '港元',
+    latest: '战略融资$10亿',
+    date: '2025.08',
+    brain: '[Hierarchical] 分层架构',
+    training: '[Real-World-Data] 真实场景数据驱动',
+    scene: '[I-Heavy] [S-Comm]',
+    founders: [
+        {name: '周剑', title: '创始人、董事会主席兼行政总裁', bio: '带领优必选成为"人形机器人第一股"'}
+    ],
+    investors: [
+        {name: '正轩投资', round: '天使轮'},
+        {name: '启明创投', round: 'A轮'},
+        {name: '科大讯飞', round: 'A轮/A+轮'},
+        {name: '鼎晖投资', round: 'B轮'},
+        {name: '腾讯', round: 'C轮领投'},
+        {name: '鼎晖资本', round: 'C轮'},
+        {name: '亦庄国投', round: '基石投资'},
+        {name: 'Infiniti Capital', round: '战略融资'}
+    ],
+    fundingTable: [
+        { round: '天使轮', date: '2013年10月', amount: '¥2000万', valuation: '—', investors: '正轩投资、力合华睿' },
+        { round: 'A轮', date: '2015年3月', amount: '$2000万', valuation: '—', investors: '启明创投、科大讯飞' },
+        { round: 'A+轮', date: '2015年8月', amount: '$900万', valuation: '—', investors: '科大讯飞' },
+        { round: 'B轮', date: '2016年1月', amount: '$1亿', valuation: '$10亿', investors: '鼎晖投资、科大讯飞、中信证券、金石投资' },
+        { round: 'B+轮', date: '2018年1月', amount: '未披露', valuation: '—', investors: '徽派投资、鼎实财富、麦高富达、华金资本、华发集团等' },
+        { round: 'Pre-C轮', date: '2018年1月', amount: '未披露', valuation: '—', investors: '金箴资产、时代伯乐、居然之家、海献资本等' },
+        { round: 'C轮', date: '2018年5月', amount: '$8.2亿', valuation: '$50亿', investors: '腾讯（领投）；工商银行、海尔、民生证券、澳洲电信（Telstra）、居然之家、泰国正大集团、民生银行、宜信集团、中广核、铁投集团、松禾资本等；鼎晖资本追加' },
+        { round: '基石投资', date: '2023年12月', amount: '¥5亿', valuation: '—', investors: '亦庄国投' },
+        { round: 'IPO', date: '2023年12月29日', amount: '10.15亿港元', valuation: '375.65亿港元（首日）', investors: '港交所主板上市（9880.HK），"人形机器人第一股"' },
+        { round: '定向增发', date: '2025年7月', amount: '$3.15亿', valuation: '—', investors: '—' },
+        { round: '战略融资', date: '2025年8月', amount: '$10亿', valuation: '—', investors: 'Infiniti Capital' },
+        { round: '收购', date: '2025年12月', amount: '¥16.65亿', valuation: '—', investors: '收购上市公司润阳科技（300920.SZ）' }
+    ],
+    fundingNote: '📌 成立于2012年，"人形机器人第一股"。累计融资超¥56.1亿。目前市值约551亿港元。'
+},
+'Agility Robotics': {
+    name: 'Agility Robotics',
+    name_en: 'Agility Robotics',
+    website: 'https://www.agilityrobotics.com',
+    founded: '2015年',
+    headquarters: '美国俄勒冈',
+    segment: '人形整机 / 分层架构',
+    isOverseas: true,
+    valuation: '17.5亿美元',
+    valuationCNY: 127,
+    currency: '美元',
+    latest: 'C3轮$4亿',
+    date: '2025.06',
+    brain: '[Hierarchical] 分层架构',
+    training: '[Digit-V3] 数字化流程训练',
+    scene: '[L-Logistics] 仓储物流',
+    founders: [
+        {name: 'Jonathan Hurst', title: '联合创始人兼CTO', bio: '卡内基梅隆大学博士，俄勒冈州立大学机器人学教授'}
+    ],
+    fundingTable: [
+        { round: '大学衍生', date: '2015年1月', amount: '未披露', valuation: '—', investors: 'ETH Zurich Soft Robotics Lab孵化' },
+        { round: '加速器/孵化器', date: '2015年1月', amount: '未披露', valuation: '—', investors: '—' },
+        { round: '种子轮', date: '2016年10月', amount: '未披露', valuation: '—', investors: 'Playground Global、Konstantin Othmer、Tuff YEN' },
+        { round: 'A轮', date: '2018年2月', amount: '$800万', valuation: '—', investors: 'Playground Global、Konstantin Othmer、Tuff YEN' },
+        { round: 'A轮', date: '2020年10月', amount: '$2000万', valuation: '—', investors: 'DCVC (Data Collective)、Playground Global' },
+        { round: 'B轮', date: '2022年4月', amount: '$1.5亿', valuation: '—', investors: 'DCVC、Playground Global（领投）；10X Group、468 Capital、BITKRAFT Ventures、Casa Verde Capital、Dell Technologies Capital、FirstMark Capital、Firstminute Capital、Insight Partners、K2 Global、LA Famiglia、Sound Ventures、TDK Ventures、Team Global、Tribe Capital、XFactor Ventures；Marc Benioff、Paul George、Ryan Tedder、Steve Aoki、Gwyneth Paltrow、James Corden等名人；Amazon' },
+        { round: 'C轮', date: '2024年10月', amount: '$1.1亿', valuation: '—', investors: 'Virginia Venture Partners、Y Combinator、Saturnin Pugnet' },
+        { round: 'C3轮', date: '2025年6月', amount: '$4亿', valuation: '~$21亿', investors: 'WP Global Partners（领投）；SoftBank、Amazon Industrial Innovation Fund、DCVC、Playground Global；NVentures (NVIDIA)、Sony Innovation Fund、Humanoid Global Holdings、Safar Partners' }
+    ],
+    fundingNote: '📌 成立于2015年，产品Digit是首款商业化人形机器人，采用RaaS模式。累计融资约 $6.83亿，估值约 $21亿。342名员工。'
+},
+// === 以上为由Word文档数据更新的公司 ===
+                '智在无界': {
+                    name: '智在无界',
+                    name_en: 'BeingBeyond',
+                    website: 'https://beingbeyond.com',
+                    founded: '2025年1月',
+                    headquarters: '北京',
+                    segment: 'VLA模型 / 视频学习',
+                    isOverseas: false,
+                    valuation: '约5亿人民币',
+                    valuationCNY: 5,
+                    currency: '人民币',
+                    latest: '数千万元天使轮',
+                    date: '2025.06',
+                    brain: '[E2E-VLA] 端到端视言行',
+                    training: '[General-Data] 通用常识数据',
+                    scene: '[Agnostic] [S-Comm] 通用/商业',
+                    founders: [
+                        {name: '卢宗青', title: '创始人/CEO', bio: '北京大学计算机学院长聘副教授，前智源研究院多模态交互研究中心负责人，负责过首个国家自然科学基金委原创探索计划通用智能体项目'}
+                    ],
+                    investors: [
+                        {name: '联想之星', round: '天使轮领投'},
+                        {name: '星连资本', round: '跟投'},
+                        {name: '燕缘创投', round: '跟投'},
+                        {name: '彬复资本', round: '跟投'},
+                        {name: '智谱AI', round: '跟投'}
+                    ],
+                    milestones: [
+                        {date: '2025年1月', event: '公司成立'},
+                        {date: '2025.06', event: '完成数千万元天使轮融资，联想之星领投'},
+                        {date: '2025.06', event: '创始人卢宗青从北大/智源离职创业'},
+                        {date: '2025.06', event: '发布Being-VL、Being-H、Being-M、Being-W四大核心模型'},
+                        {date: '2026.01', event: '发布Being-H0.5，实现30种不同机器人共享统一智能系统'},
+                        {date: '2026.04', event: '发布最强世界模型U1'}
+                    ],
+                    fundingTable: [
+                        { round: '种子轮', date: '2025年6月', amount: '数千万元', valuation: '¥1.5亿', investors: '联想之星（领投）；智谱Z基金、燕缘创投、彬复资本跟投；势能资本担任独家财务顾问' }
+                    ],
+                    fundingNote: '📌 成立于2025年1月，北京。创始人卢宗青（北大计算机学院长聘副教授）。专注人形机器人通用大模型，发布首个面向人形机器人的通用智能体Being-0。'
+                },
+                'Tesla Optimus': {
+                    name: 'Tesla Optimus',
+                    name_en: 'Tesla Optimus',
+                    website: 'https://www.tesla.com/optimus',
+                    founded: '2022年',
+                    headquarters: '美国弗里蒙特',
+                    segment: '人形整机 / 混合',
+                    isOverseas: true,
+                    valuation: 'Tesla上市主体市值$800B+',
+                    valuationCNY: 0,
+                    currency: '美元',
+                    latest: 'Self-funded (Tesla)',
+                    date: '2026.04',
+                    brain: '[E2E-VLA] 端到端视言行',
+                    training: '[Real-World-Transfer] 真实视觉迁移',
+                    scene: '[I-Heavy] 重工业',
+                    founders: [],
+                    investors: [],
+                    keyPeople: [
+                        {name: 'Elon Musk', title: 'CEO'},
+                        {name: 'Ashok Elluswamy', title: 'Optimus项目负责人/AI软件VP', note: '接任Milan Kovac'}
+                    ],
+                    milestones: [
+                        {date: '2022年', event: 'Optimus首次亮相'},
+                        {date: '2024年底', event: 'Milan Kovac晋升为Optimus项目副总裁'},
+                        {date: '2025.06', event: 'Milan Kovac离职，Ashok Elluswamy接任项目负责人'},
+                        {date: '2025.09', event: 'AI团队负责人Ashish Kumar离职加入Meta'},
+                        {date: '2026.04.17', event: '首批50台Optimus Gen-3在上海超级工厂交付'},
+                        {date: '2026.04', event: '弗里蒙特工厂扩产，目标年产100万台'}
+                    ]
+                },
+                '苏度科技': {
+                    name: '苏度科技',
+                    name_en: 'Sudo Robotics',
+                    website: 'https://www.sudorobotics.com',
+                    founded: '2025年5月',
+                    headquarters: '上海',
+                    segment: 'VLA模型 / 仿真',
+                    isOverseas: false,
+                    valuation: '约140亿人民币',
+                    valuationCNY: 140,
+                    currency: '人民币',
+                    latest: '5亿美元Pre-A轮',
+                    date: '2026.04',
+                    brain: '[World Model] 世界模型',
+                    training: '[Zero-Shot-Sim] 零样本仿真',
+                    scene: '[I-Precision] 精密制造',
+                    founders: [
+                        {name: '待补充', title: '创始人/CEO', bio: '核心团队来自清华大学，在具身智能、世界模型、机器人控制等领域拥有深厚积累'}
+                    ],
+                    investors: [
+                        {name: '宁德时代', round: 'Pre-A轮'},
+                        {name: '阿里巴巴', round: 'Pre-A轮'},
+                        {name: '腾讯', round: 'Pre-A轮'},
+                        {name: '高瓴资本', round: 'Pre-A轮'},
+                        {name: 'IDG资本', round: 'Pre-A轮'}
+                    ],
+                    milestones: [
+                        {date: '2025.05', event: '公司成立'},
+                        {date: '2025.05', event: '完成A轮融资'},
+                        {date: '2026.04.20', event: '发布#Sudo R1具身通用模型'},
+                        {date: '2026.04', event: '完成5亿美元Pre-A轮融资，估值突破20亿美元（约140亿人民币）'}
+                    ],
+                    fundingTable: [
+                        { round: '天使轮', date: '2025年5月–年底', amount: '未披露', valuation: '—', investors: '宁德时代、阿里巴巴、高瓴创投、腾讯投资、蚂蚁集团、IDG资本、蓝驰创投、孚腾资本、复旦科创、云晖资本、绿洲资本、国寿股权、君联资本等' },
+                        { round: 'Pre-A轮', date: '2026年4月', amount: '$5亿（~¥34.1亿）', valuation: '$20亿（~¥136.4亿）', investors: '宁德时代、阿里巴巴、高瓴创投、腾讯投资、蚂蚁集团、IDG资本、蓝驰创投、孚腾资本、复旦科创、云晖资本、绿洲资本、国寿股权、君联资本' }
+                    ],
+                    fundingNote: '📌 成立仅一年，累计融资超¥140亿。核心产品Sudo R1采用3D世界模型与强化学习一体化设计，零真机数据训练即可实现近100%抓取成功率。'
+                },
+                '超维动力': {
+                    name: '超维动力',
+                    name_en: 'Kinetix AI (KAI)',
+                    website: 'https://www.kinetixai.tech',
+                    founded: '2025年',
+                    headquarters: '深圳',
+                    segment: '人形整机 / 混合',
+                    isOverseas: false,
+                    valuation: '新发布，估值待定',
+                    valuationCNY: 1,
+                    currency: '人民币',
+                    latest: '新品发布',
+                    date: '2026.04',
+                    brain: '[Component] 核心零部件',
+                    training: '[Power-Density] 功率密度',
+                    scene: '[Component] 零部件',
+                    founders: [
+                        {name: 'Tyler', title: '联合创始人', bio: '2025年创立超维动力，2026年4月发布KAI人形机器人'},
+                        {name: '待补充', title: '联合创始人', bio: '核心团队来自机器人、自动驾驶和人工智能领域'}
+                    ],
+                    investors: [
+                        {name: '待披露', round: '天使轮'}
+                    ],
+                    milestones: [
+                        {date: '2025年', event: '公司成立'},
+                        {date: '2026.04.26', event: '发布KAI人形机器人（全球最高自由度）'}
+                    ],
+                    fundingTable: [
+                        { round: '天使轮', date: '2025年', amount: '未披露', valuation: '—', investors: 'BV百度风投（领投）；Momenta、九识、星海图跟投' },
+                        { round: '种子+轮', date: '2025年', amount: '未披露', valuation: '—', investors: '速腾聚创（领投）；BV百度风投跟投' },
+                        { round: '天使轮', date: '2025年12月', amount: '未披露', valuation: '—', investors: '顺为资本（领投）；初心资本、BV百度风投超额跟投' }
+                    ],
+                    fundingNote: '📌 成立于2025年7月17日，深圳，香港设有研发中心。专注具身智能基础模型和智能机器人研发。'
+                },
+                '自然意志': {
+                    name: '自然意志',
+                    name_en: 'Natural Will',
+                    website: '',
+                    founded: '2026年1月',
+                    headquarters: '北京',
+                    segment: '具身大脑 / 物理世界',
+                    isOverseas: false,
+                    valuation: '约40亿人民币',
+                    valuationCNY: 40,
+                    currency: '人民币',
+                    latest: '天使轮',
+                    date: '2026.01',
+                    brain: '[World Model] 世界模型',
+                    training: '[Bionic-Logic] 仿生逻辑',
+                    scene: '[I-Precision] 精密制造',
+                    founders: [
+                        {name: '丁宁', title: '创始人', bio: '清华大学助理教授、博士生导师'}
+                    ],
+                    investors: [
+                        {name: 'IDG资本', round: '天使轮'},
+                        {name: '峰瑞资本', round: '天使轮'},
+                        {name: '真格基金', round: '天使轮'}
+                    ],
+                    milestones: [
+                        {date: '2025.01.08', event: '公司成立'},
+                        {date: '2026.01', event: '完成天使轮融资，估值约40亿人民币'},
+                        {date: '2026.04', event: 'AI科技评论独家报道'}
+                    ],
+                    fundingTable: [
+                        { round: '天使轮', date: '2026年4月', amount: '未披露', valuation: '¥40亿', investors: 'IDG资本、峰瑞资本、真格基金' }
+                    ],
+                    fundingNote: '📌 成立于2026年，清华大学助理教授丁宁创立。专注通用物理智能，研发具备物理世界交互能力的"具身大脑"。'
+                }
+            };
+            
+            // 精确匹配
+            if (companies[name]) return companies[name];
+            
+            // 模糊匹配（支持 emoji 前缀和括号后缀）
+            for (const [key, info] of Object.entries(companies)) {
+                const normKey = normName(key);
+                const nn = normName(name);
+                if (nn === normKey || nn.includes(normKey) || normKey.includes(nn)) return info;
+            }
+            
+            // 英文名匹配
+            for (const [key, info] of Object.entries(companies)) {
+                if (info.name_en && info.name_en.toLowerCase().includes(name.toLowerCase())) {
+                    return info;
+                }
+            }
+            
+            // 从rankingData后备数据中查找（所有公司都能找到）
+            const rankingInfo = rankingData.find(item => {
+                const rn = normName(item.company);
+                const re = getEnglish(item.company);
+                return rn === nn || nn.includes(rn) || rn.includes(nn) ||
+                       (ne && (rn.toLowerCase().includes(ne) || re.includes(nn.toLowerCase())));
+            });
+            // 尝试从tagsMap获取标签
+            const tagEntry = Object.entries(companyTagsMap).find(([k]) => {
+                const kn = normName(k);
+                const ke = getEnglish(k);
+                return kn === nn || nn.includes(kn) || kn.includes(nn) ||
+                       (ne && (kn.toLowerCase().includes(ne) || ke.includes(nn.toLowerCase())));
+            })?.[1];
+            if (rankingInfo) {
+                return {
+                    name: rankingInfo.company,
+                    name_en: companyNameMapEN[rankingInfo.company] || '',
+                    website: '',
+                    founded: rankingInfo.founded || '待补充',
+                    headquarters: rankingInfo.headquarters || (rankingInfo.isOverseas ? '海外' : '待补充'),
+                    segment: rankingInfo.segment || 'n.a.',
+                    isOverseas: rankingInfo.isOverseas,
+                    valuation: rankingInfo.valuation,
+                    valuationCNY: rankingInfo.valuationCNY || 0,
+                    currency: rankingInfo.currency || '人民币',
+                    latest: rankingInfo.latest || '-',
+                    latest_en: rankingInfo.latest_en || '',
+                    date: rankingInfo.date || '',
+                    founders: [],
+                    investors: [],
+                    brain: tagEntry?.brain || '',
+                    training: tagEntry?.training || '',
+                    scene: tagEntry?.scene || '',
+                    milestones: [
+                        {date: rankingInfo.date || '-', event: `最新融资: ${rankingInfo.latest || '待补充'} (${rankingInfo.valuation || '估值待定'})`}
+                    ]
+                };
+            }
+            
+            return null;
+        }
+        
+        // 数据路径说明
+        function getDataPathDescription(path) {
+            const descriptions = {
+                '遥操作': t('pathDescTeleop'),
+                '视频学习': t('pathDescVideo'),
+                '仿真': t('pathDescSim'),
+                '仿真+遥操作': t('pathDescSimTeleop'),
+                '物理世界': t('pathDescReal'),
+                '混合': t('pathDescHybrid')
+            };
+            return descriptions[path] || descriptions['混合'];
+        }
+        
+        function renderCompanyPage(company, events) {
+            const currencySymbol = company.currency === '美元' ? '💵' : '💴';
+            const displayName = getDisplayName(company.name);
+            const displayNameEn = companyNameMap[company.name]?.nameEn || company.name_en || '';
+            const displayValuation = getDisplayValuation(company.valuation);
+            
+            // 解析数据路径
+            const segmentParts = (company.segment || '').split(' / ');
+            const mainSegment = segmentParts[0] || '';
+            const dataPath = segmentParts[1] || '混合';
+            
+            // 数据路径样式映射
+            const pathClassMap = {
+                '遥操作': 'data-path-teleop',
+                '视频学习': 'data-path-video',
+                '仿真': 'data-path-sim',
+                '仿真+遥操作': 'data-path-sim',
+                '物理世界': 'data-path-real',
+                '混合': 'data-path-hybrid'
+            };
+            const pathClass = pathClassMap[dataPath] || 'data-path-hybrid';
+            
+            // 数据路径图标
+            const pathIconMap = {
+                '遥操作': '🎮',
+                '视频学习': '🎬',
+                '仿真': '🔬',
+                '仿真+遥操作': '🔬',
+                '物理世界': '🌍',
+                '混合': '🔀'
+            };
+            const pathIcon = pathIconMap[dataPath] || '🔀';
+            
+            document.title = `${displayName} - ${t('pageTitle')}`;
+
+            document.getElementById('content').innerHTML = `
+                <div class="company-header">
+                    <div class="company-title">
+                        <a href="index.html" class="home-logo" title="返回首页">
+                            <span class="logo-icon">🤖</span>
+                        </a>
+                        <div>
+                            <div class="company-name">${displayName}</div>
+                            <div class="company-name-en">${displayNameEn}</div>
+                            <a href="${company.website}" target="_blank" class="company-website">
+                                🌐 ${company.website.replace('https://', '')}
+                            </a>
+                            <div class="tech-path-section">
+                                <span class="data-path-tag ${pathClass}">${pathIcon} ${dataPath}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="valuation-badge">
+                        <div class="valuation-value">${displayValuation}</div>
+                        <div class="valuation-label">${t('valuationLabel')} ${currencySymbol}</div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">${t('foundedLabel')}</div>
+                        <div class="stat-value">${company.founded}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">${t('hqLabel')}</div>
+                        <div class="stat-value">${company.headquarters}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">${t('latestFundingLabel')}</div>
+                        <div class="stat-value">${currentLang === 'en' && company.latest_en ? company.latest_en : company.latest}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">${t('latestEventLabel')}</div>
+                        <div class="stat-value" style="font-size:14px;">${company.date || '-'}</div>
+                    </div>
+                </div>
+
+                <!-- 标签模块 -->
+                ${company.brain || company.training || company.scene ? `
+                <div class="section">
+                    <div class="section-title">${t('sectionTechTags')}</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                        ${company.brain ? `
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">${t('labelBrain')}</div>
+                            <span class="tag tag-segment">${company.brain}</span>
+                        </div>
+                        ` : ''}
+                        ${company.training ? `
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">${t('labelTraining')}</div>
+                            <span class="tag tag-funding">${company.training}</span>
+                        </div>
+                        ` : ''}
+                        ${company.scene ? `
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-bottom: 8px;">${t('labelScene')}</div>
+                            <span class="tag" style="background: rgba(34, 197, 94, 0.2); color: #22c55e;">${company.scene}</span>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- 定位说明 -->
+                ${company.positioning ? `
+                <div class="section">
+                    <div class="section-title">${t('sectionPositioning')}</div>
+                    <div style="color: var(--text-secondary); line-height: 1.8; font-size: 14px;">${company.positioning}</div>
+                </div>
+                ` : ''}
+
+                <div class="section">
+                    <div class="section-title">${t('sectionTechPath')}</div>
+                    <div style="color: var(--text-secondary); line-height: 1.8;">
+                        <p><strong>${t('techPathCompanyPos')}</strong>${mainSegment}</p>
+                        <p><strong>${t('techPathDataMethod')}</strong>${dataPath}</p>
+                        <p style="margin-top: 12px; font-size: 13px;">
+                            ${getDataPathDescription(dataPath)}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">👥 ${t('sectionTeam')}</div>
+                    ${company.founders && company.founders.length > 0 ? `
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>职位</th>
+                                <th>背景简介</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${company.founders.map(f => `
+                            <tr>
+                                <td class="name-cell">${f.name}</td>
+                                <td class="title-cell">${f.title}</td>
+                                <td class="bio-cell">${f.bio || '-'}</td>
+                            </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                    ` : `<div class="loading">${t('noDataTeam')}</div>`}
+                </div>
+
+                <div class="section">
+                    <div class="section-title">💰 融资一览</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>轮次</th>
+                                <th>时间</th>
+                                <th>融资金额</th>
+                                <th>投后估值</th>
+                                <th>主要投资方</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${company.fundingTable && company.fundingTable.length > 0 ? 
+                                company.fundingTable.map(row => `
+                                <tr>
+                                    <td class="round-cell">${row.round}</td>
+                                    <td class="date-cell">${row.date}</td>
+                                    <td class="event-cell">${row.amount}</td>
+                                    <td class="round-cell">${row.valuation}</td>
+                                    <td class="event-cell">${row.investors}</td>
+                                </tr>
+                                `).join('') :
+                                (company.milestones ? company.milestones.map(m => {
+                                    // 跳过非融资事件
+                                    if (!m.event.match(/轮|IPO|上市|融资|募资|收购/i)) {
+                                        return '';
+                                    }
+                                    
+                                    // 解析轮次
+                                    let round = '-';
+                                    const roundPatterns = [
+                                        /^(种子轮|天使轮|[A-Z][轮期]|Pre-?[ABCDEFG]|A[+]?[轮期]|B[+]?[轮期]|C[+]?[轮期]|战略|收购)/i,
+                                        /(种子轮|天使轮|[A-Z][轮期]|Pre-?[ABCDEFG])/i
+                                    ];
+                                    for (const pattern of roundPatterns) {
+                                        const match = m.event.match(pattern);
+                                        if (match) {
+                                            round = match[0];
+                                            break;
+                                        }
+                                    }
+                                    
+                                    // 解析金额
+                                    let amount = '-';
+                                    const amountMatch = m.event.match(/[\$¥][^\\n,，()（)【】\[\]]+/g);
+                                    if (amountMatch) {
+                                        amount = amountMatch.filter(a => !a.includes('估值')).join(', ');
+                                    }
+                                    
+                                    // 解析估值
+                                    let valuation = '-';
+                                    const valPatterns = [
+                                        /估值[：:]\s*([^\n,，()（）【】[\]]+)/,
+                                        /\(([^)]*[估]?[^)]*)\)/,
+                                        /([\$¥][^\\n,，()（)【】[\]]+[^\\n,，]*估)/
+                                    ];
+                                    for (const pattern of valPatterns) {
+                                        const match = m.event.match(pattern);
+                                        if (match) {
+                                            let val = match[1] || match[0];
+                                            if (val.includes('估值')) {
+                                                val = val.replace(/估值/g, '').trim();
+                                            }
+                                            if (val.length > 2 && !val.includes('投资方')) {
+                                                valuation = val;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    // 解析投资方
+                                    let investors = '-';
+                                    const invPatterns = [
+                                        /\(([^)]+)\)/,
+                                        /（([^）]+)）/,
+                                        /([^\n,，。：:（）()]+(?:资本|投资|基金|集团| Partners?| Expeditions?| Ventures?| Holdings?| Capital))/g
+                                    ];
+                                    for (const pattern of invPatterns) {
+                                        const match = m.event.match(pattern);
+                                        if (match) {
+                                            let inv = Array.isArray(match) ? match.slice(0, 3).join('、') : match[1] || match[0];
+                                            if (!inv.includes('估值') && inv.length > 1) {
+                                                investors = inv;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    return `<tr>
+                                        <td class="round-cell">${round}</td>
+                                        <td class="date-cell">${m.date}</td>
+                                        <td class="event-cell">${amount}</td>
+                                        <td class="round-cell">${valuation}</td>
+                                        <td class="event-cell">${investors}</td>
+                                    </tr>`;
+                                }).join('') : '')
+                            }
+                        </tbody>
+                    </table>
+                    
+                    ${company.fundingNote ? `
+                    <div class="funding-note">
+                        <div class="funding-note-content">${company.fundingNote}</div>
+                    </div>
+                    ` : ''}
+                </div>
+
+                <div class="section">
+                    <div class="section-title">${t('sectionNews')} (${events.length}${t('newsCount')})</div>
+                    ${events.length > 0 ? `
+                        <div class="events-list">
+                            ${events.map(e => `
+                                <div class="event-item">
+                                    <div class="event-content">
+                                        <div class="event-title">${e.title}</div>
+                                        <div class="event-meta">
+                                            <span>📅 ${e.date}</span>
+                                            <span>📍 ${e.source || t('eventUnknownSource')}</span>
+                                            <span class="event-badge type-${e.type}">${typeNames[e.type] || e.type}</span>
+                                        </div>
+                                        ${e.source_url ? `<a href="${e.source_url}" target="_blank" class="event-link">${t('eventReadOriginal')}</a>` : ''}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : `<div class="loading">${t('noData')}</div>`}
+                </div>
+            `;
+        }
+        
+        // 启动
+        if (companyName) {
+            loadData();
+        } else {
+            document.getElementById('content').innerHTML = `
+                <div class="error-msg">
+                    <h2>${t('errorNoCompany')}</h2>
+                    <p style="margin-top:12px">${t('errorNoCompanyHint')}</p>
+                </div>
+            `;
+        }
+    
