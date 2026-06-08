@@ -986,6 +986,72 @@ personnel_events = [
         "source": "澎湃新闻",
         "source_url": "https://news.qq.com/rain/a/20260520A02COR00",
         "date": "2026-05-19"
+    },
+    # ===== 2026-06-08 新增人事动态 =====
+    {
+        "company": "小鹏汽车",
+        "person_name": "施晓鑫",
+        "action": "离职",
+        "old_role": "机器人产品规划高级总监/Iron产品一号位",
+        "new_role": "-",
+        "title": "小鹏机器人核心产品一号位施晓鑫6月初主动离职",
+        "title_en": "XPeng Robotics Product Head Shi Xiaoxin Departs in Early June",
+        "summary": "施晓鑫南京大学计算机本科、悉尼科技大学IT硕士，在小鹏履职1675天，横跨鹏行智能整合、团队并入小鹏集团、IRON人形机器人从原型迭代至量产筹备全周期。主导Iron全系列产品定义，是该业务线核心人物。6月初主动离职，小鹏年内量产人形机器人目标面临人员挑战。",
+        "source": "新浪财经",
+        "source_url": "https://finance.sina.com.cn/tech/digi/2026-06-05/doc-iniaikax1875139.shtml",
+        "date": "2026-06-01"
+    },
+    {
+        "company": "OpenAI",
+        "person_name": "Aditya Ramesh",
+        "action": "任命",
+        "old_role": "DALL-E/Sora核心开发者",
+        "new_role": "VP of Robotics",
+        "title": "OpenAI成立Robotics部门，DALL-E创造者Aditya Ramesh任VP",
+        "title_en": "OpenAI Launches Robotics Division, DALL-E Creator Aditya Ramesh as VP",
+        "summary": "2026年6月1日，OpenAI CEO Sam Altman宣布成立OpenAI Robotics部门。DALL-E系列及Sora视频生成模型核心开发者Aditya Ramesh被任命为VP of Robotics，目标是将视频生成模型的智能带入物理世界。OpenAI曾在2021年解散原机器人团队，此次标志着以'AI大脑优先'策略正式重返实体机器人领域。",
+        "source": "IT之家",
+        "source_url": "https://finance.sina.com.cn/tech/digi/2026-06-01/doc-inhzwuht2471620.shtml",
+        "date": "2026-06-01"
+    },
+    {
+        "company": "OpenAI",
+        "person_name": "何泰然",
+        "action": "加入",
+        "old_role": "CMU机器人研究所博士生",
+        "new_role": "OpenAI机器人团队核心成员",
+        "title": "CMU机器人博士何泰然加入OpenAI机器人团队，曾研发Omni H2O",
+        "title_en": "CMU Robotics PhD He Tairan Joins OpenAI Robotics, Creator of Omni H2O",
+        "summary": "何泰然本科毕业于上海交通大学计算机专业，卡内基梅隆大学机器人研究所博士，研发Omni H2O技术探索人形机器人全身协调操作。2026年5月加入OpenAI，坐拥50万+粉丝科技博主（Whynot TV），聚焦机器人学习与灵巧操作研发。",
+        "source": "搜狐",
+        "source_url": "https://www.sohu.com/a/1030540105_610300",
+        "date": "2026-05-12"
+    },
+    {
+        "company": "Google DeepMind",
+        "person_name": "Aaron Saunders",
+        "action": "加入",
+        "old_role": "Boston Dynamics CTO",
+        "new_role": "硬件工程副总裁",
+        "title": "前Boston Dynamics CTO Aaron Saunders加入Google DeepMind任硬件工程VP",
+        "title_en": "Ex-Boston Dynamics CTO Aaron Saunders Joins DeepMind as VP Hardware Engineering",
+        "summary": "2025年11月，Google DeepMind宣布聘请前Boston Dynamics CTO Aaron Saunders担任硬件工程副总裁。Saunders在波士顿动力工作22年，主导BigDog、Spot、Stretch和Atlas等机器人开发。此举是DeepMind打造'机器人安卓系统'（Gemini Robotics）战略的关键一步。",
+        "source": "Wired",
+        "source_url": "https://www.wired.com/story/google-hires-cto-boston-dynamics-demis-hassabis-android/",
+        "date": "2025-11-19"
+    },
+    {
+        "company": "新智具身",
+        "person_name": "赵世豪",
+        "action": "创业",
+        "old_role": "复旦大学可信具身智能研究院",
+        "new_role": "新智具身(NeoteAI)创始人兼CEO",
+        "title": "复旦系赵世豪创立新智具身，聚焦视觉-触觉联合嵌入世界行动模型",
+        "title_en": "Fudan Alumni Zhao Shihao Founds NeoteAI for Vision-Tactile World Action Models",
+        "summary": "赵世豪毕业于复旦大学，创立上海新智具身智能科技有限公司(NeoteAI)，首席科学家吴祖煊为复旦大学可信具身智能研究院副院长，COO董道国为该院研究员。公司聚焦'视觉-触觉联合嵌入世界行动模型'，让人形机器人胜任精细化工作。2026年5月完成近亿元天使轮融资，上海科创集团、复旦科创联合领投。",
+        "source": "36氪",
+        "source_url": "https://m.36kr.com/p/3826847117070979",
+        "date": "2026-05-27"
     }
 ]
 
