@@ -265554,5 +265554,214 @@
     "action": "创业",
     "old_role": "复旦大学可信具身智能研究院",
     "new_role": "新智具身(NeoteAI)创始人兼CEO"
+  },
+  {
+    "id": "千寻20260300",
+    "company": "千寻智能",
+    "type": "personnel",
+    "title": "千寻智能副总裁解浚源离职，曾负责Spirit VLA大模型研发",
+    "title_en": "Spirit AI VP Xie Junyuan Departs, Led Spirit VLA Model Development",
+    "summary": "解浚源中科大学士、华盛顿大学博士，曾任字节跳动AI Lab技术负责人。2025年3月加入千寻智能任副总裁、具身智能事业部总经理，全面负责Spirit VLA大模型研发。2026年3月离职，退出子公司万境千寻15%股份。任职约一年，离职时距公司完成近20亿元融资不过月余。接任者为郭俊良（前微软亚研院高级研究员）。",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260410A02YUC00",
+    "date": "2026-03-15",
+    "created_at": "2026-06-08T13:59:14.877170",
+    "media_sources": [
+      "腾讯新闻"
+    ],
+    "person_name": "解浚源",
+    "action": "离职",
+    "old_role": "副总裁/具身智能事业部总经理",
+    "new_role": "-"
+  },
+  {
+    "id": "千寻20260301",
+    "company": "千寻智能",
+    "type": "personnel",
+    "title": "前微软亚研院郭俊良接任千寻智能具身模型负责人",
+    "title_en": "Ex-MSRA Researcher Guo Junliang Takes Over Spirit AI Model Lead",
+    "summary": "郭俊良曾任微软亚洲研究院（MSRA）机器学习组高级研究员，研究方向包括世界模型、具身大模型与学习算法。加入千寻智能后担任具身模型负责人、预训练负责人，在解浚源离职后接任核心研发岗位。",
+    "source": "腾讯新闻",
+    "source_url": "https://news.qq.com/rain/a/20260410A02YUC00",
+    "date": "2026-03-15",
+    "created_at": "2026-06-08T13:59:14.879191",
+    "media_sources": [
+      "腾讯新闻"
+    ],
+    "person_name": "郭俊良",
+    "action": "接任",
+    "old_role": "微软亚洲研究院机器学习组高级研究员",
+    "new_role": "具身模型负责人/预训练负责人"
+  },
+  {
+    "id": "逐际20260401",
+    "company": "逐际动力",
+    "type": "personnel",
+    "title": "逐际动力前COO张力加入智在无界担任首席运营官",
+    "title_en": "Ex-LimX COO Zhang Li Joins BeingBeyond as Chief Operating Officer",
+    "summary": "张力2026年初从逐际动力离职后，4月初加入北京智在无界科技有限公司担任首席运营官，负责公司战略、融资、PR市场、商务合作拓展及公司日常运营。张力曾任文远知行COO，长期深耕自动驾驶行业。智在无界由北大副教授卢宗青创立，专注人形机器人通用大模型。",
+    "source": "澎湃新闻",
+    "source_url": "https://www.penghoo.cn/a/10862.html",
+    "date": "2026-04-08",
+    "created_at": "2026-06-08T13:59:14.880823",
+    "media_sources": [
+      "澎湃新闻"
+    ],
+    "person_name": "张力",
+    "action": "加入",
+    "old_role": "逐际动力联合创始人兼COO",
+    "new_role": "智在无界COO"
+  },
+  {
+    "id": "维他20241200",
+    "company": "维他动力",
+    "type": "personnel",
+    "title": "理想前智驾产品总监赵哲伦联合创办维他动力，聚焦消费级机器人",
+    "title_en": "Ex-Li Auto Product Director Zhao Zhelun Co-founds Vbot for Consumer Robotics",
+    "summary": "赵哲伦2024年12月从理想汽车离职，与地平线前副总裁余轶南联合创办维他动力（北京）科技有限公司，负责产品化和市场。公司聚焦消费级具身智能机器人，2026年5月完成Pre-A轮近5亿元融资。赵哲伦此前在理想汽车负责智能驾驶产品。",
+    "source": "百度百科",
+    "source_url": "https://baike.baidu.com/item/%E8%B5%B5%E5%93%B2%E4%BC%A6/66052442",
+    "date": "2024-12-09",
+    "created_at": "2026-06-08T13:59:14.882308",
+    "media_sources": [
+      "百度百科"
+    ],
+    "person_name": "赵哲伦",
+    "action": "创业",
+    "old_role": "理想汽车智能驾驶产品总监",
+    "new_role": "维他动力联合创始人"
+  },
+  {
+    "id": "维他20241201",
+    "company": "维他动力",
+    "type": "personnel",
+    "title": "地平线前副总裁余轶南联合创办维他动力",
+    "title_en": "Ex-Horizon VP Yu Yinan Co-founds Vbot",
+    "summary": "余轶南曾任地平线副总裁、软件平台产品线总裁，2024年与理想前智驾产品总监赵哲伦联合创办维他动力，专注消费级具身智能机器人。公司2026年5月完成Pre-A轮近5亿元融资。",
+    "source": "百度百科",
+    "source_url": "https://baike.baidu.com/item/%E7%BB%B4%E4%BB%96%E5%8A%A8%E5%8A%9B%EF%BC%88%E5%8C%97%E4%BA%AC%EF%BC%89%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/65525305",
+    "date": "2024-12-09",
+    "created_at": "2026-06-08T13:59:14.884080",
+    "media_sources": [
+      "百度百科"
+    ],
+    "person_name": "余轶南",
+    "action": "创业",
+    "old_role": "地平线副总裁/软件平台产品线总裁",
+    "new_role": "维他动力联合创始人"
+  },
+  {
+    "id": "Me20260500",
+    "company": "Meta",
+    "type": "personnel",
+    "title": "ARI联合创始人Xiaolong Wang随Meta收购加入超级智能实验室任Research Director",
+    "title_en": "ARI Co-Founder Xiaolong Wang Joins Meta Superintelligence Labs as Research Director",
+    "summary": "Xiaolong Wang是UCSD教授、ARI（Assured Robot Intelligence）联合创始人兼CTO。2026年5月1日Meta完成对ARI的全资收购，Wang随20人精英团队并入Meta超级智能实验室（MSL），任Research Director，聚焦Embodied AI。ARI此前融资近4000万美元，核心研发e-Flesh柔性触觉传感、敏捷操作与全身协调技术。",
+    "source": "GitHub Pages",
+    "source_url": "https://xiaolonw.github.io/",
+    "date": "2026-05-01",
+    "created_at": "2026-06-08T13:59:14.885815",
+    "media_sources": [
+      "GitHub Pages"
+    ],
+    "person_name": "Xiaolong Wang",
+    "action": "加入",
+    "old_role": "ARI联合创始人/CTO/前英伟达研究员",
+    "new_role": "Meta超级智能实验室Research Director"
+  },
+  {
+    "id": "Me20260501",
+    "company": "Meta",
+    "type": "personnel",
+    "title": "ARI联合创始人Lerrel Pinto随Meta收购加入超级智能实验室",
+    "title_en": "ARI Co-Founder Lerrel Pinto Joins Meta Superintelligence Labs",
+    "summary": "Lerrel Pinto是纽约大学（NYU）教授、ARI联合创始人。2026年5月1日Meta完成对ARI的全资收购后，Pinto随团队并入Meta超级智能实验室，参与前沿AI和机器人研究。Pinto在机器人学习和自主智能体领域有深厚学术积累。",
+    "source": "Aesop Academy",
+    "source_url": "https://aesopacademy.org/ai-news/articles/2026-05-03-meta-assured-robot-intelligence-humanoid.html",
+    "date": "2026-05-01",
+    "created_at": "2026-06-08T13:59:14.886715",
+    "media_sources": [
+      "Aesop Academy"
+    ],
+    "person_name": "Lerrel Pinto",
+    "action": "加入",
+    "old_role": "ARI联合创始人/NYU教授",
+    "new_role": "Meta超级智能实验室研究员"
+  },
+  {
+    "id": "Me20260502",
+    "company": "Meta",
+    "type": "personnel",
+    "title": "ARI联合创始人Xuxin Cheng随Meta收购加入超级智能实验室",
+    "title_en": "ARI Co-Founder Xuxin Cheng Joins Meta Superintelligence Labs",
+    "summary": "Xuxin Cheng是ARI三位联合创始人之一。2026年5月1日Meta完成对ARI全资收购后，Cheng随20人精英团队并入Meta超级智能实验室，参与人形机器人AI模型研发。",
+    "source": "Today Startup News",
+    "source_url": "https://www.todaysstartupnews.com/news/meta-acquires-assured-robot-intelligence-humanoid-physical-agi-superintelligence-labs-2026",
+    "date": "2026-05-01",
+    "created_at": "2026-06-08T13:59:14.887491",
+    "media_sources": [
+      "Today Startup News"
+    ],
+    "person_name": "Xuxin Cheng",
+    "action": "加入",
+    "old_role": "ARI联合创始人",
+    "new_role": "Meta超级智能实验室研究员"
+  },
+  {
+    "id": "欧拉20260300",
+    "company": "欧拉万象",
+    "type": "personnel",
+    "title": "华为天才少年周顺波离职创立欧拉万象，转向消费级具身智能",
+    "title_en": "Huawei Genius Youth Zhou Shunbo Founds Ola Dimensions for Consumer Embodied AI",
+    "summary": "周顺波是华为天才少年计划智能机器人方向唯一入选者，香港中文大学机器人学博士，IEEE RAL等顶刊发表论文30余篇。从0到1搭建华为云具身智能团队，主导研发CloudRobo平台。2026年3月初离职，创立欧拉万象（Ola Dimensions），转向消费级具身智能赛道。",
+    "source": "A3智能体",
+    "source_url": "https://agentren.cn/2026/0415/12408.shtml",
+    "date": "2026-03-08",
+    "created_at": "2026-06-08T13:59:14.888315",
+    "media_sources": [
+      "A3智能体"
+    ],
+    "person_name": "周顺波",
+    "action": "创业",
+    "old_role": "华为云物理智能创新Lab负责人/首席技术专家",
+    "new_role": "欧拉万象（Ola Dimensions）创始人"
+  },
+  {
+    "id": "蚂蚁20260400",
+    "company": "蚂蚁集团",
+    "type": "personnel",
+    "title": "蚂蚁集团RL首席科学家吴翼离职加入Meta超级智能实验室",
+    "title_en": "Ant Group RL Chief Scientist Wu Yi Departs for Meta Superintelligence Labs",
+    "summary": "吴翼清华姚班本科、UC Berkeley博士，多智能体强化学习领域重要推动者（提出MADDPG、MAPPO等算法）。2019-2020年在OpenAI参与捉迷藏项目，2020年回国任教清华交叉信息研究院，2023年创办边塞科技，2024年11月被蚂蚁收购任RL实验室首席科学家。2026年4月离职加入Meta超级智能实验室（MSL），清华交叉信息研究院官网已撤下其教职信息。",
+    "source": "A3智能体",
+    "source_url": "https://agentren.cn/2026/0415/12408.shtml",
+    "date": "2026-04-15",
+    "created_at": "2026-06-08T13:59:14.889735",
+    "media_sources": [
+      "A3智能体"
+    ],
+    "person_name": "吴翼",
+    "action": "离职",
+    "old_role": "蚂蚁集团强化学习实验室首席科学家",
+    "new_role": "Meta超级智能实验室研究员"
+  },
+  {
+    "id": "日冕20250700",
+    "company": "日冕机器人",
+    "type": "personnel",
+    "title": "蔚来前自动驾驶算法负责人肖中阳创立日冕机器人",
+    "title_en": "Ex-NIO Autonomous Driving Lead Xiao Zhongyang Founds Solar Crown Robotics",
+    "summary": "肖中阳曾任蔚来汽车自动驾驶算法负责人，2025年离职创立日冕机器人，切入具身智能赛道。延续智能驾驶人才向机器人领域流动趋势。",
+    "source": "A3智能体",
+    "source_url": "https://agentren.cn/2026/0415/12408.shtml",
+    "date": "2025-07-01",
+    "created_at": "2026-06-08T13:59:14.891543",
+    "media_sources": [
+      "A3智能体"
+    ],
+    "person_name": "肖中阳",
+    "action": "创业",
+    "old_role": "蔚来汽车自动驾驶算法负责人",
+    "new_role": "日冕机器人创始人"
   }
 ]
