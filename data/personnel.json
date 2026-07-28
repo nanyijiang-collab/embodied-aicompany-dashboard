@@ -1506,5 +1506,83 @@
     "source": "智东西/36氪",
     "source_url": "https://www.toutiao.com/article/7659954781468787250",
     "date": "2026-07-06"
+  },
+  {
+    "company": "开普勒机器人",
+    "person_name": "胡德波",
+    "action": "离职",
+    "old_role": "CEO/联合创始人",
+    "new_role": "-",
+    "title": "开普勒机器人前CEO胡德波离职，创立索塔无界",
+    "title_en": "Kepler Robotics Former CEO Hu Debo Departs, Founds Sota Wujie",
+    "summary": "胡德波是开普勒机器人联合创始人兼前CEO，曾在华为、中兴通讯担任海外及全球业务高管。自2025年6月起不再担任CEO，仅负责销售及市场相关工作，2026年2月正式离任。随后创立索塔无界，专注具身智能'大脑'研发。",
+    "source": "搜狐/开普勒官方",
+    "source_url": "https://www.sohu.com/a/1026293155_116237",
+    "date": "2026-02-01"
+  },
+  {
+    "company": "索塔无界",
+    "person_name": "胡德波",
+    "action": "创业",
+    "old_role": "开普勒机器人前CEO",
+    "new_role": "创始人兼CEO",
+    "title": "开普勒前CEO胡德波创立索塔无界，用世界模型实现Scaling Law",
+    "title_en": "Former Kepler CEO Hu Debo Found Sota Wujie, Scaling Law via World Model",
+    "summary": "胡德波创立索塔无界，专注具身智能'大脑'技术研发。公司自研EGO头盔和OMNI-UMI全模态数据采集系统，推出Physica-Claw物理智能体架构，走全栈整机出海路线，锁定商超零售、制造物流等领域。",
+    "source": "腾讯新闻",
+    "source_url": "https://new.qq.com/rain/a/20260514A07U6G00",
+    "date": "2026-04-01"
+  },
+  {
+    "company": "华为",
+    "person_name": "王云鹤",
+    "action": "离职",
+    "old_role": "华为诺亚方舟实验室主任/盘古大模型负责人",
+    "new_role": "-",
+    "title": "华为诺亚方舟实验室主任王云鹤离职，将投身AI Agent创业",
+    "title_en": "Huawei Noah's Ark Lab Director Wang Yunhe Departs for AI Agent Startup",
+    "summary": "王云鹤2018年入职华为，历任算法、技术管理等多个岗位，2025年3月接任诺亚方舟实验室主任，参与盘古大模型迭代工作。2026年3月20日作为盘古大模型开源项目负责人出席发布会，3月28日确认离职。其团队研发的GhostNet神经网络架构曾入选华为年度十大发明。",
+    "source": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/wm/2026-04-03/doc-inhtfkwx3763131.shtml",
+    "date": "2026-03-28"
+  },
+  {
+    "company": "基元律动",
+    "person_name": "王云鹤",
+    "action": "创业",
+    "old_role": "华为诺亚方舟实验室主任",
+    "new_role": "CEO",
+    "title": "原华为诺亚方舟实验室主任王云鹤创办基元律动，天使轮估值达1亿美元",
+    "title_en": "Former Huawei Lab Director Wang Yunhe Founds Jiyuan LvDong, Angel Round at $100M",
+    "summary": "王云鹤离职后创办上海基元律动科技有限公司，出任CEO，原华为诺亚方舟实验室首席研究员韩凯担任CTO。公司聚焦AI Agent领域，成立不到两个月完成天使轮融资，估值达1亿美元。",
+    "source": "腾讯新闻",
+    "source_url": "https://new.qq.com/rain/a/20260603A07MAF00",
+    "date": "2026-04-08"
+  },
+  {
+    "company": "华为",
+    "person_name": "朱森华",
+    "action": "离职",
+    "old_role": "华为云AI算法创新Lab主任/具身智能大脑一号位",
+    "new_role": "-",
+    "title": "华为云AI算法创新Lab主任朱森华离职创业",
+    "title_en": "Huawei Cloud AI Lab Director Zhu Senhua Departs to Found Startup",
+    "summary": "朱森华曾任华为云AI算法创新Lab主任，华为云AI部门智能机器人业务开创者，带领团队从零构建了华为云的脑与类脑AI云平台、华为云智能机器人业务，孵化了华为首个具身大模型。2025年10月离职。",
+    "source": "36氪/百度百家号",
+    "source_url": "https://baijiahao.baidu.com/s?id=1853351312180082470",
+    "date": "2025-10-01"
+  },
+  {
+    "company": "具脑磐石",
+    "person_name": "朱森华",
+    "action": "创业",
+    "old_role": "华为云AI算法创新Lab主任",
+    "new_role": "创始人兼CEO",
+    "title": "华为'具身大脑一号位'朱森华创立具脑磐石，完成亿元级融资",
+    "title_en": "Former Huawei 'Embodied Brain No.1' Zhu Senhua Founds JuNao PanShi",
+    "summary": "朱森华创立具脑磐石，定位为具身智能'大脑'公司，核心方向是面向真实物理世界的认知世界模型。采用类脑智能的Neural AI范式改进具身智能VLA。2026年5月完成新一轮亿元级融资。",
+    "source": "搜狐",
+    "source_url": "https://www.sohu.com/a/1027414608_260616",
+    "date": "2025-10-01"
   }
 ]
