@@ -1,5 +1,37 @@
 [
   {
+    "id": "19121981e49d",
+    "company": "行业动态",
+    "type": "other",
+    "title": "中国智驾进欧洲，考的是下限",
+    "title_en": null,
+    "summary": "",
+    "source": "晚点LatePost",
+    "source_url": "https://www.163.com/dy/article/L2RP6QLD0531M1CO.html?spss=dy_author",
+    "date": "2026-07-28",
+    "created_at": "2026-07-28T13:09:04.565328",
+    "media_sources": [
+      "163.com",
+      "晚点LatePost"
+    ]
+  },
+  {
+    "id": "540a37932fc6",
+    "company": "行业动态",
+    "type": "other",
+    "title": "中国公司去了巴西才知道的 81 件事",
+    "title_en": null,
+    "summary": "",
+    "source": "晚点LatePost",
+    "source_url": "https://www.163.com/dy/article/L2RMAQBB0531M1CO.html?spss=dy_author",
+    "date": "2026-07-28",
+    "created_at": "2026-07-28T13:09:04.565397",
+    "media_sources": [
+      "163.com",
+      "晚点LatePost"
+    ]
+  },
+  {
     "id": "c08f188266d0",
     "company": "行业动态",
     "type": "other",
@@ -5424,6 +5456,25 @@
     ]
   },
   {
+    "id": "腾讯20260700",
+    "company": "腾讯",
+    "type": "personnel",
+    "title": "腾讯混元多模态负责人胡瀚离职创业，押注具身世界模型",
+    "title_en": "Tencent Hunyuan Multimodal Lead Hu Han Resigns to Found Embodied World Model Startup",
+    "summary": "胡瀚本科博士均就读清华大学，师从周杰教授，曾任职百度深度学习研究所、微软亚洲研究院视觉计算组（升任首席研究员）。2025年1月加入腾讯接替刘威负责混元多模态研发。2026年7月正式提出离职，将独立创业主攻具身大脑与世界模型赛道。原OpenAI研究员田永龙将接手其视觉语言模型研发工作。",
+    "source": "OFweek维科网/新智元",
+    "source_url": "https://znyj.m.ofweek.com/news/2026-07/ART-23013-8460-30695790.html",
+    "date": "2026-07-24",
+    "created_at": "2026-07-27T12:49:39.528514",
+    "media_sources": [
+      "OFweek维科网/新智元"
+    ],
+    "person_name": "胡瀚",
+    "action": "离职",
+    "old_role": "腾讯混元多模态大模型负责人",
+    "new_role": "独立创业（主攻具身大脑与世界模型赛道）"
+  },
+  {
     "id": "9cbff7dd66c8",
     "company": "Digit",
     "type": "other",
@@ -10478,6 +10529,25 @@
       "Google News",
       "Gasgoo"
     ]
+  },
+  {
+    "id": "小鹏20260701",
+    "company": "小鹏汽车",
+    "type": "personnel",
+    "title": "小鹏AI架构负责人陆思渊离职，将加入OpenAI做人形机器人",
+    "title_en": "Xpeng AI Infra Lead Lu Siyuan Departs for OpenAI Robotics",
+    "summary": "陆思渊拥有南加州大学博士学位，深耕深度学习与算力优化领域，在小鹏主导搭建AI Infra体系，直管约200人团队，覆盖训练集群、芯片编译器、车端推理全链路技术。2026年7月正在办理工作交接，离职后将入职OpenAI参与具身机器人研发。这是近两月小鹏第三位出走的核心技术高管（此前施晓鑫、米良川已离职）。",
+    "source": "OFweek机器人网/雷峰网",
+    "source_url": "https://mp.ofweek.com/robot/a256714105627",
+    "date": "2026-07-20",
+    "created_at": "2026-07-27T12:49:39.530238",
+    "media_sources": [
+      "OFweek机器人网/雷峰网"
+    ],
+    "person_name": "陆思渊",
+    "action": "离职",
+    "old_role": "小鹏AI基础架构部负责人",
+    "new_role": "即将加入OpenAI参与具身机器人研发"
   },
   {
     "id": "fe8d1d43d04d",
@@ -17056,6 +17126,44 @@
     ]
   },
   {
+    "id": "星动20260700",
+    "company": "星动纪元",
+    "type": "personnel",
+    "title": "星动纪元联合创始人席悦卸任董事长，石选阳接任",
+    "title_en": "Robot Era Co-founder Xi Yue Steps Down as Chairman, Shi Xuanyang Succeeds",
+    "summary": "星动纪元发生高层人事变动，联合创始人席悦卸任董事长及财务负责人职务。同时原董事沈源、王梦秋、郭其志、袁冰冰悉数退出；新增王志伟、张勃任董事。席悦通过合伙企业间接持股18.31%，为公司重要股东。星动纪元2026年以来完成多轮融资（3月10亿战略轮、4月超2亿美元、7月10亿新一轮），注册资本持续上调，公司类型已变更为股份有限公司。",
+    "source": "泰山财经/中国能源网",
+    "source_url": "https://www.cnenergynews.cn/article/4SHRIefhcuu",
+    "date": "2026-07-06",
+    "created_at": "2026-07-27T12:49:39.532046",
+    "media_sources": [
+      "泰山财经/中国能源网"
+    ],
+    "person_name": "席悦",
+    "action": "卸任",
+    "old_role": "星动纪元联合创始人兼董事长 / 财务负责人",
+    "new_role": "卸任董事长及财务负责人职务"
+  },
+  {
+    "id": "墨奇20260700",
+    "company": "墨奇智能",
+    "type": "personnel",
+    "title": "前华为天才少年黄青虬创办墨奇智能，天使轮超10亿估值70亿",
+    "title_en": "Former Huawei Genius Youth Huang Qingqu Found Moqi AI, Angel Round Exceeds 1B RMB",
+    "summary": "黄青虬为前华为天才少年，与前华为资深高管高文礼联合创办墨奇智能。2026年7月宣布完成超10亿元天使轮系列融资，投后估值超70亿元。华为系已成为具身智能创业赛道重要力量，截至7月6日至少15位华为前高管离职加入或创办具身智能创企，9位曾入选华为天才少年，公开融资合计约77亿元。",
+    "source": "智东西/36氪",
+    "source_url": "https://www.toutiao.com/article/7659954781468787250",
+    "date": "2026-07-06",
+    "created_at": "2026-07-27T12:49:39.537696",
+    "media_sources": [
+      "智东西/36氪"
+    ],
+    "person_name": "黄青虬",
+    "action": "创业",
+    "old_role": "华为天才少年",
+    "new_role": "墨奇智能联合创始人"
+  },
+  {
     "id": "0cabd0fbf82b",
     "company": "Agility Robotics",
     "type": "interview",
@@ -17902,6 +18010,25 @@
       "Google News",
       "CNBC"
     ]
+  },
+  {
+    "id": "破壳20260700",
+    "company": "破壳机器人",
+    "type": "personnel",
+    "title": "前美团无人机高管刘硕加入破壳机器人，出任首位商业合伙人",
+    "title_en": "Former Meituan Drone Executive Liu Shuo Joins Poke Robotics as First Business Partner",
+    "summary": "刘硕本科毕业于上海理工大学科技翻译专业，香港大学MBA。曾任职百度智能驾驶事业群生态合作总经理，后任翼健信息合伙人/副总裁，后入美团任无人机商业管理负责人及机器人研究院秘书长。2026年7月加入破壳机器人任首位商业合伙人。破壳机器人由许华哲（前星海图联创/首席科学家）创立，聚焦C端家庭场景轮式底盘+双臂形态具身机器人，4月完成数千万美元天使轮。",
+    "source": "机器人前瞻/新浪网",
+    "source_url": "https://k.sina.com.cn/article_7950358917_1d9e0d98502001eve6.html",
+    "date": "2026-07-01",
+    "created_at": "2026-07-27T12:49:39.533968",
+    "media_sources": [
+      "机器人前瞻/新浪网"
+    ],
+    "person_name": "刘硕",
+    "action": "加入",
+    "old_role": "美团无人机商业管理负责人 / 美团机器人研究院秘书长",
+    "new_role": "破壳机器人首位商业合伙人（负责商业化、战略及业务拓展）"
   },
   {
     "id": "643c43807c49",
@@ -45393,6 +45520,25 @@
       "Google News",
       "新京报"
     ]
+  },
+  {
+    "id": "小鹏20260601",
+    "company": "小鹏汽车",
+    "type": "personnel",
+    "title": "何小鹏亲自兼任小鹏机器人业务CEO，全面接管机器人中心",
+    "title_en": "He Xiaopeng Personally Takes Over as CEO of Xpeng Robotics Business",
+    "summary": "2026年6月10日，何小鹏发布全员内部信，宣布亲自兼任机器人业务CEO及机器人中心总负责人，所有部门负责人直接向其汇报，取消中间总负责人层级。此举发生在施晓鑫离职后5天，旨在从集团最高层推动资金、产线、渠道、智驾技术全面向机器人倾斜，全力推动IRON人形机器人2026年底量产落地。",
+    "source": "21世纪经济报道/今日头条",
+    "source_url": "https://www.toutiao.com/article/7657391193710346752/",
+    "date": "2026-06-10",
+    "created_at": "2026-07-27T12:49:39.534950",
+    "media_sources": [
+      "21世纪经济报道/今日头条"
+    ],
+    "person_name": "何小鹏",
+    "action": "晋升",
+    "old_role": "小鹏集团董事长兼CEO",
+    "new_role": "小鹏集团董事长兼CEO + 机器人业务CEO + 机器人中心总负责人"
   },
   {
     "id": "6cbfa6cd7717",
@@ -167887,6 +168033,25 @@
       "Google News",
       "腾讯新闻"
     ]
+  },
+  {
+    "id": "超维20260500",
+    "company": "超维动力",
+    "type": "personnel",
+    "title": "前小鹏机器人硬件负责人郑存远以花名郑天乐加入超维动力",
+    "title_en": "Former Xpeng Robotics Hardware Lead Joins Chaowei Dynamics as Co-Founder",
+    "summary": "郑存远从小鹏离职后，以花名郑天乐出现在超维动力的发布会和通稿中，经交叉验证确认其身份。通过深圳超维智联合伙持股79.17%，间接控制超维动力。",
+    "source": "职场Bonus/搜狐",
+    "source_url": "https://m.sohu.com/a/1045502544_122014422",
+    "date": "2026-05-01",
+    "created_at": "2026-07-27T12:49:39.536802",
+    "media_sources": [
+      "职场Bonus/搜狐"
+    ],
+    "person_name": "郑存远",
+    "action": "创业加入",
+    "old_role": "小鹏机器人整机本体负责人（花名Tyler）",
+    "new_role": "超维动力联合创始人（花名郑天乐）"
   },
   {
     "id": "cc7f6d5792af",
@@ -328900,1392 +329065,5 @@
       "Google News",
       "Softpedia"
     ]
-  },
-  {
-    "id": "众擎20251000",
-    "company": "众擎机器人",
-    "type": "personnel",
-    "title": "小鹏汽车副总裁李力耘离职，曾主导智驾技术转型",
-    "title_en": "XPeng VP Li Liyun Departs After 6 Years",
-    "summary": "李力耘在小鹏汽车工作6年零4个月，历任高级总监、自动驾驶中心负责人、副总裁，被定义为智驾技术一号位。2025年10月在朋友圈官宣离职。",
-    "source": "腾讯新闻",
-    "source_url": "https://news.qq.com/rain/a/20260422A05N6N00",
-    "date": "2025-10-01",
-    "created_at": "2026-07-27T12:49:39.434001",
-    "media_sources": [
-      "腾讯新闻"
-    ],
-    "person_name": "李力耘",
-    "action": "离职",
-    "old_role": "小鹏汽车副总裁",
-    "new_role": "-"
-  },
-  {
-    "id": "魔法20260301",
-    "company": "魔法原子",
-    "type": "personnel",
-    "title": "魔法原子CTO陈春玉接棒，负责公司全面运营",
-    "title_en": "MagicLab CTO Chen Chunyu Takes Leadership After Founder's Exit",
-    "summary": "陈春玉是魔法原子联合创始人，十余年机器人行业经验，曾任职优必选，主导过人形与四足机器人量产交付。在创始人吴长征离职后，继续担任CTO并负责公司全面运营。",
-    "source": "界面新闻",
-    "source_url": "https://www.jiemian.com/article/14082526.html",
-    "date": "2026-03-06",
-    "created_at": "2026-07-27T12:49:39.435744",
-    "media_sources": [
-      "界面新闻"
-    ],
-    "person_name": "陈春玉",
-    "action": "晋升",
-    "old_role": "CTO",
-    "new_role": "代理CEO/CTO"
-  },
-  {
-    "id": "魔法20260302",
-    "company": "魔法原子",
-    "type": "personnel",
-    "title": "前阿里、蔚来算法专家张涛加入魔法原子，担任具身模型负责人",
-    "title_en": "MagicLab Hires Ex-Alibaba & NIO Algorithm Expert Zhang Tao",
-    "summary": "张涛加入魔法原子担任具身模型负责人、算法VP，具备阿里、蔚来算法背景，将负责具身智能大模型研发及技术体系建设。",
-    "source": "界面新闻",
-    "source_url": "https://www.jiemian.com/article/14082526.html",
-    "date": "2026-03-06",
-    "created_at": "2026-07-27T12:49:39.436751",
-    "media_sources": [
-      "界面新闻"
-    ],
-    "person_name": "张涛",
-    "action": "加入",
-    "old_role": "-",
-    "new_role": "具身模型负责人/算法VP"
-  },
-  {
-    "id": "魔法20260303",
-    "company": "魔法原子",
-    "type": "personnel",
-    "title": "清华大学博导李翔加入魔法原子，担任首席科学家",
-    "title_en": "Tsinghua Professor Li Xiang Joins MagicLab as Chief Scientist",
-    "summary": "清华大学博导李翔加入魔法原子担任首席科学家，将主导灵巧手技术突破。李翔在机器人领域有深厚学术积累。",
-    "source": "界面新闻",
-    "source_url": "https://www.jiemian.com/article/14082526.html",
-    "date": "2026-03-06",
-    "created_at": "2026-07-27T12:49:39.437740",
-    "media_sources": [
-      "界面新闻"
-    ],
-    "person_name": "李翔",
-    "action": "加入",
-    "old_role": "-",
-    "new_role": "首席科学家"
-  },
-  {
-    "id": "原力20260200",
-    "company": "原力无限",
-    "type": "personnel",
-    "title": "前英伟达自动驾驶创始人加入原力无限科技",
-    "title_en": "Ex-NVIDIA Autonomous Driving Founder Joins Yuanli Unlimited",
-    "summary": "2026年2月，原力无限科技控股（浙江）有限公司发生人事变动，前英伟达自动驾驶创始人加入。",
-    "source": "企查查",
-    "source_url": "https://www.qcc.com/creport/deff662a8964e6310448343ade6a8391.html",
-    "date": "2026-02-25",
-    "created_at": "2026-07-27T12:49:39.440666",
-    "media_sources": [
-      "企查查"
-    ],
-    "person_name": "待查",
-    "action": "加入",
-    "old_role": "-",
-    "new_role": "-"
-  },
-  {
-    "id": "Bo20250800",
-    "company": "Boston Dynamics",
-    "type": "personnel",
-    "title": "Boston Dynamics CTO Aaron Saunders离职，任职23年",
-    "title_en": "Boston Dynamics CTO Aaron Saunders Departs After 23 Years",
-    "summary": "Boston Dynamics CTO Aaron Saunders正式离职。他曾主导开发早期机器狗BigDog，带领团队打造Spot、Stretch和Atlas等人形机器人，推动了AI与物理世界的结合。在公司任职23年。",
-    "source": "机电工程师网",
-    "source_url": "https://www.jdgcs.org/news/agility-robotics-boston-dynamics-see-leadership-changes-17729/",
-    "date": "2025-08-05",
-    "created_at": "2026-07-27T12:49:39.441730",
-    "media_sources": [
-      "机电工程师网"
-    ],
-    "person_name": "Aaron Saunders",
-    "action": "离职",
-    "old_role": "CTO",
-    "new_role": "-"
-  },
-  {
-    "id": "Bo20250801",
-    "company": "Boston Dynamics",
-    "type": "personnel",
-    "title": "特斯拉前高级副总裁、Optimus项目负责人Milan Kovac加入Boston Dynamics",
-    "title_en": "Former Tesla VP & Optimus Lead Milan Kovac Joins Boston Dynamics",
-    "summary": "特斯拉前高级副总裁、人形机器人Optimus项目负责人Milan Kovac加入Boston Dynamics，进一步增强了公司的人形机器人研发实力。",
-    "source": "机电工程师网",
-    "source_url": "https://www.jdgcs.org/news/agility-robotics-boston-dynamics-see-leadership-changes-17729/",
-    "date": "2025-08-05",
-    "created_at": "2026-07-27T12:49:39.442909",
-    "media_sources": [
-      "机电工程师网"
-    ],
-    "person_name": "Milan Kovac",
-    "action": "加入",
-    "old_role": "特斯拉高级副总裁/Optimus项目负责人",
-    "new_role": "-"
-  },
-  {
-    "id": "Bo20250802",
-    "company": "Boston Dynamics",
-    "type": "personnel",
-    "title": "Boston Dynamics CEO Robert Playter卸任",
-    "title_en": "Boston Dynamics CEO Robert Playter Steps Down",
-    "summary": "Boston Dynamics元老级人物Robert Playter卸任CEO，标志着公司进入新的发展阶段。",
-    "source": "机电工程师网",
-    "source_url": "https://www.jdgcs.org/news/agility-robotics-boston-dynamics-see-leadership-changes-17729/",
-    "date": "2025-08-05",
-    "created_at": "2026-07-27T12:49:39.444150",
-    "media_sources": [
-      "机电工程师网"
-    ],
-    "person_name": "Robert Playter",
-    "action": "卸任",
-    "old_role": "CEO",
-    "new_role": "-"
-  },
-  {
-    "id": "Ag20250800",
-    "company": "Agility Robotics",
-    "type": "personnel",
-    "title": "Agility Robotics CPO Melonee Wise离职，曾任Fetch Robotics CEO",
-    "title_en": "Agility Robotics CPO Melonee Wise Departs",
-    "summary": "Melonee Wise于2023年加入Agility Robotics，担任CPO。她曾任Zebra Technologies自动化副总裁及Fetch Robotics CEO，在机器人软硬件开发方面经验丰富，曾参与创建开源机器人系统ROS。她在扩展Digit机器人和Agility Arc平台方面发挥了关键作用。",
-    "source": "机电工程师网",
-    "source_url": "https://www.jdgcs.org/news/agility-robotics-boston-dynamics-see-leadership-changes-17729/",
-    "date": "2025-08-05",
-    "created_at": "2026-07-27T12:49:39.445150",
-    "media_sources": [
-      "机电工程师网"
-    ],
-    "person_name": "Melonee Wise",
-    "action": "离职",
-    "old_role": "CPO（首席产品官）",
-    "new_role": "-"
-  },
-  {
-    "id": "智元20230200",
-    "company": "智元机器人",
-    "type": "personnel",
-    "title": "华为天才少年彭志辉创立智元机器人",
-    "title_en": "Huawei Genius Youth Peng Zhihui Founds AgiBot",
-    "summary": "彭志辉（网名'稚晖君'）顶着'华为天才少年'标签从华为出走创业，2023年2月创立智元机器人，现任总裁兼CTO。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2023-02-01",
-    "created_at": "2026-07-27T12:49:39.446202",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "彭志辉",
-    "action": "创业",
-    "old_role": "华为天才少年",
-    "new_role": "智元机器人创始人兼总裁/CTO"
-  },
-  {
-    "id": "它石20230100",
-    "company": "它石智航",
-    "type": "personnel",
-    "title": "科学家丁文超创立它石智航",
-    "title_en": "Scientist Ding Wenchao Founds Tashi Zhihang",
-    "summary": "来自高校/科研背景的顶尖科学家丁文超出走创业，创立它石智航，专注于具身智能领域。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2023-01-01",
-    "created_at": "2026-07-27T12:49:39.447191",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "丁文超",
-    "action": "创业",
-    "old_role": "-",
-    "new_role": "它石智航创始人"
-  },
-  {
-    "id": "银河20230100",
-    "company": "银河通用",
-    "type": "personnel",
-    "title": "科学家王鹤创立银河通用",
-    "title_en": "Scientist Wang He Founds Yinhe General",
-    "summary": "王鹤作为科学家背景创业者，创立银河通用机器人公司，专注泛化具身机器人研发。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2023-01-01",
-    "created_at": "2026-07-27T12:49:39.448163",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "王鹤",
-    "action": "创业",
-    "old_role": "-",
-    "new_role": "银河通用创始人"
-  },
-  {
-    "id": "星动20230800",
-    "company": "星动纪元",
-    "type": "personnel",
-    "title": "清华助理教授陈建宇创立星动纪元",
-    "title_en": "Tsinghua Assistant Professor Chen Jianyu Founds Star Era",
-    "summary": "清华大学交叉信息研究院助理教授陈建宇创立星动纪元，公司是清华大学唯一持股的具身智能企业。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2023-08-01",
-    "created_at": "2026-07-27T12:49:39.449134",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "陈建宇",
-    "action": "创业",
-    "old_role": "清华大学助理教授",
-    "new_role": "星动纪元创始人"
-  },
-  {
-    "id": "昆仑20250100",
-    "company": "昆仑行",
-    "type": "personnel",
-    "title": "前理想汽车智驾总裁郎咸朋创立昆仑行",
-    "title_en": "Ex-Li Auto VP Lang Xianpeng Founds Kunlunxing",
-    "summary": "前理想汽车智能驾驶总裁郎咸朋出走创业，创办具身智能大模型公司昆仑行。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2025-01-01",
-    "created_at": "2026-07-27T12:49:39.450046",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "郎咸朋",
-    "action": "创业",
-    "old_role": "理想汽车智能驾驶总裁",
-    "new_role": "昆仑行创始人"
-  },
-  {
-    "id": "至简20250100",
-    "company": "至简动力",
-    "type": "personnel",
-    "title": "理想汽车高管贾鹏、王凯创立至简动力",
-    "title_en": "Ex-Li Auto Execs Jia Peng & Wang Kai Founds Zhijian Power",
-    "summary": "前理想自动驾驶技术研发负责人贾鹏、前理想CTO王凯出走创办至简动力，半年内完成5轮融资。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2025-01-01",
-    "created_at": "2026-07-27T12:49:39.450929",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "贾鹏/王凯",
-    "action": "创业",
-    "old_role": "理想汽车高管",
-    "new_role": "至简动力创始人"
-  },
-  {
-    "id": "无界20250100",
-    "company": "无界动力",
-    "type": "personnel",
-    "title": "前理想智驾负责人夏中谱加入无界动力任联席CTO",
-    "title_en": "Ex-Li Auto Exec Xia Zhongpu Joins Wujie Power as Co-CTO",
-    "summary": "前理想前端到端智驾技术负责人夏中谱离开理想，加入无界动力担任联合创始人兼联席CTO。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2025-01-01",
-    "created_at": "2026-07-27T12:49:39.451905",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "夏中谱",
-    "action": "加入",
-    "old_role": "理想汽车智驾技术负责人",
-    "new_role": "联合创始人兼联席CTO"
-  },
-  {
-    "id": "无界20250101",
-    "company": "无界动力",
-    "type": "personnel",
-    "title": "前地平线副总裁张玉峰创立无界动力",
-    "title_en": "Ex-Horizon VP Zhang Yufeng Founds Wujie Power",
-    "summary": "前地平线副总裁、智能汽车事业部总裁张玉峰出走创办无界动力。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2025-01-01",
-    "created_at": "2026-07-27T12:49:39.452908",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "张玉峰",
-    "action": "创业",
-    "old_role": "地平线副总裁/智能汽车事业部总裁",
-    "new_role": "无界动力创始人"
-  },
-  {
-    "id": "小雨20250100",
-    "company": "小雨智造",
-    "type": "personnel",
-    "title": "小米初创成员乔忠良、王文林创立小雨智造",
-    "title_en": "Ex-Xiaomi Execs Qiao Zhongliang & Wang Wenlin Founds Xiaoyu Zhizao",
-    "summary": "小米初创成员乔忠良、前小米软件系统平台部总经理王文林联手创办小雨智造，瞄准工业具身智能。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2025-01-01",
-    "created_at": "2026-07-27T12:49:39.453820",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "乔忠良/王文林",
-    "action": "创业",
-    "old_role": "小米高管",
-    "new_role": "小雨智造创始人"
-  },
-  {
-    "id": "阿米20250100",
-    "company": "阿米奥机器人",
-    "type": "personnel",
-    "title": "小米汽车前高管刘方成立阿米奥机器人",
-    "title_en": "Ex-Xiaomi Auto Exec Liu Fang Founds Amio Robotics",
-    "summary": "前小米汽车自动驾驶产品技术负责人和量产交付负责人刘方出走，成立阿米奥机器人。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2025-01-01",
-    "created_at": "2026-07-27T12:49:39.455308",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "刘方",
-    "action": "创业",
-    "old_role": "小米汽车自动驾驶产品技术负责人",
-    "new_role": "阿米奥机器人创始人"
-  },
-  {
-    "id": "灵足20250100",
-    "company": "灵足时代",
-    "type": "personnel",
-    "title": "小米系创业者王勃创办灵足时代",
-    "title_en": "Ex-Xiaomi Founder Wang Bo Founds Lingzu Era",
-    "summary": "小米系创业者王勃出走创办灵足时代，主营一体化关节模组。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2025-01-01",
-    "created_at": "2026-07-27T12:49:39.456970",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "王勃",
-    "action": "创业",
-    "old_role": "小米系",
-    "new_role": "灵足时代创始人"
-  },
-  {
-    "id": "1X20240100",
-    "company": "1X Technologies",
-    "type": "personnel",
-    "title": "1X Technologies从特斯拉挖走多个关键人物",
-    "title_en": "1X Technologies Hires Multiple Key Personnel from Tesla",
-    "summary": "挪威人形机器人公司1X Technologies于2024年从特斯拉挖走了多个关键人物，增强其机器人研发团队。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/3769206575510016",
-    "date": "2024-01-01",
-    "created_at": "2026-07-27T12:49:39.459417",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "多位关键人才",
-    "action": "加入",
-    "old_role": "特斯拉员工",
-    "new_role": "-"
-  },
-  {
-    "id": "千寻20240200",
-    "company": "千寻智能",
-    "type": "personnel",
-    "title": "珞石机器人前CTO韩峰涛创立千寻智能",
-    "title_en": "Ex-Rokae CTO Han Fengtao Founds Spirit AI",
-    "summary": "韩峰涛本科毕业于华中科技大学自动化学院，硕士毕业于浙江大学，曾任珞石机器人联合创始人兼CTO。2024年2月创立千寻智能，机器人行业从业十余年。",
-    "source": "百度百科",
-    "source_url": "https://baike.baidu.com/item/韩峰涛/66237371",
-    "date": "2024-02-01",
-    "created_at": "2026-07-27T12:49:39.461225",
-    "media_sources": [
-      "百度百科"
-    ],
-    "person_name": "韩峰涛",
-    "action": "创业",
-    "old_role": "珞石机器人联合创始人兼CTO",
-    "new_role": "千寻智能创始人兼CEO"
-  },
-  {
-    "id": "傅利20150100",
-    "company": "傅利叶",
-    "type": "personnel",
-    "title": "顾捷创立傅利叶智能",
-    "title_en": "Gu Jie Founds Fourier Intelligence",
-    "summary": "顾捷毕业于上海交通大学机械系，2003年毕业后曾在美国国家仪器担任高管。2015年在上海浦东张江创立傅利叶智能，2017年研发出国内首款有'触觉'的下肢外骨骼康复机器人Fourier X1。",
-    "source": "百度百科",
-    "source_url": "https://baike.baidu.com/item/顾捷/22072963",
-    "date": "2015-01-01",
-    "created_at": "2026-07-27T12:49:39.467053",
-    "media_sources": [
-      "百度百科"
-    ],
-    "person_name": "顾捷",
-    "action": "创业",
-    "old_role": "-",
-    "new_role": "傅利叶创始人兼CEO"
-  },
-  {
-    "id": "梅卡20160100",
-    "company": "梅卡曼德",
-    "type": "personnel",
-    "title": "邵天兰创立梅卡曼德机器人",
-    "title_en": "Shao Tianlan Founds Mecademic Robotics",
-    "summary": "邵天兰本科毕业于清华大学软件学院，后于德国慕尼黑工业大学获得机器人方向硕士学位。创立梅卡曼德机器人，致力于工业3D视觉和机器人'眼脑手'技术研发。",
-    "source": "百度百科",
-    "source_url": "https://baike.baidu.com/item/邵天兰/24113920",
-    "date": "2016-01-01",
-    "created_at": "2026-07-27T12:49:39.467897",
-    "media_sources": [
-      "百度百科"
-    ],
-    "person_name": "邵天兰",
-    "action": "创业",
-    "old_role": "-",
-    "new_role": "梅卡曼德创始人兼CEO"
-  },
-  {
-    "id": "思灵20180700",
-    "company": "思灵机器人",
-    "type": "personnel",
-    "title": "德国宇航中心科学家陈兆芃创立思灵机器人",
-    "title_en": "Chen Zhaopeng Founds Agile Robots from DLR",
-    "summary": "陈兆芃毕业于哈尔滨工业大学、德国航空航天中心(DLR)获博士学位，曾任德国宇航中心机器人实验室副主任。2018年创立思灵机器人，核心团队均来自德国宇航中心机器人研究所。",
-    "source": "百度百科",
-    "source_url": "https://baike.baidu.com/item/陈兆芃/61992611",
-    "date": "2018-07-24",
-    "created_at": "2026-07-27T12:49:39.468774",
-    "media_sources": [
-      "百度百科"
-    ],
-    "person_name": "陈兆芃",
-    "action": "创业",
-    "old_role": "德国宇航中心机器人实验室副主任",
-    "new_role": "思灵机器人创始人兼CEO"
-  },
-  {
-    "id": "穹彻20231100",
-    "company": "穹彻智能",
-    "type": "personnel",
-    "title": "上交大教授卢策吾创立穹彻智能",
-    "title_en": "Professor Lu Cewo Founds UniX Robotics",
-    "summary": "卢策吾是上海交通大学教授，2023年11月创立穹彻智能，专注于'以力为中心'的具身智能大模型研发。公司由非夕科技孵化，已完成数亿元多轮融资。",
-    "source": "企查查",
-    "source_url": "https://www.qcc.com/firm/8b35ea81d3a95ea6f0df2f1e962fbed2.html",
-    "date": "2023-11-01",
-    "created_at": "2026-07-27T12:49:39.469630",
-    "media_sources": [
-      "企查查"
-    ],
-    "person_name": "卢策吾",
-    "action": "创业",
-    "old_role": "上海交通大学教授",
-    "new_role": "穹彻智能创始人"
-  },
-  {
-    "id": "Sk20230501",
-    "company": "Skild AI",
-    "type": "personnel",
-    "title": "CMU教授Deepak Pathak创立Skild AI",
-    "title_en": "CMU Professor Deepak Pathak Co-founds Skild AI",
-    "summary": "Deepak Pathak是卡内基梅隆大学前教授，与Abhinav Gupta共同创立Skild AI。两人在机器人和AI领域共拥有25年的研究经验，曾在Meta平台担任研究科学家。",
-    "source": "36氪",
-    "source_url": "https://www.36kr.com/p/2863460836526979",
-    "date": "2023-05-01",
-    "created_at": "2026-07-27T12:49:39.474496",
-    "media_sources": [
-      "36氪"
-    ],
-    "person_name": "Deepak Pathak",
-    "action": "创业",
-    "old_role": "卡内基梅隆大学教授",
-    "new_role": "Skild AI联合创始人/CEO"
-  },
-  {
-    "id": "Ag20240300",
-    "company": "Agility Robotics",
-    "type": "personnel",
-    "title": "Agility Robotics创始人Damion Shelton卸任CEO",
-    "title_en": "Agility Robotics Co-Founder Damion Shelton Steps Down as CEO",
-    "summary": "Agility Robotics创始人Damion Shelton于2024年3月4日卸任CEO，由微软前高管Peggy Johnson接任。Shelton曾是卡内基梅隆大学研究员，2015年创立Agility Robotics，领导Digit机器人开发。",
-    "source": "机电工程师网",
-    "source_url": "https://www.jdgcs.org/news/agility-robotics-boston-dynamics-see-leadership-changes-17729/",
-    "date": "2024-03-04",
-    "created_at": "2026-07-27T12:49:39.482109",
-    "media_sources": [
-      "机电工程师网"
-    ],
-    "person_name": "Damion Shelton",
-    "action": "卸任",
-    "old_role": "CEO",
-    "new_role": "-"
-  },
-  {
-    "id": "大晓20251200",
-    "company": "大晓机器人",
-    "type": "personnel",
-    "title": "商汤科技联合创始人王晓刚出任大晓机器人董事长",
-    "title_en": "SenseTime Co-Founder Wang Xiaogang Joins Daxiao Robotics as Chairman",
-    "summary": "2025年12月，商汤科技联合创始人王晓刚出任大晓机器人董事长。王晓刚是商汤科技创始人之一，在计算机视觉和AI领域有深厚积累，此次加入大晓机器人标志着具身智能领域的强强联合。",
-    "source": "公开信息",
-    "source_url": "https://www.qcc.com/firm/34337a9c25db2d3dc97d62b242dcefb5.html",
-    "date": "2025-12-01",
-    "created_at": "2026-07-27T12:49:39.483259",
-    "media_sources": [
-      "公开信息"
-    ],
-    "person_name": "王晓刚",
-    "action": "加入",
-    "old_role": "-",
-    "new_role": "董事长"
-  },
-  {
-    "id": "He20250700",
-    "company": "Hexagon",
-    "type": "personnel",
-    "title": "Anders Svensson接任Hexagon总裁兼CEO",
-    "title_en": "Anders Svensson Appointed President and CEO of Hexagon",
-    "summary": "2025年7月21日，Hexagon宣布Anders Svensson正式出任总裁兼首席执行官，接替临时CEO Norbert Hanke。Hexagon是全球测量技术领军企业，在工业软件和传感器领域有重要地位。",
-    "source": "Hexagon官网",
-    "source_url": "https://hexagon.com/company/newsroom/press-releases/2025/anders-svensson-appointed-as-new-president-and-ceo-of-hexagon",
-    "date": "2025-07-21",
-    "created_at": "2026-07-27T12:49:39.485470",
-    "media_sources": [
-      "Hexagon官网"
-    ],
-    "person_name": "Anders Svensson",
-    "action": "接任",
-    "old_role": "-",
-    "new_role": "总裁兼CEO"
-  },
-  {
-    "id": "Fi20241200",
-    "company": "Figure AI",
-    "type": "personnel",
-    "title": "Meta前AR眼镜项目负责人Caitlin Kalinowski加入Figure AI",
-    "title_en": "Former Meta AR Glasses Lead Caitlin Kalinowski Joins Figure AI",
-    "summary": "2024年底，Meta前AR眼镜项目负责人Caitlin Kalinowski加入Figure AI，领导机器人程序团队重组。Figure AI于2025年2月宣布终止与OpenAI的合作，转而自主研发AI模型。",
-    "source": "搜狐",
-    "source_url": "https://www.sohu.com/a/856711833_121902920",
-    "date": "2024-12-01",
-    "created_at": "2026-07-27T12:49:39.489004",
-    "media_sources": [
-      "搜狐"
-    ],
-    "person_name": "Caitlin Kalinowski",
-    "action": "加入",
-    "old_role": "-",
-    "new_role": "机器人程序团队负责人"
-  },
-  {
-    "id": "智元20250801",
-    "company": "智元机器人",
-    "type": "personnel",
-    "title": "智元机器人灵犀事业部总裁魏强离职",
-    "title_en": "AgiBot Lingxi Business Unit President Wei Qiang Departs",
-    "summary": "2025年8月，智元机器人灵犀事业部总裁魏强离职。魏强此前负责智元机器人灵犀事业部，后由创始人彭志辉轮值接任该事业部总裁。",
-    "source": "腾讯新闻",
-    "source_url": "https://news.qq.com/rain/a/20250807A05DTE00",
-    "date": "2025-08-07",
-    "created_at": "2026-07-27T12:49:39.492965",
-    "media_sources": [
-      "腾讯新闻"
-    ],
-    "person_name": "魏强",
-    "action": "离职",
-    "old_role": "灵犀事业部总裁",
-    "new_role": "-"
-  },
-  {
-    "id": "智元20250802",
-    "company": "智元机器人",
-    "type": "personnel",
-    "title": "智元机器人联合创始人闫维新离职",
-    "title_en": "AgiBot Co-Founder Yan Weixin Departs",
-    "summary": "2025年8月，智元机器人联合创始人闫维新离职。闫维新来自上海交通大学，是智元机器人早期核心团队成员之一。离职后由彭志辉轮值接任灵犀事业部总裁。",
-    "source": "腾讯新闻",
-    "source_url": "https://news.qq.com/rain/a/20250807A05DTE00",
-    "date": "2025-08-07",
-    "created_at": "2026-07-27T12:49:39.494036",
-    "media_sources": [
-      "腾讯新闻"
-    ],
-    "person_name": "闫维新",
-    "action": "离职",
-    "old_role": "联合创始人",
-    "new_role": "-"
-  },
-  {
-    "id": "自然20260100",
-    "company": "自然意志",
-    "type": "personnel",
-    "title": "清华大学丁宁助理教授创立自然意志，聚焦具身大脑方向",
-    "title_en": "Tsinghua Prof. Ding Ning Founds Natural Will for Embodied AI",
-    "summary": "AI科技评论独家获悉，清华大学助理教授、博士生导师丁宁成立公司「自然意志」，聚焦具身大脑方向，已获得IDG资本、峰瑞资本、真格基金等机构天使轮投资，估值高达40亿人民币。",
-    "source": "AI科技评论",
-    "source_url": "https://www.m.aitntnews.com/newDetail.html?newId=24473",
-    "date": "2026-01-08",
-    "created_at": "2026-07-27T12:49:39.496430",
-    "media_sources": [
-      "AI科技评论"
-    ],
-    "person_name": "丁宁",
-    "action": "创业",
-    "old_role": "清华大学助理教授",
-    "new_role": "创始人"
-  },
-  {
-    "id": "魔法20260500",
-    "company": "魔法原子",
-    "type": "personnel",
-    "title": "魔法原子创始人吴长征离职后创办墨奇智能，继续布局机器人",
-    "title_en": "MagicLab Founder Wu Changzheng Starts New Venture Moqi Intelligence",
-    "summary": "魔法原子创始人吴长征于2026年3月正式离职后，已启动个人创业项目墨奇智能，继续布局四足、轮式和人形机器人业务线。吴长征2024年1月以创始团队成员身份加入魔法原子出任CEO，推动人形机器人'小麦'及MagicDog系列发布，带领公司完成央视春晚百台机器人群控表演。",
-    "source": "新浪财经",
-    "source_url": "https://finance.sina.com.cn/tech/roll/2026-05-19/doc-inhymcpp2315698.shtml",
-    "date": "2026-05-19",
-    "created_at": "2026-07-27T12:49:39.499587",
-    "media_sources": [
-      "新浪财经"
-    ],
-    "person_name": "吴长征",
-    "action": "创业",
-    "old_role": "魔法原子创始人兼CEO",
-    "new_role": "墨奇智能创始人"
-  },
-  {
-    "id": "智元20260501",
-    "company": "智元机器人",
-    "type": "personnel",
-    "title": "前腾讯Robotics X核心成员熊坤带队智元拆分项目临界点AGILINK",
-    "title_en": "Ex-Tencent Robotics X Core Member Xiong Kun Leads AgiBot Spin-off AGILINK",
-    "summary": "熊坤毕业于香港科技大学机器人研究所，曾任腾讯Robotics X实验室核心成员，深度参与实验室从0到1创建。后任智元机器人灵巧手业务负责人，2026年1月带队拆分成立临界点（AGILINK），专注灵巧手研发，5个月内完成四轮融资估值破10亿美元。",
-    "source": "澎湃新闻",
-    "source_url": "https://news.qq.com/rain/a/20260520A02COR00",
-    "date": "2026-05-19",
-    "created_at": "2026-07-27T12:49:39.500817",
-    "media_sources": [
-      "澎湃新闻"
-    ],
-    "person_name": "熊坤",
-    "action": "创业",
-    "old_role": "腾讯Robotics X实验室核心成员/智元灵巧手业务负责人",
-    "new_role": "临界点（AGILINK）实际负责人"
-  },
-  {
-    "id": "千寻20260301",
-    "company": "千寻智能",
-    "type": "personnel",
-    "title": "前微软亚研院郭俊良接任千寻智能具身模型负责人",
-    "title_en": "Ex-MSRA Researcher Guo Junliang Takes Over Spirit AI Model Lead",
-    "summary": "郭俊良曾任微软亚洲研究院（MSRA）机器学习组高级研究员，研究方向包括世界模型、具身大模型与学习算法。加入千寻智能后担任具身模型负责人、预训练负责人，在解浚源离职后接任核心研发岗位。",
-    "source": "腾讯新闻",
-    "source_url": "https://news.qq.com/rain/a/20260410A02YUC00",
-    "date": "2026-03-15",
-    "created_at": "2026-07-27T12:49:39.504818",
-    "media_sources": [
-      "腾讯新闻"
-    ],
-    "person_name": "郭俊良",
-    "action": "接任",
-    "old_role": "微软亚洲研究院机器学习组高级研究员",
-    "new_role": "具身模型负责人/预训练负责人"
-  },
-  {
-    "id": "维他20241200",
-    "company": "维他动力",
-    "type": "personnel",
-    "title": "理想前智驾产品总监赵哲伦联合创办维他动力，聚焦消费级机器人",
-    "title_en": "Ex-Li Auto Product Director Zhao Zhelun Co-founds Vbot for Consumer Robotics",
-    "summary": "赵哲伦2024年12月从理想汽车离职，与地平线前副总裁余轶南联合创办维他动力（北京）科技有限公司，负责产品化和市场。公司聚焦消费级具身智能机器人，2026年5月完成Pre-A轮近5亿元融资。赵哲伦此前在理想汽车负责智能驾驶产品。",
-    "source": "百度百科",
-    "source_url": "https://baike.baidu.com/item/%E8%B5%B5%E5%93%B2%E4%BC%A6/66052442",
-    "date": "2024-12-09",
-    "created_at": "2026-07-27T12:49:39.507298",
-    "media_sources": [
-      "百度百科"
-    ],
-    "person_name": "赵哲伦",
-    "action": "创业",
-    "old_role": "理想汽车智能驾驶产品总监",
-    "new_role": "维他动力联合创始人"
-  },
-  {
-    "id": "维他20241201",
-    "company": "维他动力",
-    "type": "personnel",
-    "title": "地平线前副总裁余轶南联合创办维他动力",
-    "title_en": "Ex-Horizon VP Yu Yinan Co-founds Vbot",
-    "summary": "余轶南曾任地平线副总裁、软件平台产品线总裁，2024年与理想前智驾产品总监赵哲伦联合创办维他动力，专注消费级具身智能机器人。公司2026年5月完成Pre-A轮近5亿元融资。",
-    "source": "百度百科",
-    "source_url": "https://baike.baidu.com/item/%E7%BB%B4%E4%BB%96%E5%8A%A8%E5%8A%9B%EF%BC%88%E5%8C%97%E4%BA%AC%EF%BC%89%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/65525305",
-    "date": "2024-12-09",
-    "created_at": "2026-07-27T12:49:39.508387",
-    "media_sources": [
-      "百度百科"
-    ],
-    "person_name": "余轶南",
-    "action": "创业",
-    "old_role": "地平线副总裁/软件平台产品线总裁",
-    "new_role": "维他动力联合创始人"
-  },
-  {
-    "id": "Me20260500",
-    "company": "Meta",
-    "type": "personnel",
-    "title": "ARI联合创始人Xiaolong Wang随Meta收购加入超级智能实验室任Research Director",
-    "title_en": "ARI Co-Founder Xiaolong Wang Joins Meta Superintelligence Labs as Research Director",
-    "summary": "Xiaolong Wang是UCSD教授、ARI（Assured Robot Intelligence）联合创始人兼CTO。2026年5月1日Meta完成对ARI的全资收购，Wang随20人精英团队并入Meta超级智能实验室（MSL），任Research Director，聚焦Embodied AI。ARI此前融资近4000万美元，核心研发e-Flesh柔性触觉传感、敏捷操作与全身协调技术。",
-    "source": "GitHub Pages",
-    "source_url": "https://xiaolonw.github.io/",
-    "date": "2026-05-01",
-    "created_at": "2026-07-27T12:49:39.509481",
-    "media_sources": [
-      "GitHub Pages"
-    ],
-    "person_name": "Xiaolong Wang",
-    "action": "加入",
-    "old_role": "ARI联合创始人/CTO/前英伟达研究员",
-    "new_role": "Meta超级智能实验室Research Director"
-  },
-  {
-    "id": "欧拉20260300",
-    "company": "欧拉万象",
-    "type": "personnel",
-    "title": "华为天才少年周顺波离职创立欧拉万象，转向消费级具身智能",
-    "title_en": "Huawei Genius Youth Zhou Shunbo Founds Ola Dimensions for Consumer Embodied AI",
-    "summary": "周顺波是华为天才少年计划智能机器人方向唯一入选者，香港中文大学机器人学博士，IEEE RAL等顶刊发表论文30余篇。从0到1搭建华为云具身智能团队，主导研发CloudRobo平台。2026年3月初离职，创立欧拉万象（Ola Dimensions），转向消费级具身智能赛道。",
-    "source": "A3智能体",
-    "source_url": "https://agentren.cn/2026/0415/12408.shtml",
-    "date": "2026-03-08",
-    "created_at": "2026-07-27T12:49:39.511357",
-    "media_sources": [
-      "A3智能体"
-    ],
-    "person_name": "周顺波",
-    "action": "创业",
-    "old_role": "华为云物理智能创新Lab负责人/首席技术专家",
-    "new_role": "欧拉万象（Ola Dimensions）创始人"
-  },
-  {
-    "id": "日冕20250700",
-    "company": "日冕机器人",
-    "type": "personnel",
-    "title": "蔚来前自动驾驶算法负责人肖中阳创立日冕机器人",
-    "title_en": "Ex-NIO Autonomous Driving Lead Xiao Zhongyang Founds Solar Crown Robotics",
-    "summary": "肖中阳曾任蔚来汽车自动驾驶算法负责人，2025年离职创立日冕机器人，切入具身智能赛道。延续智能驾驶人才向机器人领域流动趋势。",
-    "source": "A3智能体",
-    "source_url": "https://agentren.cn/2026/0415/12408.shtml",
-    "date": "2025-07-01",
-    "created_at": "2026-07-27T12:49:39.512776",
-    "media_sources": [
-      "A3智能体"
-    ],
-    "person_name": "肖中阳",
-    "action": "创业",
-    "old_role": "蔚来汽车自动驾驶算法负责人",
-    "new_role": "日冕机器人创始人"
-  },
-  {
-    "id": "Ap20260401",
-    "company": "Apptronik",
-    "type": "personnel",
-    "title": "前Boston Dynamics服务负责人Kevin Garell加入Apptronik任SVP",
-    "title_en": "Ex-Boston Dynamics Service Lead Kevin Garell Joins Apptronik as SVP",
-    "summary": "Kevin Garell曾任Boston Dynamics全球服务与支持负责人，主导机器人现场服务基础设施规模化，推动公司从研发转向商业化。2026年4月加入Apptronik担任服务与支持高级副总裁。",
-    "source": "Apptronik官网",
-    "source_url": "https://apptronik.com/news-collection/apptronik-accelerates-commercialization-with-key-executive-hires",
-    "date": "2026-04-28",
-    "created_at": "2026-07-27T12:49:39.514240",
-    "media_sources": [
-      "Apptronik官网"
-    ],
-    "person_name": "Kevin Garell",
-    "action": "加入",
-    "old_role": "Boston Dynamics全球服务与支持负责人",
-    "new_role": "SVP of Services & Support（服务与支持高级副总裁）"
-  },
-  {
-    "id": "Ap20260402",
-    "company": "Apptronik",
-    "type": "personnel",
-    "title": "前Amazon软件高管Chirag Shah加入Apptronik任软件副总裁",
-    "title_en": "Ex-Amazon Software Exec Chirag Shah Joins Apptronik as VP of Software",
-    "summary": "Chirag Shah曾任Amazon Kindle和Alexa+软件高管，专注多模态AI体验、嵌入式系统和AI驱动软件平台。2026年4月加入Apptronik担任软件副总裁，负责人形机器人软件栈开发。",
-    "source": "Apptronik官网",
-    "source_url": "https://apptronik.com/news-collection/apptronik-accelerates-commercialization-with-key-executive-hires",
-    "date": "2026-04-28",
-    "created_at": "2026-07-27T12:49:39.515270",
-    "media_sources": [
-      "Apptronik官网"
-    ],
-    "person_name": "Chirag Shah",
-    "action": "加入",
-    "old_role": "Amazon Kindle/Alexa+软件高管",
-    "new_role": "VP of Software（软件副总裁）"
-  },
-  {
-    "id": "Ap20260403",
-    "company": "Apptronik",
-    "type": "personnel",
-    "title": "前Paramount+营销高管Dave Perry加入Apptronik任营销副总裁",
-    "title_en": "Ex-Paramount+ Marketing Exec Dave Perry Joins Apptronik as VP of Marketing",
-    "summary": "Dave Perry是艾美奖得主，曾任Paramount+和Amazon营销高管，主导《星际迷航》《光环》等大型IP全球品牌建设。2026年4月加入Apptronik担任营销副总裁。",
-    "source": "Apptronik官网",
-    "source_url": "https://apptronik.com/news-collection/apptronik-accelerates-commercialization-with-key-executive-hires",
-    "date": "2026-04-28",
-    "created_at": "2026-07-27T12:49:39.516376",
-    "media_sources": [
-      "Apptronik官网"
-    ],
-    "person_name": "Dave Perry",
-    "action": "加入",
-    "old_role": "Paramount+/Amazon营销高管",
-    "new_role": "VP of Marketing（营销副总裁）"
-  },
-  {
-    "id": "Ap20260404",
-    "company": "Apptronik",
-    "type": "personnel",
-    "title": "前iRobot人才运营高管Justin Birtz加入Apptronik任VP",
-    "title_en": "Ex-iRobot People Ops Exec Justin Birtz Joins Apptronik as VP of People",
-    "summary": "Justin Birtz曾任Cellino和iRobot人才运营高管，专注机器人与医疗健康科技领域高绩效团队规模化建设。2026年4月加入Apptronik担任人才运营副总裁。",
-    "source": "Apptronik官网",
-    "source_url": "https://apptronik.com/news-collection/apptronik-accelerates-commercialization-with-key-executive-hires",
-    "date": "2026-04-28",
-    "created_at": "2026-07-27T12:49:39.517552",
-    "media_sources": [
-      "Apptronik官网"
-    ],
-    "person_name": "Justin Birtz",
-    "action": "加入",
-    "old_role": "Cellino/iRobot人才运营高管",
-    "new_role": "VP of People Operations（人才运营副总裁）"
-  },
-  {
-    "id": "Bo20260500",
-    "company": "Boston Dynamics",
-    "type": "personnel",
-    "title": "Boston Dynamics COO Selma Svensson离职，高管层持续动荡",
-    "title_en": "Boston Dynamics COO Selma Svensson Departs Amid Executive Exodus",
-    "summary": "Boston Dynamics COO Selma Svensson与CSO Marc Theermann同期离职。Semafor调查报道称高管被董事会'逼走'，董事会批评面对资金充裕竞争对手时公司领先优势正在缩小。此次离职潮包括CEO Robert Playter退休、COO/CSO离职、VP Research跳槽DeepMind。",
-    "source": "TechTimes / Semafor",
-    "source_url": "https://www.techtimes.com/articles/317466/20260531/boston-dynamics-loses-research-chief-deepmind-softbank-deadline-looms.htm",
-    "date": "2026-05-31",
-    "created_at": "2026-07-27T12:49:39.518725",
-    "media_sources": [
-      "TechTimes / Semafor"
-    ],
-    "person_name": "Selma Svensson",
-    "action": "离职",
-    "old_role": "Boston Dynamics COO（首席运营官）",
-    "new_role": "待披露"
-  },
-  {
-    "id": "Bo20260501",
-    "company": "Boston Dynamics",
-    "type": "personnel",
-    "title": "Boston Dynamics CSO Marc Theermann离职",
-    "title_en": "Boston Dynamics CSO Marc Theermann Departs",
-    "summary": "Marc Theermann曾任Boston Dynamics首席战略官，负责市场战略与GTM（Go-to-Market），于2026年高管层大规模洗牌中离职。其LinkedIn已标注为'FMR Chief Strategy Officer'。Theermann此前主导了Atlas商业化战略和CES 2026发布。",
-    "source": "TechTimes / LinkedIn",
-    "source_url": "https://www.linkedin.com/in/theermann",
-    "date": "2026-05-31",
-    "created_at": "2026-07-27T12:49:39.519695",
-    "media_sources": [
-      "TechTimes / LinkedIn"
-    ],
-    "person_name": "Marc Theermann",
-    "action": "离职",
-    "old_role": "Boston Dynamics CSO（首席战略官）",
-    "new_role": "待披露"
-  },
-  {
-    "id": "贝塔20260300",
-    "company": "贝塔无限",
-    "type": "personnel",
-    "title": "前华为强化学习首席科学家刘武龙创立贝塔无限，近亿元种子轮",
-    "title_en": "Ex-Huawei RL Chief Scientist Liu Wulong Founds Beta Infinity, ~¥100M Seed",
-    "summary": "刘武龙曾任华为大模型工程团队负责人、强化学习首席科学家（21级），华为最年轻AI实验室主任，主导ADS 2.0量产版本研发。2025年从华为离职创立贝塔无限，已完成近亿元种子轮融资，CTO陶帅来自字节跳动，首席科学家Nova为清华具身智能科班博士。",
-    "source": "腾讯新闻/36氪",
-    "source_url": "https://news.qq.com/rain/a/20260312A08PPS00",
-    "date": "2026-03-12",
-    "created_at": "2026-07-27T12:49:39.521919",
-    "media_sources": [
-      "腾讯新闻/36氪"
-    ],
-    "person_name": "刘武龙",
-    "action": "创业",
-    "old_role": "华为大模型工程团队负责人、强化学习首席科学家（21级）",
-    "new_role": "贝塔无限（Beta Infinity）创始人兼CEO"
-  },
-  {
-    "id": "贝塔20260301",
-    "company": "贝塔无限",
-    "type": "personnel",
-    "title": "前字节跳动AI负责人陶帅加盟贝塔无限任联合创始人兼CTO",
-    "title_en": "Ex-ByteDance AI Lead Tao Shuai Joins Beta Infinity as Co-founder and CTO",
-    "summary": "陶帅清华电子系出身，曾任字节跳动百人AI算法和工程团队负责人。2025年离职后加入刘武龙创立的贝塔无限，担任联合创始人兼CTO。",
-    "source": "腾讯新闻/36氪",
-    "source_url": "https://news.qq.com/rain/a/20260312A08PPS00",
-    "date": "2026-03-12",
-    "created_at": "2026-07-27T12:49:39.522949",
-    "media_sources": [
-      "腾讯新闻/36氪"
-    ],
-    "person_name": "陶帅",
-    "action": "创业加入",
-    "old_role": "字节跳动百人AI算法和工程团队负责人",
-    "new_role": "贝塔无限联合创始人兼CTO"
-  },
-  {
-    "id": "它石20260300",
-    "company": "它石智航",
-    "type": "personnel",
-    "title": "前华为车BU首席科学家陈亦伦创立它石智航，单轮融资4.55亿美元",
-    "title_en": "Ex-Huawei Auto BU Chief Scientist Chen Yilun Founds Tashi AI, $455M Single Round",
-    "summary": "陈亦伦曾任华为车BU首席科学家，非天才少年计划成员。创立它石智航，聚焦以人为中心的具身数据引擎+融合空间感知与推理决策的具身大模型。单轮融资4.55亿美元创国内具身智能赛道纪录，估值达百亿级别。",
-    "source": "腾讯新闻/36氪",
-    "source_url": "https://news.qq.com/rain/a/20260312A08PPS00",
-    "date": "2026-03-12",
-    "created_at": "2026-07-27T12:49:39.523973",
-    "media_sources": [
-      "腾讯新闻/36氪"
-    ],
-    "person_name": "陈亦伦",
-    "action": "创业",
-    "old_role": "华为车BU首席科学家",
-    "new_role": "它石智航创始人"
-  },
-  {
-    "id": "至简20260300",
-    "company": "至简动力",
-    "type": "personnel",
-    "title": "前理想汽车智驾量产负责人王佳佳加盟至简动力任COO",
-    "title_en": "Ex-Li Auto ADAS Production Head Wang Jiajia Joins Simplexity Robotics as COO",
-    "summary": "王佳佳曾任博世中国最年轻研发总监之一，后任理想汽车智驾量产负责人，主导落地智驾系统全流程量产交付。2025年下半年加入至简动力担任COO，与董事长王凯（前理想CTO）、CEO贾鹏（前理想智驾负责人）组成'理想系'核心团队。",
-    "source": "腾讯新闻/36氪",
-    "source_url": "https://news.qq.com/rain/a/20260312A08PPS00",
-    "date": "2026-03-12",
-    "created_at": "2026-07-27T12:49:39.524962",
-    "media_sources": [
-      "腾讯新闻/36氪"
-    ],
-    "person_name": "王佳佳",
-    "action": "创业加入",
-    "old_role": "理想汽车智驾量产负责人",
-    "new_role": "至简动力（Simplexity Robotics）COO"
-  },
-  {
-    "id": "维他20260300",
-    "company": "维他动力",
-    "type": "personnel",
-    "title": "前地平线总架构师宋巍加入维他动力任联合创始人",
-    "title_en": "Ex-Horizon Robotics Chief Architect Song Wei Joins Vita Dynamics as Co-founder",
-    "summary": "宋巍为地平线智驾创始团队成员、前软件平台总架构师。2024年底与地平线前副总裁余轶南共同创立维他动力，聚焦具身智能机器人方向。赵哲伦（前理想汽车智驾产品总监）同期加入任联合创始人。",
-    "source": "腾讯新闻/36氪",
-    "source_url": "https://news.qq.com/rain/a/20260312A08PPS00",
-    "date": "2026-03-12",
-    "created_at": "2026-07-27T12:49:39.525894",
-    "media_sources": [
-      "腾讯新闻/36氪"
-    ],
-    "person_name": "宋巍",
-    "action": "创业加入",
-    "old_role": "地平线软件平台总架构师、智驾创始团队成员",
-    "new_role": "维他动力联合创始人"
-  },
-  {
-    "id": "郎咸20260300",
-    "company": "郎咸朋新公司（未命名）",
-    "type": "personnel",
-    "title": "跨界老将任庚与理想系郎咸朋联手创业，对标特斯拉人形机器人",
-    "title_en": "Cross-industry Veteran Ren Geng Teams with Lang Xianpeng to Found Humanoid Startup",
-    "summary": "任庚职业经历横跨华为（十余年/泰国缅甸市场）、阿里巴巴（B2B海外总经理/阿里云中国区总裁/总参谋长）、新奥集团（总裁）。2026年与理想汽车自动驾驶一号员工郎咸朋联合创立具身智能新公司（名称待披露），任庚任CEO，郎咸朋任CTO，对标特斯拉人形机器人全栈方案。春节前后获多家顶级机构超额认购。",
-    "source": "腾讯新闻/36氪",
-    "source_url": "https://news.qq.com/rain/a/20260312A08PPS00",
-    "date": "2026-03-12",
-    "created_at": "2026-07-27T12:49:39.526770",
-    "media_sources": [
-      "腾讯新闻/36氪"
-    ],
-    "person_name": "任庚",
-    "action": "创业",
-    "old_role": "新奥集团总裁 / 前阿里云中国区总裁 / 前华为泰国副总",
-    "new_role": "与郎咸朋联合创业创始人兼CEO"
-  },
-  {
-    "id": "灵初20250300",
-    "company": "灵初智能",
-    "type": "personnel",
-    "title": "00后华为天才少年陈源培联合创立灵初智能，Pre-A轮融资20亿",
-    "title_en": "Gen-Z Huawei Genius Youth Chen Yuanpei Co-founds Lingchu AI, ¥2B Pre-A Round",
-    "summary": "陈源培为00后华为天才少年，斯坦福大学访问学者，师从Karen Liu与李飞飞教授。2024年联合创立灵初智能，2025年3月完成天使轮及Pre-A轮共计20亿元融资。公司聚焦具身智能方向，为国内估值增长最快的具身智能初创之一。",
-    "source": "腾讯新闻/36氪",
-    "source_url": "https://news.qq.com/rain/a/20260312A08PPS00",
-    "date": "2025-03-10",
-    "created_at": "2026-07-27T12:49:39.527670",
-    "media_sources": [
-      "腾讯新闻/36氪"
-    ],
-    "person_name": "陈源培",
-    "action": "创业",
-    "old_role": "华为天才少年 / 斯坦福访问学者（师从Karen Liu与李飞飞）",
-    "new_role": "灵初智能联合创始人"
-  },
-  {
-    "id": "腾讯20260700",
-    "company": "腾讯",
-    "type": "personnel",
-    "title": "腾讯混元多模态负责人胡瀚离职创业，押注具身世界模型",
-    "title_en": "Tencent Hunyuan Multimodal Lead Hu Han Resigns to Found Embodied World Model Startup",
-    "summary": "胡瀚本科博士均就读清华大学，师从周杰教授，曾任职百度深度学习研究所、微软亚洲研究院视觉计算组（升任首席研究员）。2025年1月加入腾讯接替刘威负责混元多模态研发。2026年7月正式提出离职，将独立创业主攻具身大脑与世界模型赛道。原OpenAI研究员田永龙将接手其视觉语言模型研发工作。",
-    "source": "OFweek维科网/新智元",
-    "source_url": "https://znyj.m.ofweek.com/news/2026-07/ART-23013-8460-30695790.html",
-    "date": "2026-07-24",
-    "created_at": "2026-07-27T12:49:39.528514",
-    "media_sources": [
-      "OFweek维科网/新智元"
-    ],
-    "person_name": "胡瀚",
-    "action": "离职",
-    "old_role": "腾讯混元多模态大模型负责人",
-    "new_role": "独立创业（主攻具身大脑与世界模型赛道）"
-  },
-  {
-    "id": "小鹏20260700",
-    "company": "小鹏汽车",
-    "type": "personnel",
-    "title": "小鹏机器人负责人米良川离职，铁三角核心班底全员离场",
-    "title_en": "Xpeng Robotics Head Mi Liangchuan Departs, Iron Triangle Core Team Fully Dissolved",
-    "summary": "米良川本科毕业于中科大电气工程，美国爱荷华州立大学机器人硕士，曾在英伟达工作约15年，卡内基梅隆大学机器人研究所担任电气工程师。2021年加入小鹏任自动驾驶高级总监，2023年9月接管机器人事业部，后晋升副总裁并出任AI技术委员会主席。2026年7月确认离职，是小鹏机器人铁三角（米良川、施晓鑫、郑存远）最后一位离开的成员。何小鹏已亲自兼任机器人业务CEO。",
-    "source": "职场Bonus/21世纪经济报道/新浪财经",
-    "source_url": "https://finance.sina.com.cn/wm/2026-07-01/doc-ifiaeu6251272.shtml",
-    "date": "2026-07-01",
-    "created_at": "2026-07-27T12:49:39.529378",
-    "media_sources": [
-      "职场Bonus/21世纪经济报道/新浪财经"
-    ],
-    "person_name": "米良川",
-    "action": "离职",
-    "old_role": "小鹏机器人业务负责人 / 副总裁 / AI技术委员会主席",
-    "new_role": "离职（去向未明）"
-  },
-  {
-    "id": "小鹏20260701",
-    "company": "小鹏汽车",
-    "type": "personnel",
-    "title": "小鹏AI架构负责人陆思渊离职，将加入OpenAI做人形机器人",
-    "title_en": "Xpeng AI Infra Lead Lu Siyuan Departs for OpenAI Robotics",
-    "summary": "陆思渊拥有南加州大学博士学位，深耕深度学习与算力优化领域，在小鹏主导搭建AI Infra体系，直管约200人团队，覆盖训练集群、芯片编译器、车端推理全链路技术。2026年7月正在办理工作交接，离职后将入职OpenAI参与具身机器人研发。这是近两月小鹏第三位出走的核心技术高管（此前施晓鑫、米良川已离职）。",
-    "source": "OFweek机器人网/雷峰网",
-    "source_url": "https://mp.ofweek.com/robot/a256714105627",
-    "date": "2026-07-20",
-    "created_at": "2026-07-27T12:49:39.530238",
-    "media_sources": [
-      "OFweek机器人网/雷峰网"
-    ],
-    "person_name": "陆思渊",
-    "action": "离职",
-    "old_role": "小鹏AI基础架构部负责人",
-    "new_role": "即将加入OpenAI参与具身机器人研发"
-  },
-  {
-    "id": "Op20260700",
-    "company": "OpenAI",
-    "type": "personnel",
-    "title": "前小鹏AI架构负责人陆思渊加入OpenAI机器人部门",
-    "title_en": "Former Xpeng AI Infra Lead Lu Siyuan Joins OpenAI Robotics Division",
-    "summary": "OpenAI于2026年6月正式成立内部机器人事业部，由Sora、DALL-E研发负责人Aditya Ramesh统筹，卡内基梅隆大学博士何泰然作为核心研究员加入。陆思渊从小鹏离职后加入OpenAI机器人事业部，将利用其大规模算力调度和模型优化经验补齐机器人仿真训练底层算力短板。",
-    "source": "OFweek机器人网/雷峰网",
-    "source_url": "https://mp.ofweek.com/robot/a256714105627",
-    "date": "2026-07-20",
-    "created_at": "2026-07-27T12:49:39.531086",
-    "media_sources": [
-      "OFweek机器人网/雷峰网"
-    ],
-    "person_name": "陆思渊",
-    "action": "加入",
-    "old_role": "小鹏汽车AI基础架构部负责人",
-    "new_role": "OpenAI机器人事业部研究员"
-  },
-  {
-    "id": "星动20260700",
-    "company": "星动纪元",
-    "type": "personnel",
-    "title": "星动纪元联合创始人席悦卸任董事长，石选阳接任",
-    "title_en": "Robot Era Co-founder Xi Yue Steps Down as Chairman, Shi Xuanyang Succeeds",
-    "summary": "星动纪元发生高层人事变动，联合创始人席悦卸任董事长及财务负责人职务。同时原董事沈源、王梦秋、郭其志、袁冰冰悉数退出；新增王志伟、张勃任董事。席悦通过合伙企业间接持股18.31%，为公司重要股东。星动纪元2026年以来完成多轮融资（3月10亿战略轮、4月超2亿美元、7月10亿新一轮），注册资本持续上调，公司类型已变更为股份有限公司。",
-    "source": "泰山财经/中国能源网",
-    "source_url": "https://www.cnenergynews.cn/article/4SHRIefhcuu",
-    "date": "2026-07-06",
-    "created_at": "2026-07-27T12:49:39.532046",
-    "media_sources": [
-      "泰山财经/中国能源网"
-    ],
-    "person_name": "席悦",
-    "action": "卸任",
-    "old_role": "星动纪元联合创始人兼董事长 / 财务负责人",
-    "new_role": "卸任董事长及财务负责人职务"
-  },
-  {
-    "id": "星动20260701",
-    "company": "星动纪元",
-    "type": "personnel",
-    "title": "星动纪元运控算法负责人石选阳升任董事长",
-    "title_en": "Robot Era Motion Control Lead Shi Xuanyang Promoted to Chairman",
-    "summary": "石选阳由董事调整为董事长，此前以公司运控算法负责人身份登上央视新闻。星动纪元是清华大学唯一持股的具身智能企业，2026年Q2开启千台级机器人交付，与中国邮政、顺丰等深度合作，已打通物流领域具身智能商业化闭环。",
-    "source": "泰山财经/中国能源网",
-    "source_url": "https://www.cnenergynews.cn/article/4SHRIefhcuu",
-    "date": "2026-07-06",
-    "created_at": "2026-07-27T12:49:39.533011",
-    "media_sources": [
-      "泰山财经/中国能源网"
-    ],
-    "person_name": "石选阳",
-    "action": "晋升",
-    "old_role": "星动纪元运控算法负责人 / 董事",
-    "new_role": "星动纪元董事长"
-  },
-  {
-    "id": "破壳20260700",
-    "company": "破壳机器人",
-    "type": "personnel",
-    "title": "前美团无人机高管刘硕加入破壳机器人，出任首位商业合伙人",
-    "title_en": "Former Meituan Drone Executive Liu Shuo Joins Poke Robotics as First Business Partner",
-    "summary": "刘硕本科毕业于上海理工大学科技翻译专业，香港大学MBA。曾任职百度智能驾驶事业群生态合作总经理，后任翼健信息合伙人/副总裁，后入美团任无人机商业管理负责人及机器人研究院秘书长。2026年7月加入破壳机器人任首位商业合伙人。破壳机器人由许华哲（前星海图联创/首席科学家）创立，聚焦C端家庭场景轮式底盘+双臂形态具身机器人，4月完成数千万美元天使轮。",
-    "source": "机器人前瞻/新浪网",
-    "source_url": "https://k.sina.com.cn/article_7950358917_1d9e0d98502001eve6.html",
-    "date": "2026-07-01",
-    "created_at": "2026-07-27T12:49:39.533968",
-    "media_sources": [
-      "机器人前瞻/新浪网"
-    ],
-    "person_name": "刘硕",
-    "action": "加入",
-    "old_role": "美团无人机商业管理负责人 / 美团机器人研究院秘书长",
-    "new_role": "破壳机器人首位商业合伙人（负责商业化、战略及业务拓展）"
-  },
-  {
-    "id": "小鹏20260601",
-    "company": "小鹏汽车",
-    "type": "personnel",
-    "title": "何小鹏亲自兼任小鹏机器人业务CEO，全面接管机器人中心",
-    "title_en": "He Xiaopeng Personally Takes Over as CEO of Xpeng Robotics Business",
-    "summary": "2026年6月10日，何小鹏发布全员内部信，宣布亲自兼任机器人业务CEO及机器人中心总负责人，所有部门负责人直接向其汇报，取消中间总负责人层级。此举发生在施晓鑫离职后5天，旨在从集团最高层推动资金、产线、渠道、智驾技术全面向机器人倾斜，全力推动IRON人形机器人2026年底量产落地。",
-    "source": "21世纪经济报道/今日头条",
-    "source_url": "https://www.toutiao.com/article/7657391193710346752/",
-    "date": "2026-06-10",
-    "created_at": "2026-07-27T12:49:39.534950",
-    "media_sources": [
-      "21世纪经济报道/今日头条"
-    ],
-    "person_name": "何小鹏",
-    "action": "晋升",
-    "old_role": "小鹏集团董事长兼CEO",
-    "new_role": "小鹏集团董事长兼CEO + 机器人业务CEO + 机器人中心总负责人"
-  },
-  {
-    "id": "小鹏20250500",
-    "company": "小鹏汽车",
-    "type": "personnel",
-    "title": "小鹏机器人整机本体负责人郑存远离职创业，铁三角首名离场成员",
-    "title_en": "Xpeng Robotics Hardware Lead Zheng Cunyuan Departs to Found Startup",
-    "summary": "郑存远硕士毕业于哥伦比亚大学机械工程专业，曾在SpaceX实习、GE Research任研究员，加入小鹏前任拓斯达科技工业机器人研发负责人。在鹏行智能/小鹏机器人期间负责IRON整机技术架构，完成了最新一代IRON的总包集成。2025年5月底首个离开小鹏机器人铁三角。离职后朋友圈背景墙纸仍为IRON，2026年5月以花名郑天乐出现在超维动力发布会上。",
-    "source": "职场Bonus/搜狐",
-    "source_url": "https://m.sohu.com/a/1045502544_122014422",
-    "date": "2025-05-31",
-    "created_at": "2026-07-27T12:49:39.535898",
-    "media_sources": [
-      "职场Bonus/搜狐"
-    ],
-    "person_name": "郑存远",
-    "action": "离职",
-    "old_role": "小鹏机器人整机本体负责人（IRON从0到1搭建者之一）",
-    "new_role": "离职创业（后以花名郑天乐加入超维动力）"
-  },
-  {
-    "id": "超维20260500",
-    "company": "超维动力",
-    "type": "personnel",
-    "title": "前小鹏机器人硬件负责人郑存远以花名郑天乐加入超维动力",
-    "title_en": "Former Xpeng Robotics Hardware Lead Joins Chaowei Dynamics as Co-Founder",
-    "summary": "郑存远从小鹏离职后，以花名郑天乐出现在超维动力的发布会和通稿中，经交叉验证确认其身份。通过深圳超维智联合伙持股79.17%，间接控制超维动力。",
-    "source": "职场Bonus/搜狐",
-    "source_url": "https://m.sohu.com/a/1045502544_122014422",
-    "date": "2026-05-01",
-    "created_at": "2026-07-27T12:49:39.536802",
-    "media_sources": [
-      "职场Bonus/搜狐"
-    ],
-    "person_name": "郑存远",
-    "action": "创业加入",
-    "old_role": "小鹏机器人整机本体负责人（花名Tyler）",
-    "new_role": "超维动力联合创始人（花名郑天乐）"
-  },
-  {
-    "id": "墨奇20260700",
-    "company": "墨奇智能",
-    "type": "personnel",
-    "title": "前华为天才少年黄青虬创办墨奇智能，天使轮超10亿估值70亿",
-    "title_en": "Former Huawei Genius Youth Huang Qingqu Found Moqi AI, Angel Round Exceeds 1B RMB",
-    "summary": "黄青虬为前华为天才少年，与前华为资深高管高文礼联合创办墨奇智能。2026年7月宣布完成超10亿元天使轮系列融资，投后估值超70亿元。华为系已成为具身智能创业赛道重要力量，截至7月6日至少15位华为前高管离职加入或创办具身智能创企，9位曾入选华为天才少年，公开融资合计约77亿元。",
-    "source": "智东西/36氪",
-    "source_url": "https://www.toutiao.com/article/7659954781468787250",
-    "date": "2026-07-06",
-    "created_at": "2026-07-27T12:49:39.537696",
-    "media_sources": [
-      "智东西/36氪"
-    ],
-    "person_name": "黄青虬",
-    "action": "创业",
-    "old_role": "华为天才少年",
-    "new_role": "墨奇智能联合创始人"
-  },
-  {
-    "id": "墨奇20260701",
-    "company": "墨奇智能",
-    "type": "personnel",
-    "title": "前华为资深高管高文礼联合创办墨奇智能",
-    "title_en": "Former Huawei Senior Executive Gao Wenli Co-founds Moqi AI",
-    "summary": "高文礼为前华为资深高管，与前华为天才少年黄青虬联合创办墨奇智能。公司完成超10亿元天使轮系列融资，投后估值超70亿元。业务覆盖机器人本体、运动小脑、决策大脑等具身智能全产业链。",
-    "source": "智东西/36氪",
-    "source_url": "https://www.toutiao.com/article/7659954781468787250",
-    "date": "2026-07-06",
-    "created_at": "2026-07-27T12:49:39.538682",
-    "media_sources": [
-      "智东西/36氪"
-    ],
-    "person_name": "高文礼",
-    "action": "创业",
-    "old_role": "华为资深高管",
-    "new_role": "墨奇智能联合创始人"
-  },
-  {
-    "id": "开普20260200",
-    "company": "开普勒机器人",
-    "type": "personnel",
-    "title": "开普勒机器人前CEO胡德波离职，创立索塔无界",
-    "title_en": "Kepler Robotics Former CEO Hu Debo Departs, Founds Sota Wujie",
-    "summary": "胡德波是开普勒机器人联合创始人兼前CEO，曾在华为、中兴通讯担任海外及全球业务高管。自2025年6月起不再担任CEO，仅负责销售及市场相关工作，2026年2月正式离任。随后创立索塔无界，专注具身智能'大脑'研发。",
-    "source": "搜狐/开普勒官方",
-    "source_url": "https://www.sohu.com/a/1026293155_116237",
-    "date": "2026-02-01",
-    "created_at": "2026-07-28T13:29:20.140316",
-    "media_sources": [
-      "搜狐/开普勒官方"
-    ],
-    "person_name": "胡德波",
-    "action": "离职",
-    "old_role": "CEO/联合创始人",
-    "new_role": "-"
-  },
-  {
-    "id": "索塔20260400",
-    "company": "索塔无界",
-    "type": "personnel",
-    "title": "开普勒前CEO胡德波创立索塔无界，用世界模型实现Scaling Law",
-    "title_en": "Former Kepler CEO Hu Debo Found Sota Wujie, Scaling Law via World Model",
-    "summary": "胡德波创立索塔无界，专注具身智能'大脑'技术研发。公司自研EGO头盔和OMNI-UMI全模态数据采集系统，推出Physica-Claw物理智能体架构，走全栈整机出海路线，锁定商超零售、制造物流等领域。",
-    "source": "腾讯新闻",
-    "source_url": "https://new.qq.com/rain/a/20260514A07U6G00",
-    "date": "2026-04-01",
-    "created_at": "2026-07-28T13:29:20.142671",
-    "media_sources": [
-      "腾讯新闻"
-    ],
-    "person_name": "胡德波",
-    "action": "创业",
-    "old_role": "开普勒机器人前CEO",
-    "new_role": "创始人兼CEO"
-  },
-  {
-    "id": "华为20260300",
-    "company": "华为",
-    "type": "personnel",
-    "title": "华为诺亚方舟实验室主任王云鹤离职，将投身AI Agent创业",
-    "title_en": "Huawei Noah's Ark Lab Director Wang Yunhe Departs for AI Agent Startup",
-    "summary": "王云鹤2018年入职华为，历任算法、技术管理等多个岗位，2025年3月接任诺亚方舟实验室主任，参与盘古大模型迭代工作。2026年3月20日作为盘古大模型开源项目负责人出席发布会，3月28日确认离职。其团队研发的GhostNet神经网络架构曾入选华为年度十大发明。",
-    "source": "新浪财经",
-    "source_url": "https://finance.sina.com.cn/wm/2026-04-03/doc-inhtfkwx3763131.shtml",
-    "date": "2026-03-28",
-    "created_at": "2026-07-28T13:29:20.144273",
-    "media_sources": [
-      "新浪财经"
-    ],
-    "person_name": "王云鹤",
-    "action": "离职",
-    "old_role": "华为诺亚方舟实验室主任/盘古大模型负责人",
-    "new_role": "-"
-  },
-  {
-    "id": "基元20260400",
-    "company": "基元律动",
-    "type": "personnel",
-    "title": "原华为诺亚方舟实验室主任王云鹤创办基元律动，天使轮估值达1亿美元",
-    "title_en": "Former Huawei Lab Director Wang Yunhe Founds Jiyuan LvDong, Angel Round at $100M",
-    "summary": "王云鹤离职后创办上海基元律动科技有限公司，出任CEO，原华为诺亚方舟实验室首席研究员韩凯担任CTO。公司聚焦AI Agent领域，成立不到两个月完成天使轮融资，估值达1亿美元。",
-    "source": "腾讯新闻",
-    "source_url": "https://new.qq.com/rain/a/20260603A07MAF00",
-    "date": "2026-04-08",
-    "created_at": "2026-07-28T13:29:20.146118",
-    "media_sources": [
-      "腾讯新闻"
-    ],
-    "person_name": "王云鹤",
-    "action": "创业",
-    "old_role": "华为诺亚方舟实验室主任",
-    "new_role": "CEO"
-  },
-  {
-    "id": "华为20251000",
-    "company": "华为",
-    "type": "personnel",
-    "title": "华为云AI算法创新Lab主任朱森华离职创业",
-    "title_en": "Huawei Cloud AI Lab Director Zhu Senhua Departs to Found Startup",
-    "summary": "朱森华曾任华为云AI算法创新Lab主任，华为云AI部门智能机器人业务开创者，带领团队从零构建了华为云的脑与类脑AI云平台、华为云智能机器人业务，孵化了华为首个具身大模型。2025年10月离职。",
-    "source": "36氪/百度百家号",
-    "source_url": "https://baijiahao.baidu.com/s?id=1853351312180082470",
-    "date": "2025-10-01",
-    "created_at": "2026-07-28T13:29:20.148271",
-    "media_sources": [
-      "36氪/百度百家号"
-    ],
-    "person_name": "朱森华",
-    "action": "离职",
-    "old_role": "华为云AI算法创新Lab主任/具身智能大脑一号位",
-    "new_role": "-"
-  },
-  {
-    "id": "具脑20251000",
-    "company": "具脑磐石",
-    "type": "personnel",
-    "title": "华为'具身大脑一号位'朱森华创立具脑磐石，完成亿元级融资",
-    "title_en": "Former Huawei 'Embodied Brain No.1' Zhu Senhua Founds JuNao PanShi",
-    "summary": "朱森华创立具脑磐石，定位为具身智能'大脑'公司，核心方向是面向真实物理世界的认知世界模型。采用类脑智能的Neural AI范式改进具身智能VLA。2026年5月完成新一轮亿元级融资。",
-    "source": "搜狐",
-    "source_url": "https://www.sohu.com/a/1027414608_260616",
-    "date": "2025-10-01",
-    "created_at": "2026-07-28T13:29:20.151417",
-    "media_sources": [
-      "搜狐"
-    ],
-    "person_name": "朱森华",
-    "action": "创业",
-    "old_role": "华为云AI算法创新Lab主任",
-    "new_role": "创始人兼CEO"
   }
 ]

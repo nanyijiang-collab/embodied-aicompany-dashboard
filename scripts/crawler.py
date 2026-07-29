@@ -24,10 +24,14 @@ from urllib.parse import quote, urlparse
 import sys
 import io
 # 设置 stdout 编码（支持中文输出）
+# 注意：使用 reconfigure 代替 TextIOWrapper 重定向，避免输出缓冲问题
 try:
-    sys.stdout = io.TextIOWrapper(sys.__stdout__.buffer, encoding='utf-8')
+    sys.stdout.reconfigure(encoding='utf-8')
 except Exception:
-    pass
+    try:
+        sys.stdout = io.TextIOWrapper(sys.__stdout__.buffer, encoding='utf-8')
+    except Exception:
+        pass
 
 # ============== 大公司具身智能过滤 ==============
 # NVIDIA、Tesla 业务广泛，需要额外过滤非具身智能新闻
