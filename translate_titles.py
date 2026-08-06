@@ -2,22 +2,23 @@
 """
 多线程批量翻译脚本 - 翻译 events.json 中中文标题的 title_en
 只翻译真正的中文内容，英文新闻直接标记跳过
+双引擎：优先 MyMemory（稳定），失败回退 Google Translate
 """
 
 import json
 import time
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from deep_translator import GoogleTranslator
+from deep_translator import MyMemoryTranslator, GoogleTranslator
 
 # 配置
-MAX_WORKERS = 10  # 并发线程数
+MAX_WORKERS = 3  # 并发线程数（降低以避免限速）
 INPUT_FILE = 'data/events.json'
 OUTPUT_FILE = 'data/events.json'
 LOCK = threading.Lock()
 
 # 统计
-stats = {'total': 0, 'chinese': 0, 'english': 0, 'success': 0, 'failed': 0, 'skipped': 0}
+stats = {'total': 0, 'chinese': 0, 'english': 0, 'success': 0, 'failed': 0, 'skipped': 0, 'mymemory': 0, 'google': 0}
 
 def has_chinese(text):
     """判断是否包含中文"""
@@ -26,18 +27,38 @@ def has_chinese(text):
     return any('\u4e00' <= c <= '\u9fff' for c in text)
 
 def translate_text(text, max_retries=3):
-    """翻译单条文本"""
+    """翻译单条文本 - 双引擎：MyMemory 优先，Google 回退"""
     if not text or not text.strip():
         return None
 
+    text = text.strip()
+    # MyMemory 限制 450 字符
+    text_truncated = text[:450]
+
+    # 引擎 1: MyMemory（稳定，不限速）
     for attempt in range(max_retries):
         try:
-            result = GoogleTranslator(source='zh-CN', target='en').translate(text.strip())
-            if result:
+            result = MyMemoryTranslator(source='zh-CN', target='en-US').translate(text_truncated)
+            if result and result != text_truncated:
+                with LOCK:
+                    stats['mymemory'] += 1
                 return result
-        except Exception as e:
+        except Exception:
             if attempt < max_retries - 1:
-                time.sleep(0.3 * (attempt + 1))
+                time.sleep(0.5 * (attempt + 1))
+
+    # 引擎 2: Google Translate（回退）
+    for attempt in range(max_retries):
+        try:
+            result = GoogleTranslator(source='zh-CN', target='en').translate(text_truncated)
+            if result:
+                with LOCK:
+                    stats['google'] += 1
+                return result
+        except Exception:
+            if attempt < max_retries - 1:
+                time.sleep(0.5 * (attempt + 1))
+
     return None
 
 def process_item(item):
@@ -148,6 +169,7 @@ def main():
     print(f"   英文标记: {stats['english']} 条")
     print(f"   翻译成功: {stats['success']} 条")
     print(f"   翻译失败: {stats['failed']} 条")
+    print(f"   引擎: MyMemory={stats['mymemory']} | Google={stats['google']}")
     print(f"   耗时: {elapsed:.1f} 秒")
 
 if __name__ == '__main__':
