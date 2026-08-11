@@ -213,6 +213,7 @@ COMPANIES = {
         {'name': 'Hexagon', 'alias': ['Hexagon'], 'website': 'https://hexagon.com'},
         {'name': 'Skydio', 'alias': ['Skydio'], 'website': 'https://skydio.com'},
         {'name': 'Sunday Robotics', 'alias': ['Sunday Robotics', 'Memo']},
+        {'name': 'Walden Robotics', 'alias': ['Walden Robotics']},
     ],
     'domestic_vla': [
         {'name': '千寻智能', 'alias': ['千寻智能']},
@@ -225,6 +226,11 @@ COMPANIES = {
         {'name': '它石智航', 'alias': ['它石智航']},
         {'name': '跨维智能', 'alias': ['跨维智能']},
         {'name': '穹彻智能', 'alias': ['穹彻智能']},
+        {'name': '德塔智能', 'alias': ['德塔智能', 'Delta Intelligence']},
+        {'name': '星源智机器人', 'alias': ['星源智机器人', '星源智']},
+        {'name': '潜界科技', 'alias': ['潜界科技', 'LatentVerse']},
+        {'name': '眸深智能', 'alias': ['眸深智能']},
+        {'name': '中科第五纪', 'alias': ['中科第五纪', '第五纪']},
     ],
     'domestic_control': [
         {'name': '星动纪元', 'alias': ['星动纪元']},
@@ -244,6 +250,15 @@ COMPANIES = {
         {'name': '觅蜂科技', 'alias': ['觅蜂科技']},
         {'name': '简智机器人', 'alias': ['简智机器人', 'GenRobot', '简智新创']},
         {'name': '破壳机器人', 'alias': ['破壳机器人', 'Poke Robotics']},
+        {'name': '天机智能', 'alias': ['天机智能']},
+        {'name': '诺因智能', 'alias': ['诺因智能', 'KNOWIN']},
+        {'name': '众擎机器人', 'alias': ['众擎机器人']},
+        {'name': '临界点', 'alias': ['临界点', 'AGILINK', '临界点AGILINK']},
+        {'name': '灵巧智能', 'alias': ['灵巧智能', 'DexHand']},
+        {'name': '新智具身', 'alias': ['新智具身']},
+        {'name': '曦诺未来', 'alias': ['曦诺未来']},
+        {'name': '黑漫科技', 'alias': ['黑漫科技']},
+        {'name': '擎天租', 'alias': ['擎天租']},
     ]
 }
 
