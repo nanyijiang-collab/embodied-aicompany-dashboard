@@ -1173,9 +1173,9 @@
                     allEvents = data;
                     applyFilters();
                     updateStats();
-                    document.getElementById('lastUpdated').textContent = currentLang === 'en'
-                        ? new Date().toLocaleString('en-US')
-                        : new Date().toLocaleString('zh-CN');
+                    // 显示数据里的最新日期，而不是浏览器当前时间（避免"看起来刚更新过"的误判）
+                    const latestDate = data.reduce((m, e) => (e.date && e.date > m ? e.date : m), '');
+                    document.getElementById('lastUpdated').textContent = latestDate || '--';
                 })
                 .catch(e => {
                     console.error('Failed to load events:', e);
@@ -1331,20 +1331,24 @@
             const search = document.getElementById('searchInput').value.toLowerCase();
             
             // 获取需要展示的公司列表
-            let displayCompanies = new Set();
+            let displayCompanies = null; // null 表示不按公司白名单过滤
             if (region === 'all') {
-                Object.values(companyRegions).forEach(arr => arr.forEach(c => displayCompanies.add(c)));
+                // 「全部」不限制公司：否则爬虫归到「行业动态」等兜底桶的新闻会被静默丢弃
+                displayCompanies = null;
             } else if (region === 'domestic') {
+                displayCompanies = new Set();
                 ['domestic_vla', 'domestic_control'].forEach(k => companyRegions[k].forEach(c => displayCompanies.add(c)));
             } else if (region === 'overseas_us') {
+                displayCompanies = new Set();
                 companyRegions['overseas_vla'].forEach(c => displayCompanies.add(c));
             } else if (region === 'overseas_eu') {
+                displayCompanies = new Set();
                 companyRegions['overseas_other'].forEach(c => displayCompanies.add(c));
             }
             
             filteredEvents = allEvents.filter(event => {
                 // 地区筛选
-                if (!displayCompanies.has(event.company)) return false;
+                if (displayCompanies && !displayCompanies.has(event.company)) return false;
                 
                 // 类型筛选
                 if (type !== 'all' && event.type !== type) {
