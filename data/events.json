@@ -1,5 +1,85 @@
 [
   {
+    "id": "62d0301e81ee",
+    "company": "行业动态",
+    "type": "funding",
+    "title": "理想芯片公司完成 16.25 亿元融资，投后估值 171 亿元",
+    "title_en": null,
+    "summary": "",
+    "source": "晚点LatePost",
+    "source_url": "https://www.163.com/dy/article/L9CIELLC0531M1CO.html?spss=dy_author",
+    "date": "2026-10-19",
+    "created_at": "2026-10-19T11:04:59.128197",
+    "media_sources": [
+      "163.com",
+      "晚点LatePost"
+    ]
+  },
+  {
+    "id": "829657378d3f",
+    "company": "行业动态",
+    "type": "other",
+    "title": "与 Today AI 聊个人 agent：它就是 “the next big thing”",
+    "title_en": null,
+    "summary": "",
+    "source": "晚点LatePost",
+    "source_url": "https://www.163.com/dy/article/L9BQ16640531M1CO.html?spss=dy_author",
+    "date": "2026-10-19",
+    "created_at": "2026-10-19T11:04:59.128232",
+    "media_sources": [
+      "163.com",
+      "晚点LatePost"
+    ]
+  },
+  {
+    "id": "1e994e70d878",
+    "company": "行业动态",
+    "type": "other",
+    "title": "钱和人撤出 AI 短剧，用 AI 拍片的人还想拍什么",
+    "title_en": null,
+    "summary": "",
+    "source": "晚点LatePost",
+    "source_url": "https://www.163.com/dy/article/L9AIAJI00531M1CO.html?spss=dy_author",
+    "date": "2026-10-19",
+    "created_at": "2026-10-19T11:04:59.128248",
+    "media_sources": [
+      "163.com",
+      "晚点LatePost"
+    ]
+  },
+  {
+    "id": "9b8cc0e40526",
+    "company": "行业动态",
+    "type": "other",
+    "title": "湖南裕能：“铁锂一哥” 的周期赌局",
+    "title_en": null,
+    "summary": "",
+    "source": "晚点LatePost",
+    "source_url": "https://www.163.com/dy/article/L99VABV00531M1CO.html?spss=dy_author",
+    "date": "2026-10-19",
+    "created_at": "2026-10-19T11:04:59.128261",
+    "media_sources": [
+      "163.com",
+      "晚点LatePost"
+    ]
+  },
+  {
+    "id": "87b76451b05d",
+    "company": "行业动态",
+    "type": "other",
+    "title": "晚点具身季报：Astra 冲击后，通用模型会吃掉 Robotics 吗？",
+    "title_en": null,
+    "summary": "",
+    "source": "晚点LatePost",
+    "source_url": "https://www.163.com/dy/article/L99QHJ4A0531M1CO.html?spss=dy_author",
+    "date": "2026-10-19",
+    "created_at": "2026-10-19T11:04:59.128276",
+    "media_sources": [
+      "163.com",
+      "晚点LatePost"
+    ]
+  },
+  {
     "id": "70d1c8629c77",
     "company": "行业动态",
     "type": "other",
@@ -12782,6 +12862,25 @@
       "Google News",
       "Giants Wire"
     ]
+  },
+  {
+    "id": "Bo20261000",
+    "company": "Boston Dynamics",
+    "type": "personnel",
+    "title": "波士顿动力任命亚马逊前高管Rohit Prasad为CEO",
+    "title_en": "Boston Dynamics Names Former Amazon AI Chief Rohit Prasad as CEO",
+    "summary": "2026年10月7日，波士顿动力官宣任命Rohit Prasad为CEO，为公司史上首次外部聘任CEO。Prasad在亚马逊任职12年，主导Alexa规模化及Nova基础模型研发。前任CEO Robert Playter于2026年2月卸任。现代汽车计划2028年在佐治亚工厂部署Atlas。",
+    "source": "Boston Dynamics",
+    "source_url": "https://bostondynamics.com/news/boston-dynamics-appoints-rohit-prasad-as-chief-executive-officer/",
+    "date": "2026-10-07",
+    "created_at": "2026-10-15T10:35:26.164453",
+    "media_sources": [
+      "Boston Dynamics"
+    ],
+    "person_name": "Rohit Prasad",
+    "action": "加入",
+    "old_role": "亚马逊 Alexa & AGI 负责人",
+    "new_role": "CEO"
   },
   {
     "id": "0b08120ccc91",
@@ -112300,6 +112399,25 @@
     ]
   },
   {
+    "id": "小鹏20260602",
+    "company": "小鹏汽车",
+    "type": "personnel",
+    "title": "小鹏机器人产品一号位施晓鑫离职创立艾莫机器人，切入家庭方向",
+    "title_en": "XPeng Robotics Product Lead Shi Xiaoxin Leaves to Found Aimo Robotics",
+    "summary": "2026年6月，小鹏机器人产品规划高级总监施晓鑫离职，创立家庭机器人公司艾莫机器人，核心团队含部分前小鹏机器人成员。据披露其与何小鹏在量产节奏上存在分歧。",
+    "source": "铅笔道",
+    "source_url": "https://www.toutiao.com/article/7694464636984263210/",
+    "date": "2026-06-30",
+    "created_at": "2026-10-15T10:35:26.174137",
+    "media_sources": [
+      "铅笔道"
+    ],
+    "person_name": "施晓鑫",
+    "action": "创业",
+    "old_role": "机器人产品规划高级总监",
+    "new_role": "艾莫机器人创始人"
+  },
+  {
     "id": "8cb4481af4d7",
     "company": "Field AI",
     "type": "other",
@@ -169336,25 +169454,6 @@
     ]
   },
   {
-    "id": "Bo20260500",
-    "company": "Boston Dynamics",
-    "type": "personnel",
-    "title": "Boston Dynamics COO Selma Svensson离职，高管层持续动荡",
-    "title_en": "Boston Dynamics COO Selma Svensson Departs Amid Executive Exodus",
-    "summary": "Boston Dynamics COO Selma Svensson与CSO Marc Theermann同期离职。Semafor调查报道称高管被董事会'逼走'，董事会批评面对资金充裕竞争对手时公司领先优势正在缩小。此次离职潮包括CEO Robert Playter退休、COO/CSO离职、VP Research跳槽DeepMind。",
-    "source": "TechTimes / Semafor",
-    "source_url": "https://www.techtimes.com/articles/317466/20260531/boston-dynamics-loses-research-chief-deepmind-softbank-deadline-looms.htm",
-    "date": "2026-05-31",
-    "created_at": "2026-08-06T16:03:36.476393",
-    "media_sources": [
-      "TechTimes / Semafor"
-    ],
-    "person_name": "Selma Svensson",
-    "action": "离职",
-    "old_role": "Boston Dynamics COO（首席运营官）",
-    "new_role": "待披露"
-  },
-  {
     "id": "b7372ce8abd9",
     "company": "Mech-Mind",
     "type": "other",
@@ -169417,6 +169516,25 @@
       "Google News",
       "Moomoo"
     ]
+  },
+  {
+    "id": "穹彻20260500",
+    "company": "穹彻智能",
+    "type": "personnel",
+    "title": "穹彻智能副总裁毛崇兆离职创立时炉科技",
+    "title_en": "Noematrix VP Mao Chongzhao Leaves to Found Shilu Robotics",
+    "summary": "2026年5月末，穹彻智能副总裁毛崇兆离职，之后创立时炉科技，方向为面向海外市场的轮式底盘搭配单臂家用机器人。",
+    "source": "红星资本局",
+    "source_url": "https://www.cqrb.cn/caijingzonghe/2026-10-14/2796430_pc.html",
+    "date": "2026-05-31",
+    "created_at": "2026-10-15T10:35:26.170584",
+    "media_sources": [
+      "红星资本局"
+    ],
+    "person_name": "毛崇兆",
+    "action": "创业",
+    "old_role": "副总裁",
+    "new_role": "时炉科技创始人"
   },
   {
     "id": "31a49e608a5c",
@@ -412341,7 +412459,7 @@
     "source": "企查查",
     "source_url": "https://www.qcc.com/creport/deff662a8964e6310448343ade6a8391.html",
     "date": "2026-02-25",
-    "created_at": "2026-10-15T10:32:35.376236",
+    "created_at": "2026-10-19T11:44:18.668681",
     "media_sources": [
       "企查查"
     ],
@@ -412360,7 +412478,7 @@
     "source": "百度百科",
     "source_url": "https://baike.baidu.com/item/韩峰涛/66237371",
     "date": "2024-02-01",
-    "created_at": "2026-10-15T10:32:35.451215",
+    "created_at": "2026-10-19T11:44:18.745658",
     "media_sources": [
       "百度百科"
     ],
@@ -412379,7 +412497,7 @@
     "source": "百度百科",
     "source_url": "https://baike.baidu.com/item/顾捷/22072963",
     "date": "2015-01-01",
-    "created_at": "2026-10-15T10:32:35.479939",
+    "created_at": "2026-10-19T11:44:18.771213",
     "media_sources": [
       "百度百科"
     ],
@@ -412398,7 +412516,7 @@
     "source": "百度百科",
     "source_url": "https://baike.baidu.com/item/邵天兰/24113920",
     "date": "2016-01-01",
-    "created_at": "2026-10-15T10:32:35.484214",
+    "created_at": "2026-10-19T11:44:18.774554",
     "media_sources": [
       "百度百科"
     ],
@@ -412417,7 +412535,7 @@
     "source": "百度百科",
     "source_url": "https://baike.baidu.com/item/陈兆芃/61992611",
     "date": "2018-07-24",
-    "created_at": "2026-10-15T10:32:35.488238",
+    "created_at": "2026-10-19T11:44:18.777598",
     "media_sources": [
       "百度百科"
     ],
@@ -412436,7 +412554,7 @@
     "source": "企查查",
     "source_url": "https://www.qcc.com/firm/8b35ea81d3a95ea6f0df2f1e962fbed2.html",
     "date": "2023-11-01",
-    "created_at": "2026-10-15T10:32:35.492239",
+    "created_at": "2026-10-19T11:44:18.780654",
     "media_sources": [
       "企查查"
     ],
@@ -412455,7 +412573,7 @@
     "source": "机电工程师网",
     "source_url": "https://www.jdgcs.org/news/agility-robotics-boston-dynamics-see-leadership-changes-17729/",
     "date": "2024-03-04",
-    "created_at": "2026-10-15T10:32:35.533444",
+    "created_at": "2026-10-19T11:44:18.815486",
     "media_sources": [
       "机电工程师网"
     ],
@@ -412474,7 +412592,7 @@
     "source": "公开信息",
     "source_url": "https://www.qcc.com/firm/34337a9c25db2d3dc97d62b242dcefb5.html",
     "date": "2025-12-01",
-    "created_at": "2026-10-15T10:32:35.537407",
+    "created_at": "2026-10-19T11:44:18.819319",
     "media_sources": [
       "公开信息"
     ],
@@ -412493,7 +412611,7 @@
     "source": "Hexagon官网",
     "source_url": "https://hexagon.com/company/newsroom/press-releases/2025/anders-svensson-appointed-as-new-president-and-ceo-of-hexagon",
     "date": "2025-07-21",
-    "created_at": "2026-10-15T10:32:35.544790",
+    "created_at": "2026-10-19T11:44:18.825342",
     "media_sources": [
       "Hexagon官网"
     ],
@@ -412512,7 +412630,7 @@
     "source": "AI科技评论",
     "source_url": "https://www.m.aitntnews.com/newDetail.html?newId=24473",
     "date": "2026-01-08",
-    "created_at": "2026-10-15T10:32:35.579518",
+    "created_at": "2026-10-19T11:44:18.858279",
     "media_sources": [
       "AI科技评论"
     ],
@@ -412531,7 +412649,7 @@
     "source": "百度百科",
     "source_url": "https://baike.baidu.com/item/%E8%B5%B5%E5%93%B2%E4%BC%A6/66052442",
     "date": "2024-12-09",
-    "created_at": "2026-10-15T10:32:35.621779",
+    "created_at": "2026-10-19T11:44:18.900063",
     "media_sources": [
       "百度百科"
     ],
@@ -412550,7 +412668,7 @@
     "source": "百度百科",
     "source_url": "https://baike.baidu.com/item/%E7%BB%B4%E4%BB%96%E5%8A%A8%E5%8A%9B%EF%BC%88%E5%8C%97%E4%BA%AC%EF%BC%89%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/65525305",
     "date": "2024-12-09",
-    "created_at": "2026-10-15T10:32:35.625663",
+    "created_at": "2026-10-19T11:44:18.903629",
     "media_sources": [
       "百度百科"
     ],
@@ -412569,7 +412687,7 @@
     "source": "GitHub Pages",
     "source_url": "https://xiaolonw.github.io/",
     "date": "2026-05-01",
-    "created_at": "2026-10-15T10:32:35.629253",
+    "created_at": "2026-10-19T11:44:18.907276",
     "media_sources": [
       "GitHub Pages"
     ],
@@ -412577,6 +412695,25 @@
     "action": "加入",
     "old_role": "ARI联合创始人/CTO/前英伟达研究员",
     "new_role": "Meta超级智能实验室Research Director"
+  },
+  {
+    "id": "Bo20260500",
+    "company": "Boston Dynamics",
+    "type": "personnel",
+    "title": "Boston Dynamics COO Selma Svensson离职，高管层持续动荡",
+    "title_en": "Boston Dynamics COO Selma Svensson Departs Amid Executive Exodus",
+    "summary": "Boston Dynamics COO Selma Svensson与CSO Marc Theermann同期离职。Semafor调查报道称高管被董事会'逼走'，董事会批评面对资金充裕竞争对手时公司领先优势正在缩小。此次离职潮包括CEO Robert Playter退休、COO/CSO离职、VP Research跳槽DeepMind。",
+    "source": "TechTimes / Semafor",
+    "source_url": "https://www.techtimes.com/articles/317466/20260531/boston-dynamics-loses-research-chief-deepmind-softbank-deadline-looms.htm",
+    "date": "2026-05-31",
+    "created_at": "2026-10-19T11:44:18.956577",
+    "media_sources": [
+      "TechTimes / Semafor"
+    ],
+    "person_name": "Selma Svensson",
+    "action": "离职",
+    "old_role": "Boston Dynamics COO（首席运营官）",
+    "new_role": "待披露"
   },
   {
     "id": "Bo20260501",
@@ -412588,7 +412725,7 @@
     "source": "TechTimes / LinkedIn",
     "source_url": "https://www.linkedin.com/in/theermann",
     "date": "2026-05-31",
-    "created_at": "2026-10-15T10:32:35.672222",
+    "created_at": "2026-10-19T11:44:18.961154",
     "media_sources": [
       "TechTimes / LinkedIn"
     ],
@@ -412607,7 +412744,7 @@
     "source": "职场Bonus/21世纪经济报道/新浪财经",
     "source_url": "https://finance.sina.com.cn/wm/2026-07-01/doc-ifiaeu6251272.shtml",
     "date": "2026-07-01",
-    "created_at": "2026-10-15T10:32:35.708561",
+    "created_at": "2026-10-19T11:44:19.005705",
     "media_sources": [
       "职场Bonus/21世纪经济报道/新浪财经"
     ],
@@ -412626,7 +412763,7 @@
     "source": "泰山财经/中国能源网",
     "source_url": "https://www.cnenergynews.cn/article/4SHRIefhcuu",
     "date": "2026-07-06",
-    "created_at": "2026-10-15T10:32:35.715809",
+    "created_at": "2026-10-19T11:44:19.013102",
     "media_sources": [
       "泰山财经/中国能源网"
     ],
@@ -412634,62 +412771,5 @@
     "action": "卸任",
     "old_role": "星动纪元联合创始人兼董事长 / 财务负责人",
     "new_role": "卸任董事长及财务负责人职务"
-  },
-  {
-    "id": "Bo20261000",
-    "company": "Boston Dynamics",
-    "type": "personnel",
-    "title": "波士顿动力任命亚马逊前高管Rohit Prasad为CEO",
-    "title_en": "Boston Dynamics Names Former Amazon AI Chief Rohit Prasad as CEO",
-    "summary": "2026年10月7日，波士顿动力官宣任命Rohit Prasad为CEO，为公司史上首次外部聘任CEO。Prasad在亚马逊任职12年，主导Alexa规模化及Nova基础模型研发。前任CEO Robert Playter于2026年2月卸任。现代汽车计划2028年在佐治亚工厂部署Atlas。",
-    "source": "Boston Dynamics",
-    "source_url": "https://bostondynamics.com/news/boston-dynamics-appoints-rohit-prasad-as-chief-executive-officer/",
-    "date": "2026-10-07",
-    "created_at": "2026-10-15T10:35:26.164453",
-    "media_sources": [
-      "Boston Dynamics"
-    ],
-    "person_name": "Rohit Prasad",
-    "action": "加入",
-    "old_role": "亚马逊 Alexa & AGI 负责人",
-    "new_role": "CEO"
-  },
-  {
-    "id": "穹彻20260500",
-    "company": "穹彻智能",
-    "type": "personnel",
-    "title": "穹彻智能副总裁毛崇兆离职创立时炉科技",
-    "title_en": "Noematrix VP Mao Chongzhao Leaves to Found Shilu Robotics",
-    "summary": "2026年5月末，穹彻智能副总裁毛崇兆离职，之后创立时炉科技，方向为面向海外市场的轮式底盘搭配单臂家用机器人。",
-    "source": "红星资本局",
-    "source_url": "https://www.cqrb.cn/caijingzonghe/2026-10-14/2796430_pc.html",
-    "date": "2026-05-31",
-    "created_at": "2026-10-15T10:35:26.170584",
-    "media_sources": [
-      "红星资本局"
-    ],
-    "person_name": "毛崇兆",
-    "action": "创业",
-    "old_role": "副总裁",
-    "new_role": "时炉科技创始人"
-  },
-  {
-    "id": "小鹏20260602",
-    "company": "小鹏汽车",
-    "type": "personnel",
-    "title": "小鹏机器人产品一号位施晓鑫离职创立艾莫机器人，切入家庭方向",
-    "title_en": "XPeng Robotics Product Lead Shi Xiaoxin Leaves to Found Aimo Robotics",
-    "summary": "2026年6月，小鹏机器人产品规划高级总监施晓鑫离职，创立家庭机器人公司艾莫机器人，核心团队含部分前小鹏机器人成员。据披露其与何小鹏在量产节奏上存在分歧。",
-    "source": "铅笔道",
-    "source_url": "https://www.toutiao.com/article/7694464636984263210/",
-    "date": "2026-06-30",
-    "created_at": "2026-10-15T10:35:26.174137",
-    "media_sources": [
-      "铅笔道"
-    ],
-    "person_name": "施晓鑫",
-    "action": "创业",
-    "old_role": "机器人产品规划高级总监",
-    "new_role": "艾莫机器人创始人"
   }
 ]

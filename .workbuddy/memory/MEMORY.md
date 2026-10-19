@@ -133,3 +133,8 @@ python scripts/fast_dedup.py
 - `[H-Special]` 特种巡检
 - `[Agnostic]` 通用领域
 - `[Research]` 科研
+
+## Git 推送配置（2026-10-15 修正）
+- origin 地址已移除内嵌 Token，改为 `https://github.com/nanyijiang-collab/embodied-aicompany-dashboard.git`，依赖 Windows 凭证管理器（manager helper）。
+- 若再次出现 "Invalid username or token"：说明内嵌凭证又被写回或被缓存失效，先 `git remote -v` 检查 URL，再重新 `set-url` 去掉内嵌凭证，并让用户在系统登录 GitHub。
+- 排查思路：`git ls-remote origin main` 可快速区分「凭证问题」与「网络/代理问题」。
